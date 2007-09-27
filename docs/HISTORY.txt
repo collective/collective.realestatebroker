@@ -1,0 +1,9 @@
+Changelog for collective.realestatebroker
+
+    (name of developer listed in brackets)
+
+collective.realestatebroker - 1.9 Unreleased
+
+    - Initial package structure.
+      [zopeskel]
+
