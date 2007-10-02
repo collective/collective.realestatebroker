@@ -4,14 +4,28 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.realestatebroker">
 
-  <five:registerPackage package="." initialize=".initialize" />
-  <genericsetup:registerProfile
+    <!-- Make this package a Zope 2 product so that it calls the
+         initialize() function on startup
+      -->
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <!-- Map custom permissions -->
+    <!--<permission
+        id="collective.CustomPermission"
+        title="collective: Custom permission"
+        />-->
+
+    <!-- Include the sub-packages that use their own configure.zcml files. -->
+    <!--<include package=".browser" />-->
+    <!--<include package=".portlets" />-->
+
+    <!-- Register the installation GenericSetup extension profile -->
+    <genericsetup:registerProfile
       name="default"
-      title="Real estate broker"
+      title="realestatebroker"
       directory="profiles/default"
-      description="Real estate broker configuration"
+      description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
 
 </configure>

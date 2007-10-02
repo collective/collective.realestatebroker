@@ -1,13 +1,27 @@
-"""Initializer for archetypes"""
+"""Main product initializer
+"""
+
+from zope.i18nmessageid import MessageFactory
+from collective.realestatebroker import config
+
 from Products.Archetypes import atapi
 from Products.CMFCore import utils
+from Products.CMFCore.permissions import setDefaultRoles
 
-PROJECTNAME = 'collective.realestatebroker'
+# Define a message factory for when this product is internationalised.
+# This will be imported with the special name "_" in most modules. Strings
+# like _(u"message") will then be extracted by i18n tools for translation.
+
+RealEstateBrokerMessageFactory = MessageFactory('collective.realestatebroker')
+
+# Bring custom permissions to life. We also map this in configure.zcml,
+# to make it available in <browser:page /> and other directives.
+
 
 def initialize(context):
-    """Initializer called when used as a Zope 2 product.
+    """Intializer called when used as a Zope 2 product.
 
-    This is referenced from configure.zcml. Registration as a 'Zope 2 product'
+    This is referenced from configure.zcml. Regstrations as a "Zope 2 product"
     is necessary for GenericSetup profiles to work, for example.
 
     Here, we call the Archetypes machinery to register our content types
@@ -26,9 +40,10 @@ def initialize(context):
     residential #PYFLAKES
     commercial #PYFLAKES
 
+
     content_types, constructors, ftis = atapi.process_types(
-        atapi.listTypes(PROJECTNAME),
-        PROJECTNAME)
+        atapi.listTypes(config.PROJECTNAME),
+        config.PROJECTNAME)
 
     # Now initialize all these content types. The initialization process takes
     # care of registering low-level Zope 2 factories, including the relevant
@@ -38,8 +53,8 @@ def initialize(context):
     # in the GenericSetup profile.
 
     for atype, constructor in zip(content_types, constructors):
-        utils.ContentInit("%s: %s" % (PROJECTNAME, atype.portal_type),
+        utils.ContentInit("%s: %s" % (config.PROJECTNAME, atype.portal_type),
             content_types      = (atype,),
-            permission         = 'Add portal content',
+            permission         = config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors = (constructor,),
             ).initialize(context)
