@@ -1,4 +1,5 @@
-Realestatebroker has two content types. One for *homes* and one for *offices*.
+Realestatebroker has two content types. One for *homes* and one for
+*businesses*.
 
-    >>> from collective.realestatebroker.content.home import Home
-    >>> from collective.realestatebroker.content.office import Office
+    >>> from collective.realestatebroker.content.residential import Residential
+    >>> from collective.realestatebroker.content.commercial import Commercial
