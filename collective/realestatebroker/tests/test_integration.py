@@ -39,11 +39,10 @@ def test_suite():
         #    module='collective.realestatebroker.mymodule',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
-
         # Integration tests that use PloneTestCase
-        #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='collective.realestatebroker',
-        #    test_class=TestCase),
+        ztc.ZopeDocFileSuite(
+            'README.txt', package='collective.realestatebroker',
+            test_class=TestCase),
 
         #ztc.FunctionalDocFileSuite(
         #    'browser.txt', package='collective.realestatebroker',

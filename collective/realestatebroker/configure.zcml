@@ -1,7 +1,16 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.realestatebroker">
 
+  <genericsetup:registerProfile
+      name="default"
+      title="Real estate broker"
+      directory="profiles/default"
+      description="Real estate broker configuration"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      />
 
 </configure>
