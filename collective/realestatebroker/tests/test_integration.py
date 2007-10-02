@@ -12,6 +12,7 @@ ptc.setupPloneSite()
 
 import collective.realestatebroker
 
+
 class TestCase(ptc.PloneTestCase):
     class layer(PloneSite):
         @classmethod
@@ -24,7 +25,7 @@ class TestCase(ptc.PloneTestCase):
         @classmethod
         def tearDown(cls):
             pass
-    
+
 
 def test_suite():
     return unittest.TestSuite([
@@ -47,7 +48,7 @@ def test_suite():
         #ztc.FunctionalDocFileSuite(
         #    'browser.txt', package='collective.realestatebroker',
         #    test_class=TestCase),
-        
+
         ])
 
 if __name__ == '__main__':
