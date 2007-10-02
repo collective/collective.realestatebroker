@@ -1,0 +1,34 @@
+<object name="Commercial"
+        meta_type="Factory-based Type Information"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="collective.realestatebroker">
+  <property name="title" i18n:translate="">Commercial real estate</property>
+  <property name="description"
+            i18n:translate="">
+    Folderish content type for commercial real estate.
+  </property>
+
+  <property name="content_icon">document_icon.gif</property>
+  <property name="content_meta_type">Commercial</property>
+  <property name="product">collective.realestatebroker</property>
+  <property name="factory">addCommercial</property>
+  <property name="immediate_view">folder_listing</property>
+  <property name="global_allow">True</property>
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types">
+    <element value="Image"/>
+    <element value="File"/>
+  </property>
+  <property name="allow_discussion">False</property>
+  <alias from="(Default)" to="folder_listing"/>
+  <alias from="edit" to="base_edit"/>
+  <action title="view" action_id="view" category="object"
+          condition_expr="python:1" url_expr="string:${object_url}/folder_listing"
+          visible="True">
+    <permission value="View"/>
+  </action>
+  <action title="Edit" action_id="edit" category="object" condition_expr=""
+          url_expr="string:${object_url}/base_edit" visible="True">
+    <permission value="Modify portal content"/>
+  </action>
+</object>
