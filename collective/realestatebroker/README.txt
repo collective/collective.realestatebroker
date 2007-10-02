@@ -39,7 +39,6 @@ Commercial and residential real estate content types
 ----------------------------------------------------
 
     >>> self.portal.invokeFactory('Residential', id='home1')
-    home1
-    >>> self.loginAsPortalOwner()
-    >>> self.portal.invokeFactory('Residential', id='home1')
-    home1
+    'home1'
+    >>> self.portal.invokeFactory('Commercial', id='office1')
+    'office1'
