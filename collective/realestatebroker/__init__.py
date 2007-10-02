@@ -19,13 +19,20 @@ RealEstateBrokerMessageFactory = MessageFactory('collective.realestatebroker')
 
 
 def initialize(context):
-    """Intializer called when used as a Zope 2 product.
+    """Initializer called when used as a Zope 2 product.
 
     This is referenced from configure.zcml. Regstrations as a "Zope 2 product"
     is necessary for GenericSetup profiles to work, for example.
 
     Here, we call the Archetypes machinery to register our content types
     with Zope and the CMF.
+
+      >>> from collective.realestatebroker import initialize
+      >>> class MockContext:
+      ...     def registerClass(*args, **kw):
+      ...         pass
+      >>> context = MockContext()
+      >>> initialize(context)
     """
 
     # Retrieve the content types that have been registered with Archetypes

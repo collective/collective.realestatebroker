@@ -8,5 +8,5 @@ def test_suite():
         doctest.DocFileSuite('content/contenttypes.txt',
                              package='collective.realestatebroker',
                              optionflags=doctest.ELLIPSIS),
-        #doctest.DocTestSuite(module='plonehrm.contracts.browser.contract'),
+        doctest.DocTestSuite(module='collective.realestatebroker'),
         ))
