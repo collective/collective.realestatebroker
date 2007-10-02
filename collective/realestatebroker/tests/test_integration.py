@@ -8,9 +8,9 @@ from Products.Five import zcml
 from Products.Five import fiveconfigure
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import PloneSite
-ptc.setupPloneSite()
 
 import collective.realestatebroker
+ptc.setupPloneSite()
 
 
 class TestCase(ptc.PloneTestCase):
@@ -21,6 +21,7 @@ class TestCase(ptc.PloneTestCase):
             zcml.load_config('configure.zcml',
                              collective.realestatebroker)
             fiveconfigure.debug_mode = False
+            ptc.installPackage('collective.realestatebroker')
 
         @classmethod
         def tearDown(cls):
