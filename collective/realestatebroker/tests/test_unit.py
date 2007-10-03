@@ -9,4 +9,5 @@ def test_suite():
                              package='collective.realestatebroker',
                              optionflags=doctest.ELLIPSIS),
         doctest.DocTestSuite(module='collective.realestatebroker'),
+        doctest.DocTestSuite(module='collective.realestatebroker.migration'),
         ))

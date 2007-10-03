@@ -18,14 +18,15 @@ We have to accomplish several tasks:
 - Remove RealEstateBroker/CMFPhoto(Album) from the quickinstaller.
 
 """
+from StringIO import StringIO
 from Products.contentmigration import walker
-from Products.contentmigration import migrator
+from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
 from Products.contentmigration import field
 import logging
 logger = logging.getLogger('rebmigrator')
 
 
-class RebMigrator: # TODO: subclass from a migrator.*
+class RebMigrator(CMFItemMigrator):
     """Base class to migrate objects to a realestatebroker content type.
 
     In addition to contentmigration's functionality, RebMigrator also converts
@@ -34,6 +35,9 @@ class RebMigrator: # TODO: subclass from a migrator.*
     Methods that start with `migrate_` are automatically called after the
     regular contentmigration functionality has created the new product.
     """
+
+    # def beforeChange_* (done before migration)
+    # def last_migrate_* (done just before migration finishes)
 
     def migrate_cmfphotos(self):
         """Migrate nested CMFPhotos to regular ATImages.
@@ -51,7 +55,23 @@ class RebMigrator: # TODO: subclass from a migrator.*
 
 
 class ResidentialMigrator(RebMigrator):
-    """Migrate REHome to Residential content types."""
+    """Migrate REHome to Residential content types.
+
+    In the end, the migrator is run like this:
+
+    >>> out = StringIO()
+    >>> class MockCatalog:
+    ...     threshold = None
+    ...     def __call__(self, *args, **kw):
+    ...         return []
+    >>> class MockPortal:
+    ...     portal_catalog = MockCatalog()
+    >>> portal = MockPortal()
+    >>> from collective.realestatebroker.migration import ResidentialMigrator
+    >>> walker = ResidentialMigrator.walkerClass(portal, ResidentialMigrator)
+    >>> walker.go(out=out)
+
+    """
     walkerClass = walker.CatalogWalker
     src_meta_type = 'REHome'
     src_portal_type = 'REHome'
