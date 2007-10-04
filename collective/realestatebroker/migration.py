@@ -157,14 +157,16 @@ class ResidentialMigrator(RebMigrator):
     Dummy migration: owner
     Dummy migration: permission_settings
     Dummy migration: migration date
-
+    >>> portal.one.typename
+    'Residential'
     """
     walkerClass = walker.CatalogWalker
     src_meta_type = 'REHome'
     src_portal_type = 'REHome'
     dst_meta_type = 'Residential'
     dst_portal_type = 'Residential'
-    map = {} # {'getOldField': 'setNewField'}
+    map = {#'getPrice': 'setPrice',
+        }
 
 
 # TODO: add CommercialMigrator
