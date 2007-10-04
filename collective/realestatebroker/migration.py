@@ -163,7 +163,34 @@ class ResidentialMigrator(RebMigrator):
     src_portal_type = 'REHome'
     dst_meta_type = 'Residential'
     dst_portal_type = 'Residential'
-    map = {#'getPrice': 'setPrice',
+    map = {# All the old fields (both REHome and REBusiness)
+        'getAcceptance': 'setAcceptance',
+        'getAddress': 'setAddress',
+        'getAirco': 'setAirco',
+        'getArea': 'setArea',
+        'getBalcony': 'setBalcony',
+        'getCity': 'setCity',
+        'getConstructYear': 'setConstructYear',
+        'getDesc': 'setDesc',
+        'getFacilities': 'setFacilities',
+        'getGarden': 'setGarden',
+        'getHeating': 'setHeating',
+        'getIsolation': 'setIsolation',
+        'getKindOfBuilding': 'setKindOfBuilding',
+        'getKindOfGarden': 'setKindOfGarden',
+        'getKk_von': 'setKk_von',
+        'getLocation': 'setLocation',
+        'getMainText': 'setMainText',
+        'getParking': 'setParking',
+        'getPrice': 'setPrice',
+        'getRent_buy': 'setRent_buy',
+        'getRooms': 'setRooms',
+        'getStorage': 'setStorage',
+        'getType': 'setType',
+        'getVat': 'setVat',
+        'getVolume': 'setVolume',
+        'getZipCode': 'setZipCode',
+        # End of old fields
         }
 
 
