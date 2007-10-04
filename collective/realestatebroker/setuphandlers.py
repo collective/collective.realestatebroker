@@ -9,3 +9,10 @@ def importVarious(context):
         return
     site = context.getSite()
     logger = context.getLogger('realestatebroker')
+    migrate_old_content(site, logger)
+
+def migrate_old_content(site, logger):
+    try:
+        import Products.contentmigration
+    except:
+        return
