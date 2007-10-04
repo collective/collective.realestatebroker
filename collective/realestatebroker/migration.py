@@ -17,131 +17,8 @@ We have to accomplish several tasks:
 
 - Remove RealEstateBroker/CMFPhoto(Album) from the quickinstaller.
 
-In the end, the migrator is run like this:
-
->>> import Acquisition
->>> class MockSomething(Acquisition.Implicit):
-...     # just to allow us to set values on something.
-...     pass
->>> class MockPortalTypes:
-...     def getTypeInfo(self, typename):
-...         fti = MockSomething()
-...         fti.product = typename
-...         fti.factory = typename
-...         return fti
->>> class MockPortal(Acquisition.Implicit):
-...     portal_types = MockPortalTypes()
-...     def _checkId(self, id):
-...         return True
-...     def _getOb(self, id):
-...         return getattr(self, id)
-...     def _delObject(self, id):
-...         delattr(self, id)
-...     def manage_delObjects(self, ids):
-...         for id in ids:
-...             self._delObject(id)
-...     def _setObject(self, new_id, ob, set_owner=0):
-...         setattr(self, new_id, ob)
-...     def __init__(self):
-...         self.aq_explicit = self
-...     manage_addProduct = {}
-...     manage_addProduct['Residential'] = MockSomething()
-...     manage_addProduct['Commercial'] = MockSomething()
->>> portal = MockPortal()
->>> class MockContentType(Acquisition.Implicit):
-...     aq_parent = portal
-...     typename = 'mock'
-...     def __init__(self, id):
-...         self.id = id
-...     def getTypeInfo(self):
-...         fti = MockSomething()
-...         fti.product = self.typename
-...         fti.factory = self.typename
-...         return fti
-...     def getObject(self):
-...         # Double as a brain ;-)
-...         return self
-...     def getPhysicalPath(self):
-...         return ['root', self.id]
-...     def getId(self):
-...         return self.id
-...     def absolute_url(self, *args):
-...         return 'http://site/' + self.id
-...     def CreationDate(self):
-...         return 1
-...     def ModificationDate(self):
-...         return 1
-...     def cb_isMoveable(self):
-...         return True
-...     def _notifyOfCopyTo(self, *args, **kw):
-...         pass
-...     def _setId(self, id):
-...         self.id = id
-...     def _postCopy(self, *args, **kw):
-...         pass
->>> class MockREHome(MockContentType):
-...     typename = 'REHome'
->>> class MockResidential(MockContentType):
-...     typename = 'Residential'
->>> class MockREBusiness(MockContentType):
-...     typename = 'REBusiness'
->>> class MockCommercial(MockContentType):
-...     typename = 'Commercial'
->>> def addResidential(id):
-...     portal._setObject(id, MockResidential(id))
->>> portal.manage_addProduct['Residential'].Residential = addResidential
->>> def addCommercial(id):
-...     portal._setObject(id, MockCommercial(id))
->>> portal.manage_addProduct['Commercial'].Commercial = addCommercial
->>> portal._setObject('one', MockREHome('one'))
->>> portal._setObject('two', MockREBusiness('two'))
->>> class MockCatalog:
-...     threshold = None
-...     def __call__(self, query):
-...         # Is expected to return brains.
-...         if query['portal_type'] == 'REHome':
-...             return [portal.one]
-...         if query['portal_type'] == 'REBusiness':
-...             return [portal.two]
->>> portal.portal_catalog = MockCatalog()
->>> class DisabledMigration:
-...     # To prevent too much Mock* work, we'll disable migration of
-...     # Title and Description and so. That'll just work.
-...     def __init__(self, name):
-...         self.name = name
-...     def __call__(self):
-...         print "Dummy migration: " + self.name
->>> from collective.realestatebroker.migration import ResidentialMigrator
->>> ResidentialMigrator.migrate_dc = DisabledMigration('DC')
->>> ResidentialMigrator.migrate_localroles = DisabledMigration('local roles')
->>> ResidentialMigrator.migrate_owner = DisabledMigration('owner')
->>> ResidentialMigrator.migrate_permission_settings = DisabledMigration('permission_settings')
->>> ResidentialMigrator.last_migrate_date = DisabledMigration('migration date')
->>> from collective.realestatebroker.migration import CommercialMigrator
->>> CommercialMigrator.migrate_dc = DisabledMigration('DC')
->>> CommercialMigrator.migrate_localroles = DisabledMigration('local roles')
->>> CommercialMigrator.migrate_owner = DisabledMigration('owner')
->>> CommercialMigrator.migrate_permission_settings = DisabledMigration('permission_settings')
->>> CommercialMigrator.last_migrate_date = DisabledMigration('migration date')
-
-We have set up a dummy portal and dummy content types and we've disabled a
-couple of non-interesting migration steps. So we can now run the migration.
-
->>> migrate(portal, migrators=(ResidentialMigrator, CommercialMigrator))
-Dummy migration: DC
-Dummy migration: local roles
-Dummy migration: owner
-Dummy migration: permission_settings
-Dummy migration: migration date
-Dummy migration: DC
-Dummy migration: local roles
-Dummy migration: owner
-Dummy migration: permission_settings
-Dummy migration: migration date
-'Starting migration\\nMigrating root/one (REHome -> Residential)\\n\\nMigrating root/two (REBusiness -> Commercial)\\n\\nMigration finished\\n'
->>> portal.one.typename
-'Residential'
-
+A unittest that tests out the whole migration mechanism can be found in
+`tests/migration-unittest.txt`.
 
 """
 from StringIO import StringIO
@@ -178,6 +55,103 @@ class RebMigrator(CMFItemMigrator):
         # Find the CMFPhotoAlbum object. Is this always `photos`?
         # Find the CMFPhoto objects in the album.
         # Create new images based on the CMFPhotos.
+
+    def migrate_withmap(self):
+        """Copies over attributes according to a map{}.
+
+        Overrides the contentmigration's method. The customization is that it
+        checks whether the source/destination actually exist. Handy for
+        migrating older versions of realestatebroker, for instance with a
+        missing horrible kk_von attribute.
+
+        >>> class Dummy:
+        ...     pass
+        >>> class DummyMigrator(RebMigrator):
+        ...     def __init__(self):
+        ...         # just to quiet down the init.
+        ...         pass
+        >>> migrator = DummyMigrator()
+        >>> migrator.old = Dummy()
+        >>> migrator.new = Dummy()
+
+        Copy over single regular attribute.
+
+        >>> migrator.old.a = 'A'
+        >>> migrator.map = {'a': ''}
+        >>> migrator.migrate_withmap()
+        >>> migrator.new.a
+        'A'
+
+        If the target attribute somehow already exists, it still works.
+
+        >>> migrator.old.b = 'B'
+        >>> migrator.new.b = 'C'
+        >>> migrator.map = {'b': ''}
+        >>> migrator.migrate_withmap()
+        >>> migrator.new.b
+        'B'
+
+        If the source attribute is missing, just do nothing.
+
+        >>> migrator.map = {'c': ''}
+        >>> migrator.migrate_withmap()
+        >>> hasattr(migrator.new, 'c')
+        False
+
+        If the source is a method, no problem.
+
+        >>> class DummyWithMethod:
+        ...     def getE(self):
+        ...         return self.e
+        ...     def setE(self, value):
+        ...         self.e = value
+        >>> migrator.old = DummyWithMethod()
+        >>> migrator.new = DummyWithMethod()
+        >>> migrator.old.setE('Eeee')
+        >>> migrator.map = {'getE': 'setE'}
+        >>> migrator.migrate_withmap()
+        >>> migrator.new.getE()
+        'Eeee'
+
+        If the source is a method, the target is assumed to be a method,
+        too. General archetypes getter/setter behaviour. If the target misses
+        the setter, assume that the field has been deprecated and forget about
+        it. Note that not putting it in the map isn't always an option, as we
+        might add a way (ISchema) to re-add custom fields later.
+
+        >>> migrator.old = DummyWithMethod()
+        >>> migrator.old.setE('Eeee')
+        >>> migrator.new = Dummy()
+        >>> migrator.map = {'getE': 'setE'}
+        >>> migrator.migrate_withmap()
+        >>> hasattr(migrator.new, 'getE')
+        False
+        >>> hasattr(migrator.new, 'setE')
+        False
+        >>> hasattr(migrator.new, 'e')
+        False
+
+        """
+        NOTAVAILABLE = 'ouch, missing!'
+        for oldKey, newKey in self.map.items():
+
+            if not newKey:
+                newKey = oldKey
+            oldVal = getattr(self.old, oldKey, NOTAVAILABLE)
+            newVal = getattr(self.new, newKey, NOTAVAILABLE)
+            if oldVal == NOTAVAILABLE:
+                return
+            if callable(oldVal):
+                value = oldVal()
+                # newVal must be available
+                if newVal == NOTAVAILABLE:
+                    return
+            else:
+                value = oldVal
+            if callable(newVal):
+                newVal(value)
+            else:
+                setattr(self.new, newKey, value)
 
 
 class ResidentialMigrator(RebMigrator):

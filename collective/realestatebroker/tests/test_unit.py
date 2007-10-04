@@ -8,6 +8,9 @@ def test_suite():
         doctest.DocFileSuite('content/contenttypes.txt',
                              package='collective.realestatebroker',
                              optionflags=doctest.ELLIPSIS),
+        doctest.DocFileSuite('tests/migration-unittest.txt',
+                             package='collective.realestatebroker',
+                             optionflags=doctest.ELLIPSIS),
         doctest.DocTestSuite(module='collective.realestatebroker'),
         doctest.DocTestSuite(module='collective.realestatebroker.migration'),
         ))
