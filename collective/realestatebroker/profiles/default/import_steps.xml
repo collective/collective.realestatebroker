@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="realestatebroker_various"
+               version="20070629-01"
+               handler="collective.realestatebroker.setuphandlers.importVarious"
+               title="realestatebroker: miscellaneous import steps">
+    Import steps that couldn't be mapped to other handlers.
+  </import-step>
+</import-steps>
