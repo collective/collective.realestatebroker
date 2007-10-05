@@ -205,6 +205,7 @@ class RebMigrator(CMFItemMigrator):
                 image.setTitle(title)
                 image.setDescription(description)
                 image.setImage(binary_data)
+                logger.info("Migrated photo %s.", photo_id)
             # Find the CMFPhoto objects in the album.
         # Create new images based on the CMFPhotos.
 
