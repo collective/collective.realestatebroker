@@ -21,10 +21,11 @@ A unittest that tests out the whole migration mechanism can be found in
 `tests/migration-unittest.txt`.
 
 """
-from StringIO import StringIO
+from Products.contentmigration import field
 from Products.contentmigration import walker
 from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
-from Products.contentmigration import field
+from Products.contentmigration.common import _createObjectByType
+from StringIO import StringIO
 import logging
 logger = logging.getLogger('rebmigrator')
 
@@ -80,11 +81,131 @@ class RebMigrator(CMFItemMigrator):
         photos must be moved directly into the (folderish)
         Residential/Commercial object as regular Images.
 
+        First some setupcode needed for later _createObject stuff.
+
+        >>> import Acquisition
+        >>> class MockSomething(Acquisition.Implicit):
+        ...     # just to allow us to set values on something.
+        ...     pass
+        >>> class MockPortalTypes:
+        ...     def getTypeInfo(self, typename):
+        ...         fti = MockSomething()
+        ...         fti.product = typename
+        ...         fti.factory = typename
+        ...         return fti
+        >>> class MockContentType(Acquisition.Implicit, dict):
+        ...     #aq_parent = portal
+        ...     typename = 'mock'
+        ...     id = None
+        ...     def __init__(self, id):
+        ...         self.id = id
+        ...     def getTypeInfo(self):
+        ...         fti = MockSomething()
+        ...         fti.product = self.typename
+        ...         fti.factory = self.typename
+        ...         return fti
+        ...     def __getattr__(self, id):
+        ...         return self[id]
+        ...     def _getOb(self, id):
+        ...         return self[id]
+        ...     def objectValues(self):
+        ...         return self.values()
+        ...     def objectIds(self):
+        ...         return self.keys()
+        ...     def getId(self):
+        ...         return self.id
+        ...     def Title(self):
+        ...         return self.title
+        ...     def Description(self):
+        ...         return self.description
+        ...     def setTitle(self, title):
+        ...         self.title = title
+        ...     def setDescription(self, description):
+        ...         self.description = description
+        ...     def setImage(self, value):
+        ...         self['data'] = value
+        >>> class DummyMigrator(RebMigrator):
+        ...     def __init__(self):
+        ...         # just to quiet down the init.
+        ...         pass
+        >>> migrator = DummyMigrator()
+
+        Now the actual work. An empty old object, so nothing happens.
+
+        >>> migrator.old = MockContentType('dummy')
+        >>> migrator.migrate_cmfphotos()
+
+        If something has a different content type, leave it alone.
+
+        >>> something_else = MockContentType('dummy')
+        >>> something_else.portal_type = 'Something else'
+        >>> migrator.old['something'] = something_else
+        >>> migrator.migrate_cmfphotos()
+
+        >>> album = MockContentType('dummy')
+        >>> album.portal_type = 'Photo Album'
+        >>> migrator.old['photos'] = album
+        >>> migrator.migrate_cmfphotos()
+
+        We'll fill the album with a dummy photo. The album can be accessed as
+        a dict.
+
+        >>> class MockPhoto:
+        ...     data = str('simple string, no unicode')
+        ...     def __init__(self, id):
+        ...         self.id = id
+        ...     def getId(self):
+        ...         return self.id
+        ...     def Format(self):
+        ...         return 'image/mock'
+        ...     def Title(self):
+        ...         return 'dummy photo title'
+        ...     def Description(self):
+        ...         return 'dummy photo description'
+        >>> dummy_photo = MockPhoto('photo1')
+        >>> album['photo1'] = dummy_photo
+
+        Some hairy stuff to get 'new' working with _createObject.
+
+        >>> migrator.new = MockContentType('new')
+        >>> migrator.new.manage_addProduct = {}
+        >>> migrator.new.manage_addProduct['Image'] = MockSomething()
+        >>> migrator.new.portal_types = MockPortalTypes()
+        >>> def addImage(id):
+        ...     migrator.new[id] = MockContentType('dummy')
+        >>> migrator.new.manage_addProduct['Image'].Image = addImage
+
+        >>> migrator.migrate_cmfphotos()
+
+        There should be a new Image inside the new object.
+
+        >>> migrator.new.objectIds()
+        ['photo1']
+        >>> new_image = migrator.new['photo1']
+        >>> new_image.title
+        'dummy photo title'
+        >>> new_image.data
+        'simple string, no unicode'
+
         """
 
         logger.info("Starting to migrate CMFPhoto objects.")
-        # Find the CMFPhotoAlbum object. Is this always `photos`?
-        # Find the CMFPhoto objects in the album.
+        for album in self.old.objectValues():
+            if not album.portal_type == 'Photo Album':
+                continue
+            logger.info("Found a photo album (%s).", album.getId())
+            for photo in album.values():
+                photo_id = photo.getId()
+                format = photo.Format()
+                binary_data = photo.data
+                title = photo.Title()
+                description = photo.Description()
+                _createObjectByType('Image', self.new, photo_id)
+                image = getattr(self.new, photo_id)
+                image.setTitle(title)
+                image.setDescription(description)
+                image.setImage(binary_data)
+            # Find the CMFPhoto objects in the album.
         # Create new images based on the CMFPhotos.
 
     def migrate_withmap(self):

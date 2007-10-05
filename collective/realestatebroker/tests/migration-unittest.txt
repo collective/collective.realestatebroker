@@ -50,6 +50,9 @@ separate file.
     ...         fti.product = self.typename
     ...         fti.factory = self.typename
     ...         return fti
+    ...     def objectValues(self):
+    ...         # cmfphotoalbum content migration is tested in migration.py itself
+    ...         return []
     ...     def getObject(self):
     ...         # Double as a brain ;-)
     ...         return self
