@@ -18,6 +18,7 @@
     <!-- Include the sub-packages that use their own configure.zcml files. -->
     <!--<include package=".browser" />-->
     <!--<include package=".portlets" />-->
+    <include package=".content" />
 
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
@@ -28,4 +29,5 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+        
 </configure>
