@@ -4,11 +4,11 @@ from collective.realestatebroker.config import PROJECTNAME
 from collective.realestatebroker.content.schemata import GeneralInfoSchema
 
 
-class Residential(atapi.BaseFolder):
+class Residential(atapi.OrderedBaseFolder):
     """Folderish content type for residential real estate."""
     portal_type = "Residential"
     _at_rename_after_creation = True
-    schema = atapi.BaseFolderSchema.copy() + GeneralInfoSchema
+    schema = atapi.OrderedBaseFolderSchema.copy() + GeneralInfoSchema
 
     # temporary vocabulary for selectionwidgets in Schemas
     def _get_dummy_vocab(self):
