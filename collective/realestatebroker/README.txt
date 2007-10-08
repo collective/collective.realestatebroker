@@ -42,3 +42,28 @@ Commercial and residential real estate content types
     'home1'
     >>> self.portal.invokeFactory('Commercial', id='office1')
     'office1'
+
+
+Real Estate Workflow
+--------------------
+
+Real Estate Broker comes with a special workflow named 'realestate_workflow'
+which is mapped to both the Residential and Commmercial content type.
+
+    >>> home1 = self.portal.home1
+    >>> wftool = self.portal.portal_workflow
+    >>> self.failUnless('realestate_workflow' in wftool.objectIds())
+    >>> wftool.getChainForPortalType('Commercial')
+    ('realestate_workflow',)
+    >>> wftool.getChainForPortalType('Commercial')
+    ('realestate_workflow',)
+
+The initial state of real estate content should be offline, which means
+anonymous can't view it and only owner, editor and manager can edit it. From
+this state we can publish the content, which will bring it to the 'new' state.
+
+    >>> wftool.getInfoFor(home1, 'review_state')
+    'offline'
+    >>> wftool.doActionFor(home1, 'publish', wf_id='realestate_workflow')
+    >>> wftool.getInfoFor(home1, 'review_state')
+    'new' 
