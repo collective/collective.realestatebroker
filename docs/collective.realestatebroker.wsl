@@ -1,0 +1,170 @@
+author: "Reinout van Rees";
+namespace: collective;
+
+package realestatebroker {
+  folder Residential {
+    title: "Residential" ;
+    description: "Residential real estate";
+
+/* general info */
+
+    text address {
+         title: 'Address';
+         description: "Fill in the address of this object";
+  }
+
+    text zipCode {
+    title: 'Zip code';
+    description: "Fill in the zip code of this object";
+  }
+
+    text city {
+    title: 'City';
+    description: "Fill in the city in which this object is located.";
+  }
+
+    integer price {
+    title: 'Price';
+    description: "Fill in the price without dots or comma's.";
+  }
+
+    text house_type {
+    title: 'Type';
+    description: "Select the type object";
+  }
+
+    text rooms {
+    title: 'Rooms';
+    description: "Select the number of rooms for this object";
+      }
+
+/* residential general info */
+
+    text kk_von {
+    title: 'k.k./v.o.n.';
+    description: "Select the one option.";
+  }
+
+/* business general info */
+
+    text 'vat' {
+        title: 'VAT';
+        description: "Select the VAT for this object.";
+      }
+
+    text 'rent_buy' {
+        title: 'Rent or buy';
+        description: "Select Rent/buy for this object.";
+      }
+
+
+
+/* description */
+    text desc {
+        title: 'Description';
+        description: "Enter a short description for this object.";
+      }
+
+    text mainText {
+        title: 'Body text';
+        description: "Enter the main description for this object.";
+      }
+
+    text acceptance {
+        title: 'Acceptance';
+        description: "Enter a brief description for the acceptance.";
+      }
+
+/* general characteristics */
+
+    text area {
+        title: 'Area';
+        description: "Fill in the area of the object.";
+      }
+
+    text volume {
+        title: 'Volume';
+        description: "Fill in the volume of this object.";
+      }
+
+    text 'constructYear' {
+        title: 'Construction year';
+        description: "Fill in the year of construction of this object.";
+      }
+
+    lines 'location' {
+        title: 'location';
+        description:"Select the location. You can choose more than 1 option.";
+     }
+
+    text 'kindOfBuilding' {
+        title: 'Kind of building';
+        description:"Select what kind of building this is.";
+      }
+
+    lines 'heating' {
+      title: 'heating';
+      description:"Select the heating system for this object. You can choose more than 1 option";
+}
+
+    lines 'isolation' {
+      title: 'isolation';
+      description:"Select the kinds of isolation used for this object. You can choose more than 1 option";
+     }
+
+
+
+/* residential characteristics */
+
+
+    text 'balcony' {
+        title: 'Balcony';
+        description:"Select whether this object has a balcony or not.";
+      }
+
+    text 'garden' {
+        title: 'garden';
+        description:"Select whether this object has a garden or not.";
+      }
+
+    lines 'kindOfGarden' {
+        title: 'Kind of garden';
+        description:"Select the kind of garden. You can choose more than one option";
+      }
+
+    text 'storage' {
+        title: 'Storage';
+        description:"Select whether this object has a storage.";
+      }
+
+    text 'garage' {
+        title: 'Garage';
+        description:"Select whether this object has a garage or not.";
+      }
+
+    lines 'kindOfGarage' {
+        title: 'kindOfGarage';
+        description:"Select the type garage for this object. You can choose more than 1 option";
+      }
+
+    text 'airco' {
+        title: 'airco';
+        description:"Select whether this object has an airconditioning or not.";
+        }
+
+/* business chars */
+
+    text 'parking' {
+        title: 'Parking';
+        description:"Select here if this object has a private car park.";
+      }
+
+    lines 'facilities' {
+        title: 'Facilities';
+        description: "Select the facilities. You can choose more than 1 option";
+}
+
+
+
+  }
+}
