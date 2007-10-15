@@ -1,0 +1,24 @@
+<configure
+    xmlns:zope="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.realestatebroker"
+    >
+  
+    <browser:resource
+        name="h_icon.gif"
+        image="h_icon.gif"
+        />
+        
+    <browser:resource
+        name="broker_styles.css"
+        file="broker_styles.css"
+        />
+    
+    <browser:page
+        for="..interfaces.IResidential"
+        name="view"
+        class=".residential.ResidentialView"
+        permission="zope2.View"
+        />
+  
+</configure>
