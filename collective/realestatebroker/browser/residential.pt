@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.realestatebroker">
+
+<body>
+
+    <div metal:fill-slot="main">
+
+        <h1 id="residential_view">Residential View</h1>
+    <span tal:content="here/title">test</span><br/>
+    <span tal:content="view/cookedPrice">test2</span>
+    </div>
+
+</body>
+</html>

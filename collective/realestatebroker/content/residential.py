@@ -59,6 +59,21 @@ class Residential(atapi.OrderedBaseFolder):
     def _get_dummy_vocab(self):
         return ("choice 1", "choice 2", "choice 3")
 
+    def CookedPrice(self):
+        """Return formatted price"""
+        pr = str(self.price)
+        elements = []
+
+        if len(pr) > 9:
+            elements.append(pr[-12:-9])
+        if len(pr) > 6:
+            elements.append(pr[-9:-6])
+        if len(pr) > 3:
+            elements.append(pr[-6:-3])
+        elements.append(pr[-3:])
+        return '.'.join(elements)
+
+
 
 def DummyResidentialVocabularyFactory(context):
     """ Dummy Vocabulary Factory for Residential Schema
