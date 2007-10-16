@@ -1,0 +1,7 @@
+<div class="realestate_tab">
+ <span i18n:translate="photos_tab"
+       tal:condition="view/is_selected">Photos</span>
+ <a href="#"
+    tal:attributes="href view/photos_view"
+    tal:condition="not: view/is_selected">
+  <span i18n:translate="photos_tab">Photos</span></a></div>

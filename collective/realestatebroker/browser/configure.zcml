@@ -1,24 +1,82 @@
-<configure
-    xmlns:zope="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="collective.realestatebroker"
-    >
-  
-    <browser:resource
-        name="h_icon.gif"
-        image="h_icon.gif"
-        />
-        
-    <browser:resource
-        name="broker_styles.css"
-        file="broker_styles.css"
-        />
-    
-    <browser:page
-        for="..interfaces.IResidential"
-        name="view"
+<configure xmlns="http://namespaces.zope.org/browser"
+  i18n_domain="collective.realestatebroker">
+
+    <page
+        for="collective.realestatebroker.interfaces.IResidential"
+        name="residential_listing"
+        class=".residential.ResidentialListing"
+        template="templates/residential_listing.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IResidentialListing"
+    />
+
+    <page
+        for="collective.realestatebroker.interfaces.IResidential"
+        name="residential_view"
         class=".residential.ResidentialView"
+        template="templates/residential_view.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IResidentialView"
+    />
+
+    <page
+        for="collective.realestatebroker.interfaces.ICommercial"
+        name="commercial_listing"
+        class=".commercial.CommercialListing"
+        template="templates/commercial_listing.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.ICommercialListing"
+    />
+
+    <page
+        for="collective.realestatebroker.interfaces.ICommercial"
+        name="commercial_view"
+        class=".commercial.CommercialView"
+        template="templates/commercial_view.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.ICommercialView"
+    />
+
+    <!-- Viewlets which will render the tabs on real estate content. -->
+
+    <viewlet
+        name="realestatebroker.description.tab"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.DescriptionTab"
         permission="zope2.View"
         />
-  
+
+    <viewlet
+        name="realestatebroker.chars.tab"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.CharsTab"
+        permission="zope2.View"
+        />
+
+    <viewlet
+        name="realestatebroker.photos.tab"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.PhotosTab"
+        permission="zope2.View"
+        />
+
+    <viewlet
+        name="realestatebroker.map.tab"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.MapTab"
+        permission="zope2.View"
+        />
+        
+    <!-- Resources -->
+        
+    <resourceDirectory
+      name="images"
+      directory="images"
+      />
+      
+    <resource
+      name="realestatebroker.css"
+      file="realestatebroker.css"
+      />
+
 </configure>

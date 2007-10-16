@@ -12,7 +12,7 @@
   <property name="content_meta_type">Commercial</property>
   <property name="product">collective.realestatebroker</property>
   <property name="factory">addCommercial</property>
-  <property name="immediate_view">folder_listing</property>
+  <property name="immediate_view">commercial_view</property>
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
@@ -20,10 +20,13 @@
     <element value="File"/>
   </property>
   <property name="allow_discussion">False</property>
-  <alias from="(Default)" to="folder_listing"/>
+  <alias from="(Default)" to="commercial_view"/>
   <alias from="edit" to="base_edit"/>
+  <alias from="chars" to="commercial_chars"/>
+  <alias from="photos" to="commercial_photos"/>
+  <alias from="map" to="commercial_map"/>
   <action title="view" action_id="view" category="object"
-          condition_expr="python:1" url_expr="string:${object_url}/folder_listing"
+          condition_expr="python:1" url_expr="string:${object_url}/commercial_view"
           visible="True">
     <permission value="View"/>
   </action>

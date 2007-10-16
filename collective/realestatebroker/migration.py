@@ -21,12 +21,16 @@ A unittest that tests out the whole migration mechanism can be found in
 `tests/migration-unittest.txt`.
 
 """
-from Products.contentmigration import field
+import logging
+from StringIO import StringIO
+
 from Products.contentmigration import walker
 from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
 from Products.contentmigration.common import _createObjectByType
-from StringIO import StringIO
-import logging
+from Products.CMFCore.utils import getToolByName
+
+from config import STATE_TRANSITION_MAP
+
 logger = logging.getLogger('rebmigrator')
 
 
@@ -68,6 +72,7 @@ class RebMigrator(CMFItemMigrator):
         'getVat': 'setVat',
         'getVolume': 'setVolume',
         'getZipCode': 'setZipCode',
+    
         # End of old fields
         }
 
@@ -124,11 +129,11 @@ class RebMigrator(CMFItemMigrator):
         ...         self.description = description
         ...     def setImage(self, value):
         ...         self['data'] = value
-        >>> class DummyMigrator(RebMigrator):
+        >>> class MockMigrator(RebMigrator):
         ...     def __init__(self):
         ...         # just to quiet down the init.
         ...         pass
-        >>> migrator = DummyMigrator()
+        >>> migrator = MockMigrator()
 
         Now the actual work. An empty old object, so nothing happens.
 
@@ -217,15 +222,15 @@ class RebMigrator(CMFItemMigrator):
         migrating older versions of realestatebroker, for instance with a
         missing horrible kk_von attribute.
 
-        >>> class Dummy:
+        >>> class Mock:
         ...     pass
-        >>> class DummyMigrator(RebMigrator):
+        >>> class MockMigrator(RebMigrator):
         ...     def __init__(self):
         ...         # just to quiet down the init.
         ...         pass
-        >>> migrator = DummyMigrator()
-        >>> migrator.old = Dummy()
-        >>> migrator.new = Dummy()
+        >>> migrator = MockMigrator()
+        >>> migrator.old = Mock()
+        >>> migrator.new = Mock()
 
         Copy over single regular attribute.
 
@@ -253,13 +258,13 @@ class RebMigrator(CMFItemMigrator):
 
         If the source is a method, no problem.
 
-        >>> class DummyWithMethod:
+        >>> class MockWithMethod:
         ...     def getE(self):
         ...         return self.e
         ...     def setE(self, value):
         ...         self.e = value
-        >>> migrator.old = DummyWithMethod()
-        >>> migrator.new = DummyWithMethod()
+        >>> migrator.old = MockWithMethod()
+        >>> migrator.new = MockWithMethod()
         >>> migrator.old.setE('Eeee')
         >>> migrator.map = {'getE': 'setE'}
         >>> migrator.migrate_withmap()
@@ -272,9 +277,9 @@ class RebMigrator(CMFItemMigrator):
         it. Note that not putting it in the map isn't always an option, as we
         might add a way (ISchema) to re-add custom fields later.
 
-        >>> migrator.old = DummyWithMethod()
+        >>> migrator.old = MockWithMethod()
         >>> migrator.old.setE('Eeee')
-        >>> migrator.new = Dummy()
+        >>> migrator.new = Mock()
         >>> migrator.map = {'getE': 'setE'}
         >>> migrator.migrate_withmap()
         >>> hasattr(migrator.new, 'getE')
@@ -305,6 +310,87 @@ class RebMigrator(CMFItemMigrator):
                 newVal(value)
             else:
                 setattr(self.new, newKey, value)
+
+    def migrate_workflow(self):
+        """We need to check for the status field of old content types. Since
+        recent versions of reb use a special workflow for keeping track of
+        the status, allowing automatic transitions based on the age of
+        ModificationDate.
+
+        >>> from Products.CMFCore.utils import getToolByName
+        >>> class Mock:
+        ...     def __init__(self):
+        ...         self.status = 'offline'
+        ...     def status(self):
+        ...         "return status"
+        ...         return self.status
+        >>> class MockMigrator(RebMigrator):
+        ...     def __init__(self):
+        ...         # just to quiet down the init.
+        ...         pass
+        >>> class MockWorkflowTool:
+        ...     def __init__(self):
+        ...         self.transitions = ('publish','available','negotiate','sell')
+        ...         self.chain = ('offline','new','available','negotiating','sold')
+        ...         self.index = 0
+        ...     
+        ...     def getInfoFor(self, obj, attr):
+        ...         return self.chain[self.index]
+        ...     
+        ...     def doActionFor(self, obj, transition, wf_id=None):
+        ...         self.index += 1
+        
+        >>> migrator = MockMigrator()
+        >>> migrator.old = Mock()
+        >>> migrator.new = Mock()
+        >>> wf_tool = MockWorkflowTool()
+        >>> migrator.new.portal_workflow = wf_tool
+        
+        Content with 'available' in the status field should get that workflow
+        state after migrating.
+
+        >>> migrator.old.status = 'available'
+        >>> wf_tool.getInfoFor(migrator.new, 'review_state')
+        'offline'
+        >>> migrator.migrate_workflow()
+        >>> wf_tool.getInfoFor(migrator.new, 'review_state')
+        'available'
+
+        Let us try a state a little bit further up the chain. Note that we
+        have to reset the index to 0 for each test.
+
+        >>> wf_tool.index = 0
+        >>> migrator.old.status = 'negotiating'
+        >>> wf_tool.getInfoFor(migrator.new, 'review_state')
+        'offline'
+        >>> migrator.migrate_workflow()
+        >>> wf_tool.getInfoFor(migrator.new, 'review_state')
+        'negotiating'
+        
+        """
+        NOTAVAILABLE = 'No status field on this object!'
+        
+        oldStatus = getattr(self.old, 'status', NOTAVAILABLE)
+        if oldStatus == NOTAVAILABLE:
+            # Dealing with recent version which has no status field
+            return
+        else:
+            wf_tool = getToolByName(self.new, 'portal_workflow')
+            current_review_state = wf_tool.getInfoFor(self.new, 'review_state')
+            transition_chain = STATE_TRANSITION_MAP[oldStatus]
+            if current_review_state != oldStatus:
+                logger.info("Migrating the workflow for %r." % self.new)
+                for transition in transition_chain:
+                    wf_tool.doActionFor(self.new, transition,
+                                        wf_id='realestate_workflow')
+                if wf_tool.getInfoFor(self.new, 'review_state') == oldStatus:
+                    # We succesfully migrated the status to a workflow state
+                    logger.info("Finished migrating workflow for %r." % self.new)
+                    return
+                else:
+                    logger.info("Failed to migrate workflow for %r." % self.new)
+                    # something went wrong
+                    
 
 
 class ResidentialMigrator(RebMigrator):

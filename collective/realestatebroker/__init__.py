@@ -12,7 +12,7 @@ from Products.CMFCore.permissions import setDefaultRoles
 # This will be imported with the special name "_" in most modules. Strings
 # like _(u"message") will then be extracted by i18n tools for translation.
 
-RealEstateBrokerMessageFactory = MessageFactory('collective.realestatebroker')
+REBMessageFactory = MessageFactory('collective.realestatebroker')
 
 # Bring custom permissions to life. We also map this in configure.zcml,
 # to make it available in <browser:page /> and other directives.

@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.realestatebroker">
+<body>
+
+<metal:main fill-slot="main">
+  <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="context/title_or_id" />
+
+    <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <table cellpadding="0"
+      cellspacing="0"
+      class="residential-listing">
+      <tbody valign="top">
+        <tr tal:repeat="item view/sorted_listing">
+          <td>
+            <a href=""
+               tal:attributes="href item/url"
+               tal:condition="item/tag">
+              <img src=""
+                   tal:replace="structure item/tag" />
+            </a>
+            <span tal:omit-tag=""
+                  tal:condition="not: item/tag">
+              &nbsp;
+            </span>
+          </td>
+          <td class="residential-listing-content">
+            	<h3 tal:content="item/title" />
+            	<span tal:replace="item/description" />
+            	<a href=""
+            	  tal:attributes="href item/url"
+            	  i18n:translate="label_more">More...</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

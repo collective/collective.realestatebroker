@@ -9,15 +9,7 @@
       -->
     <five:registerPackage package="." initialize=".initialize" />
 
-    <!-- Map custom permissions -->
-    <!--<permission
-        id="collective.CustomPermission"
-        title="collective: Custom permission"
-        />-->
-
     <!-- Include the sub-packages that use their own configure.zcml files. -->
-    <!--<include package=".browser" />-->
-    <!--<include package=".portlets" />-->
     <include package=".content" />
     <include package=".browser" />    
 

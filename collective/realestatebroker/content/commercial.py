@@ -1,10 +1,11 @@
 """Schema and content type for commercial real estate."""
 from Products.Archetypes import atapi
 from collective.realestatebroker.config import PROJECTNAME
-from collective.realestatebroker.content.schemata import GeneralInfoSchema
 from collective.realestatebroker.content import schemata
 from collective.realestatebroker.interfaces import ICommercial
 from zope.interface import implements
+
+from collective.realestatebroker import REBMessageFactory as _
 
 CommercialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
@@ -14,7 +15,10 @@ CommercialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.CommercialCharacteristicsSchema
                      )
 CommercialSchema['title'].storage = atapi.AnnotationStorage()
+CommercialSchema['title'].widget.label = _(u'Address')
+CommercialSchema['title'].widget.description = _(u'Fill in the address of this object')
 CommercialSchema['description'].storage = atapi.AnnotationStorage()
+CommercialSchema['description'].schemata = 'Description'
 
 
 class Commercial(atapi.OrderedBaseFolder):
@@ -24,9 +28,8 @@ class Commercial(atapi.OrderedBaseFolder):
     schema = CommercialSchema
     implements(ICommercial)
 
-    title = atapi.ATFieldProperty('title')
+    address = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
-    address = atapi.ATFieldProperty('address')
     zipCode = atapi.ATFieldProperty('zipCode')
     city = atapi.ATFieldProperty('city')
     price = atapi.ATFieldProperty('price')
@@ -34,8 +37,7 @@ class Commercial(atapi.OrderedBaseFolder):
     rooms = atapi.ATFieldProperty('rooms')
     vat = atapi.ATFieldProperty('vat')
     rent_buy = atapi.ATFieldProperty('rent_buy')
-    desc = atapi.ATFieldProperty('desc')
-    mainText = atapi.ATFieldProperty('mainText')
+    text = atapi.ATFieldProperty('text')
     acceptance = atapi.ATFieldProperty('acceptance')
     area = atapi.ATFieldProperty('area')
     volume = atapi.ATFieldProperty('volume')

@@ -39,3 +39,7 @@ a:hover {
 #legendSearch {
     font-size: 100%;
 }
+
+.realestate_tab {
+    display: inline;
+}

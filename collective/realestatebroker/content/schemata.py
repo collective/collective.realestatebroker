@@ -1,15 +1,8 @@
 from Products.Archetypes import atapi
 
-from collective.realestatebroker import RealEstateBrokerMessageFactory as _
+from collective.realestatebroker import REBMessageFactory as _
 
 GeneralInfoSchema =  atapi.Schema((
-    atapi.TextField('address',
-        storage=atapi.AnnotationStorage(),
-        schemata=u"default",
-        widget = atapi.TextAreaWidget(label = _(u'Address'),
-                 description = _(u'Fill in the address of this object'),
-                 )
-        ),
     atapi.StringField('zipCode',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
@@ -29,6 +22,7 @@ GeneralInfoSchema =  atapi.Schema((
         schemata=u"default",
         widget = atapi.IntegerWidget(label = _(u'Price'),
                  description = _(u'Fill in the price without dots or commas.'),
+                 size=10,
                  )
         ),
     atapi.StringField('house_type',
@@ -41,8 +35,10 @@ GeneralInfoSchema =  atapi.Schema((
     atapi.StringField('rooms',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
-        widget = atapi.StringWidget(label = _(u'Rooms'),
+        widget = atapi.IntegerWidget(label = _(u'Rooms'),
                  description = _(u'Select the number of rooms for this object'),
+                 size=2,
+                 max=2,
                  )
         )
     ))
@@ -75,18 +71,15 @@ CommercialGeneralInfoSchema =  atapi.Schema((
     ))
 
 DescriptionSchema =  atapi.Schema((
-    atapi.TextField('desc',
+    atapi.TextField('text',
         storage=atapi.AnnotationStorage(),
         schemata=u"Description",
-        widget = atapi.TextAreaWidget(label = _(u'Description'),
-                 description = _(u'Enter a short description for this object.'),
-                 )
-        ),
-    atapi.TextField('mainText',
-        storage=atapi.AnnotationStorage(),
-        schemata=u"Description",
-        widget = atapi.TextAreaWidget(label = _(u'Body text'),
+        validators = ('isTidyHtmlWithCleanup',),
+        default_output_type = 'text/x-html-safe',
+        widget = atapi.RichWidget(label = _(u'Body text'),
                  description = _(u'Enter the main description for this object.'),
+                 rows = 25,
+                 allow_file_upload = False,          
                  )
         ),
     atapi.StringField('acceptance',

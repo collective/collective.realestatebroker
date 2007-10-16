@@ -1,7 +1,7 @@
 from zope.interface import Interface
 from zope import schema
 
-from collective.realestatebroker import RealEstateBrokerMessageFactory as _
+from collective.realestatebroker import REBMessageFactory as _
 
 
 class IRealEstateContent(Interface):
@@ -37,11 +37,7 @@ class IRealEstateContent(Interface):
         title = _(u'Rooms'),
         description = _(u'Select the number of rooms for this object'),
         )
-    desc = schema.Text(
-        title = _(u'Description'),
-        description = _(u'Enter a short description for this object.'),
-        )
-    mainText = schema.Text(
+    text = schema.Text(
         title = _(u'Body text'),
         description = _(u'Enter the main description for this object.'),
         )
