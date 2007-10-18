@@ -8,7 +8,7 @@
     Folderish content type for commercial real estate.
   </property>
 
-  <property name="content_icon">document_icon.gif</property>
+  <property name="content_icon">++resource++collective.realestatebroker.images/commercial_icon.gif</property>
   <property name="content_meta_type">Commercial</property>
   <property name="product">collective.realestatebroker</property>
   <property name="factory">addCommercial</property>
