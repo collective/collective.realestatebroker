@@ -10,16 +10,16 @@ from interfaces import IResidentialView
 from collective.realestatebroker import REBMessageFactory as _
 
 class ResidentialListing(RealEstateListing):
-    """Default view for a folder which contains residential real estate. This 
+    """Default view for a folder which contains residential real estate. This
     view displays a search form and a listing of the search results.
     """
 
     implements(IResidentialListing)
-    
+
     @memoize
     def sorted_listing(self, count):
         """Returns a list of dicts representing an overview of the residential
-        real estate. 
+        real estate.
         """
         context = aq_inner(self.context)
         brains = self.catalog(object_provides='IResidential',
@@ -36,7 +36,7 @@ class ResidentialListing(RealEstateListing):
             results.append(item)
 
         return results
-                
+
 
 class ResidentialView(RealEstateView):
     """ Methods which should be available to both types of real estate are
@@ -44,7 +44,7 @@ class ResidentialView(RealEstateView):
     """
     implements(IResidentialView)
 
-    @memoize    
+    @memoize
     def details(self):
         """Return a dict of characteristics
         """
