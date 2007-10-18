@@ -16,17 +16,17 @@ class RealEstateListing(BrowserView):
     implements(IRealEstateListing)
 
     def __init__(self, context, request):
-        self.catalog = getToolByName(self.context, 'portal_catalog') 
+        self.catalog = getToolByName(self.context, 'portal_catalog')
 
     def sorted_listing(self, count):
         """Returns a list of dicts representing an overview of the Commercial
-           real estate. Needs to be implemented in subclasses. 
+           real estate. Needs to be implemented in subclasses.
         """
         raise NotImplementedError
-        
+
     def tag(self, **kwargs):
         """Returns a html IMG tag of the firstimage in the folderish
-           RealEstate object. Needs to be implemented in subclasses. 
+           RealEstate object. Needs to be implemented in subclasses.
         """
         raise NotImplementedError
 
@@ -41,7 +41,7 @@ class RealEstateView(BrowserView):
         """Return formatted price"""
         pr = str(aq_inner(self.context.price))
         elements = []
-        
+
         if len(pr) > 9:
             elements.append(pr[-12:-9])
         if len(pr) > 6:
@@ -50,7 +50,7 @@ class RealEstateView(BrowserView):
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
         return '.'.join(elements)
-        
+
     @memoize
     def image_tag(self, **kwargs):
         """Generate image tag using the api of the ImageField
@@ -60,7 +60,8 @@ class RealEstateView(BrowserView):
                          sort_on='sortable_title',
                          path='/'.join(self.context.getPhysicalPath()))
         if brains:
-            return brains[0].getObject().getField('image').tag(self, **kwargs)
+            first_image = brains[0].getObject()
+            return first_image.getField('image').tag(self.context, **kwargs)
 
     @memoize
     def CookedBody(self):
