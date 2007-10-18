@@ -36,7 +36,7 @@
         permission="zope2.View"
         allowed_interface=".interfaces.IRealEstateView"
     />
-    
+
     <page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate_map"
@@ -44,7 +44,7 @@
         template="templates/realestate_map.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.IRealEstateView"
-    /> 
+    />
 
     <page
         for="collective.realestatebroker.interfaces.ICommercial"
@@ -93,14 +93,14 @@
         class=".viewlets.MapTab"
         permission="zope2.View"
         />
-        
+
     <!-- Resources -->
-        
+
     <resourceDirectory
-      name="images"
+      name="collective.realestatebroker.images"
       directory="images"
       />
-      
+
     <resource
       name="realestatebroker.css"
       file="realestatebroker.css"
