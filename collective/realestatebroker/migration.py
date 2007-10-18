@@ -62,7 +62,7 @@ class RebMigrator(CMFItemMigrator):
         'getKindOfGarden': 'setKindOfGarden',
         'getKk_von': 'setKk_von',
         'getLocation': 'setLocation',
-        'getMainText': 'setMainText',
+        'getMainText': 'setText',
         'getParking': 'setParking',
         'getPrice': 'setPrice',
         'getRent_buy': 'setRent_buy',
