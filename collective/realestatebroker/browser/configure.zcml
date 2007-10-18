@@ -96,14 +96,24 @@
 
     <!-- Resources -->
 
+    <!--
     <resourceDirectory
       name="collective.realestatebroker.images"
       directory="images"
       />
-
+    -->
     <resource
       name="realestatebroker.css"
       file="realestatebroker.css"
+      />
+
+    <resource
+      name="residential_icon.gif"
+      file="images/residential_icon.gif"
+      />
+    <resource
+      name="commercial_icon.gif"
+      file="images/commercial_icon.gif"
       />
 
 </configure>
