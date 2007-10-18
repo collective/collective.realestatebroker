@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2007-10-18 17:10+0200\n"
+"Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
+"Language-Team: Zest software <info@zestsoftware.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.realestatebroker\n"
+
+#: ./content/schemata.py:88
+msgid "Acceptance"
+msgstr ""
+
+#: ./content/commercial.py:18
+msgid "Address"
+msgstr ""
+
+#: ./content/schemata.py:98
+msgid "Area"
+msgstr ""
+
+#: ./content/schemata.py:150
+msgid "Balcony"
+msgstr ""
+
+#: ./content/schemata.py:79
+msgid "Body text"
+msgstr ""
+
+#: ./content/schemata.py:16
+msgid "City"
+msgstr ""
+
+#. Default: "Commercial real estate"
+#: ./profiles/default/types/Commercial.xml
+msgid "Commercial real estate"
+msgstr ""
+
+#: ./content/schemata.py:112
+msgid "Construction year"
+msgstr ""
+
+#: ./interfaces.py:14
+msgid "Description"
+msgstr ""
+
+#: ./content/schemata.py:89
+msgid "Enter a brief description for the acceptance."
+msgstr ""
+
+#: ./content/schemata.py:80
+msgid "Enter the main description for this object."
+msgstr ""
+
+#: ./content/schemata.py:209
+msgid "Facilities"
+msgstr ""
+
+#: ./content/commercial.py:19
+msgid "Fill in the address of this object"
+msgstr ""
+
+#: ./content/schemata.py:99
+msgid "Fill in the area of the object."
+msgstr ""
+
+#: ./content/schemata.py:17
+msgid "Fill in the city in which this object is located."
+msgstr ""
+
+#: ./content/schemata.py:24
+msgid "Fill in the price without dots or commas."
+msgstr ""
+
+#: ./content/schemata.py:106
+msgid "Fill in the volume of this object."
+msgstr ""
+
+#: ./content/schemata.py:113
+msgid "Fill in the year of construction of this object."
+msgstr ""
+
+#: ./content/schemata.py:10
+msgid "Fill in the zip code of this object"
+msgstr ""
+
+#. Default: "Folderish content type for commercial real estate."
+#: ./profiles/default/types/Commercial.xml
+msgid "Folderish content type for commercial real estate."
+msgstr ""
+
+#. Default: "Folderish content type for residential real estate."
+#: ./profiles/default/types/Residential.xml
+msgid "Folderish content type for residential real estate."
+msgstr ""
+
+#: ./content/schemata.py:178
+msgid "Garage"
+msgstr ""
+
+#: ./content/schemata.py:126
+msgid "Kind of building"
+msgstr ""
+
+#: ./content/schemata.py:164
+msgid "Kind of garden"
+msgstr ""
+
+#: ./content/schemata.py:202
+msgid "Parking"
+msgstr ""
+
+#: ./content/schemata.py:23
+msgid "Price"
+msgstr ""
+
+#: ./content/schemata.py:67
+msgid "Rent or buy"
+msgstr ""
+
+#. Default: "Residential real estate"
+#: ./profiles/default/types/Residential.xml
+msgid "Residential real estate"
+msgstr ""
+
+#: ./content/schemata.py:38
+msgid "Rooms"
+msgstr ""
+
+#: ./content/schemata.py:68
+msgid "Select Rent/buy for this object."
+msgstr ""
+
+#: ./content/schemata.py:203
+msgid "Select here if this object has a private car park."
+msgstr ""
+
+#: ./content/schemata.py:61
+msgid "Select the VAT for this object."
+msgstr ""
+
+#: ./content/schemata.py:210
+msgid "Select the facilities. You can choose more than 1 option"
+msgstr ""
+
+#: ./content/schemata.py:134
+msgid "Select the heating system for this object. You can choose more than 1 option"
+msgstr ""
+
+#: ./content/schemata.py:165
+msgid "Select the kind of garden. You can choose more than one option"
+msgstr ""
+
+#: ./content/schemata.py:141
+msgid "Select the kinds of isolation used for this object. You can choose more than 1 option"
+msgstr ""
+
+#: ./content/schemata.py:120
+msgid "Select the location. You can choose more than 1 option."
+msgstr ""
+
+#: ./content/schemata.py:39
+msgid "Select the number of rooms for this object"
+msgstr ""
+
+#: ./content/schemata.py:51
+msgid "Select the one option."
+msgstr ""
+
+#: ./content/schemata.py:186
+msgid "Select the type garage for this object. You can choose more than 1 option"
+msgstr ""
+
+#: ./content/schemata.py:32
+msgid "Select the type object"
+msgstr ""
+
+#: ./content/schemata.py:127
+msgid "Select what kind of building this is."
+msgstr ""
+
+#: ./content/schemata.py:151
+msgid "Select whether this object has a balcony or not."
+msgstr ""
+
+#: ./content/schemata.py:179
+msgid "Select whether this object has a garage or not."
+msgstr ""
+
+#: ./content/schemata.py:158
+msgid "Select whether this object has a garden or not."
+msgstr ""
+
+#: ./content/schemata.py:172
+msgid "Select whether this object has a storage."
+msgstr ""
+
+#: ./content/schemata.py:193
+msgid "Select whether this object has an airconditioning or not."
+msgstr ""
+
+#: ./content/schemata.py:171
+msgid "Storage"
+msgstr ""
+
+#: ./interfaces.py:11
+msgid "Title"
+msgstr ""
+
+#: ./content/schemata.py:31
+msgid "Type"
+msgstr ""
+
+#: ./content/schemata.py:60
+msgid "VAT"
+msgstr ""
+
+#: ./content/schemata.py:105
+msgid "Volume"
+msgstr ""
+
+#: ./content/schemata.py:9
+msgid "Zip code"
+msgstr ""
+
+#: ./content/schemata.py:192
+msgid "airco"
+msgstr ""
+
+#: ./content/schemata.py:157
+msgid "garden"
+msgstr ""
+
+#: ./content/schemata.py:133
+msgid "heating"
+msgstr ""
+
+#: ./content/schemata.py:140
+msgid "isolation"
+msgstr ""
+
+#: ./content/schemata.py:50
+msgid "k.k./v.o.n."
+msgstr ""
+
+#: ./content/schemata.py:185
+msgid "kindOfGarage"
+msgstr ""
+
+#. Default: "Excluding costs for buyer"
+#: ./browser/residential.py:52
+msgid "label_kk"
+msgstr ""
+
+#. Default: "More..."
+#: ./browser/templates/commercial_listing.pt:41
+msgid "label_more"
+msgstr ""
+
+#. Default: "All costs included"
+#: ./browser/residential.py:54
+msgid "label_von"
+msgstr ""
+
+#: ./content/schemata.py:119
+msgid "location"
+msgstr ""
+
