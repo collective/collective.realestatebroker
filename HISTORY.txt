@@ -1,0 +1,8 @@
+Temporary space for 'in development' changes for the Plone 3.0 upgrade.
+
+Properties:
+- merge realestate_properties and realbusiness_properties into one 
+  realestatebroker_properties file
+- renamed isolation -> insulation
+- Added commercial_ and residential_ prefixes for property value lists being
+  only used in residential or commercial contenttypes.

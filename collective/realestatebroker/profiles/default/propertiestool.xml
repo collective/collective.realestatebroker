@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="realestatebroker_properties" meta_type="Plone Property Sheet">
+  <property name="title">Real Estate Properties</property>
+  <property name="city" type="lines" purge="False">
+      <element value="New York"/>
+      <element value="London"/>
+      <element value="Amsterdam"/>
+      <element value="Paris"/>
+      <element value="Tokyo"/>
+   <element value="Alberschwende"/>
+  </property>
+  <property name="rooms" type="lines" purge="False">
+   <element value="1"/>
+   <element value="2"/>
+   <element value="3"/>
+   <element value="4"/>
+   <element value="5"/>
+   <element value="6"/>
+   <element value="7"/>
+   <element value="8"/>
+  </property>
+  <property name="min_price" type="lines" purge="False">
+   <element value="100000"/>
+   <element value="150000"/>
+   <element value="200000"/>
+   <element value="250000"/>
+   <element value="300000"/>
+   <element value="350000"/>
+   <element value="400000"/>
+   <element value="450000"/>
+   <element value="500000"/>
+   <element value="600000"/>
+   <element value="700000"/>
+   <element value="800000"/>
+   <element value="900000"/>
+   <element value="1000000"/>
+   <element value="1250000"/>
+   <element value="1500000"/>
+   <element value="2000000"/>
+  </property>
+  <property name="max_price" type="lines" purge="False">
+   <element value="100000"/>
+   <element value="150000"/>
+   <element value="200000"/>
+   <element value="250000"/>
+   <element value="300000"/>
+   <element value="350000"/>
+   <element value="400000"/>
+   <element value="450000"/>
+   <element value="500000"/>
+   <element value="600000"/>
+   <element value="700000"/>
+   <element value="800000"/>
+   <element value="900000"/>
+   <element value="1000000"/>
+   <element value="1250000"/>
+   <element value="1500000"/>
+   <element value="2000000"/>
+  </property>
+  <property name="residential_kk_von" type="lines" purge="False">
+   <element value="Kosten koper(k.k.)"/>
+   <element value="Vrij op naam(v.o.n.)"/>
+  </property>
+  <property name="house_type" type="lines" purge="False">
+   <element value="Appartment"/>
+   <element value="Villa"/>
+   <element value="Mansion"/>
+  </property>
+  <property name="kindOfBuilding" type="lines" purge="False">
+   <element value="New"/>
+   <element value="Existing"/>
+  </property>
+  <property name="residential_balcony" type="lines" purge="False">
+   <element value="Yes"/>
+   <element value="No"/>
+  </property>
+  <property name="residential_garden" type="lines" purge="False">
+   <element value="Yes"/>
+   <element value="No"/>
+  </property>
+  <property name="residential_kindOfGarden" type="lines" purge="False">
+   <element value="Backyard"/>
+   <element value="Frontyard"/>
+  </property>
+  <property name="residential_garage" type="lines" purge="False">
+   <element value="Yes"/>
+   <element value="No"/>
+  </property>
+  <property name="residential_kindOfGarage" type="lines" purge="False">
+   <element value="Drive-in"/>
+   <element value="Shed"/>
+  </property>
+  <property name="residential_airco" type="lines" purge="False">
+   <element value="Yes"/>
+   <element value="No"/>
+  </property>
+  <property name="residential_storage" type="lines" purge="False">
+   <element value="Yes"/>
+   <element value="No"/>
+  </property>
+  <property name="location" type="lines" purge="False">
+   <element value="Forest"/>
+   <element value="Shore"/>
+  </property>
+  <property name="heating" type="lines" purge="False">
+   <element value="Fireplace"/>
+   <element value="City Heating"/>
+  </property>
+  <property name="insulation" type="lines" purge="False">
+   <element value="Floor"/>
+   <element value="Double glazing"/>
+  </property>
+  <property name="status" type="lines" purge="False">
+   <element value="New"/>
+   <element value="Available"/>
+   <element value="Negotiating"/>
+   <element value="Sold"/>
+  </property>
+  <property name="currency" type="string" purge="False">EUR</property>
+  <property name="commercial_vat" type="lines" purge="False">
+   <element value="incl. VAT"/>
+   <element value="excl. VAT"/>
+  </property>
+  <property name="commercial_rent_buy" type="lines" purge="False">
+   <element value="Rent"/>
+   <element value="Buy"/>
+   <element value="Rent/Buy"/>
+  </property>
+  <property name="commercial_type" type="lines" purge="False">
+   <element value="Office"/>
+   <element value="Store"/>
+   <element value="WareHouse"/>
+   <element value="Store2"/>
+  </property>
+  <property name="commercial_facilities" type="lines" purge="False">
+   <element value="Water"/>
+   <element value="WC"/>
+   <element value="Electricity"/>
+   <element value="Kitchen"/>
+  </property>
+  <property name="commercial_parking" type="lines" purge="False">
+   <element value="Yes"/>
+   <element value="No"/>
+  </property>
+ </object>
+</object>
