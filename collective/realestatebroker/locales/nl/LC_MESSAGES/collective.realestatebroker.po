@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2007-10-18 17:10+0200\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: 2007-10-18 17:19+0200\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
@@ -272,3 +272,4 @@ msgstr "Vrij op naam"
 #: ./content/schemata.py:119
 msgid "location"
 msgstr "Locatie"
+
