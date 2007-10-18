@@ -5,39 +5,39 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.realestatebroker">
 
-<body>
+  <body>
 
-<div metal:fill-slot="main"
-     tal:define="home view/details">
-         
-  <div tal:replace="structure provider:plone.abovecontenttitle" />
+    <div metal:fill-slot="main"
+         tal:define="home view/details">
 
-  <div class="reb-thumb">
-    <img tal:replace="structure view/image_tag">
-  </div>
-  
-  <div>
-    <address>
-    <h1 class="documentFirstHeading">
-      <metal:field use-macro="python:context.widget('title',
-                              mode='view')"> Variable goes here </metal:field>
-    </h1>
-    <span tal:replace="home/zipcode" />, <span tal:replace="home/city" />
-    </address>
-    <div class="price">
-      <span tal:replace="view/CookedPrice" /> <span tal:replace="home/kk_von" />
-    </div> 
-  </div>
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-  <div tal:replace="structure provider:plone.belowcontenttitle" />
-  <div tal:replace="structure provider:plone.abovecontentbody" />
+      <div class="reb-thumb">
+        <img tal:replace="structure view/image_tag"/>
+      </div>
 
-  <metal:field use-macro="python:context.widget('text', mode='view')">
-    Body text
-  </metal:field>
-  
-  <div tal:replace="structure provider:plone.belowcontentbody" />
+      <div>
+        <address>
+          <h1 class="documentFirstHeading">
+            <metal:field use-macro="python:context.widget('title',
+                                    mode='view')"> Variable goes here </metal:field>
+          </h1>
+          <span tal:replace="home/zipcode" />, <span tal:replace="home/city" />
+        </address>
+        <div class="price">
+          <span tal:replace="view/CookedPrice" /> <span tal:replace="home/kk_von" />
+        </div>
+      </div>
 
-</div>
-</body>
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <metal:field use-macro="python:context.widget('text', mode='view')">
+        Body text
+      </metal:field>
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </div>
+  </body>
 </html>
