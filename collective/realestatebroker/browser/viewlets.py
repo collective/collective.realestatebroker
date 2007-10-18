@@ -14,7 +14,12 @@ class DescriptionTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.view_template_id().endswith('_view')
+        url = self.context_state.current_page_url()
+        self.is_selected = True
+        if url.endswith('chars') or \
+           url.endswith('photos') or \
+           url.endswith('map'):
+           self.is_selected = False                        
        
         # Both Residential and Commercial with have a description alias that point
         # to their own <type>_description.pt
@@ -32,7 +37,7 @@ class CharsTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.view_template_id().endswith('_chars')
+        self.is_selected = self.context_state.current_page_url().endswith('chars')
        
         # Both Residential and Commercial with have a chars alias that point
         # to their own <type>_chars.pt 
@@ -50,7 +55,7 @@ class PhotosTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.view_template_id().endswith('_photos')
+        self.is_selected = self.context_state.current_page_url().endswith('photos')
        
         # Both Residential and Commercial with have a chars alias that point
         # to their own <type>_photos.pt 
@@ -68,7 +73,7 @@ class MapTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.view_template_id().endswith('_map')
+        self.is_selected = self.context_state.current_page_url().endswith('map')
        
         # Both Residential and Commercial with have a chars alias that point
         # to their own <type>_map.pt 

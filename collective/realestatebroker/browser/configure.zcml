@@ -20,6 +20,33 @@
     />
 
     <page
+        for="collective.realestatebroker.interfaces.IResidential"
+        name="residential_chars"
+        class=".residential.ResidentialView"
+        template="templates/residential_chars.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IResidentialView"
+    />
+
+    <page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate_photos"
+        class=".base.RealEstateView"
+        template="templates/realestate_photos.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IRealEstateView"
+    />
+    
+    <page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate_map"
+        class=".base.RealEstateView"
+        template="templates/realestate_map.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IRealEstateView"
+    /> 
+
+    <page
         for="collective.realestatebroker.interfaces.ICommercial"
         name="commercial_listing"
         class=".commercial.CommercialListing"
