@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-10-18 17:10+0200\n"
+"POT-Creation-Date: 2007-10-18 17:10+0200\n"
+"PO-Revision-Date: 2007-10-18 17:19+0200\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -16,40 +16,40 @@ msgstr ""
 
 #: ./content/schemata.py:88
 msgid "Acceptance"
-msgstr ""
+msgstr "Acceptatie"
 
 #: ./content/commercial.py:18
 msgid "Address"
-msgstr ""
+msgstr "Adres"
 
 #: ./content/schemata.py:98
 msgid "Area"
-msgstr ""
+msgstr "Gebied"
 
 #: ./content/schemata.py:150
 msgid "Balcony"
-msgstr ""
+msgstr "Balkon"
 
 #: ./content/schemata.py:79
 msgid "Body text"
-msgstr ""
+msgstr "Hoofdtekst"
 
 #: ./content/schemata.py:16
 msgid "City"
-msgstr ""
+msgstr "Plaats"
 
 #. Default: "Commercial real estate"
 #: ./profiles/default/types/Commercial.xml
 msgid "Commercial real estate"
-msgstr ""
+msgstr "Bedrijfspanden"
 
 #: ./content/schemata.py:112
 msgid "Construction year"
-msgstr ""
+msgstr "Bouwjaar"
 
 #: ./interfaces.py:14
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 #: ./content/schemata.py:89
 msgid "Enter a brief description for the acceptance."
@@ -61,7 +61,7 @@ msgstr ""
 
 #: ./content/schemata.py:209
 msgid "Facilities"
-msgstr ""
+msgstr "Faciliteiten"
 
 #: ./content/commercial.py:19
 msgid "Fill in the address of this object"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: ./content/schemata.py:24
 msgid "Fill in the price without dots or commas."
-msgstr ""
+msgstr "Vul de prijs in zonder punten of komma's"
 
 #: ./content/schemata.py:106
 msgid "Fill in the volume of this object."
@@ -94,45 +94,45 @@ msgstr ""
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
 msgid "Folderish content type for commercial real estate."
-msgstr ""
+msgstr "Bedrijfspand"
 
 #. Default: "Folderish content type for residential real estate."
 #: ./profiles/default/types/Residential.xml
 msgid "Folderish content type for residential real estate."
-msgstr ""
+msgstr "Woning"
 
 #: ./content/schemata.py:178
 msgid "Garage"
-msgstr ""
+msgstr "Garage"
 
 #: ./content/schemata.py:126
 msgid "Kind of building"
-msgstr ""
+msgstr "Soort gebouw"
 
 #: ./content/schemata.py:164
 msgid "Kind of garden"
-msgstr ""
+msgstr "Soort tuin"
 
 #: ./content/schemata.py:202
 msgid "Parking"
-msgstr ""
+msgstr "Parkeergelegenheid"
 
 #: ./content/schemata.py:23
 msgid "Price"
-msgstr ""
+msgstr "Prijs"
 
 #: ./content/schemata.py:67
 msgid "Rent or buy"
-msgstr ""
+msgstr "Huren of kopen"
 
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
 msgid "Residential real estate"
-msgstr ""
+msgstr "Woning"
 
 #: ./content/schemata.py:38
 msgid "Rooms"
-msgstr ""
+msgstr "Kamers"
 
 #: ./content/schemata.py:68
 msgid "Select Rent/buy for this object."
@@ -208,68 +208,67 @@ msgstr ""
 
 #: ./content/schemata.py:171
 msgid "Storage"
-msgstr ""
+msgstr "Opslag"
 
 #: ./interfaces.py:11
 msgid "Title"
-msgstr ""
+msgstr "Title"
 
 #: ./content/schemata.py:31
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: ./content/schemata.py:60
 msgid "VAT"
-msgstr ""
+msgstr "BTW"
 
 #: ./content/schemata.py:105
 msgid "Volume"
-msgstr ""
+msgstr "Inhoud"
 
 #: ./content/schemata.py:9
 msgid "Zip code"
-msgstr ""
+msgstr "Postcode"
 
 #: ./content/schemata.py:192
 msgid "airco"
-msgstr ""
+msgstr "Airconditioning"
 
 #: ./content/schemata.py:157
 msgid "garden"
-msgstr ""
+msgstr "Tuin"
 
 #: ./content/schemata.py:133
 msgid "heating"
-msgstr ""
+msgstr "Verwarming"
 
 #: ./content/schemata.py:140
 msgid "isolation"
-msgstr ""
+msgstr "Isolatie"
 
 #: ./content/schemata.py:50
 msgid "k.k./v.o.n."
-msgstr ""
+msgstr "k.k./v.o.n."
 
 #: ./content/schemata.py:185
 msgid "kindOfGarage"
-msgstr ""
+msgstr "Soort garage"
 
 #. Default: "Excluding costs for buyer"
 #: ./browser/residential.py:52
 msgid "label_kk"
-msgstr ""
+msgstr "Exclusief kosten koper"
 
 #. Default: "More..."
 #: ./browser/templates/commercial_listing.pt:41
 msgid "label_more"
-msgstr ""
+msgstr "Meer..."
 
 #. Default: "All costs included"
 #: ./browser/residential.py:54
 msgid "label_von"
-msgstr ""
+msgstr "Vrij op naam"
 
 #: ./content/schemata.py:119
 msgid "location"
-msgstr ""
-
+msgstr "Locatie"
