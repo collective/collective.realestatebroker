@@ -82,10 +82,14 @@ def batch(items, batch_size=5, selected=0):
 
     If possible, the selected item should be centered.
 
+    >>> result = batch(range(10), selected=4)
+    >>> [i['item'] for i in result['items']]
+    [2, 3, 4, 5, 6]
 
 
     """
     result = {}
+    margin = batch_size // 2 # Integer
     # Pack the items as a list of dicts.
     items = list(items)
     # Fix up selected as it can be too big or too small.
@@ -96,8 +100,14 @@ def batch(items, batch_size=5, selected=0):
     if selected >= len(items):
         selected = len(items) - 1
     # Determine start/end values.
-    start = 0
-    end = batch_size
+    start = selected - margin
+    if start < 0:
+        start = 0
+        end = batch_size
+    else:
+        end = selected + margin + 1
+    if end >= len(items):
+        end = len(items)
     # Decorate items
     result['items'] = []
     for index, item in enumerate(items[start:end]):
@@ -110,7 +120,6 @@ def batch(items, batch_size=5, selected=0):
     # Calculate (fast) forward and reverse indexes.
     result['reverse'] = _only_in_range(items, selected-1)
     result['forward'] = _only_in_range(items, selected+1)
-    margin = batch_size // 2 # Integer
     centered = selected
     if centered - margin < 0:
         centered = 0 + margin
