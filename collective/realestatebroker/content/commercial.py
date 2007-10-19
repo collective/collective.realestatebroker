@@ -49,9 +49,5 @@ class Commercial(atapi.OrderedBaseFolder):
     parking = atapi.ATFieldProperty('parking')
     facilities = atapi.ATFieldProperty('facilities')
 
-    # temporary vocabulary for selectionwidgets in Schemas
-    def _get_dummy_vocab(self):
-        return ("choice 1", "choice 2", "choice 3")
-
 
 atapi.registerType(Commercial, PROJECTNAME)

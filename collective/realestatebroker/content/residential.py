@@ -56,9 +56,5 @@ class Residential(atapi.OrderedBaseFolder):
     kind_of_garage = atapi.ATFieldProperty('kindOfGarage')
     airco = atapi.ATFieldProperty('airco')
 
-    # temporary vocabulary for selectionwidgets in Schemas
-
-    def _get_dummy_vocab(self):
-        return ("choice 1", "choice 2", "choice 3")
 
 atapi.registerType(Residential, PROJECTNAME)
