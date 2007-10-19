@@ -8,7 +8,6 @@ from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker.config import PROJECTNAME
 from collective.realestatebroker.content import schemata
 from collective.realestatebroker.interfaces import IResidential
-from collective.realestatebroker.content.base import DummyResidentialVocabularyFactory,CityVocabularyFactory
 
 ResidentialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
@@ -22,10 +21,6 @@ ResidentialSchema['title'].widget.label = _(u'Address')
 ResidentialSchema['title'].widget.description = _(u'Fill in the address of this object')
 ResidentialSchema['description'].storage = atapi.AnnotationStorage()
 ResidentialSchema['description'].schemata = 'Description'
-
-
-directlyProvides(DummyResidentialVocabularyFactory, IVocabularyFactory)
-directlyProvides(CityVocabularyFactory, IVocabularyFactory)
 
 
 class Residential(atapi.OrderedBaseFolder):

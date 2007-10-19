@@ -13,7 +13,7 @@ GeneralInfoSchema =  atapi.Schema((
     atapi.StringField('city',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
-        vocabulary_factory="collective.realestatebroker.CityList",
+        vocabulary_factory="collective.realestatebroker.city_list",
         widget = atapi.SelectionWidget(label = _(u'City'),
                  description = _(u'Fill in the city in which this object is located.'),
                  )

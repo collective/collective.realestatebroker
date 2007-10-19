@@ -55,7 +55,7 @@ which is mapped to both the Residential and Commmercial content type.
     >>> self.failUnless('realestate_workflow' in wftool.objectIds())
     >>> wftool.getChainForPortalType('Commercial')
     ('realestate_workflow',)
-    >>> wftool.getChainForPortalType('Commercial')
+    >>> wftool.getChainForPortalType('Residential')
     ('realestate_workflow',)
 
 The initial state of real estate content should be offline, which means
@@ -66,4 +66,13 @@ this state we can publish the content, which will bring it to the 'new' state.
     'offline'
     >>> wftool.doActionFor(home1, 'publish', wf_id='realestate_workflow')
     >>> wftool.getInfoFor(home1, 'review_state')
-    'new' 
+    'new'
+
+For the city field we make use of a vocabulary that reads it's values from a
+propertysheet.
+
+    >>> from collective.realestatebroker.content.base import CityVocabularyFactory
+    >>> vocab = CityVocabularyFactory(self.portal)
+    >>> [item.value for item in vocab]
+    ['New York', 'London', 'Amsterdam', 'Paris', 'Tokyo', 'Alberschwende']
+

@@ -3,12 +3,12 @@
  <object name="realestatebroker_properties" meta_type="Plone Property Sheet">
   <property name="title">Real Estate Properties</property>
   <property name="city" type="lines" purge="False">
-      <element value="New York"/>
-      <element value="London"/>
-      <element value="Amsterdam"/>
-      <element value="Paris"/>
-      <element value="Tokyo"/>
-   <element value="Alberschwende"/>
+    <element value="New York"/>
+    <element value="London"/>
+    <element value="Amsterdam"/>
+    <element value="Paris"/>
+    <element value="Tokyo"/>
+    <element value="Alberschwende"/>
   </property>
   <property name="rooms" type="lines" purge="False">
    <element value="1"/>
