@@ -8,5 +8,10 @@
         component=".residential.DummyResidentialVocabularyFactory"
         name="collective.realestatebroker.DummyResidentialList"
         />
+
+    <utility
+         component=".base.CityVocabularyFactory"
+         name="collective.realestatebroker.CityList"
+         />
         
 </configure>
