@@ -5,34 +5,36 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.realestatebroker">
 
-<body>
+  <body>
 
-<div metal:fill-slot="main">
-         
-  <div tal:replace="structure provider:plone.abovecontenttitle" />
+    <div metal:fill-slot="main">
 
-  <div>
-    <address>
-    <h1 class="documentFirstHeading">
-      <metal:field use-macro="python:context.widget('title',
-                              mode='view')"> Variable goes here </metal:field>
-    </h1>
-    <span tal:replace="context/zipcode" />, <span tal:replace="context/city" />
-    </address>
-    <div class="price">
-      <span tal:replace="view/CookedPrice" />
-    </div> 
-  </div>
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-  <div tal:replace="structure provider:plone.belowcontenttitle" />
-  <div tal:replace="structure provider:plone.abovecontentbody" />
+      <div>
+        <address>
+          <h1 class="documentFirstHeading">
+            <metal:field use-macro="python:context.widget('title',
+                                    mode='view')"> Variable goes here </metal:field>
+          </h1>
+          <span tal:replace="context/zipcode" />, <span tal:replace="context/city" />
+        </address>
+        <div class="price">
+          <span tal:replace="view/CookedPrice" />
+        </div>
+      </div>
 
-  <metal:field use-macro="python:context.widget('text', mode='view')">
-    Body text
-  </metal:field>
-  photos
-  <div tal:replace="structure provider:plone.belowcontentbody" />
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <div tal:replace="structure provider:plone.abovecontentbody" />
 
-</div>
-</body>
+      <metal:field use-macro="python:context.widget('text', mode='view')">
+        Body text
+      </metal:field>
+
+
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </div>
+  </body>
 </html>

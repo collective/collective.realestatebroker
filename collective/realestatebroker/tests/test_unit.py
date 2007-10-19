@@ -12,7 +12,7 @@ def setUp(test):
 
 def tearDown(test):
     testing.tearDown(test)
-    
+
 
 def test_suite():
     return unittest.TestSuite((
@@ -29,6 +29,10 @@ def test_suite():
                              tearDown=tearDown,
                              optionflags=OPTIONFLAGS),
         doctestunit.DocTestSuite(module='collective.realestatebroker.migration',
+                             setUp=setUp,
+                             tearDown=tearDown,
+                             optionflags=OPTIONFLAGS),
+        doctestunit.DocTestSuite(module='collective.realestatebroker.utils',
                              setUp=setUp,
                              tearDown=tearDown,
                              optionflags=OPTIONFLAGS),
