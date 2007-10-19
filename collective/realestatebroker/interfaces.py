@@ -78,9 +78,9 @@ class IRealEstateContent(Interface):
 class IResidential(IRealEstateContent):
     """Interface with the residential-specific fields."""
 
-    kk_von = schema.Bool(
+    kk_von = schema.TextLine(
         title = _(u'k.k./v.o.n.'),
-        description = _(u'Select the one option.'),
+        description = _(u'Select the option.'),
         )
     balcony = schema.Bool(
         title = _(u'Balcony'),

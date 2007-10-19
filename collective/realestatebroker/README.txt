@@ -104,3 +104,12 @@ propertysheet.
     >>> vocab = RoomsVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['1', '2', '3', '4', '5', '6', '7', '8']
+
+
+For the k.k./v.o.n. field we make use of a vocabulary that reads it's values from a
+propertysheet.
+
+    >>> from collective.realestatebroker.content.base import ResidentialKKVONVocabularyFactory
+    >>> vocab = ResidentialKKVONVocabularyFactory(self.portal)
+    >>> [item.value for item in vocab]
+    ['Kosten koper (k.k.)', 'Vrij op naam (v.o.n.)']
