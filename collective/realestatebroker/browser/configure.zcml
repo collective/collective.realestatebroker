@@ -75,28 +75,28 @@
 
     <viewlet
         name="realestatebroker.description.tab"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        manager=".interfaces.ITabsManager"
         class=".viewlets.DescriptionTab"
         permission="zope2.View"
         />
 
     <viewlet
         name="realestatebroker.chars.tab"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        manager=".interfaces.ITabsManager"
         class=".viewlets.CharsTab"
         permission="zope2.View"
         />
 
     <viewlet
         name="realestatebroker.photos.tab"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        manager=".interfaces.ITabsManager"
         class=".viewlets.PhotosTab"
         permission="zope2.View"
         />
 
     <viewlet
         name="realestatebroker.map.tab"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        manager=".interfaces.ITabsManager"
         class=".viewlets.MapTab"
         permission="zope2.View"
         />
