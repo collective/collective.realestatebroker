@@ -47,7 +47,7 @@ GeneralInfoSchema =  atapi.Schema((
     ))
 
 ResidentialGeneralInfoSchema =  atapi.Schema((
-    atapi.BooleanField('kk_von',
+    atapi.StringField('kk_von',
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
         vocabulary_factory="collective.realestatebroker.residential_kk_von_list",
