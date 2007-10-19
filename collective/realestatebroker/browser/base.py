@@ -8,6 +8,7 @@ from plone.memoize.instance import memoize
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 
+from collective.realestatebroker import utils
 
 class RealEstateListing(BrowserView):
     """Base view for all objects with IRealEstateContent.
@@ -67,3 +68,29 @@ class RealEstateView(BrowserView):
     def CookedBody(self):
         """Dummy attribute to allow drop-in replacement of Document"""
         return self.getMainText()
+
+    @memoize
+    def photo_batch(self):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(object_provides=IATImage.__identifier__,
+                         sort_on='sortable_title',
+                         path='/'.join(self.context.getPhysicalPath()))
+        selected = int(self.context.request.get('selected', 0))
+        batch = utils.batch(brains, selected=selected)
+        base_url = self.context.absolute_url() + '/photos?selected='
+        # Now decorate the bare stuff with what we need.
+        selected_brain = batch['selected']
+        selected_obj = selected_brain.getObject()
+        selected_tag = selected_obj.getField('image').tag(selected_obj)
+        batch['selected_tag'] = selected_tag
+        for item in batch['items']:
+            brain = item['item']
+            obj = brain.getObject()
+            tag = obj.getField('image').tag(obj, scale='thumb')
+            item['tag'] = tag
+            item['url'] = base_url + str(item['index'])
+        for direction in ['forward', 'reverse', 'fastforward', 'fastreverse']:
+            if batch[direction] == None:
+                continue
+            batch[direction] = base_url + str(item['index'])
+        return batch

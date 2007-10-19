@@ -32,7 +32,39 @@
         Body text
       </metal:field>
 
+      <div class="reb-photos"
+           tal:define="batch view/photo_batch">
+        <img tal:replace="structure batch/selected_tag"/><br />
 
+        <div tal:condition="batch/fastreverse">
+          <a href=""
+             tal:attributes="href batch/fastreverse">RR</a>
+        </div>
+        <div tal:condition="batch/reverse">
+          <a href=""
+             tal:attributes="href batch/reverse">R</a>
+        </div>
+
+        <ul>
+          <li tal:repeat="photo python:batch['items']">
+            <a href=""
+               tal:attributes="href photo/url">
+              <img tal:replace="structure photo/tag" />
+            </a>
+            <span tal:condition="photo/selected"> * </span>
+          </li>
+        </ul>
+
+        <div tal:condition="batch/forward">
+          <a href=""
+             tal:attributes="href batch/forward">F</a>
+        </div>
+        <div tal:condition="batch/fastforward">
+          <a href=""
+             tal:attributes="href batch/fastforward">FF</a>
+        </div>
+
+      </div>
 
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
