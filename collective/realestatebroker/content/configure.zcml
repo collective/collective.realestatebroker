@@ -14,5 +14,18 @@
          component=".base.CityVocabularyFactory"
          name="collective.realestatebroker.city_list"
          provides="zope.schema.interfaces.IVocabularyFactory" />
-        
+
+    <utility
+         component=".base.HouseTypeVocabularyFactory"
+         name="collective.realestatebroker.house_type_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
+    <utility
+         component=".base.RoomsVocabularyFactory"
+         name="collective.realestatebroker.rooms_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+    <utility
+         component=".base.ResidentialKKVONVocabularyFactory"
+         name="collective.realestatebroker.residential_kk_von_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />          
 </configure>

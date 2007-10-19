@@ -68,6 +68,19 @@ this state we can publish the content, which will bring it to the 'new' state.
     >>> wftool.getInfoFor(home1, 'review_state')
     'new'
 
+
+Portal Properties
+--------------------
+
+RealEstateBroker installs under portal_properties a file with default attributes
+
+    >>> pptool = self.portal.portal_properties
+    >>> self.failUnless('realestatebroker_properties' in pptool.objectIds())
+
+    
+Vocabularies
+--------------------
+
 For the city field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
@@ -76,3 +89,18 @@ propertysheet.
     >>> [item.value for item in vocab]
     ['New York', 'London', 'Amsterdam', 'Paris', 'Tokyo', 'Alberschwende']
 
+For the house type field we make use of a vocabulary that reads it's values from a
+propertysheet.
+
+    >>> from collective.realestatebroker.content.base import HouseTypeVocabularyFactory
+    >>> vocab = HouseTypeVocabularyFactory(self.portal)
+    >>> [item.value for item in vocab]
+    ['Apartment', 'Villa', 'Mansion']
+    
+For the rooms field we make use of a vocabulary that reads it's values from a
+propertysheet.
+
+    >>> from collective.realestatebroker.content.base import RoomsVocabularyFactory
+    >>> vocab = RoomsVocabularyFactory(self.portal)
+    >>> [item.value for item in vocab]
+    ['1', '2', '3', '4', '5', '6', '7', '8']

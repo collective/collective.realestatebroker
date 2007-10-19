@@ -7,7 +7,7 @@ GeneralInfoSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
         widget = atapi.StringWidget(label = _(u'Zip code'),
-                 description = _(u'Fill in the zip code of this object'),
+                 description = _(u'Enter the ZI code of this object.'),
                  )
         ),
     atapi.StringField('city',
@@ -15,7 +15,7 @@ GeneralInfoSchema =  atapi.Schema((
         schemata=u"default",
         vocabulary_factory="collective.realestatebroker.city_list",
         widget = atapi.SelectionWidget(label = _(u'City'),
-                 description = _(u'Fill in the city in which this object is located.'),
+                 description = _(u'Select in the city in which this object is located.'),
                  )
         ),
     atapi.IntegerField('price',
@@ -29,17 +29,19 @@ GeneralInfoSchema =  atapi.Schema((
     atapi.StringField('house_type',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
-        widget = atapi.StringWidget(label = _(u'Type'),
-                 description = _(u'Select the type object'),
+        vocabulary_factory="collective.realestatebroker.house_type_list",
+        widget = atapi.SelectionWidget(label = _(u'Type'),
+                 description = _(u'Select the house type for this object.'),
+                 format = 'radio',
                  )
         ),
     atapi.StringField('rooms',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
-        widget = atapi.IntegerWidget(label = _(u'Rooms'),
-                 description = _(u'Select the number of rooms for this object'),
-                 size=2,
-                 max=2,
+        vocabulary_factory="collective.realestatebroker.rooms_list",
+        widget = atapi.SelectionWidget(label = _(u'Rooms'),
+                 description = _(u'Select the number of rooms for this object.'),
+                 format = 'select',
                  )
         )
     ))
@@ -48,8 +50,10 @@ ResidentialGeneralInfoSchema =  atapi.Schema((
     atapi.BooleanField('kk_von',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
-        widget = atapi.BooleanWidget(label = _(u'k.k./v.o.n.'),
+        vocabulary_factory="collective.realestatebroker.residential_kk_von_list",
+        widget = atapi.SelectionWidget(label = _(u'k.k./v.o.n.'),
                  description = _(u'Select the one option.'),
+                 format = 'radio',
                  )
         ),
     ))
