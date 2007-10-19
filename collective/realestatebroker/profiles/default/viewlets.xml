@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object>
-  <order manager="plone.abovecontentbody" skinname="Plone Default">
+  <order manager="realestatebroker.tabs" skinname="Plone Default">
     <viewlet name="realestatebroker.description.tab" />
     <viewlet name="realestatebroker.chars.tab" />
     <viewlet name="realestatebroker.photos.tab" />

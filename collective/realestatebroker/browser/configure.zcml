@@ -66,6 +66,13 @@
 
     <!-- Viewlets which will render the tabs on real estate content. -->
 
+    <viewletManager
+        name="realestatebroker.tabs"
+        provides=".interfaces.ITabsManager"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+
     <viewlet
         name="realestatebroker.description.tab"
         manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"

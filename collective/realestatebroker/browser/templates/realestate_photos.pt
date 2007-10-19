@@ -26,6 +26,7 @@
 
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
+      <div tal:replace="structure provider:realestatebroker.tabs" />
 
       <metal:field use-macro="python:context.widget('text', mode='view')">
         Body text

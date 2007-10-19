@@ -17,6 +17,7 @@
     <div tal:replace="structure provider:plone.belowcontenttitle" />
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
+    <div tal:replace="structure provider:realestatebroker.tabs" />
 
     <table cellpadding="0"
       cellspacing="0"

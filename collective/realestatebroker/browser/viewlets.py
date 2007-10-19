@@ -3,6 +3,7 @@ from zope.component import getMultiAdapter
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets import ViewletBase
 
+
 class DescriptionTab(ViewletBase):
     """ Viewlet that renders the the description tab with the ITabManager viewlet manager
     """
