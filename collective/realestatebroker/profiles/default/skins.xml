@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+ <object name="realestatebroker"
+    meta_type="Filesystem Directory View"
+    directory="collective.realestatebroker:skins/realestatebroker"/>
+ <skin-path name="Plone Default">
+  <layer name="realestatebroker"
+     insert-after="custom"/>
+ </skin-path>
+</object>

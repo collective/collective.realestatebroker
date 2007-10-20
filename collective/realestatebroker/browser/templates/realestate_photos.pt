@@ -32,38 +32,38 @@
         Body text
       </metal:field>
 
-      <div class="reb-photos"
+      <div class="reb-photo-show"
            tal:define="batch view/photo_batch">
-        <img tal:replace="structure batch/selected_tag"/><br />
-
-        <div tal:condition="batch/fastreverse">
-          <a href=""
-             tal:attributes="href batch/fastreverse">RR</a>
+        <div class="reb-selected-photo">
+          <img tal:replace="structure batch/selected_tag" />
         </div>
-        <div tal:condition="batch/reverse">
-          <a href=""
-             tal:attributes="href batch/reverse">R</a>
-        </div>
-
-        <ul>
-          <li tal:repeat="photo python:batch['items']">
+        <ul class="reb-photo-controls">
+          <li tal:condition="batch/fastreverse">
             <a href=""
-               tal:attributes="href photo/url">
+               tal:attributes="href batch/fastreverse">RR</a>
+          </li>
+          <li tal:condition="batch/reverse">
+            <a href=""
+               tal:attributes="href batch/reverse">R</a>
+          </li>
+          <li tal:repeat="photo python:batch['items']"
+              >
+            <a href=""
+               class=""
+               tal:attributes="href photo/url;
+                               class python:photo['selected'] and 'reb-selected' or '';">
               <img tal:replace="structure photo/tag" />
             </a>
-            <span tal:condition="photo/selected"> * </span>
+          </li>
+          <li tal:condition="batch/forward">
+            <a href=""
+               tal:attributes="href batch/forward">F</a>
+          </li>
+          <li tal:condition="batch/fastforward">
+            <a href=""
+               tal:attributes="href batch/fastforward">FF</a>
           </li>
         </ul>
-
-        <div tal:condition="batch/forward">
-          <a href=""
-             tal:attributes="href batch/forward">F</a>
-        </div>
-        <div tal:condition="batch/fastforward">
-          <a href=""
-             tal:attributes="href batch/fastforward">FF</a>
-        </div>
-
       </div>
 
       <div tal:replace="structure provider:plone.belowcontentbody" />
