@@ -86,6 +86,58 @@ def batch(items, batch_size=5, selected=0):
     >>> [i['item'] for i in result['items']]
     [2, 3, 4, 5, 6]
 
+    Now for a case "in the middle" that went wrong once. 6 items, 4th item
+    selected.
+
+    >>> source_list = range(6)
+    >>> source_list
+    [0, 1, 2, 3, 4, 5]
+    >>> result = batch(source_list, selected=3)
+    >>> result['selected']
+    3
+    >>> [i['item'] for i in result['items']]
+    [1, 2, 3, 4, 5]
+    >>> result['reverse']
+    2
+    >>> result['forward']
+    4
+    >>> result['fastreverse'] # item 0 isn't displayed
+    0
+    >>> result['fastforward'] # item 5 is already displayed
+    >>> [i['selected'] for i in result['items']]
+    [False, False, True, False, False]
+
+    Now the same for selected index=4.
+
+    >>> result = batch(source_list, selected=4)
+    >>> result['selected']
+    4
+    >>> [i['item'] for i in result['items']]
+    [1, 2, 3, 4, 5]
+    >>> result['reverse']
+    3
+    >>> result['forward']
+    5
+    >>> result['fastreverse'] # item 0 isn't displayed
+    0
+    >>> result['fastforward'] # item 5 is already displayed
+    >>> [i['selected'] for i in result['items']]
+    [False, False, False, True, False]
+
+    >>> result = batch(source_list, selected=5)
+    >>> result['selected']
+    5
+    >>> [i['item'] for i in result['items']]
+    [1, 2, 3, 4, 5]
+    >>> result['reverse']
+    4
+    >>> result['forward'] # Last item is already displayed
+    >>> result['fastreverse']
+    0
+    >>> result['fastforward'] # item 5 is already displayed
+    >>> [i['selected'] for i in result['items']]
+    [False, False, False, False, True]
+
 
     """
     result = {}
@@ -107,10 +159,18 @@ def batch(items, batch_size=5, selected=0):
     else:
         end = selected + margin + 1
     if end >= len(items):
+        overlap = end - len(items)
         end = len(items)
+        # Re-position the start.
+        start = start - overlap
+        # But make sure it isn't below zero.
+        if start < 0:
+            start = 0
     # Decorate items
     result['items'] = []
-    for index, item in enumerate(items[start:end]):
+    for index, item in enumerate(items):
+        if index < start or index >= end:
+            continue
         item_dict = {'item': item,
                      'index': index,
                      'selected': index == selected}
@@ -123,7 +183,7 @@ def batch(items, batch_size=5, selected=0):
     centered = selected
     if centered - margin < 0:
         centered = 0 + margin
-    if centered +margin >= len(items):
+    if centered + margin >= len(items):
         centered = len(items) - 1 - margin
     result['fastreverse'] = _only_in_range(items, centered-batch_size)
     result['fastforward'] = _only_in_range(items, centered+batch_size)

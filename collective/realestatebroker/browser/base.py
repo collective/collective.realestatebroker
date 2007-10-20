@@ -92,5 +92,5 @@ class RealEstateView(BrowserView):
         for direction in ['forward', 'reverse', 'fastforward', 'fastreverse']:
             if batch[direction] == None:
                 continue
-            batch[direction] = base_url + str(item['index'])
+            batch[direction] = base_url + str(batch[direction])
         return batch
