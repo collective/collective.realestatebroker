@@ -12,7 +12,6 @@ from collective.realestatebroker.interfaces import IResidential
 ResidentialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
                      schemata.ResidentialGeneralInfoSchema +
-                     schemata.DescriptionSchema +
                      schemata.GeneralCharacteristicsSchema +
                      schemata.ResidentialCharacteristicsSchema
                      )
@@ -22,9 +21,12 @@ ResidentialSchema['title'].widget.description = _(u'Fill in the address of this 
 ResidentialSchema['description'].storage = atapi.AnnotationStorage()
 ResidentialSchema['description'].schemata = 'default'
 
-# Move descriptionfield to put it just above the main body text
+# Move text and descriptionfield to put them at the bottom of the default tab
+ResidentialSchema.moveField('text',pos='bottom')
 ResidentialSchema.moveField('description',before='text')
 
+# Move related kk_von field after the price
+ResidentialSchema.moveField('kk_von',after='price')
 
 class Residential(atapi.OrderedBaseFolder):
     """Folderish content type for residential real estate."""
@@ -50,7 +52,7 @@ class Residential(atapi.OrderedBaseFolder):
     location = atapi.ATFieldProperty('location')
     kind_of_building = atapi.ATFieldProperty('kindOfBuilding')
     heating = atapi.ATFieldProperty('heating')
-    isolation = atapi.ATFieldProperty('isolation')
+    insulation = atapi.ATFieldProperty('insulation')
     balcony = atapi.ATFieldProperty('balcony')
     garden = atapi.ATFieldProperty('garden')
     kind_of_garden = atapi.ATFieldProperty('kindOfGarden')

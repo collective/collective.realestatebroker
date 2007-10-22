@@ -71,7 +71,6 @@ class CommercialView(RealEstateView):
                        city = context.city,
                        price = self.CookedPrice,
                        commercial_type = context.commercial_type,
-                       rooms = context.rooms,
                        vat = context.vat,
                        rent_buy = context.rent_buy, 
                        text = context.text,
@@ -82,7 +81,7 @@ class CommercialView(RealEstateView):
                        location = context.location,
                        kind_of_building = context.kind_of_building,
                        heating = context.heating,
-                       isolation = context.isolation,
+                       insulation = getattr(context,'insulation',''),
                        parking = context.parking,
                        facilities = context.facilities,
                        )

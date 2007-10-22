@@ -7,7 +7,7 @@ GeneralInfoSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
         widget = atapi.StringWidget(label = _(u'Zip code'),
-                 description = _(u'Enter the ZI code of this object.'),
+                 description = _(u'Enter the ZIP code of this object.'),
                  )
         ),
     atapi.StringField('city',
@@ -20,71 +20,12 @@ GeneralInfoSchema =  atapi.Schema((
         ),
     atapi.IntegerField('price',
         storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
+        schemata=u'default',
         widget = atapi.IntegerWidget(label = _(u'Price'),
                  description = _(u'Fill in the price without dots or commas.'),
                  size=10,
                  )
         ),
-
-    atapi.StringField('rooms',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
-        vocabulary_factory="collective.realestatebroker.rooms_list",
-        widget = atapi.SelectionWidget(label = _(u'Rooms'),
-                 description = _(u'Select the number of rooms for this object.'),
-                 format = 'select',
-                 )
-        )
-    ))
-
-ResidentialGeneralInfoSchema =  atapi.Schema((
-    atapi.StringField('house_type',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
-        vocabulary_factory="collective.realestatebroker.house_type_list",
-        widget = atapi.SelectionWidget(label = _(u'Type'),
-                 description = _(u'Select the house type for this object.'),
-                 format = 'radio',
-                 )
-        ),
-    atapi.StringField('kk_von',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
-        vocabulary_factory="collective.realestatebroker.residential_kk_von_list",
-        widget = atapi.SelectionWidget(label = _(u'k.k./v.o.n.'),
-                description = _(u'Select the one option.'),
-                )
-        ),
-    ))
-
-CommercialGeneralInfoSchema =  atapi.Schema((
-    atapi.StringField('commercial_type',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
-        vocabulary_factory="collective.realestatebroker.commercial_type_list",
-        widget = atapi.SelectionWidget(label = _(u'Type'),
-                 description = _(u'Select the commercial type for this object.'),
-                 format = 'radio',
-                 )
-        ),
-    atapi.StringField('vat',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
-        widget = atapi.StringWidget(label = _(u'VAT'),
-                 description = _(u'Select the VAT for this object.'),
-                 )
-        ),
-    atapi.BooleanField('rent_buy',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'Description',
-        widget = atapi.BooleanWidget(label = _(u'Rent or buy'),
-                 description = _(u'Select Rent/buy for this object.'),
-                 )
-        ),
-    ))
-
-DescriptionSchema =  atapi.Schema((
     atapi.TextField('text',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
@@ -98,12 +39,70 @@ DescriptionSchema =  atapi.Schema((
         ),
     atapi.StringField('acceptance',
         storage=atapi.AnnotationStorage(),
-        schemata=u"Description",
+        schemata=u"default",
         widget = atapi.StringWidget(label = _(u'Acceptance'),
                  description = _(u'Enter a brief description for the acceptance.'),
                  )
+        ),        
+        
+        
+    ))
+
+ResidentialGeneralInfoSchema =  atapi.Schema((
+    atapi.StringField('house_type',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        vocabulary_factory="collective.realestatebroker.house_type_list",
+        widget = atapi.SelectionWidget(label = _(u'Type'),
+                 description = _(u'Select the house type for this object.'),
+                 format = 'radio',
+                 )
+        ),
+    atapi.StringField('rooms',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        vocabulary_factory="collective.realestatebroker.rooms_list",
+        widget = atapi.SelectionWidget(label = _(u'Rooms'),
+                 description = _(u'Select the number of rooms for this object.'),
+                 format = 'select',
+                 )
+    ),
+    atapi.StringField('kk_von',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        vocabulary_factory="collective.realestatebroker.residential_kk_von_list",
+        widget = atapi.SelectionWidget(label = _(u'k.k./v.o.n.'),
+                description = _(u'Select the one option.'),
+                )
         ),
     ))
+
+CommercialGeneralInfoSchema =  atapi.Schema((
+    atapi.StringField('commercial_type',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        vocabulary_factory="collective.realestatebroker.commercial_type_list",
+        widget = atapi.SelectionWidget(label = _(u'Type'),
+                 description = _(u'Select the commercial type for this object.'),
+                 format = 'radio',
+                 )
+        ),
+    atapi.StringField('vat',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        widget = atapi.StringWidget(label = _(u'VAT'),
+                 description = _(u'Select the VAT for this object.'),
+                 )
+        ),
+    atapi.BooleanField('rent_buy',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        widget = atapi.BooleanWidget(label = _(u'Rent or buy'),
+                 description = _(u'Select Rent/buy for this object.'),
+                 )
+        ),
+    ))
+
 
 GeneralCharacteristicsSchema =  atapi.Schema((
     atapi.StringField('area',
@@ -127,13 +126,6 @@ GeneralCharacteristicsSchema =  atapi.Schema((
                  description = _(u'Fill in the year of construction of this object.'),
                  )
         ),
-    atapi.StringField('location',
-        storage=atapi.AnnotationStorage(),
-        schemata=u"Characteristics",
-        widget = atapi.StringWidget(label = _(u'location'),
-                 description = _(u'Select the location. You can choose more than 1 option.'),
-                 )
-        ),
     atapi.StringField('kindOfBuilding',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
@@ -148,16 +140,23 @@ GeneralCharacteristicsSchema =  atapi.Schema((
                  description = _(u'Select the heating system for this object. You can choose more than 1 option'),
                  )
         ),
-    atapi.StringField('isolation',
+    atapi.StringField('insulation',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
-        widget = atapi.StringWidget(label = _(u'isolation'),
-                 description = _(u'Select the kinds of isolation used for this object. You can choose more than 1 option'),
+        widget = atapi.StringWidget(label = _(u'insulation'),
+                 description = _(u'Select the kinds of insulation used for this object. You can choose more than 1 option'),
                  )
         ),
     ))
 
 ResidentialCharacteristicsSchema =  atapi.Schema((
+    atapi.StringField('location',
+        storage=atapi.AnnotationStorage(),
+        schemata=u"Characteristics",
+        widget = atapi.StringWidget(label = _(u'location'),
+                 description = _(u'Select the location. You can choose more than 1 option.'),
+                 )
+        ),
     atapi.BooleanField('balcony',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",

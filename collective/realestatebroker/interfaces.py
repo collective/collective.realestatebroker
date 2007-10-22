@@ -29,10 +29,6 @@ class IRealEstateContent(Interface):
         title = _(u'Price'),
         description = _(u'Fill in the price without dots or commas.'),
         )
-    rooms = schema.TextLine(
-        title = _(u'Rooms'),
-        description = _(u'Select the number of rooms for this object'),
-        )
     text = schema.Text(
         title = _(u'Body text'),
         description = _(u'Enter the main description for this object.'),
@@ -53,10 +49,6 @@ class IRealEstateContent(Interface):
         title = _(u'Construction year'),
         description = _(u'Fill in the year of construction of this object.'),
         )
-    location = schema.TextLine(
-        title = _(u'location'),
-        description = _(u'Select the location. You can choose more than 1 option.'),
-        )
     kindOfBuilding = schema.TextLine(
         title = _(u'Kind of building'),
         description = _(u'Select what kind of building this is.'),
@@ -65,14 +57,21 @@ class IRealEstateContent(Interface):
         title = _(u'heating'),
         description = _(u'Select the heating system for this object. You can choose more than 1 option'),
         )
-    isolation = schema.TextLine(
-        title = _(u'isolation'),
-        description = _(u'Select the kinds of isolation used for this object. You can choose more than 1 option'),
+    insulation = schema.TextLine(
+        title = _(u'insulation'),
+        description = _(u'Select the kinds of insulation used for this object. You can choose more than 1 option'),
         )
-
 
 class IResidential(IRealEstateContent):
     """Interface with the residential-specific fields."""
+    rooms = schema.TextLine(
+        title = _(u'Rooms'),
+        description = _(u'Select the number of rooms for this object'),
+        )
+    location = schema.TextLine(
+        title = _(u'location'),
+        description = _(u'Select the location. You can choose more than one option.'),
+        )
     house_type = schema.TextLine(
          title = _(u'Type'),
          description = _(u'Select the type object'),

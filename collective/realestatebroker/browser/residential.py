@@ -69,7 +69,7 @@ class ResidentialView(RealEstateView):
                        location = context.location,
                        kind_of_building = context.kind_of_building,
                        heating = context.heating,
-                       isolation = context.isolation,
+                       insulation = getattr(context,'insulation',''),
                        balcony = context.balcony,
                        garden = context.garden,
                        kind_of_garden = context.kind_of_garden,

@@ -10,7 +10,6 @@ from collective.realestatebroker import REBMessageFactory as _
 CommercialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
                      schemata.CommercialGeneralInfoSchema +
-                     schemata.DescriptionSchema +
                      schemata.GeneralCharacteristicsSchema +
                      schemata.CommercialCharacteristicsSchema
                      )
@@ -20,8 +19,12 @@ CommercialSchema['title'].widget.description = _(u'Fill in the address of this o
 CommercialSchema['description'].storage = atapi.AnnotationStorage()
 CommercialSchema['description'].schemata = 'default'
 
-# Move descriptionfield to put it just above the main body text
+# Move text and descriptionfield to put them at the bottom of the default tab
+CommercialSchema.moveField('text',pos='bottom')
 CommercialSchema.moveField('description',before='text')
+
+# Move related rent_buy field after the price field
+CommercialSchema.moveField('rent_buy',after='price')
 
 
 class Commercial(atapi.OrderedBaseFolder):
@@ -37,7 +40,6 @@ class Commercial(atapi.OrderedBaseFolder):
     city = atapi.ATFieldProperty('city')
     price = atapi.ATFieldProperty('price')
     commercial_type = atapi.ATFieldProperty('commercial_type')
-    rooms = atapi.ATFieldProperty('rooms')
     vat = atapi.ATFieldProperty('vat')
     rent_buy = atapi.ATFieldProperty('rent_buy')
     text = atapi.ATFieldProperty('text')
@@ -48,7 +50,7 @@ class Commercial(atapi.OrderedBaseFolder):
     location = atapi.ATFieldProperty('location')
     kind_of_building = atapi.ATFieldProperty('kindOfBuilding')
     heating = atapi.ATFieldProperty('heating')
-    isolation = atapi.ATFieldProperty('isolation')
+    insulation = atapi.ATFieldProperty('insulation')
     parking = atapi.ATFieldProperty('parking')
     facilities = atapi.ATFieldProperty('facilities')
 
