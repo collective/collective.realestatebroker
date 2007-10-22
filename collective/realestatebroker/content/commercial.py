@@ -18,8 +18,11 @@ CommercialSchema['title'].storage = atapi.AnnotationStorage()
 CommercialSchema['title'].widget.label = _(u'Address')
 CommercialSchema['title'].widget.description = _(u'Fill in the address of this object')
 CommercialSchema['description'].storage = atapi.AnnotationStorage()
-CommercialSchema['description'].schemata = 'Description'
+CommercialSchema['description'].schemata = 'default'
 
+# Move descriptionfield two places down to put it just abov the main body text
+ResidentialSchema.moveField('description',1)
+ResidentialSchema.moveField('description',1)
 
 class Commercial(atapi.OrderedBaseFolder):
     """Folderish content type for commercial real estate."""
@@ -30,7 +33,7 @@ class Commercial(atapi.OrderedBaseFolder):
 
     address = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
-    zipCode = atapi.ATFieldProperty('zipCode')
+    zipcode = atapi.ATFieldProperty('zipCode')
     city = atapi.ATFieldProperty('city')
     price = atapi.ATFieldProperty('price')
     house_type = atapi.ATFieldProperty('house_type')
@@ -41,9 +44,9 @@ class Commercial(atapi.OrderedBaseFolder):
     acceptance = atapi.ATFieldProperty('acceptance')
     area = atapi.ATFieldProperty('area')
     volume = atapi.ATFieldProperty('volume')
-    constructYear = atapi.ATFieldProperty('constructYear')
+    construct_year = atapi.ATFieldProperty('constructYear')
     location = atapi.ATFieldProperty('location')
-    kindOfBuilding = atapi.ATFieldProperty('kindOfBuilding')
+    kind_of_building = atapi.ATFieldProperty('kindOfBuilding')
     heating = atapi.ATFieldProperty('heating')
     isolation = atapi.ATFieldProperty('isolation')
     parking = atapi.ATFieldProperty('parking')

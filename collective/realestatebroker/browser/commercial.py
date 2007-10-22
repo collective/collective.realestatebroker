@@ -59,3 +59,37 @@ class CommercialView(RealEstateView):
             results[k] = v
         return results
 
+    @memoize
+    def details(self):
+        """Return a dict of characteristics
+        """
+
+        context = aq_inner(self.context)
+        results = dict(address = context.address,
+                       description = context.description,
+                       zipcode = context.zipcode ,
+                       city = context.city,
+                       price = self.CookedPrice,
+                       house_type = context.house_type,
+                       rooms = context.rooms,
+                       vat = context.vat,
+                       rent_buy = context.rent_buy, 
+                       text = context.text,
+                       acceptance = context.acceptance,
+                       area = context.area,
+                       volume = context.volume,
+                       constructYear = context.construct_year,
+                       location = context.location,
+                       kind_of_building = context.kind_of_building,
+                       heating = context.heating,
+                       isolation = context.isolation,
+                       parking = context.parking,
+                       facilities = context.facilities,
+                       )
+        return results
+
+    @memoize
+    def CookedAcceptance(self):
+        """Dummy attribute to allow drop-in replacement of Document"""
+        return self.getAcceptance()
+

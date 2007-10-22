@@ -20,7 +20,11 @@ ResidentialSchema['title'].storage = atapi.AnnotationStorage()
 ResidentialSchema['title'].widget.label = _(u'Address')
 ResidentialSchema['title'].widget.description = _(u'Fill in the address of this object')
 ResidentialSchema['description'].storage = atapi.AnnotationStorage()
-ResidentialSchema['description'].schemata = 'Description'
+ResidentialSchema['description'].schemata = 'default'
+
+# Move descriptionfield two places down to put it just abov the main body text
+ResidentialSchema.moveField('description',1)
+ResidentialSchema.moveField('description',1)
 
 
 class Residential(atapi.OrderedBaseFolder):
