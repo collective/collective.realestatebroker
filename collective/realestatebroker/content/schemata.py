@@ -34,7 +34,7 @@ GeneralInfoSchema =  atapi.Schema((
         widget = atapi.RichWidget(label = _(u'Body text'),
                  description = _(u'Enter the main description for this object.'),
                  rows = 25,
-                 allow_file_upload = False,          
+                 allow_file_upload = False,
                  )
         ),
     atapi.StringField('acceptance',
@@ -43,9 +43,9 @@ GeneralInfoSchema =  atapi.Schema((
         widget = atapi.StringWidget(label = _(u'Acceptance'),
                  description = _(u'Enter a brief description for the acceptance.'),
                  )
-        ),        
-        
-        
+        ),
+
+
     ))
 
 ResidentialGeneralInfoSchema =  atapi.Schema((
@@ -224,3 +224,20 @@ CommercialCharacteristicsSchema =  atapi.Schema((
                  )
         ),
     ))
+
+MapsSchema =  atapi.Schema((
+        LocationField(
+            'geolocation',
+            languageIndependent = 1,
+            default_method="getDefaultLocation",
+            schemata=u"Location",
+            required=True,
+            validators=('isGeoLocation',),
+            widget=LocationWidget(
+                label='Location',
+                label_msgid='label_geolocation',
+                description_msgid='help_geolocation',
+                i18n_domain='collective.realestatebroker',
+            ),
+            ),
+        ))

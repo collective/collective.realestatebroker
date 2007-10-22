@@ -33,7 +33,28 @@
       <metal:field use-macro="python:context.widget('text', mode='view')">
         Body text
       </metal:field>
-      map
+
+
+      <div class="googleMapView googleMapLocation">
+        <dl>
+
+          <dt class="title">
+
+            <img src="++resources++residential-icon.gif"
+                 alt="Residential"
+                 width="20"
+                 height="34"
+                 class="marker" />
+            <a href=""
+               tal:attributes="href context/absolute_url" />
+          </dt>
+
+          <metal:field use-macro="python:context.widget('geolocation',
+                                  mode='view')"> Variable goes here </metal:field>
+
+        </dl>
+      </div>
+
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </div>

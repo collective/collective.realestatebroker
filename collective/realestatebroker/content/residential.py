@@ -13,7 +13,8 @@ ResidentialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
                      schemata.ResidentialGeneralInfoSchema +
                      schemata.GeneralCharacteristicsSchema +
-                     schemata.ResidentialCharacteristicsSchema
+                     schemata.ResidentialCharacteristicsSchema +
+                     schemata.MapsSchema
                      )
 ResidentialSchema['title'].storage = atapi.AnnotationStorage()
 ResidentialSchema['title'].widget.label = _(u'Address')

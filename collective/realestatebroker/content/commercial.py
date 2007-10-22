@@ -11,7 +11,8 @@ CommercialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
                      schemata.CommercialGeneralInfoSchema +
                      schemata.GeneralCharacteristicsSchema +
-                     schemata.CommercialCharacteristicsSchema
+                     schemata.CommercialCharacteristicsSchema +
+                     schemata.MapsSchema
                      )
 CommercialSchema['title'].storage = atapi.AnnotationStorage()
 CommercialSchema['title'].widget.label = _(u'Address')
