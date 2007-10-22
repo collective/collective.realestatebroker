@@ -70,7 +70,7 @@ class CommercialView(RealEstateView):
                        zipcode = context.zipcode ,
                        city = context.city,
                        price = self.CookedPrice,
-                       house_type = context.house_type,
+                       commercial_type = context.commercial_type,
                        rooms = context.rooms,
                        vat = context.vat,
                        rent_buy = context.rent_buy, 

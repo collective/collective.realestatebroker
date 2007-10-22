@@ -29,10 +29,6 @@ class IRealEstateContent(Interface):
         title = _(u'Price'),
         description = _(u'Fill in the price without dots or commas.'),
         )
-    house_type = schema.TextLine(
-        title = _(u'Type'),
-        description = _(u'Select the type object'),
-        )
     rooms = schema.TextLine(
         title = _(u'Rooms'),
         description = _(u'Select the number of rooms for this object'),
@@ -77,7 +73,10 @@ class IRealEstateContent(Interface):
 
 class IResidential(IRealEstateContent):
     """Interface with the residential-specific fields."""
-
+    house_type = schema.TextLine(
+         title = _(u'Type'),
+         description = _(u'Select the type object'),
+         )
     kk_von = schema.TextLine(
         title = _(u'k.k./v.o.n.'),
         description = _(u'Select the option.'),
@@ -114,7 +113,10 @@ class IResidential(IRealEstateContent):
 
 class ICommercial(IRealEstateContent):
     """Interface with the commercial-specific fields."""
-
+    commercial_type = schema.TextLine(
+         title = _(u'Type'),
+         description = _(u'Select the type object'),
+         )
     vat = schema.TextLine(
         title = _(u'VAT'),
         description = _(u'Select the VAT for this object.'),

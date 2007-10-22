@@ -59,7 +59,7 @@ ResidentialGeneralInfoSchema =  atapi.Schema((
     ))
 
 CommercialGeneralInfoSchema =  atapi.Schema((
-    atapi.StringField('house_type',
+    atapi.StringField('commercial_type',
         storage=atapi.AnnotationStorage(),
         schemata=u'Description',
         vocabulary_factory="collective.realestatebroker.commercial_type_list",
