@@ -21,8 +21,8 @@ CommercialSchema['description'].storage = atapi.AnnotationStorage()
 CommercialSchema['description'].schemata = 'default'
 
 # Move descriptionfield two places down to put it just abov the main body text
-ResidentialSchema.moveField('description',1)
-ResidentialSchema.moveField('description',1)
+CommercialSchema.moveField('description',1)
+CommercialSchema.moveField('description',1)
 
 class Commercial(atapi.OrderedBaseFolder):
     """Folderish content type for commercial real estate."""
