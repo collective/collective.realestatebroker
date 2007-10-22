@@ -20,9 +20,9 @@ CommercialSchema['title'].widget.description = _(u'Fill in the address of this o
 CommercialSchema['description'].storage = atapi.AnnotationStorage()
 CommercialSchema['description'].schemata = 'default'
 
-# Move descriptionfield two places down to put it just abov the main body text
-CommercialSchema.moveField('description',1)
-CommercialSchema.moveField('description',1)
+# Move descriptionfield to put it just above the main body text
+CommercialSchema.moveField('description',before='text')
+
 
 class Commercial(atapi.OrderedBaseFolder):
     """Folderish content type for commercial real estate."""
