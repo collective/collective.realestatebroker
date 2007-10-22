@@ -26,7 +26,9 @@
 
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
-      <div tal:replace="structure provider:realestatebroker.tabs" />
+      <ul class="formTabs">
+        <li tal:replace="structure provider:realestatebroker.tabs" />
+      </ul>
 
       <metal:field use-macro="python:context.widget('text', mode='view')">
         Body text
@@ -40,11 +42,12 @@
         <ul class="reb-photo-controls">
           <li tal:condition="batch/fastreverse">
             <a href=""
-               tal:attributes="href batch/fastreverse">RR</a>
-          </li>
-          <li tal:condition="batch/reverse">
-            <a href=""
-               tal:attributes="href batch/reverse">R</a>
+               tal:attributes="href batch/fastreverse">
+              <img src="++resource++collective.realestatebroker.images/media-seek-backward.png"
+                   alt="reverse"
+                   width="22"
+                   height="22" />
+            </a>
           </li>
           <li tal:repeat="photo python:batch['items']"
               >
@@ -55,13 +58,14 @@
               <img tal:replace="structure photo/tag" />
             </a>
           </li>
-          <li tal:condition="batch/forward">
-            <a href=""
-               tal:attributes="href batch/forward">F</a>
-          </li>
           <li tal:condition="batch/fastforward">
             <a href=""
-               tal:attributes="href batch/fastforward">FF</a>
+               tal:attributes="href batch/fastforward">
+              <img src="++resource++collective.realestatebroker.images/media-seek-forward.png"
+                   alt="reverse"
+                   width="22"
+                   height="22" />
+            </a>
           </li>
         </ul>
       </div>

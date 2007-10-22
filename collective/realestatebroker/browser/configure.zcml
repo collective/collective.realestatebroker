@@ -103,17 +103,18 @@
 
     <!-- Resources -->
 
-    <!--
     <resourceDirectory
       name="collective.realestatebroker.images"
       directory="images"
       />
-    -->
+
     <resource
       name="realestatebroker.css"
       file="realestatebroker.css"
       />
 
+    <!-- These two contenttype icons are listed separately as GS didn't seem
+         to want to deal with a resource with slashes in it. -->
     <resource
       name="residential_icon.gif"
       file="images/residential_icon.gif"

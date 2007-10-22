@@ -9,13 +9,13 @@
 
 <div metal:fill-slot="main"
      tal:define="home view/details">
-         
+
   <div tal:replace="structure provider:plone.abovecontenttitle" />
 
   <div class="reb-thumb">
     <img tal:replace="structure view/image_tag">
   </div>
-  
+
   <div>
     <address>
     <h1 class="documentFirstHeading">
@@ -26,12 +26,14 @@
     </address>
     <div class="price">
       <span tal:replace="view/CookedPrice" /> <span tal:replace="home/kk_von" />
-    </div> 
+    </div>
   </div>
 
   <div tal:replace="structure provider:plone.belowcontenttitle" />
   <div tal:replace="structure provider:plone.abovecontentbody" />
-  <div tal:replace="structure provider:realestatebroker.tabs" />
+  <ul class="formTabs">
+    <li tal:replace="structure provider:realestatebroker.tabs" />
+  </ul>
   <metal:field use-macro="python:context.widget('text', mode='view')">
     Body text
   </metal:field>
