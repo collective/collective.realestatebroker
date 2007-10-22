@@ -24,6 +24,14 @@ def HouseTypeVocabularyFactory(context):
     house_type_props = props.getProperty('house_type')
     return SimpleVocabulary.fromValues(house_type_props)
 
+def CommercialTypeVocabularyFactory(context):
+    """ Vocabulary Factory for house type in schemata
+    """
+    pprops = getToolByName(context, 'portal_properties')
+    props = pprops.realestatebroker_properties
+    commercial_type_props = props.getProperty('commercial_type')
+    return SimpleVocabulary.fromValues(commercial_type_props)
+
 def RoomsVocabularyFactory(context):
     """ Vocabulary Factory for number of rooms in schemata
     """

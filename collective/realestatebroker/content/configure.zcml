@@ -27,5 +27,10 @@
     <utility
          component=".base.ResidentialKKVONVocabularyFactory"
          name="collective.realestatebroker.residential_kk_von_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />          
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
+    <utility
+         component=".base.CommercialTypeVocabularyFactory"
+         name="collective.realestatebroker.commercial_type_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />        
 </configure>
