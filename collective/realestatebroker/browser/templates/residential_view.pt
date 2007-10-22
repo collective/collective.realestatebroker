@@ -21,12 +21,15 @@
         <address>
           <h1 class="documentFirstHeading">
             <metal:field use-macro="python:context.widget('title',
-                                    mode='view')"> Variable goes here </metal:field>
+                                    mode='view')">
+              Title goes here.
+            </metal:field>
           </h1>
           <span tal:replace="home/zipcode" />, <span tal:replace="home/city" />
         </address>
         <div class="price">
-          <span tal:replace="view/CookedPrice" /> <span tal:replace="home/kk_von" />
+          <span tal:replace="view/CookedPrice" />&nbsp;
+          <span tal:replace="home/kk_von" />
         </div>
       </div>
 
