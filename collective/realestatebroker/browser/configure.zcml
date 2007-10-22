@@ -64,6 +64,15 @@
         allowed_interface=".interfaces.ICommercialView"
     />
 
+
+    <page
+        for="collective.realestatebroker.interfaces.ICommercial"
+        name="commercial_chars"
+        class=".commercial.CommercialView"
+        template="templates/commercial_chars.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.ICommercialView"
+    />
     <!-- Viewlets which will render the tabs on real estate content. -->
 
     <viewletManager

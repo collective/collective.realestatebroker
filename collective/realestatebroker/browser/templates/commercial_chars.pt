@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.realestatebroker">
+
+<body>
+
+<div metal:fill-slot="main"
+     tal:define="home view/details">
+
+  <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+  <div class="reb-thumb">
+    <img tal:replace="structure view/image_tag">
+  </div>
+
+  <div>
+    <address>
+    <h1 class="documentFirstHeading">
+      <metal:field use-macro="python:context.widget('title',
+                              mode='view')"> Variable goes here </metal:field>
+    </h1>
+    <span tal:replace="home/zipcode" />, <span tal:replace="home/city" />
+    </address>
+    <div class="price">
+      <span tal:replace="view/CookedPrice" /> <span tal:replace="home/rent_buy" />
+    </div>
+  </div>
+
+  <div tal:replace="structure provider:plone.belowcontenttitle" />
+  <div tal:replace="structure provider:plone.abovecontentbody" />
+  <ul class="formTabs">
+    <li tal:replace="structure provider:realestatebroker.tabs" />
+  </ul>
+  <metal:field use-macro="python:context.widget('text', mode='view')">
+    Body text
+  </metal:field>
+  chars
+  <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>
