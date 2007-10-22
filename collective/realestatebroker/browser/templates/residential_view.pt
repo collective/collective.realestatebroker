@@ -12,10 +12,11 @@
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
+      <!--
       <div class="reb-thumb">
         <img tal:replace="structure view/image_tag"/>
       </div>
-
+      -->
       <div>
         <address>
           <h1 class="documentFirstHeading">
