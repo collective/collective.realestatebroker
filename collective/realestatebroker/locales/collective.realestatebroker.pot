@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-10-18 15:20+0000\n"
+"POT-Creation-Date: 2007-10-22 16:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./content/schemata.py:88
+#: ./content/schemata.py:104
 msgid "Acceptance"
 msgstr ""
 
@@ -29,19 +29,19 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./content/schemata.py:98
+#: ./content/schemata.py:114
 msgid "Area"
 msgstr ""
 
-#: ./content/schemata.py:150
+#: ./content/schemata.py:166
 msgid "Balcony"
 msgstr ""
 
-#: ./content/schemata.py:79
+#: ./content/schemata.py:95
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:16
+#: ./content/schemata.py:19
 msgid "City"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Commercial real estate"
 msgstr ""
 
-#: ./content/schemata.py:112
+#: ./content/schemata.py:128
 msgid "Construction year"
 msgstr ""
 
@@ -58,15 +58,19 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ./content/schemata.py:89
+#: ./content/schemata.py:105
 msgid "Enter a brief description for the acceptance."
 msgstr ""
 
-#: ./content/schemata.py:80
+#: ./content/schemata.py:12
+msgid "Enter the ZI code of this object."
+msgstr ""
+
+#: ./content/schemata.py:96
 msgid "Enter the main description for this object."
 msgstr ""
 
-#: ./content/schemata.py:209
+#: ./content/schemata.py:225
 msgid "Facilities"
 msgstr ""
 
@@ -74,27 +78,27 @@ msgstr ""
 msgid "Fill in the address of this object"
 msgstr ""
 
-#: ./content/schemata.py:99
+#: ./content/schemata.py:115
 msgid "Fill in the area of the object."
 msgstr ""
 
-#: ./content/schemata.py:17
+#: ./interfaces.py:26
 msgid "Fill in the city in which this object is located."
 msgstr ""
 
-#: ./content/schemata.py:24
+#: ./content/schemata.py:27
 msgid "Fill in the price without dots or commas."
 msgstr ""
 
-#: ./content/schemata.py:106
+#: ./content/schemata.py:122
 msgid "Fill in the volume of this object."
 msgstr ""
 
-#: ./content/schemata.py:113
+#: ./content/schemata.py:129
 msgid "Fill in the year of construction of this object."
 msgstr ""
 
-#: ./content/schemata.py:10
+#: ./interfaces.py:22
 msgid "Fill in the zip code of this object"
 msgstr ""
 
@@ -108,27 +112,27 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./content/schemata.py:178
+#: ./content/schemata.py:194
 msgid "Garage"
 msgstr ""
 
-#: ./content/schemata.py:126
+#: ./content/schemata.py:142
 msgid "Kind of building"
 msgstr ""
 
-#: ./content/schemata.py:164
+#: ./content/schemata.py:180
 msgid "Kind of garden"
 msgstr ""
 
-#: ./content/schemata.py:202
+#: ./content/schemata.py:218
 msgid "Parking"
 msgstr ""
 
-#: ./content/schemata.py:23
+#: ./content/schemata.py:26
 msgid "Price"
 msgstr ""
 
-#: ./content/schemata.py:67
+#: ./content/schemata.py:83
 msgid "Rent or buy"
 msgstr ""
 
@@ -137,83 +141,103 @@ msgstr ""
 msgid "Residential real estate"
 msgstr ""
 
-#: ./content/schemata.py:38
+#: ./content/schemata.py:36
 msgid "Rooms"
 msgstr ""
 
-#: ./content/schemata.py:68
+#: ./content/schemata.py:84
 msgid "Select Rent/buy for this object."
 msgstr ""
 
-#: ./content/schemata.py:203
+#: ./content/schemata.py:219
 msgid "Select here if this object has a private car park."
 msgstr ""
 
-#: ./content/schemata.py:61
+#: ./content/schemata.py:20
+msgid "Select in the city in which this object is located."
+msgstr ""
+
+#: ./content/schemata.py:77
 msgid "Select the VAT for this object."
 msgstr ""
 
-#: ./content/schemata.py:210
+#: ./content/schemata.py:69
+msgid "Select the commercial type for this object."
+msgstr ""
+
+#: ./content/schemata.py:226
 msgid "Select the facilities. You can choose more than 1 option"
 msgstr ""
 
-#: ./content/schemata.py:134
+#: ./content/schemata.py:150
 msgid "Select the heating system for this object. You can choose more than 1 option"
 msgstr ""
 
-#: ./content/schemata.py:165
+#: ./content/schemata.py:49
+msgid "Select the house type for this object."
+msgstr ""
+
+#: ./content/schemata.py:181
 msgid "Select the kind of garden. You can choose more than one option"
 msgstr ""
 
-#: ./content/schemata.py:141
+#: ./content/schemata.py:157
 msgid "Select the kinds of isolation used for this object. You can choose more than 1 option"
 msgstr ""
 
-#: ./content/schemata.py:120
+#: ./content/schemata.py:136
 msgid "Select the location. You can choose more than 1 option."
 msgstr ""
 
-#: ./content/schemata.py:39
+#: ./interfaces.py:34
 msgid "Select the number of rooms for this object"
 msgstr ""
 
-#: ./content/schemata.py:51
+#: ./content/schemata.py:37
+msgid "Select the number of rooms for this object."
+msgstr ""
+
+#: ./content/schemata.py:58
 msgid "Select the one option."
 msgstr ""
 
-#: ./content/schemata.py:186
+#: ./interfaces.py:82
+msgid "Select the option."
+msgstr ""
+
+#: ./content/schemata.py:202
 msgid "Select the type garage for this object. You can choose more than 1 option"
 msgstr ""
 
-#: ./content/schemata.py:32
+#: ./interfaces.py:78
 msgid "Select the type object"
 msgstr ""
 
-#: ./content/schemata.py:127
+#: ./content/schemata.py:143
 msgid "Select what kind of building this is."
 msgstr ""
 
-#: ./content/schemata.py:151
+#: ./content/schemata.py:167
 msgid "Select whether this object has a balcony or not."
 msgstr ""
 
-#: ./content/schemata.py:179
+#: ./content/schemata.py:195
 msgid "Select whether this object has a garage or not."
 msgstr ""
 
-#: ./content/schemata.py:158
+#: ./content/schemata.py:174
 msgid "Select whether this object has a garden or not."
 msgstr ""
 
-#: ./content/schemata.py:172
+#: ./content/schemata.py:188
 msgid "Select whether this object has a storage."
 msgstr ""
 
-#: ./content/schemata.py:193
+#: ./content/schemata.py:209
 msgid "Select whether this object has an airconditioning or not."
 msgstr ""
 
-#: ./content/schemata.py:171
+#: ./content/schemata.py:187
 msgid "Storage"
 msgstr ""
 
@@ -221,43 +245,43 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ./content/schemata.py:31
+#: ./content/schemata.py:48
 msgid "Type"
 msgstr ""
 
-#: ./content/schemata.py:60
+#: ./content/schemata.py:76
 msgid "VAT"
 msgstr ""
 
-#: ./content/schemata.py:105
+#: ./content/schemata.py:121
 msgid "Volume"
 msgstr ""
 
-#: ./content/schemata.py:9
+#: ./content/schemata.py:11
 msgid "Zip code"
 msgstr ""
 
-#: ./content/schemata.py:192
+#: ./content/schemata.py:208
 msgid "airco"
 msgstr ""
 
-#: ./content/schemata.py:157
+#: ./content/schemata.py:173
 msgid "garden"
 msgstr ""
 
-#: ./content/schemata.py:133
+#: ./content/schemata.py:149
 msgid "heating"
 msgstr ""
 
-#: ./content/schemata.py:140
+#: ./content/schemata.py:156
 msgid "isolation"
 msgstr ""
 
-#: ./content/schemata.py:50
+#: ./content/schemata.py:57
 msgid "k.k./v.o.n."
 msgstr ""
 
-#: ./content/schemata.py:185
+#: ./content/schemata.py:201
 msgid "kindOfGarage"
 msgstr ""
 
@@ -267,7 +291,7 @@ msgid "label_kk"
 msgstr ""
 
 #. Default: "More..."
-#: ./browser/templates/commercial_listing.pt:41
+#: ./browser/templates/commercial_listing.pt:44
 msgid "label_more"
 msgstr ""
 
@@ -276,7 +300,7 @@ msgstr ""
 msgid "label_von"
 msgstr ""
 
-#: ./content/schemata.py:119
+#: ./content/schemata.py:135
 msgid "location"
 msgstr ""
 
