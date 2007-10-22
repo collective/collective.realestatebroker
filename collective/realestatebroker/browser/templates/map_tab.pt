@@ -1,4 +1,4 @@
-<li class="realestate_tab formTab">
+<li class="realestate_tab formTab lastFormTab">
   <span i18n:translate="map_tab"
         class="selected"
         tal:condition="view/is_selected">Map</span>

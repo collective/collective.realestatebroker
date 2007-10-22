@@ -1,7 +1,7 @@
-<li class="realestate_tab formTab">
+<li class="realestate_tab formTab firstFormTab">
  <span i18n:translate="description_tab"
        class="selected"
-       tal:condition="view/is_selected">Description</span>
+       tal:condition="view/is_selected">Description</span>      
  <a href="#"
     tal:attributes="href view/description_view"
     tal:condition="not: view/is_selected">
