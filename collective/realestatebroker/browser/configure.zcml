@@ -1,5 +1,12 @@
 <configure xmlns="http://namespaces.zope.org/browser"
   i18n_domain="collective.realestatebroker">
+  
+    <page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate"
+        class=".base.RealEstateView"
+        permission="zope2.View"
+    />    
 
     <page
         for="collective.realestatebroker.interfaces.IResidential"
@@ -107,6 +114,21 @@
         name="realestatebroker.map.tab"
         manager=".interfaces.ITabsManager"
         class=".viewlets.MapTab"
+        permission="zope2.View"
+        />
+
+    <!-- Title for realestate content -->        
+    <viewletManager
+        name="realestatebroker.titlemanager"
+        provides=".interfaces.IRealEstateTitleManager"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+
+    <viewlet
+        name="realestatebroker.title"
+        manager=".interfaces.IRealEstateTitleManager"
+        class=".viewlets.RealEstateTitle"
         permission="zope2.View"
         />
 

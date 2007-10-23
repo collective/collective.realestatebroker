@@ -58,8 +58,6 @@ class PhotosTab(ViewletBase):
                                              name=u'plone_context_state')
         self.is_selected = self.context_state.current_page_url().endswith('photos')
        
-        # Both Residential and Commercial with have a chars alias that point
-        # to their own <type>_photos.pt 
         self.photos_view = self.context_state.object_url() + '/photos'
 
 
@@ -76,6 +74,37 @@ class MapTab(ViewletBase):
                                              name=u'plone_context_state')
         self.is_selected = self.context_state.current_page_url().endswith('map')
        
-        # Both Residential and Commercial with have a chars alias that point
-        # to their own <type>_map.pt 
         self.map_view = self.context_state.object_url() + '/map'
+
+
+class RealEstateTitle(ViewletBase):
+    """ Viewlet that renders the title of a real estate object, both
+    residential and commercial.
+    """
+
+    render = ViewPageTemplateFile('templates/realestate_title.pt')
+
+    def update(self):
+        self.portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        self.context_state = getMultiAdapter((self.context, self.request),
+                                             name=u'plone_context_state')
+    def title(self):
+        return self.context.title
+
+    def zipcode(self):
+        return self.context.zipcode
+
+    def city(self):
+        return self.context.city
+
+    def price(self):
+        realestate_view = self.context.restrictedTraverse('@@realestate')
+        return realestate_view.CookedPrice()
+
+    def after_price(self):
+        return self.context.kk_von
+
+    def image_tag(self):
+        realestate_view = self.context.restrictedTraverse('@@realestate')
+        return realestate_view.image_tag()

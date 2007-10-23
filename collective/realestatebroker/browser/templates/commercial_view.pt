@@ -11,33 +11,16 @@
          tal:define="obj view/details">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
-
-      <!--
-      <div class="reb-thumb">
-        <img tal:replace="structure view/image_tag"/>
-      </div>
-      -->
-      <div>
-        <address>
-          <h1 class="documentFirstHeading">
-            <metal:field use-macro="python:context.widget('title',
-                                    mode='view')">
-              Title goes here.
-            </metal:field>
-          </h1>
-          <span tal:replace="obj/zipcode" />, <span tal:replace="obj/city" />
-        </address>
-        <div class="price">
-          <span tal:replace="view/CookedPrice" />&nbsp;
-             <span tal:replace="obj/rent_buy" />
-        </div>
-      </div>
-
+      <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
       <ul class="formTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
+
+      <metal:field use-macro="python:context.widget('description', mode='view')">
+        Description
+      </metal:field>
       <metal:field use-macro="python:context.widget('text', mode='view')">
         Body text
       </metal:field>

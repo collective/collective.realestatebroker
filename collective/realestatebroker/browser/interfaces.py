@@ -4,52 +4,67 @@ from zope.viewlet.interfaces import IViewletManager
 
 class IRealEstateListing(Interface):
     """docstring for IRealEstateContent"""
+
     def sorted_listing():
         """Returns a list of dicts representing an overview of the Residential
-        real estate.
-        """
+        real estate."""
             
 
 class IResidentialListing(IRealEstateListing):
-    """ This is a view class which returns a listing of 'Residential' objects.
-    """
+    """ This is a view class which returns a listing of 'Residential' items"""
     pass
 
 
 class ICommercialListing(IRealEstateListing):
-    """ This is a view class which returns a listing of 'Commercial' objects.
-    """
+    """ This is a view class which returns a listing of 'Commercial' items"""
     pass
 
 
 class IRealEstateView(Interface):
-    """docstring for IRealEstateView"""
+    """A base view for methods that are common for both Commercial and
+    Residential items"""
     
     def image_tag():
         """Returns an HTML image tag for the first image found inside
-        RealEstateContent, both commercial and residential  
-        """
+        RealEstateContent, both commercial and residential  """
 
 
 class IResidentialView(IRealEstateView):
     """This is a view class for presenting the details of a given
-       'Residential' object.
-    """
+       'Residential' object."""
     
     def details():
         """ Return a dict with all information about a residential real
-        estate object.
-        """
+        estate object."""
 
-        
+
 class ICommercialView(IRealEstateView):
     """This is a view class which returns all details for a 'Commercial'
-    object.
-    """
+    object."""
     pass
 
 
 class ITabsManager(IViewletManager):
     """ A Viewlet manager that renders a set of tabs for RealEstateContent
-    objects.
-    """
+    objects."""
+    pass
+
+
+class IRealEstateTitleManager(IViewletManager):
+    """ A Viewlet manager that renders the title and address information of
+    RealEstateContent objects."""
+
+    def title():
+        """Return the title of the RealEstateContent"""
+
+    def zipcode():
+        """Return the zipcode of the RealEstateContent"""
+
+    def city():
+        """Return the city where the real estate is located"""
+        
+    def price():
+        """Return a formatted price"""
+        
+    def after_price():
+        """Extra info regarding the price e.g. tax/sales costs"""
