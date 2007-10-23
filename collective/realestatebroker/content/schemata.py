@@ -29,6 +29,14 @@ GeneralInfoSchema =  atapi.Schema((
                  size=10,
                  )
         ),
+    atapi.StringField('kk_von',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        vocabulary_factory="collective.realestatebroker.kk_von_list",
+        widget = atapi.SelectionWidget(label = _(u'k.k./v.o.n.'),
+                description = _(u'Select the one option.'),
+                )
+        ),        
     atapi.TextField('text',
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
@@ -69,14 +77,6 @@ ResidentialGeneralInfoSchema =  atapi.Schema((
                  description = _(u'Select the number of rooms for this object.'),
                  format = 'select',
                  )
-    ),
-    atapi.StringField('kk_von',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'default',
-        vocabulary_factory="collective.realestatebroker.residential_kk_von_list",
-        widget = atapi.SelectionWidget(label = _(u'k.k./v.o.n.'),
-                description = _(u'Select the one option.'),
-                )
         ),
     ))
 

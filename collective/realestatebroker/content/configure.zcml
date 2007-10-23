@@ -23,10 +23,9 @@
          component=".base.RoomsVocabularyFactory"
          name="collective.realestatebroker.rooms_list"
          provides="zope.schema.interfaces.IVocabularyFactory" />  
-
     <utility
-         component=".base.ResidentialKKVONVocabularyFactory"
-         name="collective.realestatebroker.residential_kk_von_list"
+         component=".base.KKVONVocabularyFactory"
+         name="collective.realestatebroker.kk_von_list"
          provides="zope.schema.interfaces.IVocabularyFactory" />
 
     <utility

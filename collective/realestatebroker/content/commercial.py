@@ -24,8 +24,9 @@ CommercialSchema['description'].schemata = 'default'
 CommercialSchema.moveField('text',pos='bottom')
 CommercialSchema.moveField('description',before='text')
 
-# Move related rent_buy field after the price field
-CommercialSchema.moveField('rent_buy',after='price')
+# Move related kk_von and rent_buy field after the price field
+CommercialSchema.moveField('kk_von',after='price')
+CommercialSchema.moveField('rent_buy',after='kk_von')
 
 
 class Commercial(atapi.OrderedBaseFolder):

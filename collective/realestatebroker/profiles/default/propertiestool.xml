@@ -58,7 +58,7 @@
    <element value="1500000"/>
    <element value="2000000"/>
   </property>
-  <property name="residential_kk_von" type="lines" purge="False">
+  <property name="kk_von" type="lines" purge="False">
    <element value="Kosten koper (k.k.)"/>
    <element value="Vrij op naam (v.o.n.)"/>
   </property>
