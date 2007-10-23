@@ -1,6 +1,9 @@
 from Products.Archetypes import atapi
 
 from collective.realestatebroker import REBMessageFactory as _
+from Products.Maps.field import LocationWidget
+from Products.Maps.field import LocationField
+
 
 GeneralInfoSchema =  atapi.Schema((
     atapi.StringField('zipCode',
