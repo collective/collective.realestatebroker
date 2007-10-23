@@ -93,14 +93,16 @@ CommercialGeneralInfoSchema =  atapi.Schema((
     atapi.StringField('vat',
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
-        widget = atapi.StringWidget(label = _(u'VAT'),
+        vocabulary_factory="collective.realestatebroker.vat_list",
+        widget = atapi.SelectionWidget(label = _(u'VAT'),
                  description = _(u'Select the VAT for this object.'),
                  )
         ),
-    atapi.BooleanField('rent_buy',
+    atapi.StringField('rent_buy',
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
-        widget = atapi.BooleanWidget(label = _(u'Rent or buy'),
+        vocabulary_factory="collective.realestatebroker.rent_buy_list",
+        widget = atapi.SelectionWidget(label = _(u'Rent or buy'),
                  description = _(u'Select Rent/buy for this object.'),
                  )
         ),
@@ -127,7 +129,8 @@ GeneralCharacteristicsSchema =  atapi.Schema((
         schemata=u"Characteristics",
         widget = atapi.StringWidget(label = _(u'Construction year'),
                  description = _(u'Fill in the year of construction of this object.'),
-                 )
+                 maxlength=4,
+                 size=4,)
         ),
     atapi.StringField('kindOfBuilding',
         storage=atapi.AnnotationStorage(),
@@ -142,16 +145,16 @@ GeneralCharacteristicsSchema =  atapi.Schema((
         schemata=u"Characteristics",
         vocabulary_factory="collective.realestatebroker.heating_list",
         widget = atapi.SelectionWidget(label = _(u'heating'),
-                 description = _(u'Select the heating system for this object. You can choose more than 1 option'),
+                 description = _(u'Select the heating system for this object. You can choose more than one option'),
                  )
         ),
     atapi.StringField('insulation',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
         vocabulary_factory="collective.realestatebroker.insulation_list",
-        widget = atapi.SelectionWidget(label = _(u'insulation'),
+        widget = atapi.MultiSelectionWidget(label = _(u'insulation'),
                  description = _(u'Select the kinds of insulation used for this object. You can choose more than 1 option'),
-                 )
+                 format='checkbox'),
         ),
     ))
 
@@ -160,8 +163,8 @@ ResidentialCharacteristicsSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
         vocabulary_factory='collective.realestatebroker.location_list',
-        widget = atapi.SelectionWidget(label = _(u'location'),
-                 description = _(u'Select the location. You can choose more than 1 option.'),
+        widget = atapi.InAndOutWidget(label = _(u'location'),
+                 description = _(u'Select the available facilities by moving them to the right column.'),
                  )
         ),
     atapi.BooleanField('balcony',
@@ -182,8 +185,8 @@ ResidentialCharacteristicsSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
         vocabulary_factory='collective.realestatebroker.kind_of_garden_list',
-        widget = atapi.SelectionWidget(label = _(u'Kind of garden'),
-                 description = _(u'Select the kind of garden. You can choose more than one option'),
+        widget = atapi.MultiSelectionWidget(label = _(u'Kind of garden'),
+                 description = _(u'Select the kind of garden. You can choose more than one option.'),
                  )
         ),
     atapi.BooleanField('storage',
@@ -204,8 +207,8 @@ ResidentialCharacteristicsSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
         vocabulary_factory='collective.realestatebroker.kind_of_garage_list',
-        widget = atapi.SelectionWidget(label = _(u'kindOfGarage'),
-                 description = _(u'Select the type garage for this object. You can choose more than 1 option'),
+        widget = atapi.MultiSelectionWidget(label = _(u'kindOfGarage'),
+                 description = _(u'Select the type of garage for this object. You can choose more than one option.'),
                  )
         ),
     atapi.BooleanField('airco',
@@ -221,15 +224,17 @@ CommercialCharacteristicsSchema =  atapi.Schema((
     atapi.BooleanField('parking',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
-        widget = atapi.BooleanWidget(label = _(u'Parking'),
+        vocabulary_factory='collective.realestatebroker.parking_list',
+        widget = atapi.SelectionWidget(label = _(u'Parking'),
                  description = _(u'Select here if this object has a private car park.'),
                  )
         ),
     atapi.StringField('facilities',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
-        widget = atapi.StringWidget(label = _(u'Facilities'),
-                 description = _(u'Select the facilities. You can choose more than 1 option'),
+        vocabulary_factory='collective.realestatebroker.facilities_list',
+        widget = atapi.InAndOutWidget(label = _(u'Facilities'),
+                 description = _(u'Select the available facilities by moving them to the right column.'),
                  )
         ),
     ))

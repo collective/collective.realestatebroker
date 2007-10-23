@@ -56,5 +56,25 @@
    <utility
         component=".vocabularies.KindOfGardenVocabularyFactory"
         name="collective.realestatebroker.kind_of_garden_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />                               
+        provides="zope.schema.interfaces.IVocabularyFactory" />
+
+   <utility
+        component=".vocabularies.VATVocabularyFactory"
+        name="collective.realestatebroker.vat_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />
+        
+   <utility
+        component=".vocabularies.RentBuyVocabularyFactory"
+        name="collective.realestatebroker.rent_buy_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />        
+        
+   <utility
+        component=".vocabularies.ParkingVocabularyFactory"
+        name="collective.realestatebroker.parking_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />
+        
+   <utility
+        component=".vocabularies.FacilitiesVocabularyFactory"
+        name="collective.realestatebroker.facilities_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />          
 </configure>
