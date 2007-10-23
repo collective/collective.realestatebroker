@@ -32,5 +32,35 @@
     <utility
          component=".base.CommercialTypeVocabularyFactory"
          name="collective.realestatebroker.commercial_type_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />        
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+         
+    <utility
+         component=".base.ResidentialLocationVocabularyFactory"
+         name="collective.realestatebroker.residential_location_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         
+    <utility
+         component=".base.KindOfBuildingVocabularyFactory"
+         name="collective.realestatebroker.kind_of_building_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         
+    <utility
+         component=".base.HeatingVocabularyFactory"
+         name="collective.realestatebroker.heating_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />          
+         
+    <utility
+         component=".base.InsulationVocabularyFactory"
+         name="collective.realestatebroker.insulation_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         
+   <utility
+        component=".base.ResidentialKindOfGarageVocabularyFactory"
+        name="collective.realestatebroker.residential_kind_of_garage_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />          
+
+   <utility
+        component=".base.ResidentialKindOfGardenVocabularyFactory"
+        name="collective.realestatebroker.residential_kind_of_garden_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />                               
 </configure>

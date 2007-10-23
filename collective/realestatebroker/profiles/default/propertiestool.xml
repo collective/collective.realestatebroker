@@ -99,7 +99,7 @@
    <element value="Yes"/>
    <element value="No"/>
   </property>
-  <property name="location" type="lines" purge="False">
+  <property name="residential_location" type="lines" purge="False">
    <element value="Forest"/>
    <element value="Shore"/>
   </property>

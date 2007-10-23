@@ -24,7 +24,7 @@ msgstr "Adres"
 
 #: ./content/schemata.py:114
 msgid "Area"
-msgstr "Gebied"
+msgstr "Oppervlakte"
 
 #: ./content/schemata.py:166
 msgid "Balcony"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: ./content/schemata.py:115
 msgid "Fill in the area of the object."
-msgstr ""
+msgstr "Vul de oppervlakte in van dit object"
 
 #: ./interfaces.py:26
 msgid "Fill in the city in which this object is located."
@@ -85,15 +85,15 @@ msgstr "Vul de prijs in zonder punten of komma's"
 
 #: ./content/schemata.py:122
 msgid "Fill in the volume of this object."
-msgstr ""
+msgstr "Vul de inhoud in van dit object."
 
 #: ./content/schemata.py:129
 msgid "Fill in the year of construction of this object."
-msgstr ""
+msgstr "Geef het bouwjaar op van dit object."
 
 #: ./interfaces.py:22
 msgid "Fill in the zip code of this object"
-msgstr ""
+msgstr "Geef de postcode op van dit object."
 
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
@@ -140,7 +140,7 @@ msgstr "Kamers"
 
 #: ./content/schemata.py:84
 msgid "Select Rent/buy for this object."
-msgstr ""
+msgstr "Koop of huur."
 
 #: ./content/schemata.py:219
 msgid "Select here if this object has a private car park."
@@ -152,7 +152,7 @@ msgstr ""
 
 #: ./content/schemata.py:77
 msgid "Select the VAT for this object."
-msgstr ""
+msgstr "Selecteer de belastingstatus."
 
 #: ./content/schemata.py:69
 msgid "Select the commercial type for this object."
@@ -160,11 +160,11 @@ msgstr ""
 
 #: ./content/schemata.py:226
 msgid "Select the facilities. You can choose more than 1 option"
-msgstr ""
+msgstr "Kies voorzieningen. Meerdere opties zijn mogelijk."
 
 #: ./content/schemata.py:150
 msgid "Select the heating system for this object. You can choose more than 1 option"
-msgstr ""
+msgstr "Selecteer het verwarmingssysteem voor dit object. Meerdere opties zijn mogelijk."
 
 #: ./content/schemata.py:49
 msgid "Select the house type for this object."
@@ -172,11 +172,11 @@ msgstr ""
 
 #: ./content/schemata.py:181
 msgid "Select the kind of garden. You can choose more than one option"
-msgstr ""
+msgstr "Kies het soort tuin. Meerdere opties zijn mogelijk."
 
 #: ./content/schemata.py:157
-msgid "Select the kinds of isolation used for this object. You can choose more than 1 option"
-msgstr ""
+msgid "Select the kinds of insulation used for this object. You can choose more than 1 option"
+msgstr "Kies de type(s) isolatie die is toegepast op dit object. Meerdere opties zijn mogelijk."
 
 #: ./content/schemata.py:136
 msgid "Select the location. You can choose more than 1 option."
@@ -184,7 +184,7 @@ msgstr ""
 
 #: ./interfaces.py:34
 msgid "Select the number of rooms for this object"
-msgstr ""
+msgstr "Kies het aantal ruimtes voor dit object."
 
 #: ./content/schemata.py:37
 msgid "Select the number of rooms for this object."
@@ -192,7 +192,7 @@ msgstr ""
 
 #: ./content/schemata.py:58
 msgid "Select the one option."
-msgstr ""
+msgstr "Kies één optie."
 
 #: ./interfaces.py:82
 msgid "Select the option."
@@ -200,35 +200,35 @@ msgstr ""
 
 #: ./content/schemata.py:202
 msgid "Select the type garage for this object. You can choose more than 1 option"
-msgstr ""
+msgstr "Selecteer het soort garage voor dit object. Meerdere opties zijn mogelijk."
 
 #: ./interfaces.py:78
 msgid "Select the type object"
-msgstr ""
+msgstr "Kies het type object."
 
 #: ./content/schemata.py:143
 msgid "Select what kind of building this is."
-msgstr ""
+msgstr "Selecteer het type gebouw."
 
 #: ./content/schemata.py:167
 msgid "Select whether this object has a balcony or not."
-msgstr ""
+msgstr "Is er een balkon aanwezig?"
 
 #: ./content/schemata.py:195
 msgid "Select whether this object has a garage or not."
-msgstr ""
+msgstr "Is er een garage aanwezig?"
 
 #: ./content/schemata.py:174
 msgid "Select whether this object has a garden or not."
-msgstr ""
+msgstr "Is er een tuin bij het object?"
 
 #: ./content/schemata.py:188
 msgid "Select whether this object has a storage."
-msgstr ""
+msgstr "Is er een berging aanwezig?"
 
 #: ./content/schemata.py:209
 msgid "Select whether this object has an airconditioning or not."
-msgstr ""
+msgstr "Heeft het object air-conditioning?"
 
 #: ./content/schemata.py:187
 msgid "Storage"
@@ -244,7 +244,7 @@ msgstr "Type"
 
 #: ./content/schemata.py:76
 msgid "VAT"
-msgstr "BTW"
+msgstr "B.T.W."
 
 #: ./content/schemata.py:121
 msgid "Volume"
@@ -267,7 +267,7 @@ msgid "heating"
 msgstr "Verwarming"
 
 #: ./content/schemata.py:156
-msgid "isolation"
+msgid "insulation"
 msgstr "Isolatie"
 
 #: ./content/schemata.py:57

@@ -105,7 +105,6 @@ propertysheet.
     >>> [item.value for item in vocab]
     ['1', '2', '3', '4', '5', '6', '7', '8']
 
-
 For the k.k./v.o.n. field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
