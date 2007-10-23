@@ -2,6 +2,12 @@
 """
 
 PROJECTNAME = "collective.realestatebroker"
+try:
+    from Products.contentmigration import walker
+    MIGRATIONPRODUCTAVAILABLE = True
+except:
+    MIGRATIONPRODUCTAVAILABLE = False
+
 #CUSTOM_PORTLET_COLUMN = u"plone.rightcolumn"
 
 # This maps portal types to their corresponding add permissions.

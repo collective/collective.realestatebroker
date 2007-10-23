@@ -23,10 +23,12 @@ A unittest that tests out the whole migration mechanism can be found in
 """
 import logging
 from StringIO import StringIO
+from collective.realestatebroker.config import MIGRATIONPRODUCTAVAILABLE
 
-from Products.contentmigration import walker
-from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
-from Products.contentmigration.common import _createObjectByType
+if MIGRATIONPRODUCTAVAILABLE:
+   from Products.contentmigration import walker
+   from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
+   from Products.contentmigration.common import _createObjectByType
 from Products.CMFCore.utils import getToolByName
 
 from config import STATE_TRANSITION_MAP
@@ -72,7 +74,7 @@ class RebMigrator(CMFItemMigrator):
         'getVat': 'setVat',
         'getVolume': 'setVolume',
         'getZipCode': 'setZipCode',
-    
+
         # End of old fields
         }
 
@@ -333,19 +335,19 @@ class RebMigrator(CMFItemMigrator):
         ...         self.transitions = ('publish','available','negotiate','sell')
         ...         self.chain = ('offline','new','available','negotiating','sold')
         ...         self.index = 0
-        ...     
+        ...
         ...     def getInfoFor(self, obj, attr):
         ...         return self.chain[self.index]
-        ...     
+        ...
         ...     def doActionFor(self, obj, transition, wf_id=None):
         ...         self.index += 1
-        
+
         >>> migrator = MockMigrator()
         >>> migrator.old = Mock()
         >>> migrator.new = Mock()
         >>> wf_tool = MockWorkflowTool()
         >>> migrator.new.portal_workflow = wf_tool
-        
+
         Content with 'available' in the status field should get that workflow
         state after migrating.
 
@@ -366,10 +368,10 @@ class RebMigrator(CMFItemMigrator):
         >>> migrator.migrate_workflow()
         >>> wf_tool.getInfoFor(migrator.new, 'review_state')
         'negotiating'
-        
+
         """
         NOTAVAILABLE = 'No status field on this object!'
-        
+
         oldStatus = getattr(self.old, 'status', NOTAVAILABLE)
         if oldStatus == NOTAVAILABLE:
             # Dealing with recent version which has no status field
@@ -390,7 +392,7 @@ class RebMigrator(CMFItemMigrator):
                 else:
                     logger.info("Failed to migrate workflow for %r." % self.new)
                     # something went wrong
-                    
+
 
 
 class ResidentialMigrator(RebMigrator):

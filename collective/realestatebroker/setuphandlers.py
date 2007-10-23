@@ -1,5 +1,4 @@
-#from Products.CMFCore.utils import getToolByName
-#from collective.realestatebroker import config
+from collective.realestatebroker.config import MIGRATIONPRODUCTAVAILABLE
 
 
 def importVarious(context):
@@ -12,11 +11,9 @@ def importVarious(context):
     logger = context.getLogger('realestatebroker')
     migrate_old_content(site, logger)
 
+
 def migrate_old_content(site, logger):
-    try:
-        import Products.contentmigration
-        Products.contentmigration # PYFLAKES
-    except:
+    if not MIGRATIONPRODUCTAVAILABLE:
         return
     from collective.realestatebroker.migration import migrate
     result = migrate(site)
