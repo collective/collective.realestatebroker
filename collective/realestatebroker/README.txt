@@ -35,6 +35,16 @@ products").
     >>> qi.installProduct('collective.realestatebroker')
     ''
 
+Testing for Maps Product Dependency
+-----------------------------------
+
+RealEstateBroker makes use of the Maps product to integrate Google Maps. Check
+that this product is also available in the site after RealEstateBroker has 
+been installed
+
+    >>> self.portal.portal_quickinstaller.isProductInstalled('Maps')
+    ''
+
 Commercial and residential real estate content types
 ----------------------------------------------------
 
@@ -108,7 +118,7 @@ propertysheet.
 For the k.k./v.o.n. field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
-    >>> from collective.realestatebroker.content.base import ResidentialKKVONVocabularyFactory
-    >>> vocab = ResidentialKKVONVocabularyFactory(self.portal)
+    >>> from collective.realestatebroker.content.base import KKVONVocabularyFactory
+    >>> vocab = KKVONVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['Kosten koper (k.k.)', 'Vrij op naam (v.o.n.)']
