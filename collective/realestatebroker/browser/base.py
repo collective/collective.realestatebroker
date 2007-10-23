@@ -77,6 +77,8 @@ class RealEstateView(BrowserView):
                          path='/'.join(self.context.getPhysicalPath()))
         selected = int(self.context.request.get('selected', 0))
         batch = utils.batch(brains, selected=selected)
+        if not batch:
+            return
         base_url = self.context.absolute_url() + '/photos?selected='
         # Now decorate the bare stuff with what we need.
         selected_brain = batch['selected']
