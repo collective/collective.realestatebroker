@@ -41,6 +41,7 @@ class Commercial(atapi.OrderedBaseFolder):
     zipcode = atapi.ATFieldProperty('zipCode')
     city = atapi.ATFieldProperty('city')
     price = atapi.ATFieldProperty('price')
+    kk_von = atapi.ATFieldProperty('kk_von')
     commercial_type = atapi.ATFieldProperty('commercial_type')
     vat = atapi.ATFieldProperty('vat')
     rent_buy = atapi.ATFieldProperty('rent_buy')
