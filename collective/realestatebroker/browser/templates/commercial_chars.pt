@@ -11,24 +11,7 @@
      tal:define="home view/details">
 
   <div tal:replace="structure provider:plone.abovecontenttitle" />
-
-  <div class="reb-thumb">
-    <img tal:replace="structure view/image_tag">
-  </div>
-
-  <div>
-    <address>
-    <h1 class="documentFirstHeading">
-      <metal:field use-macro="python:context.widget('title',
-                              mode='view')"> Variable goes here </metal:field>
-    </h1>
-    <span tal:replace="home/zipcode" />, <span tal:replace="home/city" />
-    </address>
-    <div class="price">
-      <span tal:replace="view/CookedPrice" /> <span tal:replace="home/rent_buy" />
-    </div>
-  </div>
-
+  <div tal:replace="structure provider:realestatebroker.titlemanager" />
   <div tal:replace="structure provider:plone.belowcontenttitle" />
   <div tal:replace="structure provider:plone.abovecontentbody" />
   <ul class="formTabs">

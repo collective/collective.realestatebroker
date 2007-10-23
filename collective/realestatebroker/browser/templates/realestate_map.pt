@@ -10,20 +10,7 @@
     <div metal:fill-slot="main">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
-
-      <div>
-        <address>
-          <h1 class="documentFirstHeading">
-            <metal:field use-macro="python:context.widget('title',
-                                    mode='view')"> Variable goes here </metal:field>
-          </h1>
-          <span tal:replace="context/zipcode" />, <span tal:replace="context/city" />
-        </address>
-        <div class="price">
-          <span tal:replace="view/CookedPrice" />
-        </div>
-      </div>
-
+      <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
       <ul class="formTabs">
