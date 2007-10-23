@@ -19,7 +19,7 @@ class IRealEstateContent(Interface):
         )
     zipCode = schema.TextLine(
         title = _(u'Zip code'),
-        description = _(u'Fill in the zip code of this object'),
+        description = _(u'Enter the ZIP code of this object.'),
         )
     city = schema.TextLine(
         title = _(u'City'),
@@ -27,7 +27,11 @@ class IRealEstateContent(Interface):
         )
     price = schema.Int(
         title = _(u'Price'),
-        description = _(u'Fill in the price without dots or commas.'),
+        description = _(u'Fill in the price without dots or commas.'),        
+        )
+    kk_von = schema.TextLine(
+        title = _(u'k.k./v.o.n.'),
+        description = _(u'Select one option.'),
         )
     text = schema.Text(
         title = _(u'Body text'),
@@ -39,7 +43,7 @@ class IRealEstateContent(Interface):
         )
     area = schema.TextLine(
         title = _(u'Area'),
-        description = _(u'Fill in the area of the object.'),
+        description = _(u'Fill in the area of this object.'),
         )
     volume = schema.TextLine(
         title = _(u'Volume'),
@@ -55,12 +59,16 @@ class IRealEstateContent(Interface):
         )
     heating = schema.TextLine(
         title = _(u'heating'),
-        description = _(u'Select the heating system for this object. You can choose more than 1 option'),
+        description = _(u'Select the heating system for this object. You can choose more than one option'),
         )
     insulation = schema.TextLine(
         title = _(u'insulation'),
-        description = _(u'Select the kinds of insulation used for this object. You can choose more than 1 option'),
+        description = _(u'Select the types of insulation used for this object. You can choose more than one option'),
         )
+    location = schema.TextLine(
+        title = _(u'location'),
+        description = _(u'Select the location. You can choose more than one option.'),
+        )        
 
 class IResidential(IRealEstateContent):
     """Interface with the residential-specific fields."""
@@ -68,18 +76,10 @@ class IResidential(IRealEstateContent):
         title = _(u'Rooms'),
         description = _(u'Select the number of rooms for this object'),
         )
-    location = schema.TextLine(
-        title = _(u'location'),
-        description = _(u'Select the location. You can choose more than one option.'),
-        )
     house_type = schema.TextLine(
          title = _(u'Type'),
-         description = _(u'Select the type object'),
+         description = _(u'Select the house type for this object.'),
          )
-    kk_von = schema.TextLine(
-        title = _(u'k.k./v.o.n.'),
-        description = _(u'Select the option.'),
-        )
     balcony = schema.Bool(
         title = _(u'Balcony'),
         description = _(u'Select whether this object has a balcony or not.'),

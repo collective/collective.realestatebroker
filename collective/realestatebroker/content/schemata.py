@@ -18,7 +18,7 @@ GeneralInfoSchema =  atapi.Schema((
         schemata=u'default',
         vocabulary_factory="collective.realestatebroker.city_list",
         widget = atapi.SelectionWidget(label = _(u'City'),
-                 description = _(u'Select in the city in which this object is located.'),
+                 description = _(u'Fill in the city in which this object is located.'),
                  )
         ),
     atapi.IntegerField('price',
@@ -34,7 +34,7 @@ GeneralInfoSchema =  atapi.Schema((
         schemata=u'default',
         vocabulary_factory="collective.realestatebroker.kk_von_list",
         widget = atapi.SelectionWidget(label = _(u'k.k./v.o.n.'),
-                description = _(u'Select the one option.'),
+                description = _(u'Select one option.'),
                 )
         ),        
     atapi.TextField('text',
@@ -114,7 +114,7 @@ GeneralCharacteristicsSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
         widget = atapi.StringWidget(label = _(u'Area'),
-                 description = _(u'Fill in the area of the object.'),
+                 description = _(u'Fill in the area of this object.'),
                  )
         ),
     atapi.StringField('volume',
@@ -153,7 +153,7 @@ GeneralCharacteristicsSchema =  atapi.Schema((
         schemata=u"Characteristics",
         vocabulary_factory="collective.realestatebroker.insulation_list",
         widget = atapi.MultiSelectionWidget(label = _(u'insulation'),
-                 description = _(u'Select the kinds of insulation used for this object. You can choose more than 1 option'),
+                 description = _(u'Select the types of insulation used for this object. You can choose more than one option'),
                  format='checkbox'),
         ),
     ))

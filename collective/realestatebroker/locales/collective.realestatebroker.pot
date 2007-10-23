@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-10-23 16:11+0000\n"
+"POT-Creation-Date: 2007-10-23 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,10 +79,10 @@ msgid "Fill in the address of this object"
 msgstr ""
 
 #: ./content/schemata.py:117
-msgid "Fill in the area of the object."
+msgid "Fill in the area of this object."
 msgstr ""
 
-#: ./interfaces.py:26
+#: ./content/schemata.py:21
 msgid "Fill in the city in which this object is located."
 msgstr ""
 
@@ -96,10 +96,6 @@ msgstr ""
 
 #: ./content/schemata.py:131
 msgid "Fill in the year of construction of this object."
-msgstr ""
-
-#: ./interfaces.py:22
-msgid "Fill in the zip code of this object"
 msgstr ""
 
 #. Default: "Folderish content type for commercial real estate."
@@ -157,8 +153,8 @@ msgstr ""
 msgid "Select here if this object has a private car park."
 msgstr ""
 
-#: ./content/schemata.py:21
-msgid "Select in the city in which this object is located."
+#: ./content/schemata.py:37
+msgid "Select one option."
 msgstr ""
 
 #: ./content/schemata.py:98
@@ -177,10 +173,6 @@ msgstr ""
 msgid "Select the facilities. You can choose more than 1 option"
 msgstr ""
 
-#: ./interfaces.py:58
-msgid "Select the heating system for this object. You can choose more than 1 option"
-msgstr ""
-
 #: ./content/schemata.py:148
 msgid "Select the heating system for this object. You can choose more than one option"
 msgstr ""
@@ -197,15 +189,11 @@ msgstr ""
 msgid "Select the kind of garden. You can choose more than one option."
 msgstr ""
 
-#: ./content/schemata.py:156
-msgid "Select the kinds of insulation used for this object. You can choose more than 1 option"
-msgstr ""
-
-#: ./interfaces.py:73
+#: ./interfaces.py:70
 msgid "Select the location. You can choose more than one option."
 msgstr ""
 
-#: ./interfaces.py:69
+#: ./interfaces.py:77
 msgid "Select the number of rooms for this object"
 msgstr ""
 
@@ -213,24 +201,20 @@ msgstr ""
 msgid "Select the number of rooms for this object."
 msgstr ""
 
-#: ./content/schemata.py:37
-msgid "Select the one option."
-msgstr ""
-
-#: ./interfaces.py:81
-msgid "Select the option."
-msgstr ""
-
 #: ./interfaces.py:105
 msgid "Select the type garage for this object. You can choose more than 1 option"
 msgstr ""
 
-#: ./interfaces.py:77
+#: ./interfaces.py:117
 msgid "Select the type object"
 msgstr ""
 
 #: ./content/schemata.py:211
 msgid "Select the type of garage for this object. You can choose more than one option."
+msgstr ""
+
+#: ./content/schemata.py:156
+msgid "Select the types of insulation used for this object. You can choose more than one option"
 msgstr ""
 
 #: ./content/schemata.py:140
