@@ -35,7 +35,8 @@
       </metal:field>
 
       <div class="reb-photo-show"
-           tal:define="batch view/photo_batch">
+           tal:define="batch view/photo_batch"
+           tal:condition="batch">
         <div class="reb-selected-photo">
           <img tal:replace="structure batch/selected_tag" />
         </div>
