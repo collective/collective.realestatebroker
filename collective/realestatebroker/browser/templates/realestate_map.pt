@@ -17,31 +17,57 @@
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
-      <metal:field use-macro="python:context.widget('text', mode='view')">
-        Body text
-      </metal:field>
+      <div tal:define="view context/@@maps_googlemaps_view"
+           style="clear: both;margin-top:2cm;">
+        <div class="googleMapView">
+          <dl metal:define-macro="markers">
+            <tal:markers tal:repeat="marker view/getMarkers">
+              <dt class="title">
+                <img src="" tal:replace="structure python:view.iconTagForMarker(marker)" />
+                <a href=""
+                   tal:attributes="href marker/url"
+                   tal:content="marker/title"> Title </a>
+              </dt>
+              <dd class="tab"
+                  title="Description"
+                  tal:condition="marker/description"
+                  i18n:attributes="title label_description;">
+                <div tal:content="marker/description" />
+              </dd>
+              <dd class="tab"
+                  tal:condition="marker/contents | nothing"
+                  tal:repeat="content marker/contents"
+                  tal:attributes="title content/title">
+                <div tal:replace="structure content/text" />
+                <div class="visualClear"><!-- --></div>
+              </dd>
+              <dd class="geo">
+                <span class="latitude" tal:content="marker/latitude" />
+                <span class="longitude" tal:content="marker/longitude" />
+              </dd>
+              <dd class="layers"
+                  tal:condition="marker/layers | nothing">
+                <ul>
+                  <li tal:repeat="layer marker/layers"
+                      tal:content="layer">Layer</li>
+                </ul>
+              </dd>
+              <tal:block tal:condition="marker/related_items | nothing">
+                <dt i18n:translate="label_related_items">Related Items</dt>
+                <dd>
+                  <tal:related tal:repeat="related marker/related_items">
+                    <a href=""
+                       tal:attributes="href related/url;
+                                       title related/description | nothing"
+                       tal:content="related/title" />
+                  </tal:related>
+                </dd>
+              </tal:block>
+            </tal:markers>
+          </dl>
+        </div>
 
-
-      <div class="googleMapView googleMapLocation">
-        <dl>
-
-          <dt class="title">
-
-            <img src="++resources++residential-icon.gif"
-                 alt="Residential"
-                 width="20"
-                 height="34"
-                 class="marker" />
-            <a href=""
-               tal:attributes="href context/absolute_url" />
-          </dt>
-
-          <metal:field use-macro="python:context.widget('geolocation',
-                                  mode='view')"> Variable goes here </metal:field>
-
-        </dl>
       </div>
-
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </div>

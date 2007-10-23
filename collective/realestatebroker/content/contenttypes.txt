@@ -3,3 +3,17 @@ Realestatebroker has two content types. One for *homes* and one for
 
     >>> from collective.realestatebroker.content.residential import Residential
     >>> from collective.realestatebroker.content.commercial import Commercial
+
+Both implement interfaces:
+
+    >>> from collective.realestatebroker.interfaces import IRealEstateContent
+    >>> from collective.realestatebroker.interfaces import IResidential
+    >>> from collective.realestatebroker.interfaces import ICommercial
+    >>> IRealEstateContent.implementedBy(Residential)
+    True
+    >>> IResidential.implementedBy(Residential)
+    True
+    >>> IRealEstateContent.implementedBy(Commercial)
+    True
+    >>> ICommercial.implementedBy(Commercial)
+    True

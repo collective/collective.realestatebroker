@@ -1,14 +1,15 @@
-<configure xmlns="http://namespaces.zope.org/browser"
-  i18n_domain="collective.realestatebroker">
-  
-    <page
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="collective.realestatebroker">
+
+    <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate"
         class=".base.RealEstateView"
         permission="zope2.View"
-    />    
+    />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.IResidential"
         name="residential_listing"
         class=".residential.ResidentialListing"
@@ -17,7 +18,7 @@
         allowed_interface=".interfaces.IResidentialListing"
     />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.IResidential"
         name="residential_view"
         class=".residential.ResidentialView"
@@ -26,7 +27,7 @@
         allowed_interface=".interfaces.IResidentialView"
     />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.IResidential"
         name="residential_chars"
         class=".residential.ResidentialView"
@@ -35,7 +36,7 @@
         allowed_interface=".interfaces.IResidentialView"
     />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate_photos"
         class=".base.RealEstateView"
@@ -44,7 +45,7 @@
         allowed_interface=".interfaces.IRealEstateView"
     />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate_map"
         class=".base.RealEstateView"
@@ -53,7 +54,7 @@
         allowed_interface=".interfaces.IRealEstateView"
     />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
         name="commercial_listing"
         class=".commercial.CommercialListing"
@@ -62,7 +63,7 @@
         allowed_interface=".interfaces.ICommercialListing"
     />
 
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
         name="commercial_view"
         class=".commercial.CommercialView"
@@ -71,8 +72,7 @@
         allowed_interface=".interfaces.ICommercialView"
     />
 
-
-    <page
+    <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
         name="commercial_chars"
         class=".commercial.CommercialView"
@@ -82,50 +82,79 @@
     />
     <!-- Viewlets which will render the tabs on real estate content. -->
 
-    <viewletManager
+    <browser:viewletManager
         name="realestatebroker.tabs"
         provides=".interfaces.ITabsManager"
         permission="zope2.View"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
 
-    <viewlet
+    <browser:viewlet
         name="realestatebroker.description.tab"
         manager=".interfaces.ITabsManager"
         class=".viewlets.DescriptionTab"
         permission="zope2.View"
         />
 
-    <viewlet
+    <browser:viewlet
         name="realestatebroker.chars.tab"
         manager=".interfaces.ITabsManager"
         class=".viewlets.CharsTab"
         permission="zope2.View"
         />
 
-    <viewlet
+    <browser:viewlet
         name="realestatebroker.photos.tab"
         manager=".interfaces.ITabsManager"
         class=".viewlets.PhotosTab"
         permission="zope2.View"
         />
 
-    <viewlet
+    <browser:viewlet
         name="realestatebroker.map.tab"
         manager=".interfaces.ITabsManager"
         class=".viewlets.MapTab"
         permission="zope2.View"
         />
 
-    <!-- Title for realestate content -->        
-    <viewletManager
+    <!-- Plone maps support -->
+    <adapter
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        provides="Products.Maps.interfaces.map.IMap"
+        factory=".map.RealEstateMap"
+        />
+
+    <adapter
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        provides="Products.Maps.interfaces.marker.IMarker"
+        factory=".map.RealEstateMarker"
+        />
+
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="maps_googlemaps_enabled_view"
+        class=".map.RealEstateMapView"
+        permission="zope.Public"
+        allowed_interface="Products.Maps.interfaces.map.IMapEnabledView"
+        />
+
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="maps_googlemaps_view"
+        class=".map.RealEstateMapView"
+        permission="zope2.View"
+        allowed_interface="Products.Maps.interfaces.map.IMapView"
+        />
+
+    <!-- Title for realestate content -->
+    <browser:viewletManager
         name="realestatebroker.titlemanager"
         provides=".interfaces.IRealEstateTitleManager"
         permission="zope2.View"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
 
-    <viewlet
+    <browser:viewlet
         name="realestatebroker.title"
         manager=".interfaces.IRealEstateTitleManager"
         class=".viewlets.RealEstateTitle"
@@ -134,23 +163,23 @@
 
     <!-- Resources -->
 
-    <resourceDirectory
+    <browser:resourceDirectory
       name="collective.realestatebroker.images"
       directory="images"
       />
 
-    <resource
+    <browser:resource
       name="realestatebroker.css"
       file="realestatebroker.css"
       />
 
     <!-- These two contenttype icons are listed separately as GS didn't seem
          to want to deal with a resource with slashes in it. -->
-    <resource
+    <browser:resource
       name="residential_icon.gif"
       file="images/residential_icon.gif"
       />
-    <resource
+    <browser:resource
       name="commercial_icon.gif"
       file="images/commercial_icon.gif"
       />

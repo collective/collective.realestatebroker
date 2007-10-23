@@ -90,9 +90,9 @@ RealEstateBroker installs under portal_properties a file with default attributes
     >>> pptool = self.portal.portal_properties
     >>> self.failUnless('realestatebroker_properties' in pptool.objectIds())
 
-    
+
 Vocabularies
---------------------
+------------
 
 For the city field we make use of a vocabulary that reads it's values from a
 propertysheet.
@@ -109,7 +109,7 @@ propertysheet.
     >>> vocab = HouseTypeVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['Apartment', 'Villa', 'Mansion']
-    
+
 For the rooms field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
@@ -125,3 +125,21 @@ propertysheet.
     >>> vocab = KKVONVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['Kosten koper (k.k.)', 'Vrij op naam (v.o.n.)']
+
+
+Google maps support
+-------------------
+
+Realestatebroker uses the 'Maps' product for google map support. Our
+contenttypes can be used by Maps:
+
+    >>> from collective.realestatebroker.interfaces import IRealEstateContent
+    >>> from collective.realestatebroker.interfaces import IResidential
+    >>> IRealEstateContent.providedBy(home1)
+    True
+    >>> IResidential.providedBy(home1)
+    True
+    >>> from Products.Maps.interfaces import IMapView
+    >>> view = home1.restrictedTraverse('@@maps_googlemaps_enabled_view')
+    >>> view.enabled # We want to show maps.
+    True
