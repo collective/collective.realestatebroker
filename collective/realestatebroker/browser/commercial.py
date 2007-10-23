@@ -35,14 +35,6 @@ class CommercialListing(RealEstateListing):
 
         return results
 
-    @memoize
-    def tag(self, **kwargs):
-        """Returns a html IMG tag of the firstimage in the folderish
-           RealEstate object. Needs to be implemented in subclasses. 
-        """
-        return self.getField('image').tag(self, **kwargs)
-                
-
 class CommercialView(RealEstateView):
     
     implements(ICommercialView)
