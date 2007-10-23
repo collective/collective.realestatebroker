@@ -3,11 +3,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 from Products.CMFCore.utils import getToolByName
 
-def DummyResidentialVocabularyFactory(context):
-    """ Dummy Vocabulary Factory for Residential Schema
-    """
-    return SimpleVocabulary.fromValues(("choice 1","choice 2","choice 3"))
-    
+
 def CityVocabularyFactory(context):
     """ Vocabulary Factory for cities in schemata
     """
@@ -49,7 +45,7 @@ def KKVONVocabularyFactory(context):
     kk_von_props = props.getProperty('kk_von')
     return SimpleVocabulary.fromValues(kk_von_props)
 
-def ResidentialLocationVocabularyFactory(context):
+def LocationVocabularyFactory(context):
     """ Location of property
     """
     pprops = getToolByName(context, 'portal_properties')
@@ -81,7 +77,7 @@ def InsulationVocabularyFactory(context):
     insulation_props = props.getProperty('insulation')
     return SimpleVocabulary.fromValues(insulation_props)  
     
-def ResidentialKindOfGardenVocabularyFactory(context):
+def KindOfGardenVocabularyFactory(context):
     """ Insulation system of property
     """
     pprops = getToolByName(context, 'portal_properties')
@@ -90,7 +86,7 @@ def ResidentialKindOfGardenVocabularyFactory(context):
     return SimpleVocabulary.fromValues(kind_of_garden_props)
     
     
-def ResidentialKindOfGarageVocabularyFactory(context):
+def KindOfGarageVocabularyFactory(context):
     """ Insulation system of property
     """
     pprops = getToolByName(context, 'portal_properties')

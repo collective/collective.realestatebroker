@@ -159,7 +159,7 @@ ResidentialCharacteristicsSchema =  atapi.Schema((
     atapi.StringField('location',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
-        vocabulary_factory='collective.realestatebroker.residential_location_list',
+        vocabulary_factory='collective.realestatebroker.location_list',
         widget = atapi.SelectionWidget(label = _(u'location'),
                  description = _(u'Select the location. You can choose more than 1 option.'),
                  )
@@ -181,7 +181,7 @@ ResidentialCharacteristicsSchema =  atapi.Schema((
     atapi.StringField('kindOfGarden',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
-        vocabulary_factory='collective.realestatebroker.residential_kind_of_garden_list',
+        vocabulary_factory='collective.realestatebroker.kind_of_garden_list',
         widget = atapi.SelectionWidget(label = _(u'Kind of garden'),
                  description = _(u'Select the kind of garden. You can choose more than one option'),
                  )
@@ -203,7 +203,7 @@ ResidentialCharacteristicsSchema =  atapi.Schema((
     atapi.StringField('kindOfGarage',
         storage=atapi.AnnotationStorage(),
         schemata=u"Characteristics",
-        vocabulary_factory='collective.realestatebroker.residential_kind_of_garage_list',
+        vocabulary_factory='collective.realestatebroker.kind_of_garage_list',
         widget = atapi.SelectionWidget(label = _(u'kindOfGarage'),
                  description = _(u'Select the type garage for this object. You can choose more than 1 option'),
                  )
