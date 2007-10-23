@@ -1,0 +1,65 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.realestatebroker">
+
+    <utility
+        component=".vocabularies.DummyResidentialVocabularyFactory"
+        name="collective.realestatebroker.DummyResidentialList"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        />
+    <utility
+         component=".vocabularies.CityVocabularyFactory"
+         name="collective.realestatebroker.city_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
+    <utility
+         component=".vocabularies.HouseTypeVocabularyFactory"
+         name="collective.realestatebroker.house_type_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
+    <utility
+         component=".vocabularies.RoomsVocabularyFactory"
+         name="collective.realestatebroker.rooms_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+    <utility
+         component=".vocabularies.KKVONVocabularyFactory"
+         name="collective.realestatebroker.kk_von_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
+    <utility
+         component=".vocabularies.CommercialTypeVocabularyFactory"
+         name="collective.realestatebroker.commercial_type_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+         
+    <utility
+         component=".vocabularies.ResidentialLocationVocabularyFactory"
+         name="collective.realestatebroker.residential_location_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         
+    <utility
+         component=".vocabularies.KindOfBuildingVocabularyFactory"
+         name="collective.realestatebroker.kind_of_building_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         
+    <utility
+         component=".vocabularies.HeatingVocabularyFactory"
+         name="collective.realestatebroker.heating_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />          
+         
+    <utility
+         component=".vocabularies.InsulationVocabularyFactory"
+         name="collective.realestatebroker.insulation_list"
+         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         
+   <utility
+        component=".vocabularies.ResidentialKindOfGarageVocabularyFactory"
+        name="collective.realestatebroker.residential_kind_of_garage_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />          
+
+   <utility
+        component=".vocabularies.ResidentialKindOfGardenVocabularyFactory"
+        name="collective.realestatebroker.residential_kind_of_garden_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />                               
+</configure>

@@ -97,7 +97,7 @@ Vocabularies
 For the city field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
-    >>> from collective.realestatebroker.content.base import CityVocabularyFactory
+    >>> from collective.realestatebroker.content.vocabularies import CityVocabularyFactory
     >>> vocab = CityVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['New York', 'London', 'Amsterdam', 'Paris', 'Tokyo', 'Alberschwende']
@@ -105,7 +105,7 @@ propertysheet.
 For the house type field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
-    >>> from collective.realestatebroker.content.base import HouseTypeVocabularyFactory
+    >>> from collective.realestatebroker.content.vocabularies import HouseTypeVocabularyFactory
     >>> vocab = HouseTypeVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['Apartment', 'Villa', 'Mansion']
@@ -113,7 +113,7 @@ propertysheet.
 For the rooms field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
-    >>> from collective.realestatebroker.content.base import RoomsVocabularyFactory
+    >>> from collective.realestatebroker.content.vocabularies import RoomsVocabularyFactory
     >>> vocab = RoomsVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['1', '2', '3', '4', '5', '6', '7', '8']
@@ -121,7 +121,7 @@ propertysheet.
 For the k.k./v.o.n. field we make use of a vocabulary that reads it's values from a
 propertysheet.
 
-    >>> from collective.realestatebroker.content.base import KKVONVocabularyFactory
+    >>> from collective.realestatebroker.content.vocabularies import KKVONVocabularyFactory
     >>> vocab = KKVONVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['Kosten koper (k.k.)', 'Vrij op naam (v.o.n.)']

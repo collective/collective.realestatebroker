@@ -3,63 +3,6 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.realestatebroker">
-
-    <utility
-        component=".base.DummyResidentialVocabularyFactory"
-        name="collective.realestatebroker.DummyResidentialList"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-        />
-    <utility
-         component=".base.CityVocabularyFactory"
-         name="collective.realestatebroker.city_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />
-
-    <utility
-         component=".base.HouseTypeVocabularyFactory"
-         name="collective.realestatebroker.house_type_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />
-
-    <utility
-         component=".base.RoomsVocabularyFactory"
-         name="collective.realestatebroker.rooms_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-    <utility
-         component=".base.KKVONVocabularyFactory"
-         name="collective.realestatebroker.kk_von_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />
-
-    <utility
-         component=".base.CommercialTypeVocabularyFactory"
-         name="collective.realestatebroker.commercial_type_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />
-         
-    <utility
-         component=".base.ResidentialLocationVocabularyFactory"
-         name="collective.realestatebroker.residential_location_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-         
-    <utility
-         component=".base.KindOfBuildingVocabularyFactory"
-         name="collective.realestatebroker.kind_of_building_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-         
-    <utility
-         component=".base.HeatingVocabularyFactory"
-         name="collective.realestatebroker.heating_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />          
-         
-    <utility
-         component=".base.InsulationVocabularyFactory"
-         name="collective.realestatebroker.insulation_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-         
-   <utility
-        component=".base.ResidentialKindOfGarageVocabularyFactory"
-        name="collective.realestatebroker.residential_kind_of_garage_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />          
-
-   <utility
-        component=".base.ResidentialKindOfGardenVocabularyFactory"
-        name="collective.realestatebroker.residential_kind_of_garden_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />                               
+    
+       <include file="vocabularies.zcml" />
 </configure>
