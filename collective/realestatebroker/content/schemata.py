@@ -238,7 +238,6 @@ MapsSchema =  atapi.Schema((
         LocationField(
             'geolocation',
             languageIndependent = 1,
-            default_method="getDefaultLocation",
             schemata=u"Location",
             required=True,
             validators=('isGeoLocation',),
