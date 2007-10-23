@@ -17,6 +17,7 @@ class TestCase(ptc.PloneTestCase):
     class layer(PloneSite):
         @classmethod
         def setUp(cls):
+            ptc.installProduct('Maps')
             fiveconfigure.debug_mode = True
             zcml.load_config('configure.zcml',
                              collective.realestatebroker)
