@@ -30,7 +30,7 @@
          
     <utility
          component=".vocabularies.LocationVocabularyFactory"
-         name="collective.realestatebroker.ocation_list"
+         name="collective.realestatebroker.location_list"
          provides="zope.schema.interfaces.IVocabularyFactory" />  
          
     <utility
