@@ -33,7 +33,10 @@ products").
     >>> self.login('admin')
     >>> qi = self.portal.portal_quickinstaller
     >>> qi.installProduct('collective.realestatebroker')
-    ''
+    
+(This returns not an empty string because we're using Extensions/Install.py which starts
+GS installation after installing the Maps product dependency.) 
+
 
 Testing for Maps Product Dependency
 -----------------------------------
@@ -43,7 +46,7 @@ that this product is also available in the site after RealEstateBroker has
 been installed
 
     >>> self.portal.portal_quickinstaller.isProductInstalled('Maps')
-    ''
+    True
 
 Commercial and residential real estate content types
 ----------------------------------------------------
