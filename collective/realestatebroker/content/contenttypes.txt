@@ -1,4 +1,10 @@
-Realestatebroker has two content types. One for *homes* and one for
+Content types
+=============
+
+Residential and commercial
+--------------------------
+
+Realestatebroker has two main content types. One for *homes* and one for
 *businesses*.
 
     >>> from collective.realestatebroker.content.residential import Residential
@@ -24,4 +30,15 @@ For flash mass-upload we need to implement IUploadingCapable.
     >>> IUploadingCapable.implementedBy(Residential)
     True
     >>> IUploadingCapable.implementedBy(Commercial)
+    True
+
+Floor info
+----------
+
+There's an additional small content type to help with ordering photos per
+floor and to provide a bit of description per floor for the PDF.
+
+    >>> from collective.realestatebroker.content.floorinfo import FloorInfo
+    >>> from collective.realestatebroker.interfaces import IFloorInfo
+    >>> IFloorInfo.implementedBy(FloorInfo)
     True

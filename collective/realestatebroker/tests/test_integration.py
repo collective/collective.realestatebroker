@@ -18,6 +18,7 @@ class TestCase(ptc.PloneTestCase):
         @classmethod
         def setUp(cls):
             ptc.installProduct('Maps')
+            ptc.installProduct('PloneFlashUpload')
             fiveconfigure.debug_mode = True
             zcml.load_config('configure.zcml',
                              collective.realestatebroker)

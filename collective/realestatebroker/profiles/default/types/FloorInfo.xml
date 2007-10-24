@@ -1,0 +1,30 @@
+<object name="Residential"
+        meta_type="Factory-based Type Information"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="collective.realestatebroker">
+  <property name="title" i18n:translate="">Floor info</property>
+  <property name="description"
+            i18n:translate="">
+    Simple content type for floor information
+  </property>
+
+  <property name="content_icon">++resource++floorinfo_icon.gif</property>
+  <property name="content_meta_type">FloorInfo</property>
+  <property name="product">collective.realestatebroker</property>
+  <property name="factory">addFloorInfo</property>
+  <property name="immediate_view">base_view</property>
+  <property name="global_allow">False</property>
+  <property name="allow_discussion">False</property>
+  <alias from="view" to="base_view"/>
+  <alias from="(Default)" to="base_view"/>
+  <alias from="edit" to="base_edit"/>
+  <action title="view" action_id="view" category="object"
+          condition_expr="python:1" url_expr="string:${object_url}/base_view"
+          visible="True">
+    <permission value="View"/>
+  </action>
+  <action title="Edit" action_id="edit" category="object" condition_expr=""
+          url_expr="string:${object_url}/base_edit" visible="True">
+    <permission value="Modify portal content"/>
+  </action>
+</object>

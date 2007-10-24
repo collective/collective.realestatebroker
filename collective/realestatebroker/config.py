@@ -23,6 +23,7 @@ except:
 ADD_PERMISSIONS = {
     "Residential" : "realestatebroker : Add Residential real estate",
     "Commercial" : "realestatebroker : Add Commercial real estate",
+    "FloorInfo" : "realestatebroker : Add floor info",
 }
 
 # For migration from the status field to the Worklflow state we need to change

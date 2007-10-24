@@ -33,19 +33,24 @@ products").
     >>> self.login('admin')
     >>> qi = self.portal.portal_quickinstaller
     >>> qi.installProduct('collective.realestatebroker')
-    
+
 (This returns not an empty string because we're using Extensions/Install.py which starts
-GS installation after installing the Maps product dependency.) 
+GS installation after installing the Maps product dependency.)
 
 
-Testing for Maps Product Dependency
------------------------------------
+Testing for product dependencies
+--------------------------------
 
 RealEstateBroker makes use of the Maps product to integrate Google Maps. Check
-that this product is also available in the site after RealEstateBroker has 
-been installed
+that this product is also available in the site after RealEstateBroker has
+been installed.
 
     >>> self.portal.portal_quickinstaller.isProductInstalled('Maps')
+    True
+
+Likewise, ploneflashupload for easy mass-upload of photos.
+
+    >>> self.portal.portal_quickinstaller.isProductInstalled('PloneFlashUpload')
     True
 
 Commercial and residential real estate content types
@@ -56,6 +61,15 @@ Commercial and residential real estate content types
     >>> self.portal.invokeFactory('Commercial', id='office1')
     'office1'
 
+There is an additional helper content type, which can only be added inside a
+real estate content type.
+
+    >>> self.portal.invokeFactory('FloorInfo', id='wont_work')
+    Traceback (most recent call last):
+    ...
+    ValueError: Disallowed subobject type: FloorInfo
+    >>> self.portal.office1.invokeFactory('FloorInfo', id='floor1')
+    'floor1'
 
 Real Estate Workflow
 --------------------
