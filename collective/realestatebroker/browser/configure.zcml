@@ -10,6 +10,14 @@
     />
 
     <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="photo-management"
+        class=".base.RealEstateView"
+        permission="zope2.View"
+        template="templates/photo_management.pt"
+    />
+
+    <browser:page
         for="collective.realestatebroker.interfaces.IResidential"
         name="residential_listing"
         class=".residential.ResidentialListing"
