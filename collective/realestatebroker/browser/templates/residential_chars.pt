@@ -14,7 +14,7 @@
   <div tal:replace="structure provider:realestatebroker.titlemanager" />
   <div tal:replace="structure provider:plone.belowcontenttitle" />
   <div tal:replace="structure provider:plone.abovecontentbody" />
-  <ul class="formTabs">
+  <ul class="formTabs realestatebroker-tabs">
     <li tal:replace="structure provider:realestatebroker.tabs" />
   </ul>
   <metal:field use-macro="python:context.widget('text', mode='view')">
