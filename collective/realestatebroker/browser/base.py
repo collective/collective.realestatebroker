@@ -62,7 +62,7 @@ class RealEstateView(BrowserView):
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
-                         sort_on='sortable_title',
+                         sort_on='getObjPositionInParent',
                          path='/'.join(self.context.getPhysicalPath()))
         return brains
 
