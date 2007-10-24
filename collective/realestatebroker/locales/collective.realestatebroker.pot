@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-10-23 16:28+0000\n"
+"POT-Creation-Date: 2007-10-24 09:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,6 +269,16 @@ msgstr ""
 msgid "airco"
 msgstr ""
 
+#. Default: "Characteristics"
+#: ./browser/templates/chars_tab.pt:3
+msgid "chars_tab"
+msgstr ""
+
+#. Default: "Description"
+#: ./browser/templates/description_tab.pt:3
+msgid "description_tab"
+msgstr ""
+
 #: ./content/schemata.py:180
 msgid "garden"
 msgstr ""
@@ -316,5 +326,15 @@ msgstr ""
 
 #: ./content/schemata.py:166
 msgid "location"
+msgstr ""
+
+#. Default: "Map"
+#: ./browser/templates/map_tab.pt:3
+msgid "map_tab"
+msgstr ""
+
+#. Default: "Photos"
+#: ./browser/templates/photos_tab.pt:3
+msgid "photos_tab"
 msgstr ""
 

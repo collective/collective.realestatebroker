@@ -262,6 +262,16 @@ msgstr "Postcode"
 msgid "airco"
 msgstr "Airconditioning"
 
+#. Default: "Characteristics"
+#: ./browser/templates/chars_tab.pt:3
+msgid "chars_tab"
+msgstr "Kenmerken"
+
+#. Default: "Description"
+#: ./browser/templates/description_tab.pt:3
+msgid "description_tab"
+msgstr "Omschrijving"
+
 #: ./content/schemata.py:180
 msgid "garden"
 msgstr "Tuin"
@@ -310,4 +320,14 @@ msgstr "Vrij op naam"
 #: ./content/schemata.py:166
 msgid "location"
 msgstr "Locatie"
+
+#. Default: "Map"
+#: ./browser/templates/map_tab.pt:3
+msgid "map_tab"
+msgstr "Kaart"
+
+#. Default: "Photos"
+#: ./browser/templates/photos_tab.pt:3
+msgid "photos_tab"
+msgstr "Foto's'"
 

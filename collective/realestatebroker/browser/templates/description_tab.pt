@@ -1,4 +1,5 @@
-<li class="realestate_tab formTab firstFormTab">
+<li class="formTab firstFormTab"
+  i18n:domain="collective.realestatebroker">
   <span tal:condition="view/is_selected"
         class="selected"
         i18n:translate="description_tab">Description</span>    
