@@ -48,4 +48,15 @@ a:hover {
   margin: 20px 0 !important;
 }
 
+.rebTabs .selected {
+  border-top: 1px solid #8cacbb;
+  border-left: 1px dotted #8cacbb;
+  border-bottom: 1px solid #8cacbb;
+  margin: 0;
+  padding: 0.125em 0.75em;
+  display: inline;
+  cursor: text;
+  color: #000;
+}
+
 /* *** Start layout of REB tabs *** */

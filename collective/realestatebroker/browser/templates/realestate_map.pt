@@ -13,12 +13,11 @@
       <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
-      <ul class="formTabs realestatebroker-tabs">
+      <ul class="formTabs rebTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
-      <div tal:define="view context/@@maps_googlemaps_view"
-           style="clear: both;margin-top:2cm;">
+      <div tal:define="view context/@@maps_googlemaps_view">
         <div class="googleMapView">
           <dl metal:define-macro="markers">
             <tal:markers tal:repeat="marker view/getMarkers">
