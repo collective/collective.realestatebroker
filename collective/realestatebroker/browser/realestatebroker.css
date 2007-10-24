@@ -60,3 +60,12 @@ a:hover {
 }
 
 /* *** Start layout of REB tabs *** */
+
+.reb-thumb {
+  float: left;
+  margin-bottom: 10px;
+}
+
+#rebAddress {
+  margin-left: 135px;
+}

@@ -1,17 +1,17 @@
 <div class="realestate-header">
   <div class="reb-thumb">
-    <img tal:replace="structure view/image_tag"/>
+    <img tal:replace="structure view/image_tag" />
   </div>
-  <div>
-    <address>
-      <h1 class="documentFirstHeading">
-        <metal:field use-macro="python:context.widget('title',
-                                mode='view')">
-          Title goes here.
-        </metal:field>
-      </h1>
-      <span tal:replace="view/zipcode" />, <span tal:replace="view/city" />
-    </address>
+  
+  <div id="rebAddress">
+    <h1 class="documentFirstHeading">
+      <metal:field use-macro="python:context.widget('title',
+                              mode='view')">
+        Title goes here.
+      </metal:field>
+    </h1>
+    <span tal:replace="view/zipcode" />, <span tal:replace="view/city" />
+    
     <div class="price">
       <span tal:replace="view/price" />&nbsp;
          <span tal:replace="view/after_price" />

@@ -329,5 +329,5 @@ msgstr "Kaart"
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:3
 msgid "photos_tab"
-msgstr "Foto's'"
+msgstr "Foto's"
 
