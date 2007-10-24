@@ -17,3 +17,11 @@ Both implement interfaces:
     True
     >>> ICommercial.implementedBy(Commercial)
     True
+
+For flash mass-upload we need to implement IUploadingCapable.
+
+    >>> from Products.PloneFlashUpload.interfaces import IUploadingCapable
+    >>> IUploadingCapable.implementedBy(Residential)
+    True
+    >>> IUploadingCapable.implementedBy(Commercial)
+    True

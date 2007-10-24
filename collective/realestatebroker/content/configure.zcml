@@ -6,14 +6,4 @@
 
   <include file="vocabularies.zcml" />
 
-  <!-- Allow flash uploads. -->
-  <class class=".residential.Residential">
-    <implements
-        interface="Products.PloneFlashUpload.interfaces.IUploadingCapable" />
-  </class>
-  <class class=".residential.Residential">
-    <implements
-        interface="Products.PloneFlashUpload.interfaces.IUploadingCapable" />
-  </class>
-
 </configure>

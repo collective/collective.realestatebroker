@@ -8,6 +8,7 @@ from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker.config import PROJECTNAME
 from collective.realestatebroker.content import schemata
 from collective.realestatebroker.interfaces import IResidential
+from Products.PloneFlashUpload.interfaces import IUploadingCapable
 
 ResidentialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralInfoSchema +
@@ -31,7 +32,7 @@ ResidentialSchema.moveField('kk_von',after='price')
 
 class Residential(atapi.OrderedBaseFolder):
     """Folderish content type for residential real estate."""
-    implements(IResidential)
+    implements(IResidential, IUploadingCapable)
 
     portal_type = "Residential"
     _at_rename_after_creation = True

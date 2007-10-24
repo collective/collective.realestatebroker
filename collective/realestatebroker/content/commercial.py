@@ -4,6 +4,7 @@ from collective.realestatebroker.config import PROJECTNAME
 from collective.realestatebroker.content import schemata
 from collective.realestatebroker.interfaces import ICommercial
 from zope.interface import implements
+from Products.PloneFlashUpload.interfaces import IUploadingCapable
 
 from collective.realestatebroker import REBMessageFactory as _
 
@@ -34,7 +35,7 @@ class Commercial(atapi.OrderedBaseFolder):
     portal_type = "Commercial"
     _at_rename_after_creation = True
     schema = CommercialSchema
-    implements(ICommercial)
+    implements(ICommercial, IUploadingCapable)
 
     address = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
