@@ -77,7 +77,7 @@ class RealEstateView(BrowserView):
         return item
 
     @memoize
-    def image_tag(self, **kwargs):
+    def image_tag(self):
         """Generate image tag using the api of the ImageField
         """
         if self.image_brains():
@@ -113,3 +113,13 @@ class RealEstateView(BrowserView):
                 continue
             batch[direction] = base_url + str(batch[direction])
         return batch
+
+    @memoize
+    def floor_info(self):
+        """Return list of dicts with floor info (title, desc, photos)."""
+        pass
+
+    @memoize
+    def floor_plans(self):
+        """Return list of floorplans (photos + title)"""
+        pass
