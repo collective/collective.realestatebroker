@@ -1,7 +1,10 @@
 <li class="realestate_tab formTab">
+  <span tal:condition="view/is_selected"
+        class="selected"
+        i18n:translate="photos_tab">Photos</span>    
   <a href=""
-     tal:attributes="href view/photos_view;
-                     class python:view.is_selected and 'selected'">
+     tal:attributes="href view/photos_view"
+     tal:condition="not:view/is_selected">
     <span i18n:translate="photos_tab">Photos</span>
   </a>
 </li>
