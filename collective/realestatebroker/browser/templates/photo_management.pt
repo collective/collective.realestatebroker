@@ -11,6 +11,19 @@
         Photo and floor management
       </h1>
 
+      <div>
+        TEMPORARY NOTES: re-order by going to folder_contents
+      </div>
+      <div>
+        TEMPORARY NOTES: Edit floors by, well, editing them.
+      </div>
+      <div>
+        TEMPORARY NOTES: This needs to be integrated somewhere nice.
+      </div>
+      <div>
+        TEMPORARY NOTES: And we need a nice KSS add-floor action.
+      </div>
+
       <h2 i18n:translate="heading_main_photo">
         Main photo
       </h2>
