@@ -7,6 +7,30 @@
   <body>
     <div metal:fill-slot="main">
 
+      <h1 i18n:translate="heading_manage_photos">
+        Photo management
+      </h1>
+
+      <h2 i18n:translate="heading_main_photo">
+        Main photo
+      </h2>
+
+
+      <tal:floors tal:repeat="floor python:[]">
+        <h2 i18n:translate="">
+          Per verdieping
+        </h2>
+
+      </tal:floors>
+
+      <h2 i18n:translate="heading_maps">
+        Maps
+      </h2>
+
+
+      <h2 i18n:translate="heading_remaining">
+        Remaining
+      </h2>
 
 
     </div>

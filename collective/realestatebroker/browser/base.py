@@ -10,6 +10,10 @@ from interfaces import IRealEstateView
 
 from collective.realestatebroker import utils
 
+# Image sizes for which we want tags.
+SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
+
+
 class RealEstateListing(BrowserView):
     """Base view for all objects with IRealEstateContent.
     """
@@ -53,18 +57,33 @@ class RealEstateView(BrowserView):
         return '.'.join(elements)
 
     @memoize
-    def image_tag(self, **kwargs):
-        """Generate image tag using the api of the ImageField
+    def image_brains(self):
+        """Grab the brains of all images inside the object.
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
                          sort_on='sortable_title',
                          path='/'.join(self.context.getPhysicalPath()))
-        if brains:
-            first_image = brains[0].getObject()
-            return first_image.getField('image').tag(first_image,
-                                                     scale='thumb',
-                                                     **kwargs)
+        return brains
+
+    def decorate_image(self, brain):
+        item = {}
+        obj = brain.getObject()
+        for size in SIZES:
+            tagname = 'tag_' + size
+            item[tagname] = obj.getField('image').tag(obj, scale=size)
+        item['url'] = brain.getURL
+        item['title'] = brain.Title
+        return item
+
+    @memoize
+    def image_tag(self, **kwargs):
+        """Generate image tag using the api of the ImageField
+        """
+        if self.image_brains():
+            first_image = self.image_brains()[0]
+            info = self.decorate_image(first_image)
+            return info['tag_thumb']
 
     @memoize
     def CookedBody(self):
@@ -73,10 +92,7 @@ class RealEstateView(BrowserView):
 
     @memoize
     def photo_batch(self):
-        catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog(object_provides=IATImage.__identifier__,
-                         sort_on='sortable_title',
-                         path='/'.join(self.context.getPhysicalPath()))
+        brains = self.image_brains()
         selected = int(self.context.request.get('selected', 0))
         batch = utils.batch(brains, selected=selected)
         if not batch:
@@ -84,14 +100,13 @@ class RealEstateView(BrowserView):
         base_url = self.context.absolute_url() + '/photos?selected='
         # Now decorate the bare stuff with what we need.
         selected_brain = batch['selected']
-        selected_obj = selected_brain.getObject()
-        selected_tag = selected_obj.getField('image').tag(selected_obj)
+        decoration = self.decorate_image(selected_brain)
+        selected_tag = decoration['tag_large']
         batch['selected_tag'] = selected_tag
         for item in batch['items']:
             brain = item['item']
-            obj = brain.getObject()
-            tag = obj.getField('image').tag(obj, scale='thumb')
-            item['tag'] = tag
+            decoration = self.decorate_image(brain)
+            item.update(decoration)
             item['url'] = base_url + str(item['index'])
         for direction in ['forward', 'reverse', 'fastforward', 'fastreverse']:
             if batch[direction] == None:
