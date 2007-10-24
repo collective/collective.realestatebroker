@@ -1,10 +1,11 @@
 <div class="realestate-header">
-  <div class="reb-thumb">
+  <div class="reb-thumb"
+    tal:condition="view/image_tag">
     <img tal:replace="structure view/image_tag" />
   </div>
   
   <div id="rebAddress">
-    <h1 class="documentFirstHeading">
+    <h1>
       <metal:field use-macro="python:context.widget('title',
                               mode='view')">
         Title goes here.

@@ -15,9 +15,11 @@
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
-      <metal:field use-macro="python:context.widget('description', mode='view')">
-        Description
-      </metal:field>
+      <div class="rebDescription">
+        <metal:field use-macro="python:context.widget('description', mode='view')">
+          Description
+        </metal:field>
+      </div>
       
       <ul class="formTabs rebTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />

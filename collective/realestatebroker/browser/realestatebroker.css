@@ -43,7 +43,7 @@ a:hover {
   font-size: 100%;
 }
 
-/* *** Start layout of REB tabs *** */
+/* *** Start layout of REB object view *** */
 .rebTabs {
   margin: 20px 0 !important;
 }
@@ -59,13 +59,13 @@ a:hover {
   color: #000;
 }
 
-/* *** Start layout of REB tabs *** */
-
 .reb-thumb {
   float: left;
-  margin-bottom: 10px;
+  margin: 0 10px 10px 0;
 }
 
-#rebAddress {
-  margin-left: 135px;
+#rebAddress h1 {
+  border-bottom: none;
 }
+
+/* *** End layout of REB object view *** */
