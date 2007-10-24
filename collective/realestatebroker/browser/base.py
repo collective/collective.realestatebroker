@@ -62,7 +62,9 @@ class RealEstateView(BrowserView):
                          path='/'.join(self.context.getPhysicalPath()))
         if brains:
             first_image = brains[0].getObject()
-            return first_image.getField('image').tag(first_image, scale='thumb', **kwargs)
+            return first_image.getField('image').tag(first_image,
+                                                     scale='thumb',
+                                                     **kwargs)
 
     @memoize
     def CookedBody(self):
