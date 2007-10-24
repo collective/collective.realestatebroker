@@ -40,3 +40,5 @@ STATE_TRANSITION_MAP = dict(offline=None,
                             sold=('publish','available','negotiate',
                                   'reserve','sell'),
                             )
+
+FLOORPLANS_ID = 'floorplans'

@@ -9,6 +9,7 @@ from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 
 from collective.realestatebroker import utils
+from collective.realestatebroker.config import FLOORPLANS_ID
 import logging
 logger = logging.getLogger('realestatebroker')
 
@@ -117,9 +118,16 @@ class RealEstateView(BrowserView):
             batch[direction] = base_url + str(batch[direction])
         return batch
 
+    def _check_floorplans(self):
+        if not FLOORPLANS_ID in self.context.objectIds():
+            self.context.invokeFactory('FloorInfo',
+                                       id=FLOORPLANS_ID,
+                                       title='Floor plans')
+
     @memoize
-    def floor_info(self):
+    def all_floor_info(self):
         """Return list of dicts with floor info (title, desc, photos)."""
+        self._check_floorplans()
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(sort_on='getObjPositionInParent',
                          path='/'.join(self.context.getPhysicalPath()))
@@ -130,6 +138,7 @@ class RealEstateView(BrowserView):
                 # A new floor
                 current_floor += 1
                 floor = {}
+                floor['id'] = brain.id
                 floor['title'] = brain.Title
                 floor['description'] = brain.Description
                 floor['photos'] = []
@@ -147,6 +156,15 @@ class RealEstateView(BrowserView):
         return floors
 
     @memoize
+    def floor_info(self):
+        """Return all_floor_info, but filter out the floor plans."""
+        all = self.all_floor_info()
+        return [floor for floor in all
+                if floor['id'] != FLOORPLANS_ID]
+
+    @memoize
     def floor_plans(self):
-        """Return list of floorplans (photos + title)"""
-        pass
+        """Return all_floor_info, but only floor plans."""
+        all = self.all_floor_info()
+        return [floor for floor in all
+                if floor['id'] == FLOORPLANS_ID]

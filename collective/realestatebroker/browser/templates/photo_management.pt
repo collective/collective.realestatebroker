@@ -32,14 +32,18 @@
         </ul>
       </tal:floors>
 
-      <h2 i18n:translate="heading_floor_plans">
-        Floor plans
-      </h2>
-      <ul>
-        <li tal:repeat="photo view/floor_plans">
-          <img tal:replace="structure photo/tag_thumb"/>
-        </li>
-      </ul>
+      <tal:floors tal:repeat="floor view/floor_plans">
+        <!-- Btw, there's always only one. -->
+        <h2 i18n:translate="heading_floor_plans">
+          Floor plans
+        </h2>
+        <ul>
+          <li tal:repeat="photo floor/photos">
+            <img tal:replace="structure photo/tag_thumb"/>
+          </li>
+        </ul>
+      </tal:floors>
+
 
     </div>
   </body>
