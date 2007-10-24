@@ -21,7 +21,8 @@
         </metal:field>
       </div>
       
-      <ul class="formTabs rebTabs">
+      <ul id="rebTabs" 
+        class="formTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
       

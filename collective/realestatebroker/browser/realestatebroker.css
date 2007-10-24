@@ -44,19 +44,17 @@ a:hover {
 }
 
 /* *** Start layout of REB object view *** */
-.rebTabs {
+#rebTabs {
   margin: 20px 0 !important;
 }
 
-.rebTabs .selected {
-  border-top: 1px solid #8cacbb;
-  border-left: 1px dotted #8cacbb;
-  border-bottom: 1px solid #8cacbb;
-  margin: 0;
-  padding: 0.125em 0.75em;
-  display: inline;
+#rebTabs .selected {
   cursor: text;
   color: #000;
+}
+
+#rebTabs a {
+  padding: 0.125em 0.75em !important;
 }
 
 .reb-thumb {
