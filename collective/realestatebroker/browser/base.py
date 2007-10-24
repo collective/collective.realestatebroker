@@ -9,6 +9,9 @@ from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 
 from collective.realestatebroker import utils
+import logging
+logger = logging.getLogger('realestatebroker')
+
 
 # Image sizes for which we want tags.
 SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
@@ -117,7 +120,31 @@ class RealEstateView(BrowserView):
     @memoize
     def floor_info(self):
         """Return list of dicts with floor info (title, desc, photos)."""
-        pass
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(sort_on='getObjPositionInParent',
+                         path='/'.join(self.context.getPhysicalPath()))
+        floors = []
+        current_floor = -1
+        for brain in brains:
+            if brain.portal_type == 'FloorInfo':
+                # A new floor
+                current_floor += 1
+                floor = {}
+                floor['title'] = brain.Title
+                floor['description'] = brain.Description
+                floor['photos'] = []
+                floors.append(floor)
+            elif brain.portal_type == 'Image':
+                # A photo
+                if current_floor == -1:
+                    continue
+                floor = floors[current_floor]
+                photo = self.decorate_image(brain)
+                floor['photos'].append(photo)
+            else:
+                # The residential or commercial item itself...
+                pass
+        return floors
 
     @memoize
     def floor_plans(self):
