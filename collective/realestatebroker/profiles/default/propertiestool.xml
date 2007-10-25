@@ -178,5 +178,12 @@
    <element value="Yes"/>
    <element value="No"/>
   </property>
+  <property name="floor_names" type="lines" purge="False">
+   <element value="First floor"/>
+   <element value="Second floor"/>
+   <element value="Third floor"/>
+   <element value="Additional"/>
+  </property>
+  <property name="floorplans_title" type="string">Floor plans</property>
  </object>
 </object>
