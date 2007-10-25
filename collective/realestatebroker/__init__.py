@@ -44,7 +44,9 @@ def initialize(context):
 
     from content import residential
     from content import commercial
-    from content import floorinfo
+    residential #PYFLAKES
+    commercial #PYFLAKES
+
 
     content_types, constructors, ftis = atapi.process_types(
         atapi.listTypes(config.PROJECTNAME),

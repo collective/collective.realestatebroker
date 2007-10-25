@@ -18,7 +18,6 @@
   <property name="allowed_content_types">
     <element value="Image"/>
     <element value="File"/>
-    <element value="FloorInfo"/>
   </property>
   <property name="allow_discussion">False</property>
   <alias from="view" to="commercial_view"/>

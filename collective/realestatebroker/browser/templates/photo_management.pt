@@ -8,54 +8,29 @@
     <div metal:fill-slot="main">
 
       <h1 i18n:translate="heading_manage_photos">
-        Photo and floor management
+        Photo management
       </h1>
-
-      <div>
-        TEMPORARY NOTES: re-order by going to folder_contents
-      </div>
-      <div>
-        TEMPORARY NOTES: Edit floors by, well, editing them.
-      </div>
-      <div>
-        TEMPORARY NOTES: This needs to be integrated somewhere nice.
-      </div>
-      <div>
-        TEMPORARY NOTES: And we need a nice KSS add-floor action.
-      </div>
 
       <h2 i18n:translate="heading_main_photo">
         Main photo
       </h2>
-      <div>
-        <img tal:replace="structure view/image_tag" />
-      </div>
 
-      <tal:floors tal:repeat="floor view/floor_info">
-        <h2 tal:content="floor/title">
-          Floor title
+
+      <tal:floors tal:repeat="floor python:[]">
+        <h2 i18n:translate="">
+          Per verdieping
         </h2>
-        <p tal:content="floor/description">
-          Floor description
-        </p>
-        <ul>
-          <li tal:repeat="photo floor/photos">
-            <img tal:replace="structure photo/tag_thumb"/>
-          </li>
-        </ul>
+
       </tal:floors>
 
-      <tal:floors tal:repeat="floor view/floor_plans">
-        <!-- Btw, there's always only one. -->
-        <h2 i18n:translate="heading_floor_plans">
-          Floor plans
-        </h2>
-        <ul>
-          <li tal:repeat="photo floor/photos">
-            <img tal:replace="structure photo/tag_thumb"/>
-          </li>
-        </ul>
-      </tal:floors>
+      <h2 i18n:translate="heading_maps">
+        Maps
+      </h2>
+
+
+      <h2 i18n:translate="heading_remaining">
+        Remaining
+      </h2>
 
 
     </div>

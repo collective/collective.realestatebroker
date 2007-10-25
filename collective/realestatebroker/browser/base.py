@@ -9,10 +9,6 @@ from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 
 from collective.realestatebroker import utils
-from collective.realestatebroker.config import FLOORPLANS_ID
-import logging
-logger = logging.getLogger('realestatebroker')
-
 
 # Image sizes for which we want tags.
 SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
@@ -66,7 +62,7 @@ class RealEstateView(BrowserView):
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
-                         sort_on='getObjPositionInParent',
+                         sort_on='sortable_title',
                          path='/'.join(self.context.getPhysicalPath()))
         return brains
 
@@ -81,7 +77,7 @@ class RealEstateView(BrowserView):
         return item
 
     @memoize
-    def image_tag(self):
+    def image_tag(self, **kwargs):
         """Generate image tag using the api of the ImageField
         """
         if self.image_brains():
@@ -117,54 +113,3 @@ class RealEstateView(BrowserView):
                 continue
             batch[direction] = base_url + str(batch[direction])
         return batch
-
-    def _check_floorplans(self):
-        if not FLOORPLANS_ID in self.context.objectIds():
-            self.context.invokeFactory('FloorInfo',
-                                       id=FLOORPLANS_ID,
-                                       title='Floor plans')
-
-    @memoize
-    def all_floor_info(self):
-        """Return list of dicts with floor info (title, desc, photos)."""
-        self._check_floorplans()
-        catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog(sort_on='getObjPositionInParent',
-                         path='/'.join(self.context.getPhysicalPath()))
-        floors = []
-        current_floor = -1
-        for brain in brains:
-            if brain.portal_type == 'FloorInfo':
-                # A new floor
-                current_floor += 1
-                floor = {}
-                floor['id'] = brain.id
-                floor['title'] = brain.Title
-                floor['description'] = brain.Description
-                floor['photos'] = []
-                floors.append(floor)
-            elif brain.portal_type == 'Image':
-                # A photo
-                if current_floor == -1:
-                    continue
-                floor = floors[current_floor]
-                photo = self.decorate_image(brain)
-                floor['photos'].append(photo)
-            else:
-                # The residential or commercial item itself...
-                pass
-        return floors
-
-    @memoize
-    def floor_info(self):
-        """Return all_floor_info, but filter out the floor plans."""
-        all = self.all_floor_info()
-        return [floor for floor in all
-                if floor['id'] != FLOORPLANS_ID]
-
-    @memoize
-    def floor_plans(self):
-        """Return all_floor_info, but only floor plans."""
-        all = self.all_floor_info()
-        return [floor for floor in all
-                if floor['id'] == FLOORPLANS_ID]

@@ -2,6 +2,5 @@
     <factorytypes>
         <type portal_type="Residential"/>
         <type portal_type="Commercial"/>
-        <type portal_type="FloorInfo"/>
     </factorytypes>
 </object>
