@@ -113,3 +113,32 @@ a.reb-selected img {
 .reb-nav-reverse {
   margin-right: 5px;
 }
+
+/* *** End foto slideshow *** */
+
+/* ** Start photo management.pt *** */
+
+#reb-photo-management table {
+  border-left: 1px solid #8cacbb;
+  border-bottom: 1px solid #8cacbb;
+  margin: 2em 0em;
+  border-collapse: collapse;
+  font-size: 90%;
+}
+
+#reb-photo-management th {
+  border-top: 1px solid #8cacbb;
+  border-right: 1px solid #8cacbb;
+  border-bottom: 1px solid #8cacbb;
+  padding: 0.25em 0.5em;
+  background: #dee7ec none repeat scroll 0%;
+  font-weight: normal;
+  text-transform: none;
+}
+
+#reb-photo-management td {
+   border-right: 1px solid #8cacbb;
+   padding: 0.25em 0.5em;
+}
+
+/* ** End photo management.pt *** */

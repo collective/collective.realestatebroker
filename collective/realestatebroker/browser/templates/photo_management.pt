@@ -22,19 +22,22 @@
       </div>
 
       <form action=""
-            tal:attributes="action view/configuration_action;">
+            tal:attributes="action view/configuration_action;"
+        id="reb-photo-management">
         <table>
           <thead>
             <tr>
-              <td i18n:translate="Photo">Photo</td>
-              <td tal:repeat="title view/floor_names"
+              <th i18n:translate="Photo">Photo</th>
+              <th tal:repeat="title view/floor_names"
                   tal:content="title"/>
             </tr>
           </thead>
           <tbody>
-            <tr tal:repeat="photo_info view/photo_configuration">
+            <tal:block tal:repeat="photo_info view/photo_configuration">
+            <tr tal:define="oddrow repeat/photo_info/odd"
+                tal:attributes="class python:oddrow and 'even' or 'odd';">
               <td>
-                <img tal:replace="structure photo_info/tag_thumb" />
+                <img tal:replace="structure photo_info/tag_tile" />
               </td>
               <td tal:repeat="choice photo_info/choices">
                 <input type="radio"
@@ -44,6 +47,7 @@
                                        value choice" />
               </td>
             </tr>
+            </tal:block>
           </tbody>
         </table>
         <input type="submit" title="submit"/>
