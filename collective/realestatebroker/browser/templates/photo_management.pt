@@ -14,24 +14,40 @@
       <h2 i18n:translate="heading_main_photo">
         Main photo
       </h2>
+      <div class="discreet">
+        The main photo is the first image in the folder.
+      </div>
+      <div>
+        <img tal:replace="structure view/image_tag" />
+      </div>
 
-
-      <tal:floors tal:repeat="floor python:[]">
-        <h2 i18n:translate="">
-          Per verdieping
-        </h2>
-
-      </tal:floors>
-
-      <h2 i18n:translate="heading_maps">
-        Maps
-      </h2>
-
-
-      <h2 i18n:translate="heading_remaining">
-        Remaining
-      </h2>
-
+      <form action=""
+            tal:attributes="action view/configuration_action;">
+        <table>
+          <thead>
+            <tr>
+              <td i18n:translate="Photo">Photo</td>
+              <td tal:repeat="title view/floor_names"
+                  tal:content="title"/>
+            </tr>
+          </thead>
+          <tbody>
+            <tr tal:repeat="photo_info view/photo_configuration">
+              <td>
+                <img tal:replace="structure photo_info/tag_thumb" />
+              </td>
+              <td tal:repeat="choice photo_info/choices">
+                <input type="radio"
+                       name=""
+                       value=""
+                       tal:attributes="name photo_info/id;
+                                       value choice" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="submit" title="submit"/>
+      </form>
 
     </div>
   </body>

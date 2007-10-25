@@ -113,3 +113,52 @@ class RealEstateView(BrowserView):
                 continue
             batch[direction] = base_url + str(batch[direction])
         return batch
+
+    @memoize
+    def floor_names(self):
+        pprops = getToolByName(self.context, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        names = list(props.getProperty('floor_names'))
+        extra = props.getProperty('floorplans_title')
+        names.append(extra)
+        return names
+
+    @memoize
+    def photo_configuration(self):
+        configuration = []
+        for image_brain in self.image_brains():
+            image = self.decorate_image(image_brain)
+            image['id'] = image_brain['id']
+            image['choices'] = self.floor_names()
+            configuration.append(image)
+        return configuration
+
+    @memoize
+    def configuration_action(self):
+        """Return form action for submitting configuration matrix."""
+        base = self.context.absolute_url()
+        return base + '/@@handle-configuration'
+
+
+class HandleConfiguration(BrowserView):
+
+    def __call__(self):
+        form = self.request.form
+        result = []
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(object_provides=IATImage.__identifier__,
+                         sort_on='sortable_title',
+                         path='/'.join(self.context.getPhysicalPath()))
+        for image_brain in brains:
+            image_id = image_brain['id']
+            floor = form.get(image_id)
+            if floor:
+                result.append('%s in %s' % (image_id, floor))
+            else:
+                result.append('%s not handled yet' % image_id)
+
+        for message in result:
+            self.context.plone_utils.addPortalMessage(message)
+        response = self.request.response
+        here_url = self.context.absolute_url()
+        response.redirect(here_url)

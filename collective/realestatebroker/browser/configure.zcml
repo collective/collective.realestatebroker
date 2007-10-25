@@ -125,6 +125,17 @@
         permission="zope2.View"
         />
 
+    <!-- Form handling -->
+    <browser:page
+        name="handle-configuration"
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        class=".base.HandleConfiguration"
+        permission="zope2.View"
+        />
+    <!-- TODO: permission ^^^^ -->
+
+
+
     <!-- Plone maps support -->
     <adapter
         for="collective.realestatebroker.interfaces.IRealEstateContent"
