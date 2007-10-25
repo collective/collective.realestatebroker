@@ -15,13 +15,13 @@ class CommercialListing(RealEstateListing):
     implements(ICommercialListing)
     
     @memoize
-    def sorted_listing(self):
+    def sorted_listing(self, count=10):
         """Returns a list of dicts representing an overview of the Commercial
         real estate. 
         """
         context = aq_inner(self.context)
         brains = self.catalog(object_provides='ICommercial',
-                              sort_on='sortable_title')
+                              sort_on='sortable_title')[:count]
         results = []
         for brain in brains:
             obj = brain.getObject()

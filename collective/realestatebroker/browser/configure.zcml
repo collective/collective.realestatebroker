@@ -18,12 +18,11 @@
     />
 
     <browser:page
-        for="collective.realestatebroker.interfaces.IResidential"
+        for="*"
         name="residential_listing"
         class=".residential.ResidentialListing"
         template="templates/residential_listing.pt"
         permission="zope2.View"
-        allowed_interface=".interfaces.IResidentialListing"
     />
 
     <browser:page
@@ -63,7 +62,7 @@
     />
 
     <browser:page
-        for="collective.realestatebroker.interfaces.ICommercial"
+        for="*"
         name="commercial_listing"
         class=".commercial.CommercialListing"
         template="templates/commercial_listing.pt"

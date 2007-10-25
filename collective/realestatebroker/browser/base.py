@@ -21,6 +21,8 @@ class RealEstateListing(BrowserView):
     implements(IRealEstateListing)
 
     def __init__(self, context, request):
+        BrowserView.__init__(self, context,request)
+        
         self.catalog = getToolByName(self.context, 'portal_catalog')
 
     def sorted_listing(self, count):

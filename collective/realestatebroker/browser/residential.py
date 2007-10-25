@@ -17,7 +17,7 @@ class ResidentialListing(RealEstateListing):
     implements(IResidentialListing)
 
     @memoize
-    def sorted_listing(self, count):
+    def sorted_listing(self, count=10):
         """Returns a list of dicts representing an overview of the residential
         real estate.
         """

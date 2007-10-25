@@ -4,4 +4,6 @@
           meta_type="Factory-based Type Information"/>
   <object name="Commercial"
           meta_type="Factory-based Type Information"/>
+ <object name="Folder"
+    meta_type="Factory-based Type Information with dynamic views"/>          
 </object>
