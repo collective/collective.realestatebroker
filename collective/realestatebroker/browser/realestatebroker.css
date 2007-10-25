@@ -57,6 +57,10 @@ a:hover {
   padding: 0.125em 0.75em !important;
 }
 
+#rebTabs a:hover {
+  background-color: #dee7ec !important;
+}
+
 .reb-thumb {
   float: left;
   margin: 0 10px 10px 0;
@@ -67,3 +71,45 @@ a:hover {
 }
 
 /* *** End layout of REB object view *** */
+
+/* *** Start Photo slideshow *** */
+
+.reb-photo-show { }
+
+.reb-selected-photo { 
+  padding: 0.5em;
+}
+
+/* The main photo. Display it centered. */
+.reb-selected-photo img { 
+  margin-left: auto;
+  margin-right: auto;
+  display: block; /* display as block is needed for centering. */
+}
+
+ul.reb-photo-controls { 
+  padding: 0.25em;
+  margin: 10px 0;
+  text-align: center;
+}
+
+ul.reb-photo-controls li { 
+  display: inline;
+}
+
+/* The selected photo (out of the list of five). */
+a.reb-selected img { 
+  border: 5px solid #8cacbb;
+}
+
+.reb-photo-controls a {
+  border-bottom: none !important;
+}
+
+.reb-nav-forward {
+  margin-left: 5px;
+}
+
+.reb-nav-reverse {
+  margin-right: 5px;
+}

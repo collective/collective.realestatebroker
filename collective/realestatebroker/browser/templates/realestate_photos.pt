@@ -31,7 +31,8 @@
         <ul class="reb-photo-controls">
           <li tal:condition="batch/fastreverse">
             <a href=""
-               tal:attributes="href batch/fastreverse">
+               tal:attributes="href batch/fastreverse"
+               class="reb-nav-reverse">
               <img src="++resource++collective.realestatebroker.images/media-seek-backward.png"
                    alt="reverse"
                    width="22"
@@ -49,9 +50,10 @@
           </li>
           <li tal:condition="batch/fastforward">
             <a href=""
-               tal:attributes="href batch/fastforward">
+               tal:attributes="href batch/fastforward"
+               class="reb-nav-forward">
               <img src="++resource++collective.realestatebroker.images/media-seek-forward.png"
-                   alt="reverse"
+                   alt="forward"
                    width="22"
                    height="22" />
             </a>
