@@ -22,16 +22,16 @@
       cellspacing="0"
       class="residential-listing">
       <tbody valign="top">
-        <tr tal:repeat="item view/sorted_listing">
+        <tr tal:repeat="item view/get_folder_contents">
           <td>
             <a href=""
                tal:attributes="href item/url"
-               tal:condition="item/tag">
+               tal:condition="item/image_tag">
               <img src=""
-                   tal:replace="structure item/tag" />
+                   tal:replace="structure item/image_tag" />
             </a>
             <span tal:omit-tag=""
-                  tal:condition="not: item/tag">
+                  tal:condition="not: item/image_tag">
               &nbsp;
             </span>
           </td>

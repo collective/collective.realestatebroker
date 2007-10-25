@@ -37,6 +37,27 @@ class RealEstateListing(BrowserView):
         """
         raise NotImplementedError
 
+    def get_folder_contents(self):
+        """Return a list of dictionaries with the residential objects
+           in the folder
+        """
+        result = []
+        contentFilter = {'portal_type':['Residential','Commercial']}
+        for obj in self.context.listFolderContents(contentFilter=contentFilter):
+            #if obj.portal_type != 'Residential':
+            #    continue
+            realestate_view = obj.restrictedTraverse('@@realestate')
+            image_tag = realestate_view.image_tag()
+            result.append( {
+                'id' : obj.getId(),
+                'url': obj.absolute_url(),
+                'title':  obj.Title(),
+                'zipcode': obj.zipcode,
+                'city': obj.city,
+                'description': obj.Description(),
+                'image_tag': image_tag,
+                })
+        return result    
 
 class RealEstateView(BrowserView):
     """docstring for RealEstateView"""
