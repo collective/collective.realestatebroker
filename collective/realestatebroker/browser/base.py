@@ -167,6 +167,12 @@ class RealEstateView(BrowserView):
         base = self.context.absolute_url()
         return base + '/@@handle-configuration'
 
+    @memoize
+    def flash_upload_action(self):
+        """Return form action for uploading flash files."""
+        base = self.context.absolute_url()
+        return base + '/photo-management'
+
 
 class HandleConfiguration(BrowserView):
 

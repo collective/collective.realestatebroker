@@ -4,12 +4,69 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.realestatebroker">
+  <head>
+    <metal:block fill-slot="style_slot">
+      <!-- Copied from ploneflashupload -->
+      <link rel="stylesheet" href="audio.css"
+            tal:attributes="href string:$portal_url/++resource++ploneflashupload.css"
+            />
+    </metal:block>
+  </head>
   <body>
     <div metal:fill-slot="main">
 
       <h1 i18n:translate="heading_manage_photos">
         Photo management
       </h1>
+
+      <h2 i18n:translate="heading_bulk_upload">
+        Bulk-upload of multiple photos
+      </h2>
+
+      <!-- Start of ploneflashupload, copied from uploadform.pt -->
+
+      <metal:block define-macro="swf"
+                   tal:define="resourceurl string:$portal_url/++resource++;
+                               z3curl string:${resourceurl}z3c.widget.flashupload;">
+        <div class="upload-form-controls">
+          <form action="" name="upload_complete" method="get"
+                tal:attributes="action view/flash_upload_action">
+            <input type="hidden" name="portal_status_message" value="" />
+            <input type="button" id="flash.start.browsing" value="Upload Files"
+                   name="upload_button"
+                   class="context"
+                   i18n:attributes="value"
+                   onClick="JavaScript:z3cFlashUploadStartBrowsing()" />
+          </form>
+        </div>
+        <script type="text/javascript"
+                tal:content="string:
+                             var swf_upload_url='$z3curl/upload.swf';
+                             var swf_upload_target_path='${context/@@absolute_url}/uploadfile';
+                             ">
+        </script>
+        <div id="flashuploadtarget">
+          <!-- inside this div, the flash upload swf will be injected -->
+        </div>
+        <script type="text/javascript"
+                src=""
+                tal:attributes="src string:$z3curl/jquery.js">
+        </script>
+        <script type="text/javascript"
+                src=""
+                tal:attributes="src string:$z3curl/swfobject.js">
+        </script>
+        <script type="text/javascript"
+                src=""
+                tal:attributes="src string:$z3curl/upload.js">
+        </script>
+        <script type="text/javascript"
+                src=""
+                tal:attributes="src string:${resourceurl}ploneflashupload.js">
+        </script>
+      </metal:block>
+      <!-- End of ploneflashupload -->
+
 
       <h2 i18n:translate="heading_main_photo">
         Main photo
