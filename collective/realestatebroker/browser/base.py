@@ -87,7 +87,7 @@ class RealEstateView(BrowserView):
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
-                         sort_on='sortable_title',
+                         sort_on='getObjPositionInParent',
                          path='/'.join(self.context.getPhysicalPath()))
         return brains
 
@@ -151,13 +151,14 @@ class RealEstateView(BrowserView):
     @memoize
     def photo_configuration(self):
         configuration = []
-        for image_brain in self.image_brains():
+        for index, image_brain in enumerate(self.image_brains()):
             image = self.decorate_image(image_brain)
             image['id'] = image_brain['id']
             image['choices'] = self.floor_names()
             image_object = image_brain.getObject()
             annotation = IFloorInfo(image_object)
             image['current'] = annotation.floor
+            image['index'] = index
             configuration.append(image)
         return configuration
 
@@ -193,6 +194,16 @@ class HandleConfiguration(BrowserView):
                 annotation.floor = floor
                 messages.append(_(u"${image} is now attached to ${floor}.",
                                   mapping={'image': image_id, 'floor': floor}))
+        default = int(form.get('default'))
+        if default > 0:
+            # Move image with that index to the top.
+            new_default_brain = brains[default]
+            new_default_image = new_default_brain.getObject()
+            self.context.moveObjectsByDelta(new_default_brain['id'], -default)
+            self.context.plone_utils.reindexOnReorder(self.context)
+            messages.append(_(u"${image} is now the default.",
+                              mapping={'image': new_default_brain['id']}))
+
         for message in messages:
             self.context.plone_utils.addPortalMessage(message)
         response = self.request.response

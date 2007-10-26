@@ -68,22 +68,23 @@
       <!-- End of ploneflashupload -->
 
 
-      <h2 i18n:translate="heading_main_photo">
-        Main photo
+      <h2 i18n:translate="heading_photo_configuration">
+        Photo configuration
       </h2>
-      <div class="discreet">
-        The main photo is the first image in the folder.
-      </div>
-      <div>
-        <img tal:replace="structure view/image_tag" />
-      </div>
+      <p i18n:translate="explanation_photo_configuration">
+        In the form below, you can assign the photos to specific floors or you
+        can assign them to the floor plans. Also you can select the default
+        photo.
+      </p>
 
       <form action=""
+            method="post"
             tal:attributes="action view/configuration_action;"
         id="reb-photo-management">
         <table>
           <thead>
             <tr>
+              <th i18n:translate="">Default</th>
               <th i18n:translate="Photo">Photo</th>
               <th tal:repeat="title view/floor_names"
                   tal:content="title"/>
@@ -93,6 +94,19 @@
             <tal:block tal:repeat="photo_info view/photo_configuration">
             <tr tal:define="oddrow repeat/photo_info/odd"
                 tal:attributes="class python:oddrow and 'even' or 'odd';">
+              <td>
+                <input type="radio"
+                       tal:condition="python:photo_info['index'] == 0"
+                       checked="1"
+                       name="default"
+                       value=""
+                       tal:attributes="value photo_info/index" />
+                <input type="radio"
+                       tal:condition="python:photo_info['index'] > 0"
+                       name="default"
+                       value=""
+                       tal:attributes="value python:photo_info['index']" />
+              </td>
               <td>
                 <img tal:replace="structure photo_info/tag_tile" />
               </td>
