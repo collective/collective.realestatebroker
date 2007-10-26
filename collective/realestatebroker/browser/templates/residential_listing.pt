@@ -18,11 +18,12 @@
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
 
+    <metal:macro metal:use-macro="context/@@batch_widget/navigation" />
     <table cellpadding="0"
       cellspacing="0"
-      class="residential-listing">
+      class="residential-listing batchTable">
       <tbody valign="top">
-        <tr tal:repeat="item view/get_folder_contents">
+        <tr tal:repeat="item view/get_batched_folder_contents">
           <td>
             <a href=""
                tal:attributes="href item/url"

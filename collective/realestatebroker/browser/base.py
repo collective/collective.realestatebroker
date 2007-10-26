@@ -5,6 +5,11 @@ from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface.image import IATImage
 from plone.memoize.instance import memoize
 
+from ZTUtils import Batch, make_query
+from Products.CMFDefault.utils import Message as _
+
+# from CMFDefault.utils import ViewBase
+
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 from collective.realestatebroker.browser.interfaces import IFloorInfo
@@ -16,7 +21,66 @@ from collective.realestatebroker import utils
 SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
 
 
-class RealEstateListing(BrowserView):
+class BatchedEstateMixin(object):
+    """Provide helper methods for batching a folder listing.
+       To be used with a BrowserView """
+
+    _BATCH_SIZE = 2
+
+    @memoize
+    def _getBatchStart(self):
+        return self.request.form.get('b_start', 0)
+
+    @memoize
+    def _getBatchObj(self):
+        b_start = self._getBatchStart()
+        items = self._getItems()
+        return Batch(items, self._BATCH_SIZE, b_start, orphan=0)
+
+
+    @memoize
+    def _getNavigationURL(self, b_start):
+        target = self.request['ACTUAL_URL']
+        kw = {}
+
+        kw['b_start'] = b_start
+
+        query = kw and ('?%s' % make_query(kw)) or ''
+        return u'%s%s' % (target, query)
+
+    def navigation_previous(self):
+        batch_obj = self._getBatchObj().previous
+        if batch_obj is None:
+            return None
+
+        length = len(batch_obj)
+        url = self._getNavigationURL(batch_obj.first)
+        if length == 1:
+            title = _(u'Previous item')
+        else:
+            title = _(u'Previous ${count} items', mapping={'count': length})
+        return {'title': title, 'url': url}
+
+    @memoize
+    def navigation_next(self):
+        batch_obj = self._getBatchObj().next
+        if batch_obj is None:
+            return None
+
+        length = len(batch_obj)
+        url = self._getNavigationURL(batch_obj.first)
+        if length == 1:
+            title = _(u'Next item')
+        else:
+            title = _(u'Next ${count} items', mapping={'count': length})
+        return {'title': title, 'url': url}
+
+    @memoize
+    def summary_length(self):
+        length = self._getBatchObj().sequence_length
+        return length and thousands_commas(length) or ''
+
+class RealEstateListing(BrowserView, BatchedEstateMixin):
     """Base view for all objects with IRealEstateContent.
     """
 
@@ -60,6 +124,39 @@ class RealEstateListing(BrowserView):
                 'image_tag': image_tag,
                 })
         return result
+
+    def _getItems(self):
+        """ Return a list of (filtered) objects in a folder 
+            Used by BathedEstateMixin and get_batched_folder_contents 
+            to create a batched sequence and by helper methods to provide
+            values to the template for the next and previous items """
+
+        folderfilter = {'portal_type':['Residential','Commercial']}
+        return self.context.listFolderContents(contentFilter=folderfilter)
+
+    def get_batched_folder_contents(self):
+        """Return a list of dictionaries with the realestate objects
+           in the folder
+        """
+
+        result = []
+        
+        for obj in self._getBatchObj():
+            #if obj.portal_type != 'Residential':
+            #    continue
+            realestate_view = obj.restrictedTraverse('@@realestate')
+            image_tag = realestate_view.image_tag()
+            result.append( {
+                'id' : obj.getId(),
+                'url': obj.absolute_url(),
+                'title':  obj.Title(),
+                'zipcode': obj.zipcode,
+                'city': obj.city,
+                'description': obj.Description(),
+                'image_tag': image_tag,
+                })
+        return result    
+    
 
 class RealEstateView(BrowserView):
     """docstring for RealEstateView"""
