@@ -27,7 +27,7 @@ class IRealEstateContent(Interface):
         )
     price = schema.Int(
         title = _(u'Price'),
-        description = _(u'Fill in the price without dots or commas.'),        
+        description = _(u'Fill in the price without dots or commas.'),
         )
     kk_von = schema.TextLine(
         title = _(u'k.k./v.o.n.'),
@@ -68,7 +68,7 @@ class IRealEstateContent(Interface):
     location = schema.TextLine(
         title = _(u'location'),
         description = _(u'Select the location. You can choose more than one option.'),
-        )        
+        )
 
 class IResidential(IRealEstateContent):
     """Interface with the residential-specific fields."""

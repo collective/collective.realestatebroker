@@ -7,6 +7,8 @@ from plone.memoize.instance import memoize
 
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
+from collective.realestatebroker.browser.interfaces import IFloorInfo
+from collective.realestatebroker import REBMessageFactory as _
 
 from collective.realestatebroker import utils
 
@@ -22,7 +24,7 @@ class RealEstateListing(BrowserView):
 
     def __init__(self, context, request):
         BrowserView.__init__(self, context,request)
-        
+
         self.catalog = getToolByName(self.context, 'portal_catalog')
 
     def sorted_listing(self, count):
@@ -57,7 +59,7 @@ class RealEstateListing(BrowserView):
                 'description': obj.Description(),
                 'image_tag': image_tag,
                 })
-        return result    
+        return result
 
 class RealEstateView(BrowserView):
     """docstring for RealEstateView"""
@@ -153,6 +155,9 @@ class RealEstateView(BrowserView):
             image = self.decorate_image(image_brain)
             image['id'] = image_brain['id']
             image['choices'] = self.floor_names()
+            image_object = image_brain.getObject()
+            annotation = IFloorInfo(image_object)
+            image['current'] = annotation.floor
             configuration.append(image)
         return configuration
 
@@ -167,7 +172,7 @@ class HandleConfiguration(BrowserView):
 
     def __call__(self):
         form = self.request.form
-        result = []
+        messages = []
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
                          sort_on='sortable_title',
@@ -175,12 +180,14 @@ class HandleConfiguration(BrowserView):
         for image_brain in brains:
             image_id = image_brain['id']
             floor = form.get(image_id)
-            if floor:
-                result.append('%s in %s' % (image_id, floor))
-            else:
-                result.append('%s not handled yet' % image_id)
-
-        for message in result:
+            image_object = image_brain.getObject()
+            annotation = IFloorInfo(image_object)
+            existing_floor = annotation.floor
+            if floor != existing_floor:
+                annotation.floor = floor
+                messages.append(_(u"${image} is now attached to ${floor}.",
+                                  mapping={'image': image_id, 'floor': floor}))
+        for message in messages:
             self.context.plone_utils.addPortalMessage(message)
         response = self.request.response
         here_url = self.context.absolute_url()

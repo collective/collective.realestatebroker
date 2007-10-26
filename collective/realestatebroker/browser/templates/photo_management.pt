@@ -41,8 +41,16 @@
               </td>
               <td tal:repeat="choice photo_info/choices">
                 <input type="radio"
+                       tal:condition="python:photo_info['current'] != choice"
                        name=""
                        value=""
+                       tal:attributes="name photo_info/id;
+                                       value choice" />
+                <input type="radio"
+                       tal:condition="python:photo_info['current'] == choice"
+                       name=""
+                       value=""
+                       checked="1"
                        tal:attributes="name photo_info/id;
                                        value choice" />
               </td>

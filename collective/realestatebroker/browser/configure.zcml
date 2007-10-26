@@ -124,7 +124,7 @@
         permission="zope2.View"
         />
 
-    <!-- Form handling -->
+    <!-- Photo management -->
     <browser:page
         name="handle-configuration"
         for="collective.realestatebroker.interfaces.IRealEstateContent"
@@ -133,7 +133,11 @@
         />
     <!-- TODO: permission ^^^^ -->
 
-
+    <adapter
+        for="Products.ATContentTypes.interface.image.IATImage"
+        provides="collective.realestatebroker.browser.interfaces.IFloorInfo"
+        factory=".floor.FloorInfo"
+        />
 
     <!-- Plone maps support -->
     <adapter

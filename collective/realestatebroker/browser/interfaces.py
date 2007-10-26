@@ -1,4 +1,5 @@
 from zope.interface import Interface
+from zope.interface import Attribute
 from zope.viewlet.interfaces import IViewletManager
 
 
@@ -8,7 +9,7 @@ class IRealEstateListing(Interface):
     def sorted_listing():
         """Returns a list of dicts representing an overview of the Residential
         real estate."""
-            
+
 
 class IResidentialListing(IRealEstateListing):
     """ This is a view class which returns a listing of 'Residential' items"""
@@ -23,7 +24,7 @@ class ICommercialListing(IRealEstateListing):
 class IRealEstateView(Interface):
     """A base view for methods that are common for both Commercial and
     Residential items"""
-    
+
     def image_tag():
         """Returns an HTML image tag for the first image found inside
         RealEstateContent, both commercial and residential  """
@@ -32,7 +33,7 @@ class IRealEstateView(Interface):
 class IResidentialView(IRealEstateView):
     """This is a view class for presenting the details of a given
        'Residential' object."""
-    
+
     def details():
         """ Return a dict with all information about a residential real
         estate object."""
@@ -62,9 +63,14 @@ class IRealEstateTitleManager(IViewletManager):
 
     def city():
         """Return the city where the real estate is located"""
-        
+
     def price():
         """Return a formatted price"""
-        
+
     def after_price():
         """Extra info regarding the price e.g. tax/sales costs"""
+
+
+class IFloorInfo(Interface):
+    """Interface for getting/setting a floor annotation on an image."""
+    floor = Attribute('String indicating a floor')

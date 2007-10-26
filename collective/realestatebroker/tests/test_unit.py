@@ -30,6 +30,10 @@ def test_suite():
                              setUp=setUp,
                              tearDown=tearDown,
                              optionflags=OPTIONFLAGS),
+        doctestunit.DocTestSuite(module='collective.realestatebroker.browser.floor',
+                             setUp=setUp,
+                             tearDown=tearDown,
+                             optionflags=OPTIONFLAGS),
         )
     if MIGRATIONPRODUCTAVAILABLE:
         migration_suites = (
