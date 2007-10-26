@@ -80,7 +80,7 @@
       <form action=""
             method="post"
             tal:attributes="action view/configuration_action;"
-        id="reb-photo-management">
+            id="reb-photo-management">
         <table>
           <thead>
             <tr>
@@ -100,12 +100,12 @@
                        checked="1"
                        name="default"
                        value=""
-                       tal:attributes="value photo_info/index" />
+                       tal:attributes="value photo_info/id" />
                 <input type="radio"
                        tal:condition="python:photo_info['index'] > 0"
                        name="default"
                        value=""
-                       tal:attributes="value python:photo_info['index']" />
+                       tal:attributes="value photo_info/id" />
               </td>
               <td>
                 <img tal:replace="structure photo_info/tag_tile" />

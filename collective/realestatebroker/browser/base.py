@@ -3,7 +3,7 @@ from zope.interface import implements
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface.image import IATImage
-from plone.memoize.instance import memoize
+from plone.memoize.view import memoize
 
 from ZTUtils import Batch, make_query
 from Products.CMFDefault.utils import Message as _
@@ -290,17 +290,15 @@ class HandleConfiguration(BrowserView):
             if floor != existing_floor:
                 annotation.floor = floor
                 messages.append(_(u"${image} is now attached to ${floor}.",
-                                  mapping={'image': image_id, 'floor': floor}))
-        default = int(form.get('default'))
-        if default > 0:
-            # Move image with that index to the top.
-            new_default_brain = brains[default]
-            new_default_image = new_default_brain.getObject()
-            self.context.moveObjectsByDelta(new_default_brain['id'], -default)
+                                  mapping={'image':
+                                           image_id, 'floor': floor}))
+        current_default = brains[0]['id']
+        default = form.get('default')
+        if default != current_default:
+            self.context.moveObjectsToTop(default)
             self.context.plone_utils.reindexOnReorder(self.context)
             messages.append(_(u"${image} is now the default.",
-                              mapping={'image': new_default_brain['id']}))
-
+                              mapping={'image': default}))
         for message in messages:
             self.context.plone_utils.addPortalMessage(message)
         response = self.request.response
