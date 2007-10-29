@@ -38,8 +38,7 @@ class IRealEstateContent(Interface):
         description = _(u'Enter a brief description for the acceptance.'),
         )
     area = schema.TextLine(
-        title = _(u'Area'),
-        description = _(u'Fill in the ground area of this object.'),
+        title = _(u'Ground area'),
         )
     volume = schema.TextLine(
         title = _(u'Volume'),
@@ -52,11 +51,11 @@ class IRealEstateContent(Interface):
         )
     heating = schema.TextLine(
         title = _(u'Heating'),
-        description = _(u'You can choose more than one option'),
+        description = _(u'You can choose more than one option.'),
         )
     insulation = schema.TextLine(
         title = _(u'Insulation'),
-        description = _(u'You can choose more than one option'),
+        description = _(u'You can choose more than one option.'),
         )
     location = schema.TextLine(
         title = _(u'Location'),
@@ -79,7 +78,7 @@ class IResidential(IRealEstateContent):
         )
     kindOfGarden = schema.TextLine(
         title = _(u'Kind of garden'),
-        description = _(u'You can choose more than one option'),
+        description = _(u'You can choose more than one option.'),
         )
     storage = schema.Bool(
         title = _(u'Storage'),
@@ -89,7 +88,7 @@ class IResidential(IRealEstateContent):
         )
     kindOfGarage = schema.TextLine(
         title = _(u'Kind of garage'),
-        description = _(u'You can choose more than one option'),
+        description = _(u'You can choose more than one option.'),
         )
     airco = schema.Bool(
         title = _(u'airco'),
@@ -112,5 +111,5 @@ class ICommercial(IRealEstateContent):
         )
     facilities = schema.TextLine(
         title = _(u'Facilities'),
-        description = _(u'You can choose more than one option'),
+        description = _(u'You can choose more than one option.'),
         )

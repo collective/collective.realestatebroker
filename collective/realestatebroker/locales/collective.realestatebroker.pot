@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-10-24 09:12+0000\n"
+"POT-Creation-Date: 2007-10-29 13:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,27 +21,35 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./content/schemata.py:54
+#: ./browser/base.py:292
+msgid "${image} is now attached to ${floor}."
+msgstr ""
+
+#: ./browser/base.py:300
+msgid "${image} is now the default."
+msgstr ""
+
+#: ./content/schemata.py:51
 msgid "Acceptance"
 msgstr ""
 
-#: ./content/commercial.py:18
+#: ./content/commercial.py:19
 msgid "Address"
 msgstr ""
 
-#: ./content/schemata.py:116
-msgid "Area"
-msgstr ""
-
-#: ./content/schemata.py:173
+#: ./content/schemata.py:161
 msgid "Balcony"
 msgstr ""
 
-#: ./content/schemata.py:45
+#: ./content/schemata.py:42
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:20
+#: ./content/schemata.py:83
+msgid "Building type"
+msgstr ""
+
+#: ./content/schemata.py:19
 msgid "City"
 msgstr ""
 
@@ -50,52 +58,37 @@ msgstr ""
 msgid "Commercial real estate"
 msgstr ""
 
-#: ./content/schemata.py:130
+#: ./content/schemata.py:120
 msgid "Construction year"
+msgstr ""
+
+#. Default: "Default"
+#: ./browser/templates/photo_management.pt:87
+msgid "Default"
 msgstr ""
 
 #: ./interfaces.py:14
 msgid "Description"
 msgstr ""
 
-#: ./content/schemata.py:55
+#: ./content/schemata.py:52
 msgid "Enter a brief description for the acceptance."
 msgstr ""
 
-#: ./content/schemata.py:13
-msgid "Enter the ZIP code of this object."
-msgstr ""
-
-#: ./content/schemata.py:46
+#: ./content/schemata.py:43
 msgid "Enter the main description for this object."
 msgstr ""
 
-#: ./content/schemata.py:236
+#: ./content/schemata.py:218
 msgid "Facilities"
 msgstr ""
 
-#: ./content/commercial.py:19
+#: ./content/commercial.py:20
 msgid "Fill in the address of this object"
 msgstr ""
 
-#: ./content/schemata.py:117
-msgid "Fill in the area of this object."
-msgstr ""
-
-#: ./content/schemata.py:21
-msgid "Fill in the city in which this object is located."
-msgstr ""
-
-#: ./content/schemata.py:28
+#: ./content/schemata.py:26
 msgid "Fill in the price without dots or commas."
-msgstr ""
-
-#: ./content/schemata.py:124
-msgid "Fill in the volume of this object."
-msgstr ""
-
-#: ./content/schemata.py:131
-msgid "Fill in the year of construction of this object."
 msgstr ""
 
 #. Default: "Folderish content type for commercial real estate."
@@ -108,31 +101,88 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./content/schemata.py:202
+#: ./content/schemata.py:187
 msgid "Garage"
+msgstr ""
+
+#: ./content/schemata.py:167
+msgid "Garden"
+msgstr ""
+
+#: ./content/schemata.py:108
+msgid "Ground area"
+msgstr ""
+
+#: ./interfaces.py:53
+msgid "Heating"
+msgstr ""
+
+#: ./content/schemata.py:64
+msgid "House type"
 msgstr ""
 
 #: ./browser/map.py:49
 msgid "Info"
 msgstr ""
 
-#: ./content/schemata.py:139
+#: ./interfaces.py:57
+msgid "Insulation"
+msgstr ""
+
+#: ./content/schemata.py:128
 msgid "Kind of building"
 msgstr ""
 
-#: ./content/schemata.py:188
+#: ./interfaces.py:90
+msgid "Kind of garage"
+msgstr ""
+
+#: ./content/schemata.py:174
 msgid "Kind of garden"
 msgstr ""
 
-#: ./content/schemata.py:228
+#: ./interfaces.py:61
+msgid "Location"
+msgstr ""
+
+#: ./browser/base.py:75
+msgid "Next ${count} items"
+msgstr ""
+
+#: ./browser/base.py:73
+msgid "Next item"
+msgstr ""
+
+#: ./content/schemata.py:72
+msgid "Number of rooms"
+msgstr ""
+
+#: ./interfaces.py:110
 msgid "Parking"
 msgstr ""
 
-#: ./content/schemata.py:27
+#. Default: "Photo"
+#: ./browser/templates/photo_management.pt:88
+msgid "Photo"
+msgstr ""
+
+#: ./browser/base.py:61
+msgid "Previous ${count} items"
+msgstr ""
+
+#: ./browser/base.py:59
+msgid "Previous item"
+msgstr ""
+
+#: ./content/schemata.py:25
 msgid "Price"
 msgstr ""
 
-#: ./content/schemata.py:105
+#: ./content/schemata.py:211
+msgid "Private car park"
+msgstr ""
+
+#: ./content/schemata.py:98
 msgid "Rent or buy"
 msgstr ""
 
@@ -141,107 +191,11 @@ msgstr ""
 msgid "Residential real estate"
 msgstr ""
 
-#: ./content/schemata.py:76
-msgid "Rooms"
-msgstr ""
-
-#: ./content/schemata.py:106
-msgid "Select Rent/buy for this object."
-msgstr ""
-
-#: ./content/schemata.py:229
-msgid "Select here if this object has a private car park."
-msgstr ""
-
-#: ./content/schemata.py:37
-msgid "Select one option."
-msgstr ""
-
-#: ./content/schemata.py:98
-msgid "Select the VAT for this object."
-msgstr ""
-
-#: ./content/schemata.py:167
+#: ./content/schemata.py:155
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
-#: ./content/schemata.py:89
-msgid "Select the commercial type for this object."
-msgstr ""
-
-#: ./interfaces.py:133
-msgid "Select the facilities. You can choose more than 1 option"
-msgstr ""
-
-#: ./content/schemata.py:148
-msgid "Select the heating system for this object. You can choose more than one option"
-msgstr ""
-
-#: ./content/schemata.py:68
-msgid "Select the house type for this object."
-msgstr ""
-
-#: ./interfaces.py:93
-msgid "Select the kind of garden. You can choose more than one option"
-msgstr ""
-
-#: ./content/schemata.py:189
-msgid "Select the kind of garden. You can choose more than one option."
-msgstr ""
-
-#: ./interfaces.py:70
-msgid "Select the location. You can choose more than one option."
-msgstr ""
-
-#: ./interfaces.py:77
-msgid "Select the number of rooms for this object"
-msgstr ""
-
-#: ./content/schemata.py:77
-msgid "Select the number of rooms for this object."
-msgstr ""
-
-#: ./interfaces.py:105
-msgid "Select the type garage for this object. You can choose more than 1 option"
-msgstr ""
-
-#: ./interfaces.py:117
-msgid "Select the type object"
-msgstr ""
-
-#: ./content/schemata.py:211
-msgid "Select the type of garage for this object. You can choose more than one option."
-msgstr ""
-
-#: ./content/schemata.py:156
-msgid "Select the types of insulation used for this object. You can choose more than one option"
-msgstr ""
-
-#: ./content/schemata.py:140
-msgid "Select what kind of building this is."
-msgstr ""
-
-#: ./content/schemata.py:174
-msgid "Select whether this object has a balcony or not."
-msgstr ""
-
-#: ./content/schemata.py:203
-msgid "Select whether this object has a garage or not."
-msgstr ""
-
 #: ./content/schemata.py:181
-msgid "Select whether this object has a garden or not."
-msgstr ""
-
-#: ./content/schemata.py:196
-msgid "Select whether this object has a storage."
-msgstr ""
-
-#: ./content/schemata.py:218
-msgid "Select whether this object has an airconditioning or not."
-msgstr ""
-
-#: ./content/schemata.py:195
 msgid "Storage"
 msgstr ""
 
@@ -249,53 +203,74 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ./content/schemata.py:67
-msgid "Type"
+#. Default: "Upload Files"
+#: ./browser/templates/photo_management.pt:35
+msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:97
+#: ./content/schemata.py:91
 msgid "VAT"
 msgstr ""
 
-#: ./content/schemata.py:123
+#: ./content/schemata.py:114
 msgid "Volume"
+msgstr ""
+
+#: ./content/schemata.py:136
+msgid "You can choose more than one option."
 msgstr ""
 
 #: ./content/schemata.py:12
 msgid "Zip code"
 msgstr ""
 
-#: ./content/schemata.py:217
+#: ./content/schemata.py:201
 msgid "airco"
 msgstr ""
 
 #. Default: "Characteristics"
-#: ./browser/templates/chars_tab.pt:3
+#: ./browser/templates/chars_tab.pt:6
 msgid "chars_tab"
 msgstr ""
 
 #. Default: "Description"
-#: ./browser/templates/description_tab.pt:3
+#: ./browser/templates/description_tab.pt:6
 msgid "description_tab"
 msgstr ""
 
-#: ./content/schemata.py:180
-msgid "garden"
+#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floor plans. Also you can select the default photo."
+#: ./browser/templates/photo_management.pt:74
+msgid "explanation_photo_configuration"
 msgstr ""
 
-#: ./content/schemata.py:147
+#. Default: "Bulk-upload of multiple photos"
+#: ./browser/templates/photo_management.pt:22
+msgid "heading_bulk_upload"
+msgstr ""
+
+#. Default: "Photo management"
+#: ./browser/templates/photo_management.pt:18
+msgid "heading_manage_photos"
+msgstr ""
+
+#. Default: "Photo configuration"
+#: ./browser/templates/photo_management.pt:71
+msgid "heading_photo_configuration"
+msgstr ""
+
+#: ./content/schemata.py:135
 msgid "heating"
 msgstr ""
 
-#: ./content/schemata.py:155
+#: ./content/schemata.py:143
 msgid "insulation"
 msgstr ""
 
-#: ./content/schemata.py:36
+#: ./content/schemata.py:34
 msgid "k.k./v.o.n."
 msgstr ""
 
-#: ./content/schemata.py:210
+#: ./content/schemata.py:194
 msgid "kindOfGarage"
 msgstr ""
 
@@ -324,17 +299,17 @@ msgstr ""
 msgid "label_von"
 msgstr ""
 
-#: ./content/schemata.py:166
+#: ./content/schemata.py:154
 msgid "location"
 msgstr ""
 
 #. Default: "Map"
-#: ./browser/templates/map_tab.pt:3
+#: ./browser/templates/map_tab.pt:6
 msgid "map_tab"
 msgstr ""
 
 #. Default: "Photos"
-#: ./browser/templates/photos_tab.pt:3
+#: ./browser/templates/photos_tab.pt:6
 msgid "photos_tab"
 msgstr ""
 

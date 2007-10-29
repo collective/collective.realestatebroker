@@ -133,7 +133,7 @@ GeneralCharacteristicsSchema =  atapi.Schema((
         schemata=u"Characteristics",
         vocabulary_factory="collective.realestatebroker.heating_list",
         widget = atapi.SelectionWidget(label = _(u'heating'),
-                 description = _(u'You can choose more than one option'),
+                 description = _(u'You can choose more than one option.'),
                  )
         ),
     atapi.StringField('insulation',
@@ -141,7 +141,7 @@ GeneralCharacteristicsSchema =  atapi.Schema((
         schemata=u"Characteristics",
         vocabulary_factory="collective.realestatebroker.insulation_list",
         widget = atapi.MultiSelectionWidget(label = _(u'insulation'),
-                 description = _(u'You can choose more than one option'),
+                 description = _(u'You can choose more than one option.'),
                  format='checkbox'),
         ),
     ))

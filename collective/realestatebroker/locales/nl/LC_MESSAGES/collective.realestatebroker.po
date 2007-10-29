@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-10-18 17:19+0200\n"
+"PO-Revision-Date: 2007-10-29 14:25+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,27 +14,35 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./content/schemata.py:54
+#: ./browser/base.py:292
+msgid "${image} is now attached to ${floor}."
+msgstr "${image} is nu gekoppeld aan ${floor}."
+
+#: ./browser/base.py:300
+msgid "${image} is now the default."
+msgstr "${image} is als standaard foto ingesteld."
+
+#: ./content/schemata.py:51
 msgid "Acceptance"
 msgstr "Oplevering"
 
-#: ./content/commercial.py:18
+#: ./content/commercial.py:19
 msgid "Address"
 msgstr "Adres"
 
-#: ./content/schemata.py:116
-msgid "Area"
-msgstr "Oppervlakte"
-
-#: ./content/schemata.py:173
+#: ./content/schemata.py:161
 msgid "Balcony"
 msgstr "Balkon"
 
-#: ./content/schemata.py:45
+#: ./content/schemata.py:42
 msgid "Body text"
 msgstr "Hoofdtekst"
 
-#: ./content/schemata.py:20
+#: ./content/schemata.py:83
+msgid "Building type"
+msgstr "Gebouwtype"
+
+#: ./content/schemata.py:19
 msgid "City"
 msgstr "Plaats"
 
@@ -43,53 +51,38 @@ msgstr "Plaats"
 msgid "Commercial real estate"
 msgstr "Bedrijfspand"
 
-#: ./content/schemata.py:130
+#: ./content/schemata.py:120
 msgid "Construction year"
 msgstr "Bouwjaar"
+
+#. Default: "Default"
+#: ./browser/templates/photo_management.pt:87
+msgid "Default"
+msgstr "Standaard afbeelding"
 
 #: ./interfaces.py:14
 msgid "Description"
 msgstr "Omschrijving"
 
-#: ./content/schemata.py:55
+#: ./content/schemata.py:52
 msgid "Enter a brief description for the acceptance."
 msgstr "Geef een korte omschrijving voor de oplevering"
 
-#: ./content/schemata.py:13
-msgid "Enter the ZIP code of this object."
-msgstr "Geef de postcode op van dit object"
-
-#: ./content/schemata.py:46
+#: ./content/schemata.py:43
 msgid "Enter the main description for this object."
 msgstr "Geeef een ruime omschrijving voor dit object."
 
-#: ./content/schemata.py:236
+#: ./content/schemata.py:218
 msgid "Facilities"
 msgstr "Faciliteiten"
 
-#: ./content/commercial.py:19
+#: ./content/commercial.py:20
 msgid "Fill in the address of this object"
 msgstr "Geef de straatnaam op van dit object."
 
-#: ./content/schemata.py:117
-msgid "Fill in the area of this object."
-msgstr ""
-
-#: ./content/schemata.py:21
-msgid "Fill in the city in which this object is located."
-msgstr "Geef de stad op waar dit object is gesitueerd."
-
-#: ./content/schemata.py:28
+#: ./content/schemata.py:26
 msgid "Fill in the price without dots or commas."
 msgstr "Vul de prijs in zonder punten of komma's"
-
-#: ./content/schemata.py:124
-msgid "Fill in the volume of this object."
-msgstr "Vul de inhoud in van dit object."
-
-#: ./content/schemata.py:131
-msgid "Fill in the year of construction of this object."
-msgstr "Geef het bouwjaar op van dit object."
 
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
@@ -101,31 +94,88 @@ msgstr "Bedrijfspand"
 msgid "Folderish content type for residential real estate."
 msgstr "Woning"
 
-#: ./content/schemata.py:202
+#: ./content/schemata.py:187
 msgid "Garage"
 msgstr "Garage"
+
+#: ./content/schemata.py:167
+msgid "Garden"
+msgstr "Tuin"
+
+#: ./content/schemata.py:108
+msgid "Ground area"
+msgstr "Grondoppervlak"
+
+#: ./interfaces.py:53
+msgid "Heating"
+msgstr "Verwarming"
+
+#: ./content/schemata.py:64
+msgid "House type"
+msgstr "Huistype"
 
 #: ./browser/map.py:49
 msgid "Info"
 msgstr "Info"
 
-#: ./content/schemata.py:139
+#: ./interfaces.py:57
+msgid "Insulation"
+msgstr "Isolatie"
+
+#: ./content/schemata.py:128
 msgid "Kind of building"
 msgstr "Soort gebouw"
 
-#: ./content/schemata.py:188
+#: ./interfaces.py:90
+msgid "Kind of garage"
+msgstr "Soort garage"
+
+#: ./content/schemata.py:174
 msgid "Kind of garden"
 msgstr "Soort tuin"
 
-#: ./content/schemata.py:228
+#: ./interfaces.py:61
+msgid "Location"
+msgstr "Locatie"
+
+#: ./browser/base.py:75
+msgid "Next ${count} items"
+msgstr "Volgende ${count} objecten"
+
+#: ./browser/base.py:73
+msgid "Next item"
+msgstr "Volgend object"
+
+#: ./content/schemata.py:72
+msgid "Number of rooms"
+msgstr "Aantal kamers"
+
+#: ./interfaces.py:110
 msgid "Parking"
 msgstr "Parkeergelegenheid"
 
-#: ./content/schemata.py:27
+#. Default: "Photo"
+#: ./browser/templates/photo_management.pt:88
+msgid "Photo"
+msgstr "Foto"
+
+#: ./browser/base.py:61
+msgid "Previous ${count} items"
+msgstr "Volgende ${count} objecten"
+
+#: ./browser/base.py:59
+msgid "Previous item"
+msgstr "Vorig object"
+
+#: ./content/schemata.py:25
 msgid "Price"
 msgstr "Prijs"
 
-#: ./content/schemata.py:105
+#: ./content/schemata.py:211
+msgid "Private car park"
+msgstr "Privé parkeerterrein"
+
+#: ./content/schemata.py:98
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
@@ -134,107 +184,11 @@ msgstr "Huren of kopen mogelijk"
 msgid "Residential real estate"
 msgstr "Woning"
 
-#: ./content/schemata.py:76
-msgid "Rooms"
-msgstr "Kamers"
-
-#: ./content/schemata.py:106
-msgid "Select Rent/buy for this object."
-msgstr "Is dit object te huur en/of te koop?"
-
-#: ./content/schemata.py:229
-msgid "Select here if this object has a private car park."
-msgstr "Is er een eigen parkeergelegenheid?"
-
-#: ./content/schemata.py:37
-msgid "Select one option."
-msgstr ""
-
-#: ./content/schemata.py:98
-msgid "Select the VAT for this object."
-msgstr "Selecteer de belasting voor de koop/huurprijs."
-
-#: ./content/schemata.py:167
+#: ./content/schemata.py:155
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
-#: ./content/schemata.py:89
-msgid "Select the commercial type for this object."
-msgstr "Geef het type bedrijfspand aan."
-
-#: ./interfaces.py:133
-msgid "Select the facilities. You can choose more than 1 option"
-msgstr "Kies voorzieningen. Meerdere opties zijn mogelijk."
-
-#: ./content/schemata.py:148
-msgid "Select the heating system for this object. You can choose more than one option"
-msgstr "Selecteer het verwarmingssysteem voor dit object. Meerdere opties zijn mogelijk."
-
-#: ./content/schemata.py:68
-msgid "Select the house type for this object."
-msgstr "Selecteer het type woning."
-
-#: ./interfaces.py:93
-msgid "Select the kind of garden. You can choose more than one option"
-msgstr "Kies het soort tuin. Meerdere opties zijn mogelijk."
-
-#: ./content/schemata.py:189
-msgid "Select the kind of garden. You can choose more than one option."
-msgstr "Selecteer het soort tuin, meerdere opties zijn mogelijk."
-
-#: ./interfaces.py:70
-msgid "Select the location. You can choose more than one option."
-msgstr "Selecteer de locatie van de woning, meerder opties zijn mogelijk."
-
-#: ./interfaces.py:77
-msgid "Select the number of rooms for this object"
-msgstr "Kies het aantal ruimtes voor dit object."
-
-#: ./content/schemata.py:77
-msgid "Select the number of rooms for this object."
-msgstr "Kies het aantal ruimtes voor dit object."
-
-#: ./interfaces.py:105
-msgid "Select the type garage for this object. You can choose more than 1 option"
-msgstr "Selecteer het soort garage voor dit object. Meerdere opties zijn mogelijk."
-
-#: ./interfaces.py:117
-msgid "Select the type object"
-msgstr "Kies het type object."
-
-#: ./content/schemata.py:211
-msgid "Select the type of garage for this object. You can choose more than one option."
-msgstr "Selecteer het soort garage voor dit object. Meerdere opties zijn mogelijk."
-
-#: ./content/schemata.py:156
-msgid "Select the types of insulation used for this object. You can choose more than one option"
-msgstr ""
-
-#: ./content/schemata.py:140
-msgid "Select what kind of building this is."
-msgstr "Selecteer het type gebouw."
-
-#: ./content/schemata.py:174
-msgid "Select whether this object has a balcony or not."
-msgstr "Is er een balkon aanwezig?"
-
-#: ./content/schemata.py:203
-msgid "Select whether this object has a garage or not."
-msgstr "Is er een garage aanwezig?"
-
 #: ./content/schemata.py:181
-msgid "Select whether this object has a garden or not."
-msgstr "Is er een tuin bij het object?"
-
-#: ./content/schemata.py:196
-msgid "Select whether this object has a storage."
-msgstr "Is er een berging aanwezig?"
-
-#: ./content/schemata.py:218
-msgid "Select whether this object has an airconditioning or not."
-msgstr "Heeft het object air-conditioning?"
-
-#: ./content/schemata.py:195
 msgid "Storage"
 msgstr "Opslag"
 
@@ -242,53 +196,77 @@ msgstr "Opslag"
 msgid "Title"
 msgstr "Title"
 
-#: ./content/schemata.py:67
-msgid "Type"
-msgstr "Type"
+#. Default: "Upload Files"
+#: ./browser/templates/photo_management.pt:35
+msgid "Upload Files"
+msgstr "Bestanden uploaden"
 
-#: ./content/schemata.py:97
+#: ./content/schemata.py:91
 msgid "VAT"
 msgstr "B.T.W."
 
-#: ./content/schemata.py:123
+#: ./content/schemata.py:114
 msgid "Volume"
 msgstr "Inhoud"
+
+#: ./content/schemata.py:136
+msgid "You can choose more than one option."
+msgstr "Je kan meer dan één optie selecteren."
 
 #: ./content/schemata.py:12
 msgid "Zip code"
 msgstr "Postcode"
 
-#: ./content/schemata.py:217
+#: ./content/schemata.py:201
 msgid "airco"
 msgstr "Airconditioning"
 
 #. Default: "Characteristics"
-#: ./browser/templates/chars_tab.pt:3
+#: ./browser/templates/chars_tab.pt:6
 msgid "chars_tab"
 msgstr "Kenmerken"
 
 #. Default: "Description"
-#: ./browser/templates/description_tab.pt:3
+#: ./browser/templates/description_tab.pt:6
 msgid "description_tab"
 msgstr "Omschrijving"
 
-#: ./content/schemata.py:180
-msgid "garden"
-msgstr "Tuin"
+#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floor plans. Also you can select the default photo."
+#: ./browser/templates/photo_management.pt:74
+msgid "explanation_photo_configuration"
+msgstr ""
+"In het onderstaande formulier kunt u de foto's over de verdiepingen verdelen\n"
+"danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
+"worden."
 
-#: ./content/schemata.py:147
+#. Default: "Bulk-upload of multiple photos"
+#: ./browser/templates/photo_management.pt:22
+msgid "heading_bulk_upload"
+msgstr "Uploaden van meerdere foto's in één keer."
+
+#. Default: "Photo management"
+#: ./browser/templates/photo_management.pt:18
+msgid "heading_manage_photos"
+msgstr "Foto beheer"
+
+#. Default: "Photo configuration"
+#: ./browser/templates/photo_management.pt:71
+msgid "heading_photo_configuration"
+msgstr "Foto configuratie"
+
+#: ./content/schemata.py:135
 msgid "heating"
 msgstr "Verwarming"
 
-#: ./content/schemata.py:155
+#: ./content/schemata.py:143
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:36
+#: ./content/schemata.py:34
 msgid "k.k./v.o.n."
 msgstr "k.k./v.o.n."
 
-#: ./content/schemata.py:210
+#: ./content/schemata.py:194
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
@@ -317,17 +295,17 @@ msgstr "Gerelateerde items"
 msgid "label_von"
 msgstr "Vrij op naam"
 
-#: ./content/schemata.py:166
+#: ./content/schemata.py:154
 msgid "location"
 msgstr "Locatie"
 
 #. Default: "Map"
-#: ./browser/templates/map_tab.pt:3
+#: ./browser/templates/map_tab.pt:6
 msgid "map_tab"
 msgstr "Kaart"
 
 #. Default: "Photos"
-#: ./browser/templates/photos_tab.pt:3
+#: ./browser/templates/photos_tab.pt:6
 msgid "photos_tab"
 msgstr "Foto's"
 
