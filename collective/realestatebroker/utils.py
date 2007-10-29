@@ -138,6 +138,11 @@ def batch(items, batch_size=5, selected=0):
     >>> [i['selected'] for i in result['items']]
     [False, False, False, False, True]
 
+    Another corner case to test the start/end shuffling.
+
+    >>> result = batch(range(2), selected=4)
+    >>> [i['item'] for i in result['items']]
+    [0, 1]
 
     """
     result = {}
