@@ -1,8 +1,14 @@
+Real estate broker content types
+================================
+
 Realestatebroker has two content types. One for *homes* and one for
 *businesses*.
 
     >>> from collective.realestatebroker.content.residential import Residential
     >>> from collective.realestatebroker.content.commercial import Commercial
+
+Interfaces
+----------
 
 Both implement interfaces:
 
@@ -25,3 +31,33 @@ For flash mass-upload we need to implement IUploadingCapable.
     True
     >>> IUploadingCapable.implementedBy(Commercial)
     True
+
+Fields
+------
+
+By nature, a real estate object deals with a sizeable number of fields
+(address, price details, kind of house, extras, etc.). A large number of them
+are country-specific. With plone 3.0, there's a fancy way to extend existing
+schemas (ISchema), which is made even simpler by the ``schemaextender``
+product. We therefore have the luxury of restricting the number of fields and
+to suggest integrators to add their own extra fields.
+
+Schemata allow a handy subdivision (especially with plone 3.0's user
+interface) of fields, so we'll offer a standard set that can be extended by
+custom fields.
+
+- Generic data such as address, description, main text.
+
+- Price information (which has lots of scope for country-specific additions).
+
+- Measurements.
+
+- Object details such as kind of building, construction year, heating system,
+  insulation.
+
+- Garden and outside details (like description of the environment).
+
+- Location (= google maps).
+
+To be future-proof, we're implementing the content types as archetypes with
+zope3 interface around them. Bit of a double work, but OK for now.

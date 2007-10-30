@@ -9,11 +9,8 @@ from Products.PloneFlashUpload.interfaces import IUploadingCapable
 from collective.realestatebroker import REBMessageFactory as _
 
 CommercialSchema = (atapi.OrderedBaseFolderSchema.copy() +
-                     schemata.GeneralInfoSchema +
-                     schemata.CommercialGeneralInfoSchema +
-                     schemata.GeneralCharacteristicsSchema +
-                     schemata.CommercialCharacteristicsSchema +
-                     schemata.MapsSchema
+                     schemata.GeneralSchema +
+                     schemata.CommercialSpecificSchema
                      )
 CommercialSchema['title'].storage = atapi.AnnotationStorage()
 CommercialSchema['title'].widget.label = _(u'Address')
@@ -26,8 +23,7 @@ CommercialSchema.moveField('text',pos='bottom')
 CommercialSchema.moveField('description',before='text')
 
 # Move related kk_von and rent_buy field after the price field
-CommercialSchema.moveField('kk_von',after='price')
-CommercialSchema.moveField('rent_buy',after='kk_von')
+CommercialSchema.moveField('rent_buy',after='price')
 
 
 class Commercial(atapi.OrderedBaseFolder):
@@ -42,13 +38,13 @@ class Commercial(atapi.OrderedBaseFolder):
     zipcode = atapi.ATFieldProperty('zipCode')
     city = atapi.ATFieldProperty('city')
     price = atapi.ATFieldProperty('price')
-    kk_von = atapi.ATFieldProperty('kk_von')
     commercial_type = atapi.ATFieldProperty('commercial_type')
     vat = atapi.ATFieldProperty('vat')
     rent_buy = atapi.ATFieldProperty('rent_buy')
     text = atapi.ATFieldProperty('text')
     acceptance = atapi.ATFieldProperty('acceptance')
     area = atapi.ATFieldProperty('area')
+    floor_area = atapi.ATFieldProperty('floor_area')
     volume = atapi.ATFieldProperty('volume')
     construct_year = atapi.ATFieldProperty('constructYear')
     location = atapi.ATFieldProperty('location')

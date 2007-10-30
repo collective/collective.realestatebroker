@@ -11,11 +11,8 @@ from collective.realestatebroker.interfaces import IResidential
 from Products.PloneFlashUpload.interfaces import IUploadingCapable
 
 ResidentialSchema = (atapi.OrderedBaseFolderSchema.copy() +
-                     schemata.GeneralInfoSchema +
-                     schemata.ResidentialGeneralInfoSchema +
-                     schemata.GeneralCharacteristicsSchema +
-                     schemata.ResidentialCharacteristicsSchema +
-                     schemata.MapsSchema
+                     schemata.GeneralSchema +
+                     schemata.ResidentialSpecificSchema
                      )
 ResidentialSchema['title'].storage = atapi.AnnotationStorage()
 ResidentialSchema['title'].widget.label = _(u'Address')
@@ -27,8 +24,6 @@ ResidentialSchema['description'].schemata = 'default'
 ResidentialSchema.moveField('text',pos='bottom')
 ResidentialSchema.moveField('description',before='text')
 
-# Move related kk_von field after the price
-ResidentialSchema.moveField('kk_von',after='price')
 
 class Residential(atapi.OrderedBaseFolder):
     """Folderish content type for residential real estate."""
@@ -45,23 +40,22 @@ class Residential(atapi.OrderedBaseFolder):
     price = atapi.ATFieldProperty('price')
     house_type = atapi.ATFieldProperty('house_type')
     rooms = atapi.ATFieldProperty('rooms')
-    kk_von = atapi.ATFieldProperty('kk_von')
     text = atapi.ATFieldProperty('text')
     acceptance = atapi.ATFieldProperty('acceptance')
     area = atapi.ATFieldProperty('area')
+    floor_area = atapi.ATFieldProperty('floor_area')
     volume = atapi.ATFieldProperty('volume')
     construct_year = atapi.ATFieldProperty('constructYear')
     location = atapi.ATFieldProperty('location')
     kind_of_building = atapi.ATFieldProperty('kindOfBuilding')
     heating = atapi.ATFieldProperty('heating')
     insulation = atapi.ATFieldProperty('insulation')
-    balcony = atapi.ATFieldProperty('balcony')
     garden = atapi.ATFieldProperty('garden')
     kind_of_garden = atapi.ATFieldProperty('kindOfGarden')
     storage = atapi.ATFieldProperty('storage')
+    kind_of_storage = atapi.ATFieldProperty('kindOfStorage')
     garage = atapi.ATFieldProperty('garage')
     kind_of_garage = atapi.ATFieldProperty('kindOfGarage')
-    airco = atapi.ATFieldProperty('airco')
 
 
 atapi.registerType(Residential, PROJECTNAME)

@@ -48,10 +48,14 @@ class ResidentialView(RealEstateView):
     def details(self):
         """Return a dict of characteristics
         """
-        if self.context.kk_von:
-            kk_von = _(u'label_kk', default=u'Excluding costs for buyer')
-        else:
-            kk_von = _(u'label_von', default=u'All costs included')
+        try:
+            # Dirty try/except as I doubt that this method is needed.
+            if self.context.kk_von:
+                kk_von = _(u'label_kk', default=u'Excluding costs for buyer')
+            else:
+                kk_von = _(u'label_von', default=u'All costs included')
+        except:
+            kk_von = ''
         context = aq_inner(self.context)
         results = dict(address = context.address,
                        description = context.description,
@@ -70,7 +74,6 @@ class ResidentialView(RealEstateView):
                        kind_of_building = context.kind_of_building,
                        heating = context.heating,
                        insulation = getattr(context,'insulation',''),
-                       balcony = context.balcony,
                        garden = context.garden,
                        kind_of_garden = context.kind_of_garden,
                        storage = context.storage,

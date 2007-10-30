@@ -20,8 +20,8 @@ class DescriptionTab(ViewletBase):
         if url.endswith('chars') or \
            url.endswith('photos') or \
            url.endswith('map'):
-           self.is_selected = False                        
-       
+           self.is_selected = False
+
         # Both Residential and Commercial with have a description alias that point
         # to their own <type>_description.pt
         self.description_view = self.context_state.object_url() + '/view'
@@ -39,9 +39,9 @@ class CharsTab(ViewletBase):
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
         self.is_selected = self.context_state.current_page_url().endswith('chars')
-       
+
         # Both Residential and Commercial with have a chars alias that point
-        # to their own <type>_chars.pt 
+        # to their own <type>_chars.pt
         self.chars_view = self.context_state.object_url() + '/chars'
 
 
@@ -57,7 +57,7 @@ class PhotosTab(ViewletBase):
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
         self.is_selected = self.context_state.current_page_url().endswith('photos')
-       
+
         self.photos_view = self.context_state.object_url() + '/photos'
 
 
@@ -73,7 +73,7 @@ class MapTab(ViewletBase):
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
         self.is_selected = self.context_state.current_page_url().endswith('map')
-       
+
         self.map_view = self.context_state.object_url() + '/map'
 
 
@@ -103,7 +103,9 @@ class RealEstateTitle(ViewletBase):
         return realestate_view.CookedPrice()
 
     def after_price(self):
-        return self.context.kk_von
+        if hasattr(self.context, 'kk_von'):
+            return self.context.kk_von
+        return ''
 
     def image_tag(self):
         realestate_view = self.context.restrictedTraverse('@@realestate')

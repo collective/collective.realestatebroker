@@ -7,8 +7,7 @@
 
   <body>
 
-    <div metal:fill-slot="main"
-         tal:define="obj view/details">
+    <div metal:fill-slot="main">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
       <div tal:replace="structure provider:realestatebroker.titlemanager" />
@@ -20,12 +19,12 @@
           Description
         </metal:field>
       </div>
-      
-      <ul id="rebTabs" 
+
+      <ul id="rebTabs"
         class="formTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
-      
+
       <metal:field use-macro="python:context.widget('text', mode='view')">
         Body text
       </metal:field>
