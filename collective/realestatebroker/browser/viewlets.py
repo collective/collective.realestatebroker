@@ -110,3 +110,12 @@ class RealEstateTitle(ViewletBase):
     def image_tag(self):
         realestate_view = self.context.restrictedTraverse('@@realestate')
         return realestate_view.image_tag()
+        
+        
+        
+class RealEstateSimpleSearchForm(ViewletBase):
+    """ Viewlet that renders the search form above a realestate listing
+        (Commercial and Residential)
+    """
+
+    render = ViewPageTemplateFile('templates/simple_search_form.pt')

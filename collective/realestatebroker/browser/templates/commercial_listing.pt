@@ -18,7 +18,6 @@
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
 
-    <metal:macro metal:use-macro="context/@@batch_widget/listing" />
     <metal:macro metal:use-macro="context/@@batch_widget/navigation" />
 
     <table cellpadding="0"

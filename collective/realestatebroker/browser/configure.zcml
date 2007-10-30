@@ -2,6 +2,8 @@
            xmlns:browser="http://namespaces.zope.org/browser"
            i18n_domain="collective.realestatebroker">
 
+    <include package="plone.app.contentmenu" />
+    
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate"
@@ -206,4 +208,20 @@
       file="images/commercial_icon.gif"
       />
 
+    <browser:menuItem
+          for="Products.ATContentTypes.interface.IATFolder"
+          menu="plone_displayviews"
+          title="Commercial Listing"
+          action="@@commercial_listing"
+          description="Show all Realestate objects in this folder in a Commercial listing"
+          />
+
+    <browser:menuItem
+          for="Products.ATContentTypes.interface.IATFolder"
+          menu="plone_displayviews"
+          title="Residential Listing"
+          action="@@residential_listing"
+          description="Show all Realestate objects in this folder in a Residential listing"
+          />
+    
 </configure>
