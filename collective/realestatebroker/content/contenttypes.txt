@@ -127,3 +127,28 @@ So, now we can grab the schema the official way.
     True
     >>> 'kk_von' in schema
     False
+
+If we manually enable our Dutch schema extender, the extra field will be
+available.
+
+    >>> from collective.realestatebroker.content import dutchschemata
+    >>> component.provideAdapter(dutchschemata.ResidentialSchemaExtender,
+    ...                          name=u"dutch.test")
+    >>> res = Residential('res')
+    >>> schema = res.Schema()
+    >>> 'price' in schema
+    True
+    >>> 'kk_von' in schema
+    False
+
+NOT available. Ah, archetypes.schemaextender's ``overrides.zcml`` hasn't been
+applied so the default ISchema handling is still in place.
+
+    >>> from archetypes.schemaextender.extender import instanceSchemaFactory
+    >>> component.provideAdapter(instanceSchemaFactory)
+    >>> res = Residential('res')
+    >>> schema = res.Schema()
+    >>> 'price' in schema
+    True
+    >>> 'kk_von' in schema
+    True

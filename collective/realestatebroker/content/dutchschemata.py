@@ -10,12 +10,25 @@ bother to add an English translation, btw.
 """
 from Products.Archetypes import atapi
 from collective.realestatebroker import REBMessageFactory as _
+from zope import component
+from zope import interface
+from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+from collective.realestatebroker.interfaces import IResidential
+from collective.realestatebroker.interfaces import ICommercial
+from archetypes.schemaextender.field import ExtensionField
+
+class ExtendedStringField(ExtensionField, atapi.StringField):
+    pass
 
 
-GeneralDutchExtraSchema = atapi.Schema((
+class ExtendedBooleanField(ExtensionField, atapi.BooleanField):
+    pass
+
+
+dutch_extra_fields = [
     # Generic data
     # ------------
-    atapi.StringField(
+    ExtendedStringField(
     'generic_remarks',
     storage=atapi.AnnotationStorage(),
     schemata=u'default',
@@ -25,7 +38,7 @@ GeneralDutchExtraSchema = atapi.Schema((
 
     # Measurements
     # ------------
-    atapi.StringField(
+    ExtendedStringField(
     'measurement_remarks',
     storage=atapi.AnnotationStorage(),
     schemata=u'measurements',
@@ -35,7 +48,7 @@ GeneralDutchExtraSchema = atapi.Schema((
 
     # Object details
     # --------------
-    atapi.StringField(
+    ExtendedStringField(
     'detail_remarks',
     storage=atapi.AnnotationStorage(),
     schemata=u'details',
@@ -45,7 +58,7 @@ GeneralDutchExtraSchema = atapi.Schema((
 
     # Outside/garden
     # --------------
-    atapi.StringField(
+    ExtendedStringField(
     'environment_remarks',
     storage=atapi.AnnotationStorage(),
     schemata=u'environment',
@@ -55,39 +68,37 @@ GeneralDutchExtraSchema = atapi.Schema((
 
     # Financial data
     # -----------------
-    atapi.StringField(
+    ExtendedStringField(
     'kk_von',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
     vocabulary_factory="collective.realestatebroker.kk_von_list",
     widget = atapi.SelectionWidget(label = u'k.k./v.o.n.')
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'financial_remarks',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
     widget = atapi.StringWidget(label = _(u'Financial remarks'))
     ),
      # Added: remarks
-     )
-    )
+    ]
 
 
-ResidentialDutchExtraSchema = atapi.Schema(
-    (
+dutch_extra_residential_fields = [
     # Generic data (only residential)
     # -------------------------------
 
     # Financial data (only residential)
     # ---------------------------------
-    atapi.StringField(
+    ExtendedStringField(
     'ozb_zakelijk',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
     widget = atapi.StringWidget(label = u'OZB zakelijk deel',)
     ),
 
-    atapi.StringField(
+    ExtendedStringField(
     'erfpachtsom',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
@@ -95,7 +106,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = u'Erfpachtsom',
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'waterschapslasten',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
@@ -103,7 +114,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = u'Waterschapslasten',
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'rioolrechten',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
@@ -111,7 +122,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = u'Rioolrechten',
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'stookkosten',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
@@ -119,7 +130,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = u'Stookkosten',
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'vve_bijdrage',
     storage=atapi.AnnotationStorage(),
     schemata=u'financial',
@@ -136,7 +147,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
 
     # Measurements
     # ------------
-    atapi.StringField(
+    ExtendedStringField(
     'livingroom_area',
     storage=atapi.AnnotationStorage(),
     schemata=u'measurements',
@@ -148,7 +159,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
 
     # Object details (only residential)
     # ---------------------------------
-    atapi.StringField(
+    ExtendedStringField(
     'merk_cv_ketel',
     storage=atapi.AnnotationStorage(),
     schemata=u'details',
@@ -156,7 +167,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = u'Merk en bouwjaar C.V.-ketel',
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'warm_water',
     storage=atapi.AnnotationStorage(),
     schemata=u'details',
@@ -164,7 +175,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = u'Warm water',
         )
     ),
-    atapi.BooleanField(
+    ExtendedBooleanField(
     'cable',
     storage=atapi.AnnotationStorage(),
     schemata=u'details',
@@ -172,7 +183,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = _(u'Cable television'),
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'maintenance_inside',
     storage=atapi.AnnotationStorage(),
     schemata=u'details',
@@ -180,7 +191,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = _(u'Maintenance level inside'),
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'maintenance_outside',
     storage=atapi.AnnotationStorage(),
     schemata=u'details',
@@ -196,7 +207,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
 
     # Outside/garden (only residential)
     # ---------------------------------
-    atapi.StringField(
+    ExtendedStringField(
     'garden_depth',
     storage=atapi.AnnotationStorage(),
     schemata=u'environment',
@@ -204,7 +215,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = _(u'Garden depth'),
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'garden_width',
     storage=atapi.AnnotationStorage(),
     schemata=u'environment',
@@ -212,7 +223,7 @@ ResidentialDutchExtraSchema = atapi.Schema(
         label = _(u'Garden width'),
         )
     ),
-    atapi.StringField(
+    ExtendedStringField(
     'garden_area',
     storage=atapi.AnnotationStorage(),
     schemata=u'environment',
@@ -223,11 +234,35 @@ ResidentialDutchExtraSchema = atapi.Schema(
     # Added diepte
     # Added breedte
     # Added oppervlakte
-    )
-    )
+    ]
+
+dutch_extra_commercial_fields = [
+    # Nothing yet
+    ]
+
+class BaseSchemaExtender(object):
+    interface.implements(IOrderableSchemaExtender)
+
+    _fields = []
+
+    def __init__(self, context):
+        self.context = context
+
+    def getFields(self):
+        return self._fields
+
+    def getOrder(self, original):
+        # Possibility to move fields.
+        return original
 
 
-CommercialDutchExtraSchema = atapi.Schema(
-    (# Nothing yet.
-    )
-    )
+class ResidentialSchemaExtender(BaseSchemaExtender):
+    component.adapts(IResidential)
+
+    _fields = dutch_extra_fields + dutch_extra_residential_fields
+
+
+class CommercialSchemaExtender(BaseSchemaExtender):
+    component.adapts(ICommercial)
+
+    _fields = dutch_extra_fields + dutch_extra_commercial_fields
