@@ -80,6 +80,7 @@ class BatchedEstateMixin(object):
         length = self._getBatchObj().sequence_length
         return length and thousands_commas(length) or ''
 
+
 class RealEstateListing(BrowserView, BatchedEstateMixin):
     """Base view for all objects with IRealEstateContent.
     """
@@ -126,8 +127,8 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         return result
 
     def _getItems(self):
-        """ Return a list of (filtered) objects in a folder 
-            Used by BathedEstateMixin and get_batched_folder_contents 
+        """ Return a list of (filtered) objects in a folder
+            Used by BathedEstateMixin and get_batched_folder_contents
             to create a batched sequence and by helper methods to provide
             values to the template for the next and previous items """
 
@@ -140,7 +141,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         """
 
         result = []
-        
+
         for obj in self._getBatchObj():
             #if obj.portal_type != 'Residential':
             #    continue
@@ -155,13 +156,24 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                 'description': obj.Description(),
                 'image_tag': image_tag,
                 })
-        return result    
-    
+        return result
+
 
 class RealEstateView(BrowserView):
-    """docstring for RealEstateView"""
-
+    """Generic view for viewing one real estate object."""
     implements(IRealEstateView)
+    header_fields = []
+    main_fields []
+
+    @memoize
+    def characteristic_fields(self):
+        """Return the field names not displayed elsewhere.
+
+        header_fields are those in the always-displayed header, main_fields
+        are those in the main 'description' view tab. This method ought to
+        return the rest. (TODO: dict?)
+        """
+        pass
 
     @memoize
     def CookedPrice(self):
@@ -270,6 +282,7 @@ class RealEstateView(BrowserView):
         """Return form action for uploading flash files."""
         base = self.context.absolute_url()
         return base + '/photo-management'
+
 
 
 class HandleConfiguration(BrowserView):

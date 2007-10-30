@@ -9,6 +9,7 @@ from interfaces import IResidentialListing
 from interfaces import IResidentialView
 from collective.realestatebroker import REBMessageFactory as _
 
+
 class ResidentialListing(RealEstateListing):
     """Default view for a folder which contains residential real estate. This
     view displays a search form and a listing of the search results.
@@ -44,46 +45,4 @@ class ResidentialView(RealEstateView):
     """
     implements(IResidentialView)
 
-    @memoize
-    def details(self):
-        """Return a dict of characteristics
-        """
-        try:
-            # Dirty try/except as I doubt that this method is needed.
-            if self.context.kk_von:
-                kk_von = _(u'label_kk', default=u'Excluding costs for buyer')
-            else:
-                kk_von = _(u'label_von', default=u'All costs included')
-        except:
-            kk_von = ''
-        context = aq_inner(self.context)
-        results = dict(address = context.address,
-                       description = context.description,
-                       zipcode = context.zipcode ,
-                       city = context.city,
-                       price = self.CookedPrice,
-                       house_type = context.house_type,
-                       rooms = context.rooms,
-                       kk_von = kk_von,
-                       text = context.text,
-                       acceptance = context.acceptance,
-                       area = context.area,
-                       volume = context.volume,
-                       constructYear = context.construct_year,
-                       location = context.location,
-                       kind_of_building = context.kind_of_building,
-                       heating = context.heating,
-                       insulation = getattr(context,'insulation',''),
-                       garden = context.garden,
-                       kind_of_garden = context.kind_of_garden,
-                       storage = context.storage,
-                       garage = context.garage,
-                       kind_of_garage = context.kind_of_garage,
-                       airco = context.airco,
-                       )
-        return results
-
-    @memoize
-    def CookedAcceptance(self):
-        """Dummy attribute to allow drop-in replacement of Document"""
-        return self.getAcceptance()
+    pass
