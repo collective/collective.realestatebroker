@@ -55,9 +55,45 @@ custom fields.
 - Object details such as kind of building, construction year, heating system,
   insulation.
 
-- Garden and outside details (like description of the environment).
+- Environment: garden and outside details like description of the environment.
 
 - Location (= google maps).
 
 To be future-proof, we're implementing the content types as archetypes with
-zope3 interface around them. Bit of a double work, but OK for now.
+zope3 interface around them. Bit of a double work, but OK for now. Let's test
+some basic presense of fields:
+
+    >>> residential_schema = Residential.schema
+    >>> 'constructYear' in residential_schema
+    True
+    >>> 'garage' in residential_schema
+    True
+    >>> 'price' in residential_schema
+    True
+    >>> 'parking' in residential_schema # from commercial!
+    False
+    >>> 'parking' in Commercial.schema
+    True
+
+There are a lot of fields, so we're subdividing them into schemata, even
+though there will probably be custom-made edit forms.
+
+    >>> some_fields = residential_schema.getSchemataFields('default')
+    >>> len(some_fields) > 0
+    True
+    >>> some_fields = residential_schema.getSchemataFields('financial')
+    >>> len(some_fields) > 0
+    True
+    >>> some_fields = residential_schema.getSchemataFields('non-existing')
+    >>> len(some_fields) > 0
+    False
+
+Schema extension
+----------------
+
+Real estate objects are very locale-dependent. So it will be necessary to do
+customization to the fields. archetypes.schemaextender is a great tool for
+that. To demonstrate the use, the actual Dutch customization that Zest
+software made for a Dutch customer is included as an example. Which means that
+we can test it. The field we'll test on is called ``kk_von``, which won't make
+sense unless you're Dutch :-)
