@@ -4,10 +4,10 @@
        schema extention functionality.
   -->
   <adapter
-      factory=".content.dutchschema.ResidentialSchemaExtender"
+      factory=".content.dutchschemata.ResidentialSchemaExtender"
       name="collective.realestatebroker.dutch.huis"/>
   <adapter
-      factory=".content.dutchschema.CommercialSchemaExtender"
+      factory=".content.dutchschemata.CommercialSchemaExtender"
       name="collective.realestatebroker.dutch.kantoor"/>
 
 </configure>
