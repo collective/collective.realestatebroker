@@ -10,7 +10,7 @@
         class=".base.RealEstateView"
         permission="zope2.View"
     />
-
+    
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="photo-management"
@@ -196,7 +196,10 @@
       name="realestatebroker.css"
       file="realestatebroker.css"
       />
-
+    <browser:resource
+      name="realestatebroker.js"
+      file="realestatebroker.js"
+      />
     <!-- These two contenttype icons are listed separately as GS didn't seem
          to want to deal with a resource with slashes in it. -->
     <browser:resource

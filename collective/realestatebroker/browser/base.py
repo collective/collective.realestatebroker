@@ -12,7 +12,7 @@ from Products.CMFDefault.utils import Message as _
 
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
-from collective.realestatebroker.browser.interfaces import IFloorInfo
+from interfaces import IFloorInfo
 from collective.realestatebroker import REBMessageFactory as _
 
 from collective.realestatebroker import utils

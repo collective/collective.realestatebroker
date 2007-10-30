@@ -25,6 +25,9 @@ class IRealEstateView(Interface):
     """A base view for methods that are common for both Commercial and
     Residential items"""
 
+    def CookedPrice():
+        """Return formatted price"""
+        
     def image_tag():
         """Returns an HTML image tag for the first image found inside
         RealEstateContent, both commercial and residential  """

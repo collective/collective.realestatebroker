@@ -55,7 +55,7 @@ class RebMigrator(CMFItemMigrator):
         'getBalcony': 'setBalcony',
         'getCity': 'setCity',
         'getConstructYear': 'setConstructYear',
-        'getDesc': 'setDesc',
+        'getDesc': 'setDescription',
         'getFacilities': 'setFacilities',
         'getGarden': 'setGarden',
         'getHeating': 'setHeating',
@@ -260,18 +260,20 @@ class RebMigrator(CMFItemMigrator):
 
         If the source is a method, no problem.
 
-        >>> class MockWithMethod:
+        >>> class MockWithGet:
+        ...     def __init__(self):
+        ...         self.e = "Old value"
         ...     def getE(self):
         ...         return self.e
+        >>> class MockWithSet:
         ...     def setE(self, value):
         ...         self.e = value
-        >>> migrator.old = MockWithMethod()
-        >>> migrator.new = MockWithMethod()
-        >>> migrator.old.setE('Eeee')
+        >>> migrator.old = MockWithGet()
+        >>> migrator.new = MockWithSet()
         >>> migrator.map = {'getE': 'setE'}
         >>> migrator.migrate_withmap()
-        >>> migrator.new.getE()
-        'Eeee'
+        >>> migrator.new.e
+        'Old value'
 
         If the source is a method, the target is assumed to be a method,
         too. General archetypes getter/setter behaviour. If the target misses
@@ -279,6 +281,11 @@ class RebMigrator(CMFItemMigrator):
         it. Note that not putting it in the map isn't always an option, as we
         might add a way (ISchema) to re-add custom fields later.
 
+        >>> class MockWithMethod:
+        ...     def setE(self, value):
+        ...         self.e = value
+        ...     def getE(self):
+        ...         return self.e
         >>> migrator.old = MockWithMethod()
         >>> migrator.old.setE('Eeee')
         >>> migrator.new = Mock()
@@ -322,10 +329,10 @@ class RebMigrator(CMFItemMigrator):
         >>> from Products.CMFCore.utils import getToolByName
         >>> class Mock:
         ...     def __init__(self):
-        ...         self.status = 'offline'
+        ...         self.state = 'offline'
         ...     def status(self):
         ...         "return status"
-        ...         return self.status
+        ...         return self.state
         >>> class MockMigrator(RebMigrator):
         ...     def __init__(self):
         ...         # just to quiet down the init.
@@ -341,7 +348,7 @@ class RebMigrator(CMFItemMigrator):
         ...
         ...     def doActionFor(self, obj, transition, wf_id=None):
         ...         self.index += 1
-
+        ...         obj.status = self.chain[self.index]
         >>> migrator = MockMigrator()
         >>> migrator.old = Mock()
         >>> migrator.new = Mock()
@@ -351,7 +358,7 @@ class RebMigrator(CMFItemMigrator):
         Content with 'available' in the status field should get that workflow
         state after migrating.
 
-        >>> migrator.old.status = 'available'
+        >>> migrator.old.state = 'available'
         >>> wf_tool.getInfoFor(migrator.new, 'review_state')
         'offline'
         >>> migrator.migrate_workflow()
@@ -362,7 +369,7 @@ class RebMigrator(CMFItemMigrator):
         have to reset the index to 0 for each test.
 
         >>> wf_tool.index = 0
-        >>> migrator.old.status = 'negotiating'
+        >>> migrator.old.state = 'negotiating'
         >>> wf_tool.getInfoFor(migrator.new, 'review_state')
         'offline'
         >>> migrator.migrate_workflow()
@@ -371,8 +378,10 @@ class RebMigrator(CMFItemMigrator):
 
         """
         NOTAVAILABLE = 'No status field on this object!'
-
-        oldStatus = getattr(self.old, 'status', NOTAVAILABLE)
+        try:
+            oldStatus = self.old.status()
+        except:
+            oldStatus = NOTAVAILABLE
         if oldStatus == NOTAVAILABLE:
             # Dealing with recent version which has no status field
             return
