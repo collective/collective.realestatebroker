@@ -163,7 +163,7 @@ class RealEstateView(BrowserView):
     """Generic view for viewing one real estate object."""
     implements(IRealEstateView)
     header_fields = []
-    main_fields []
+    main_fields = []
 
     @memoize
     def characteristic_fields(self):
