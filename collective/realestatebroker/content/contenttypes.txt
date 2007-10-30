@@ -97,3 +97,33 @@ that. To demonstrate the use, the actual Dutch customization that Zest
 software made for a Dutch customer is included as an example. Which means that
 we can test it. The field we'll test on is called ``kk_von``, which won't make
 sense unless you're Dutch :-)
+
+First we ensure that the field isn't available yet.
+
+    >>> res = Residential('res')
+    Traceback (most recent call last):
+    ...
+    TypeError: ('Could not adapt', <Residential at >, <InterfaceClass Products.Archetypes.interfaces._schema.ISchema>)
+
+Ouch, this is a unittest, so the zcml-loaded ISchema adapter doesn't work
+yet. We'll have to enable it by hand.
+
+    >>> from Products.Archetypes.Schema.factory import instanceSchemaFactory
+    >>> from zope import component
+    >>> component.provideAdapter(instanceSchemaFactory)
+
+To prevent that we need to make too much mock objects, we'll need to remove
+the fieldproperties as they require too much wiring.
+
+    >>> from Products.Archetypes.atapi import ATFieldProperty
+    >>> for attr in ['address', 'description', 'zipcode', 'city', 'price', 'house_type', 'rooms', 'text', 'acceptance', 'area', 'floor_area', 'volume', 'construct_year', 'location', 'kind_of_building', 'heating', 'insulation', 'garden', 'kind_of_garden', 'storage', 'kind_of_storage', 'garage', 'kind_of_garage']:
+    ...     delattr(Residential, attr)
+
+So, now we can grab the schema the official way.
+
+    >>> res = Residential('res')
+    >>> schema = res.Schema()
+    >>> 'price' in schema
+    True
+    >>> 'kk_von' in schema
+    False
