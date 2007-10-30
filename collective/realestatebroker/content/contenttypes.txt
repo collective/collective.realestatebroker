@@ -137,12 +137,36 @@ section. For this unittest we'll do the work by hand:
     >>> from archetypes.schemaextender.extender import instanceSchemaFactory
     >>> component.provideAdapter(instanceSchemaFactory)
 
-Step 2. Create a schema extender.
+Step 3. Create field classes for the fields you want to adapt. Say, a
+StringField. Make sure you inherit from ExtensionField, first.
 
-    >>> class MyExtender(object):
+    >>> from archetypes.schemaextender.field import ExtensionField
+    >>> from Products.Archetypes import atapi
+    >>> class ExtendedStringField(ExtensionField, atapi.StringField):
     ...     pass
 
-    TODO
+Step 3. Create a schema extender. An extender is a named adapter behind the
+scenes, so you have to say which interface you adapt. In our case,
+IResidential and/or ICommercial.
+
+    >>> from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+    >>> from zope import interface
+    >>> class MyExtender(object):
+    ...     component.adapts(IResidential)
+    ...     interface.implements(IOrderableSchemaExtender)
+    ...     _fields = [ExtendedStringField(
+    ...         'extra_field',
+    ...         storage=atapi.AnnotationStorage(),
+    ...         widget = atapi.StringWidget(label = u'Extra field')
+    ...         ),
+    ...                ]
+    ...     def __init__(self, context):
+    ...         self.context = context
+    ...     def getFields(self):
+    ...         return self._fields
+    ...     def getOrder(self, original):
+    ...         # Possibility to move fields.
+    ...         return original
 
 Step 3. Wire up your extender with some zcml by defining an adapter with your
 extender as the "factory" and give it some name (so that it is a named
@@ -155,4 +179,4 @@ adapter). We'll again enable it manually here (it *is* a unit test):
     >>> 'price' in schema
     True
     >>> 'extra_field' in schema
-    False
+    True
