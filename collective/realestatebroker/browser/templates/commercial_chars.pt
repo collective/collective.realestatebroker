@@ -5,25 +5,36 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="collective.realestatebroker">
 
-<body>
+  <body>
 
-<div metal:fill-slot="main"
-     tal:define="home view/details">
+    <div metal:fill-slot="main"
+         tal:define="home view/details">
 
-  <div tal:replace="structure provider:plone.abovecontenttitle" />
-  <div tal:replace="structure provider:realestatebroker.titlemanager" />
-  <div tal:replace="structure provider:plone.belowcontenttitle" />
-  <div tal:replace="structure provider:plone.abovecontentbody" />
-  <ul id="rebTabs" 
-    class="formTabs">
-    <li tal:replace="structure provider:realestatebroker.tabs" />
-  </ul>
-  <metal:field use-macro="python:context.widget('text', mode='view')">
-    Body text
-  </metal:field>
-  chars
-  <div tal:replace="structure provider:plone.belowcontentbody" />
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      <div tal:replace="structure provider:realestatebroker.titlemanager" />
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+      <ul id="rebTabs"
+          class="formTabs">
+        <li tal:replace="structure provider:realestatebroker.tabs" />
+      </ul>
 
-</div>
-</body>
+      <tal:schemata tal:repeat="current_schemata
+                                python:['measurements', 'details', 'environment', 'financial']">
+        <h2 tal:content="current_schemata"/>
+        <div tal:define="field_macro field_macro | here/widgets/field/macros/view"
+             tal:repeat="field python:here.Schema().filterFields(schemata=current_schemata)">
+          <tal:if_visible define="mode string:view;
+                                  visState python:field.widget.isVisible(here, mode);
+                                  visCondition python:field.widget.testCondition(context.aq_inner.aq_parent, portal, context);"
+                          condition="python:visState == 'visible' and visCondition">
+            <metal:use_field use-macro="field_macro" />
+          </tal:if_visible>
+        </div>
+      </tal:schemata>
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </div>
+  </body>
 </html>
