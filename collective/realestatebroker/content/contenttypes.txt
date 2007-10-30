@@ -93,10 +93,7 @@ Schema extension
 
 Real estate objects are very locale-dependent. So it will be necessary to do
 customization to the fields. archetypes.schemaextender is a great tool for
-that. To demonstrate the use, the actual Dutch customization that Zest
-software made for a Dutch customer is included as an example. Which means that
-we can test it. The field we'll test on is called ``kk_von``, which won't make
-sense unless you're Dutch :-)
+that.
 
 First we ensure that the field isn't available yet.
 
@@ -106,14 +103,15 @@ First we ensure that the field isn't available yet.
     TypeError: ('Could not adapt', <Residential at >, <InterfaceClass Products.Archetypes.interfaces._schema.ISchema>)
 
 Ouch, this is a unittest, so the zcml-loaded ISchema adapter doesn't work
-yet. We'll have to enable it by hand.
+yet. We'll have to enable it by hand. Just a default plone will do this for
+you.
 
     >>> from Products.Archetypes.Schema.factory import instanceSchemaFactory
     >>> from zope import component
     >>> component.provideAdapter(instanceSchemaFactory)
 
-To prevent that we need to make too much mock objects, we'll need to remove
-the fieldproperties as they require too much wiring.
+To prevent that we need to make too much mock objects for this unittest, we'll
+need to remove the fieldproperties as they require too much wiring.
 
     >>> from Products.Archetypes.atapi import ATFieldProperty
     >>> for attr in ['address', 'description', 'zipcode', 'city', 'price', 'house_type', 'rooms', 'text', 'acceptance', 'area', 'floor_area', 'volume', 'construct_year', 'location', 'kind_of_building', 'heating', 'insulation', 'garden', 'kind_of_garden', 'storage', 'kind_of_storage', 'garage', 'kind_of_garage']:
@@ -125,30 +123,36 @@ So, now we can grab the schema the official way.
     >>> schema = res.Schema()
     >>> 'price' in schema
     True
-    >>> 'kk_von' in schema
+    >>> 'extra_field' in schema
     False
 
-If we manually enable our Dutch schema extender, the extra field will be
-available.
+Now that the basics are in place, we can now start with the work you'll have
+to do yourself in your own extensions.
 
-    >>> from collective.realestatebroker.content import dutchschemata
-    >>> component.provideAdapter(dutchschemata.ResidentialSchemaExtender,
+Step 1. archetypes.schemaextender's ``overrides.zcml`` isn't applied, so the
+default ISchema handling is still in place. To fix this (if you use buildout)
+include an entry ``archetypes.schemaextender-overrides`` in your zcml
+section. For this unittest we'll do the work by hand:
+
+    >>> from archetypes.schemaextender.extender import instanceSchemaFactory
+    >>> component.provideAdapter(instanceSchemaFactory)
+
+Step 2. Create a schema extender.
+
+    >>> class MyExtender(object):
+    ...     pass
+
+    TODO
+
+Step 3. Wire up your extender with some zcml by defining an adapter with your
+extender as the "factory" and give it some name (so that it is a named
+adapter). We'll again enable it manually here (it *is* a unit test):
+
+    >>> component.provideAdapter(MyExtender,
     ...                          name=u"dutch.test")
     >>> res = Residential('res')
     >>> schema = res.Schema()
     >>> 'price' in schema
     True
-    >>> 'kk_von' in schema
+    >>> 'extra_field' in schema
     False
-
-NOT available. Ah, archetypes.schemaextender's ``overrides.zcml`` hasn't been
-applied so the default ISchema handling is still in place.
-
-    >>> from archetypes.schemaextender.extender import instanceSchemaFactory
-    >>> component.provideAdapter(instanceSchemaFactory)
-    >>> res = Residential('res')
-    >>> schema = res.Schema()
-    >>> 'price' in schema
-    True
-    >>> 'kk_von' in schema
-    True
