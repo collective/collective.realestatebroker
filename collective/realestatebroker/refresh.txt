@@ -1,1 +1,0 @@
-(This makes the product refreshable for developers)
