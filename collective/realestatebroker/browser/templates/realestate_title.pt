@@ -29,8 +29,10 @@
     </table>
 
     <div class="price">
-      <span tal:replace="view/price" />&nbsp;
-      <span tal:replace="view/after_price" />
+      <metal:field use-macro="python:context.widget('price',
+                              mode='view')">
+        price goes here.
+      </metal:field>
     </div>
   </div>
 </div>
