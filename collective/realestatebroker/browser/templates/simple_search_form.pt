@@ -3,5 +3,23 @@
   <div id="rebSimpleSearchForm">
   Search for objects with:
   
+  <div class="field">
+      <label for="city" i18n:translate="label_brokersearch_city">City</label>
+      <span class="fieldRequired" title="Required"
+            i18n:attributes="city"
+            i18n:translate="label_required">(Required)</span>
+      <div class="formHelp" i18n:translate="help_brokersearch_city">Fill in the name of the city</div>
+      <input type="text"
+             id="city"
+             name="getCity"
+             size="25"
+             tabindex=""
+             tal:attributes="tabindex string:bla"
+             />
+  </div>
+  
+
+  
+  
   </div>  
 </div>

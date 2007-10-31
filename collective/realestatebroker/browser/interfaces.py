@@ -10,14 +10,18 @@ class IRealEstateListing(Interface):
         """Returns a list of dicts representing an overview of the Residential
         real estate."""
 
+    def get_batched_folder_contents():
+        """Return a batched list of dictionaries with the realestate objects
+           in the folder"""
+
 
 class IResidentialListing(IRealEstateListing):
-    """ This is a view class which returns a listing of 'Residential' items"""
+    """ This is a view class which returns a Residential listing of 'RealEstate' items"""
     pass
 
 
 class ICommercialListing(IRealEstateListing):
-    """ This is a view class which returns a listing of 'Commercial' items"""
+    """ This is a view class which returns a Commercial listing of 'Realestate' items"""
     pass
 
 

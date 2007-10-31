@@ -1,7 +1,17 @@
 from zope.component import getMultiAdapter
+
+
+from zope.interface import Interface
+from zope.formlib import form
+from zope import schema
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.Five.formlib import formbase
+
+from Products.CMFCore.utils import getToolByName
+
 from plone.app.layout.viewlets import ViewletBase
 
+from collective.realestatebroker import REBMessageFactory as _
 
 class DescriptionTab(ViewletBase):
     """ Viewlet that renders the the description tab with the ITabManager viewlet manager
@@ -119,3 +129,4 @@ class RealEstateSimpleSearchForm(ViewletBase):
     """
 
     render = ViewPageTemplateFile('templates/simple_search_form.pt')
+

@@ -124,4 +124,20 @@ def FacilitiesVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     facilities_props = props.getProperty('commercial_facilities')
-    return SimpleVocabulary.fromValues(facilities_props)                       
+    return SimpleVocabulary.fromValues(facilities_props)  
+    
+def MinPriceVocabularyFactory(context):
+    """ Minimum price for search forms
+    """
+    pprops = getToolByName(context, 'portal_properties')
+    props = pprops.realestatebroker_properties
+    min_price_props = props.getProperty('min_price')
+    return SimpleVocabulary.fromValues(min_price_props)
+
+def MaxPriceVocabularyFactory(context):
+    """ Maximum price for search forms
+    """
+    pprops = getToolByName(context, 'portal_properties')
+    props = pprops.realestatebroker_properties
+    max_price_props = props.getProperty('max_price')
+    return SimpleVocabulary.fromValues(max_price_props)
