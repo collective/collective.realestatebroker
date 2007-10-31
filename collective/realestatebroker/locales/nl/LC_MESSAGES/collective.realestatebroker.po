@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-10-29 14:25+0100\n"
+"PO-Revision-Date: 2007-10-31 15:04+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/base.py:292
+#: ./browser/base.py:337
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/base.py:300
+#: ./browser/base.py:345
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
-#: ./content/schemata.py:118
+#: ./content/schemata.py:122
 msgid "Acceptance"
 msgstr "Oplevering"
 
@@ -30,19 +30,15 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./content/schemata.py:37
+#: ./content/schemata.py:40
 msgid "Body text"
 msgstr "Hoofdtekst"
 
-#: ./content/schemata.py:210
+#: ./content/schemata.py:214
 msgid "Building type"
 msgstr "Gebouwtype"
 
-#: ./content/dutchschemata.py:172
-msgid "Cable television"
-msgstr "Kabeltelevisie"
-
-#: ./content/schemata.py:29
+#: ./content/schemata.py:31
 msgid "City"
 msgstr "Plaats"
 
@@ -51,7 +47,7 @@ msgstr "Plaats"
 msgid "Commercial real estate"
 msgstr "Bedrijfspand"
 
-#: ./content/schemata.py:53
+#: ./content/schemata.py:56
 msgid "Construction year"
 msgstr "Bouwjaar"
 
@@ -64,19 +60,15 @@ msgstr "Standaard afbeelding"
 msgid "Description"
 msgstr "Omschrijving"
 
-#: ./content/schemata.py:119
+#: ./content/schemata.py:123
 msgid "Enter a brief description for the acceptance."
 msgstr "Geef een korte omschrijving voor de oplevering"
 
-#: ./content/schemata.py:38
+#: ./content/schemata.py:41
 msgid "Enter the main description for this object."
 msgstr "Geeef een ruime omschrijving voor dit object."
 
-#: ./content/dutchschemata.py:52
-msgid "Environment remarks"
-msgstr "Opmerkingen over de omgeving"
-
-#: ./content/schemata.py:218
+#: ./content/schemata.py:222
 msgid "Facilities"
 msgstr "Faciliteiten"
 
@@ -84,17 +76,13 @@ msgstr "Faciliteiten"
 msgid "Fill in the address of this object"
 msgstr "Geef de straatnaam op van dit object."
 
-#: ./content/schemata.py:111
+#: ./content/schemata.py:115
 msgid "Fill in the price without dots or commas."
 msgstr "Vul de prijs in zonder punten of komma's"
 
-#: ./content/dutchschemata.py:69
-msgid "Financial remarks"
-msgstr ""
-
-#: ./content/schemata.py:74
+#: ./content/schemata.py:77
 msgid "Floor area"
-msgstr ""
+msgstr "Vloeroppervlak"
 
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
@@ -106,31 +94,15 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./content/schemata.py:152
+#: ./content/schemata.py:156
 msgid "Garage"
 msgstr "Garage"
 
-#: ./content/schemata.py:189
+#: ./content/schemata.py:193
 msgid "Garden"
 msgstr "Tuin"
 
-#: ./content/dutchschemata.py:220
-msgid "Garden area"
-msgstr ""
-
-#: ./content/dutchschemata.py:204
-msgid "Garden depth"
-msgstr ""
-
-#: ./content/dutchschemata.py:212
-msgid "Garden width"
-msgstr ""
-
-#: ./content/dutchschemata.py:22
-msgid "Generic remarks"
-msgstr ""
-
-#: ./content/schemata.py:68
+#: ./content/schemata.py:71
 msgid "Ground area"
 msgstr "Grondoppervlak"
 
@@ -138,7 +110,7 @@ msgstr "Grondoppervlak"
 msgid "Heating"
 msgstr "Verwarming"
 
-#: ./content/schemata.py:145
+#: ./content/schemata.py:149
 msgid "House type"
 msgstr "Huistype"
 
@@ -150,7 +122,7 @@ msgstr "Info"
 msgid "Insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:47
+#: ./content/schemata.py:50
 msgid "Kind of building"
 msgstr "Soort gebouw"
 
@@ -158,7 +130,7 @@ msgstr "Soort gebouw"
 msgid "Kind of garage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:196
+#: ./content/schemata.py:200
 msgid "Kind of garden"
 msgstr "Soort tuin"
 
@@ -166,25 +138,9 @@ msgstr "Soort tuin"
 msgid "Kind of storage"
 msgstr "Soort berging"
 
-#: ./content/dutchschemata.py:144
-msgid "Living room area"
-msgstr "Woonkamer"
-
 #: ./interfaces.py:65
 msgid "Location"
 msgstr "Locatie"
-
-#: ./content/dutchschemata.py:180
-msgid "Maintenance level inside"
-msgstr ""
-
-#: ./content/dutchschemata.py:188
-msgid "Maintenance level outside"
-msgstr ""
-
-#: ./content/dutchschemata.py:32
-msgid "Measurement remarks"
-msgstr ""
 
 #: ./browser/base.py:75
 msgid "Next ${count} items"
@@ -194,13 +150,9 @@ msgstr "Volgende ${count} objecten"
 msgid "Next item"
 msgstr "Volgend object"
 
-#: ./content/schemata.py:181
+#: ./content/schemata.py:185
 msgid "Number of rooms"
 msgstr "Aantal kamers"
-
-#: ./content/dutchschemata.py:42
-msgid "Object detail remarks"
-msgstr ""
 
 #: ./interfaces.py:151
 msgid "Parking"
@@ -219,15 +171,15 @@ msgstr "Vorige ${count} objecten"
 msgid "Previous item"
 msgstr "Vorig object"
 
-#: ./content/schemata.py:110
+#: ./content/schemata.py:114
 msgid "Price"
 msgstr "Prijs"
 
-#: ./content/schemata.py:244
+#: ./content/schemata.py:248
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
-#: ./content/schemata.py:235
+#: ./content/schemata.py:239
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
@@ -236,11 +188,11 @@ msgstr "Huren of kopen mogelijk"
 msgid "Residential real estate"
 msgstr "Woningen"
 
-#: ./content/schemata.py:219
+#: ./content/schemata.py:223
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
-#: ./content/schemata.py:165
+#: ./content/schemata.py:169
 msgid "Storage"
 msgstr "Opslag"
 
@@ -253,19 +205,19 @@ msgstr "Title"
 msgid "Upload Files"
 msgstr "Bestanden uploaden"
 
-#: ./content/schemata.py:228
+#: ./content/schemata.py:232
 msgid "VAT"
 msgstr "B.T.W."
 
-#: ./content/schemata.py:62
+#: ./content/schemata.py:65
 msgid "Volume"
 msgstr "Inhoud"
 
-#: ./content/schemata.py:84
+#: ./content/schemata.py:87
 msgid "You can choose more than one option."
 msgstr "Je kan meer dan één optie selecteren."
 
-#: ./content/schemata.py:22
+#: ./content/schemata.py:23
 msgid "Zip code"
 msgstr "Postcode"
 
@@ -292,6 +244,11 @@ msgstr ""
 msgid "heading_bulk_upload"
 msgstr "Uploaden van meerdere foto's in één keer."
 
+#. Default: "Textual description"
+#: ./browser/templates/residential_view.pt:40
+msgid "heading_main_text"
+msgstr "Uitgebreide omschrijving"
+
 #. Default: "Photo management"
 #: ./browser/templates/photo_management.pt:18
 msgid "heading_manage_photos"
@@ -302,23 +259,19 @@ msgstr "Foto beheer"
 msgid "heading_photo_configuration"
 msgstr "Foto configuratie"
 
-#: ./content/schemata.py:83
+#: ./content/schemata.py:86
 msgid "heating"
 msgstr "Verwarming"
 
-#: ./content/schemata.py:91
+#: ./content/schemata.py:94
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./dutch_interfaces.py:37
-msgid "k.k./v.o.n."
-msgstr "k.k./v.o.n."
-
-#: ./content/schemata.py:159
+#: ./content/schemata.py:163
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:172
+#: ./content/schemata.py:176
 msgid "kindOfStorage"
 msgstr "Soort berging"
 
@@ -326,11 +279,6 @@ msgstr "Soort berging"
 #: ./browser/templates/realestate_map.pt:31
 msgid "label_description"
 msgstr "Omschrijving"
-
-#. Default: "Excluding costs for buyer"
-#: ./browser/residential.py:54
-msgid "label_kk"
-msgstr "Exclusief kosten koper"
 
 #. Default: "More..."
 #: ./browser/templates/commercial_listing.pt:43
@@ -342,12 +290,7 @@ msgstr "Meer..."
 msgid "label_related_items"
 msgstr "Gerelateerde items"
 
-#. Default: "All costs included"
-#: ./browser/residential.py:56
-msgid "label_von"
-msgstr "Vrij op naam"
-
-#: ./content/schemata.py:102
+#: ./content/schemata.py:105
 msgid "location"
 msgstr "Locatie"
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-10-30 14:17+0000\n"
+"POT-Creation-Date: 2007-10-31 14:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/base.py:292
+#: ./browser/base.py:337
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/base.py:300
+#: ./browser/base.py:345
 msgid "${image} is now the default."
 msgstr ""
 
-#: ./content/schemata.py:118
+#: ./content/schemata.py:122
 msgid "Acceptance"
 msgstr ""
 
@@ -37,19 +37,15 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./content/schemata.py:37
+#: ./content/schemata.py:40
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:210
+#: ./content/schemata.py:214
 msgid "Building type"
 msgstr ""
 
-#: ./content/dutchschemata.py:172
-msgid "Cable television"
-msgstr ""
-
-#: ./content/schemata.py:29
+#: ./content/schemata.py:31
 msgid "City"
 msgstr ""
 
@@ -58,7 +54,7 @@ msgstr ""
 msgid "Commercial real estate"
 msgstr ""
 
-#: ./content/schemata.py:53
+#: ./content/schemata.py:56
 msgid "Construction year"
 msgstr ""
 
@@ -71,19 +67,15 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: ./content/schemata.py:119
+#: ./content/schemata.py:123
 msgid "Enter a brief description for the acceptance."
 msgstr ""
 
-#: ./content/schemata.py:38
+#: ./content/schemata.py:41
 msgid "Enter the main description for this object."
 msgstr ""
 
-#: ./content/dutchschemata.py:52
-msgid "Environment remarks"
-msgstr ""
-
-#: ./content/schemata.py:218
+#: ./content/schemata.py:222
 msgid "Facilities"
 msgstr ""
 
@@ -91,15 +83,11 @@ msgstr ""
 msgid "Fill in the address of this object"
 msgstr ""
 
-#: ./content/schemata.py:111
+#: ./content/schemata.py:115
 msgid "Fill in the price without dots or commas."
 msgstr ""
 
-#: ./content/dutchschemata.py:69
-msgid "Financial remarks"
-msgstr ""
-
-#: ./content/schemata.py:74
+#: ./content/schemata.py:77
 msgid "Floor area"
 msgstr ""
 
@@ -113,31 +101,15 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./content/schemata.py:152
+#: ./content/schemata.py:156
 msgid "Garage"
 msgstr ""
 
-#: ./content/schemata.py:189
+#: ./content/schemata.py:193
 msgid "Garden"
 msgstr ""
 
-#: ./content/dutchschemata.py:220
-msgid "Garden area"
-msgstr ""
-
-#: ./content/dutchschemata.py:204
-msgid "Garden depth"
-msgstr ""
-
-#: ./content/dutchschemata.py:212
-msgid "Garden width"
-msgstr ""
-
-#: ./content/dutchschemata.py:22
-msgid "Generic remarks"
-msgstr ""
-
-#: ./content/schemata.py:68
+#: ./content/schemata.py:71
 msgid "Ground area"
 msgstr ""
 
@@ -145,7 +117,7 @@ msgstr ""
 msgid "Heating"
 msgstr ""
 
-#: ./content/schemata.py:145
+#: ./content/schemata.py:149
 msgid "House type"
 msgstr ""
 
@@ -157,7 +129,7 @@ msgstr ""
 msgid "Insulation"
 msgstr ""
 
-#: ./content/schemata.py:47
+#: ./content/schemata.py:50
 msgid "Kind of building"
 msgstr ""
 
@@ -165,7 +137,7 @@ msgstr ""
 msgid "Kind of garage"
 msgstr ""
 
-#: ./content/schemata.py:196
+#: ./content/schemata.py:200
 msgid "Kind of garden"
 msgstr ""
 
@@ -173,24 +145,8 @@ msgstr ""
 msgid "Kind of storage"
 msgstr ""
 
-#: ./content/dutchschemata.py:144
-msgid "Living room area"
-msgstr ""
-
 #: ./interfaces.py:65
 msgid "Location"
-msgstr ""
-
-#: ./content/dutchschemata.py:180
-msgid "Maintenance level inside"
-msgstr ""
-
-#: ./content/dutchschemata.py:188
-msgid "Maintenance level outside"
-msgstr ""
-
-#: ./content/dutchschemata.py:32
-msgid "Measurement remarks"
 msgstr ""
 
 #: ./browser/base.py:75
@@ -201,12 +157,8 @@ msgstr ""
 msgid "Next item"
 msgstr ""
 
-#: ./content/schemata.py:181
+#: ./content/schemata.py:185
 msgid "Number of rooms"
-msgstr ""
-
-#: ./content/dutchschemata.py:42
-msgid "Object detail remarks"
 msgstr ""
 
 #: ./interfaces.py:151
@@ -226,15 +178,15 @@ msgstr ""
 msgid "Previous item"
 msgstr ""
 
-#: ./content/schemata.py:110
+#: ./content/schemata.py:114
 msgid "Price"
 msgstr ""
 
-#: ./content/schemata.py:244
+#: ./content/schemata.py:248
 msgid "Private car park"
 msgstr ""
 
-#: ./content/schemata.py:235
+#: ./content/schemata.py:239
 msgid "Rent or buy"
 msgstr ""
 
@@ -243,11 +195,11 @@ msgstr ""
 msgid "Residential real estate"
 msgstr ""
 
-#: ./content/schemata.py:219
+#: ./content/schemata.py:223
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
-#: ./content/schemata.py:165
+#: ./content/schemata.py:169
 msgid "Storage"
 msgstr ""
 
@@ -260,19 +212,19 @@ msgstr ""
 msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:228
+#: ./content/schemata.py:232
 msgid "VAT"
 msgstr ""
 
-#: ./content/schemata.py:62
+#: ./content/schemata.py:65
 msgid "Volume"
 msgstr ""
 
-#: ./content/schemata.py:84
+#: ./content/schemata.py:87
 msgid "You can choose more than one option."
 msgstr ""
 
-#: ./content/schemata.py:22
+#: ./content/schemata.py:23
 msgid "Zip code"
 msgstr ""
 
@@ -296,6 +248,11 @@ msgstr ""
 msgid "heading_bulk_upload"
 msgstr ""
 
+#. Default: "Textual description"
+#: ./browser/templates/residential_view.pt:40
+msgid "heading_main_text"
+msgstr ""
+
 #. Default: "Photo management"
 #: ./browser/templates/photo_management.pt:18
 msgid "heading_manage_photos"
@@ -306,34 +263,25 @@ msgstr ""
 msgid "heading_photo_configuration"
 msgstr ""
 
-#: ./content/schemata.py:83
+#: ./content/schemata.py:86
 msgid "heating"
 msgstr ""
 
-#: ./content/schemata.py:91
+#: ./content/schemata.py:94
 msgid "insulation"
 msgstr ""
 
-#: ./dutch_interfaces.py:37
-msgid "k.k./v.o.n."
-msgstr ""
-
-#: ./content/schemata.py:159
+#: ./content/schemata.py:163
 msgid "kindOfGarage"
 msgstr ""
 
-#: ./content/schemata.py:172
+#: ./content/schemata.py:176
 msgid "kindOfStorage"
 msgstr ""
 
 #. Default: "Description"
 #: ./browser/templates/realestate_map.pt:31
 msgid "label_description"
-msgstr ""
-
-#. Default: "Excluding costs for buyer"
-#: ./browser/residential.py:54
-msgid "label_kk"
 msgstr ""
 
 #. Default: "More..."
@@ -346,12 +294,7 @@ msgstr ""
 msgid "label_related_items"
 msgstr ""
 
-#. Default: "All costs included"
-#: ./browser/residential.py:56
-msgid "label_von"
-msgstr ""
-
-#: ./content/schemata.py:102
+#: ./content/schemata.py:105
 msgid "location"
 msgstr ""
 
