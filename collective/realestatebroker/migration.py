@@ -74,7 +74,6 @@ class RebMigrator(CMFItemMigrator):
         'getVat': 'setVat',
         'getVolume': 'setVolume',
         'getZipCode': 'setZipCode',
-
         # End of old fields
         }
 
@@ -310,15 +309,15 @@ class RebMigrator(CMFItemMigrator):
             oldVal = getattr(self.old, oldKey, NOTAVAILABLE)
             newVal = getattr(self.new, newKey, NOTAVAILABLE)
             if oldVal == NOTAVAILABLE:
-                logger.info("Old key %s not found.", oldKey)
-                return
+                logger.warning("Old key %s not found.", oldKey)
+                continue
             if callable(oldVal):
                 value = oldVal()
                 # newVal must be available
                 if newVal == NOTAVAILABLE:
-                    logger.info("Old key %s is callable, but new key "
-                                "%s isn't available.", oldKey, newKey)
-                    return
+                    logger.warning("Old key %s is callable, but new key "
+                                   "%s isn't available.", oldKey, newKey)
+                    continue
             else:
                 value = oldVal
             if callable(newVal):
