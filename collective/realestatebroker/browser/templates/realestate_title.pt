@@ -1,9 +1,9 @@
 <div class="realestate-header">
   <div class="reb-thumb"
-    tal:condition="view/image_tag">
+       tal:condition="view/image_tag">
     <img tal:replace="structure view/image_tag" />
   </div>
-  
+
   <div id="rebAddress">
     <h1>
       <metal:field use-macro="python:context.widget('title',
@@ -11,11 +11,26 @@
         Title goes here.
       </metal:field>
     </h1>
-    <span tal:replace="view/zipcode" />, <span tal:replace="view/city" />
-    
+    <table>
+      <tr>
+        <td>
+          <metal:field use-macro="python:context.widget('zipCode',
+                                  mode='view')">
+            zipcode goes here.
+          </metal:field>
+        </td>
+        <td>
+          <metal:field use-macro="python:context.widget('city',
+                                  mode='view')">
+            zipcode goes here.
+          </metal:field>
+        </td>
+      </tr>
+    </table>
+
     <div class="price">
       <span tal:replace="view/price" />&nbsp;
-         <span tal:replace="view/after_price" />
+      <span tal:replace="view/after_price" />
     </div>
   </div>
 </div>
