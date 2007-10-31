@@ -1,5 +1,7 @@
 from Acquisition import aq_inner
 from zope.interface import implements
+from zope.component import getUtility
+from zope.schema.interfaces import IVocabularyFactory
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface.image import IATImage
@@ -91,6 +93,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         BrowserView.__init__(self, context,request)
 
         self.catalog = getToolByName(self.context, 'portal_catalog')
+        self.wftool = getToolByName(self.context, 'portal_workflow')
 
     def sorted_listing(self, count):
         """Returns a list of dicts representing an overview of the Commercial
@@ -123,6 +126,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                 'city': obj.city,
                 'description': obj.Description(),
                 'image_tag': image_tag,
+                'review_state': self.wftool.getInfoFor(obj,'review_state')
                 })
         return result
 
@@ -147,6 +151,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
             #    continue
             realestate_view = obj.restrictedTraverse('@@realestate')
             image_tag = realestate_view.image_tag()
+            cooked_price = realestate_view.CookedPrice()
             result.append( {
                 'id' : obj.getId(),
                 'url': obj.absolute_url(),
@@ -155,8 +160,19 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                 'city': obj.city,
                 'description': obj.Description(),
                 'image_tag': image_tag,
+                'cooked_price': cooked_price,
+                'review_state': self.wftool.getInfoFor(obj,'review_state'),
                 })
         return result
+        
+    def available_cities(self):
+        """Return list of cities from the city_list vocabulary
+           FIXME: more user friendly would be search over the available cities 
+           from all the available realestate property in this folder
+        """
+        cities_vocab = getUtility(IVocabularyFactory,'collective.realestatebroker.city_list')
+        return [city.value for city in cities_vocab(None)]
+                    
 
 # Couple of field filter functions. Used by RealEstateView.
 def is_main_field(field):
@@ -211,7 +227,7 @@ class RealEstateView(BrowserView):
         """Return formatted price"""
         pr = str(aq_inner(self.context.price))
         elements = []
-
+        
         if len(pr) > 9:
             elements.append(pr[-12:-9])
         if len(pr) > 6:
@@ -219,7 +235,13 @@ class RealEstateView(BrowserView):
         if len(pr) > 3:
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
-        return '.'.join(elements)
+        
+        #get default currency from the properties
+        pprops = getToolByName(self.context, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        currency = str(props.getProperty('currency'))
+        
+        return currency + " " + '.'.join(elements)
 
     @memoize
     def image_brains(self):

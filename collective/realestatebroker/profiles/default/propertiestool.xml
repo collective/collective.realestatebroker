@@ -62,7 +62,10 @@
    <element value="8"/>
   </property>
   <property name="min_price" type="lines" purge="False">
+   <element value="50000"/>
+   <element value="75000"/>
    <element value="100000"/>
+   <element value="125000"/>
    <element value="150000"/>
    <element value="200000"/>
    <element value="250000"/>
@@ -81,7 +84,9 @@
    <element value="2000000"/>
   </property>
   <property name="max_price" type="lines" purge="False">
+   <element value="75000"/>
    <element value="100000"/>
+   <element value="125000"/>
    <element value="150000"/>
    <element value="200000"/>
    <element value="250000"/>

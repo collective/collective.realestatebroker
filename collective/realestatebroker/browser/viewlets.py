@@ -123,10 +123,3 @@ class RealEstateTitle(ViewletBase):
 
 
 
-class RealEstateSimpleSearchForm(ViewletBase):
-    """ Viewlet that renders the search form above a realestate listing
-        (Commercial and Residential)
-    """
-
-    render = ViewPageTemplateFile('templates/simple_search_form.pt')
-

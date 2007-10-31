@@ -127,16 +127,6 @@
         />
 
 
-    <!-- Vielwet for Search Form in RealEsateListing -->
-    
-    <browser:viewlet 
-        name="realestatebroker.search.simple" 
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody" 
-        class=".viewlets.RealEstateSimpleSearchForm" 
-        permission="zope2.View"
-        view=".interfaces.IRealEstateListing" 
-        /> 
-
     <!-- Photo management -->
     <browser:page
         name="handle-configuration"
