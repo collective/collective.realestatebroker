@@ -199,6 +199,8 @@ class RebMigrator(CMFItemMigrator):
         logger.info("Starting to migrate CMFPhoto objects.")
         for album in self.old.objectValues():
             if not album.portal_type == 'Photo Album':
+                logger.warning("Expected a photo album, got a %s.",
+                               album.portal_type)
                 continue
             logger.info("Found a photo album (%s).", album.getId())
             for photo in album.values():
@@ -262,7 +264,7 @@ class RebMigrator(CMFItemMigrator):
 
         >>> class MockWithGet:
         ...     def __init__(self):
-        ...         self.e = "Old value"
+        ...         self.e = 'Old value'
         ...     def getE(self):
         ...         return self.e
         >>> class MockWithSet:
@@ -307,18 +309,25 @@ class RebMigrator(CMFItemMigrator):
             oldVal = getattr(self.old, oldKey, NOTAVAILABLE)
             newVal = getattr(self.new, newKey, NOTAVAILABLE)
             if oldVal == NOTAVAILABLE:
+                logger.info("Old key %s not found.", oldKey)
                 return
             if callable(oldVal):
                 value = oldVal()
                 # newVal must be available
                 if newVal == NOTAVAILABLE:
+                    logger.info("Old key %s is callable, but new key "
+                                "%s isn't available.", oldKey, newKey)
                     return
             else:
                 value = oldVal
             if callable(newVal):
                 newVal(value)
+                logger.info("Called %s() to set value from old field %s.",
+                            newKey, oldKey)
             else:
                 setattr(self.new, newKey, value)
+                logger.info("Used setattr to set %s to the value from old field %s.",
+                            newKey, oldKey)
 
     def migrate_workflow(self):
         """We need to check for the status field of old content types. Since
@@ -383,7 +392,8 @@ class RebMigrator(CMFItemMigrator):
         except:
             oldStatus = NOTAVAILABLE
         if oldStatus == NOTAVAILABLE:
-            # Dealing with recent version which has no status field
+            logger.info("Dealing with recent version which has no status "
+                        "field, so now workflow migration needed.")
             return
         else:
             wf_tool = getToolByName(self.new, 'portal_workflow')
@@ -401,7 +411,6 @@ class RebMigrator(CMFItemMigrator):
                 else:
                     logger.info("Failed to migrate workflow for %r." % self.new)
                     # something went wrong
-
 
 
 class ResidentialMigrator(RebMigrator):
