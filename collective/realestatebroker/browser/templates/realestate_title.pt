@@ -22,7 +22,7 @@
         <td>
           <metal:field use-macro="python:context.widget('city',
                                   mode='view')">
-            zipcode goes here.
+            city goes here.
           </metal:field>
         </td>
       </tr>
