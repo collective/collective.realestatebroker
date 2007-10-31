@@ -92,20 +92,20 @@ class RealEstateTitle(ViewletBase):
     def title(self):
         return self.context.title
 
-    def zipcode(self):
-        return self.context.zipcode
+#     def zipcode(self):
+#         return self.context.zipcode
 
-    def city(self):
-        return self.context.city
+#     def city(self):
+#         return self.context.city
 
-    def price(self):
-        realestate_view = self.context.restrictedTraverse('@@realestate')
-        return realestate_view.CookedPrice()
+#     def price(self):
+#         realestate_view = self.context.restrictedTraverse('@@realestate')
+#         return realestate_view.CookedPrice()
 
-    def after_price(self):
-        if hasattr(self.context, 'kk_von'):
-            return self.context.kk_von
-        return ''
+#     def after_price(self):
+#         if hasattr(self.context, 'kk_von'):
+#             return self.context.kk_von
+#         return ''
 
     def image_tag(self):
         realestate_view = self.context.restrictedTraverse('@@realestate')
