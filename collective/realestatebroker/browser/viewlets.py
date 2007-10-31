@@ -1,4 +1,3 @@
-from Acquisition import aq_inner
 from zope.component import getMultiAdapter
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets import ViewletBase
@@ -17,10 +16,11 @@ class DescriptionTab(ViewletBase):
                                              name=u'plone_context_state')
         url = self.context_state.current_page_url()
         self.is_selected = True
-        if url.endswith('chars') or \
-           url.endswith('photos') or \
-           url.endswith('map'):
-           self.is_selected = False
+        if (url.endswith('chars') or
+            url.endswith('photos') or
+            'photos?selected' in url or
+            url.endswith('map')):
+            self.is_selected = False
 
         # Both Residential and Commercial with have a description alias that point
         # to their own <type>_description.pt
@@ -56,8 +56,8 @@ class PhotosTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.current_page_url().endswith('photos')
-
+        url = self.context_state.current_page_url()
+        self.is_selected = (url.endswith('photos') or 'photos?selected' in url)
         self.photos_view = self.context_state.object_url() + '/photos'
 
 
@@ -110,9 +110,9 @@ class RealEstateTitle(ViewletBase):
     def image_tag(self):
         realestate_view = self.context.restrictedTraverse('@@realestate')
         return realestate_view.image_tag()
-        
-        
-        
+
+
+
 class RealEstateSimpleSearchForm(ViewletBase):
     """ Viewlet that renders the search form above a realestate listing
         (Commercial and Residential)
