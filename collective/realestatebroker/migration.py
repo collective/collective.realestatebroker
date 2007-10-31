@@ -49,7 +49,7 @@ class RebMigrator(CMFItemMigrator):
     walkerClass = walker.CatalogWalker
     map = {# All the old fields (both REHome and REBusiness)
         'getAcceptance': 'setAcceptance',
-        'getAddress': 'setAddress',
+        'getAddress': 'setTitle',
         'getAirco': 'setAirco',
         'getArea': 'setArea',
         'getBalcony': 'setBalcony',
@@ -59,10 +59,10 @@ class RebMigrator(CMFItemMigrator):
         'getFacilities': 'setFacilities',
         'getGarden': 'setGarden',
         'getHeating': 'setHeating',
-        'getIsolation': 'setIsolation',
+        'getIsolation': 'setInsulation',
         'getKindOfBuilding': 'setKindOfBuilding',
         'getKindOfGarden': 'setKindOfGarden',
-        'getKk_von': 'setKk_von',
+        #'getKk_von': 'setKk_von', TODO
         'getLocation': 'setLocation',
         'getMainText': 'setText',
         'getParking': 'setParking',
@@ -70,7 +70,7 @@ class RebMigrator(CMFItemMigrator):
         'getRent_buy': 'setRent_buy',
         'getRooms': 'setRooms',
         'getStorage': 'setStorage',
-        'getType': 'setType',
+        #'getType': 'setType', # TODO: setHouse_type, setCommercial_type
         'getVat': 'setVat',
         'getVolume': 'setVolume',
         'getZipCode': 'setZipCode',
