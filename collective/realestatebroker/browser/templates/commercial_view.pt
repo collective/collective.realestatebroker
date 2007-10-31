@@ -19,14 +19,22 @@
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
-      <div tal:define="field_macro field_macro | here/widgets/field/macros/view"
-           tal:repeat="field python:here.Schema().filterFields(schemata='default')">
+      <table>
+        <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view"
+             tal:repeat="field python:here.Schema().filterFields(*view.base_table_field_predicates())">
           <tal:if_visible define="mode string:view;
                                   visState python:field.widget.isVisible(here, mode);
                                   visCondition python:field.widget.testCondition(context.aq_inner.aq_parent, portal, context);"
                           condition="python:visState == 'visible' and visCondition">
             <metal:use_field use-macro="field_macro" />
           </tal:if_visible>
+        </div>
+      </table>
+
+      <div>
+        <metal:field use-macro="python:context.widget('text', mode='view')">
+          Main text
+        </metal:field>
       </div>
 
       <div tal:replace="structure provider:plone.belowcontentbody" />

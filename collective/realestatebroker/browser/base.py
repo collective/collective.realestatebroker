@@ -158,22 +158,53 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                 })
         return result
 
+# Couple of field filter functions. Used by RealEstateView.
+def is_main_field(field):
+    return field.schemata == 'default'
+
+
+def is_not_selfrendered_field(field):
+    if field.getName() in ['title', 'description']:
+        # These are not in "our" schema, so we'll hard-code them here.
+        return False
+    if not hasattr(field, 'selfrendered'):
+        return True
+    if field.selfrendered:
+        # Fields with a 'selfrendered=True' attribute are excluded.
+        return False
+    else:
+        return True
+
+
+def is_characteristics_field(field):
+    return (field.schemata != 'default' and field.schemata != 'metadata')
+
 
 class RealEstateView(BrowserView):
     """Generic view for viewing one real estate object."""
     implements(IRealEstateView)
-    header_fields = []
-    main_fields = []
 
-    @memoize
-    def characteristic_fields(self):
-        """Return the field names not displayed elsewhere.
+    def base_table_field_predicates(self):
+        """Return predicates that filter out undesired fields.
 
-        header_fields are those in the always-displayed header, main_fields
-        are those in the main 'description' view tab. This method ought to
-        return the rest. (TODO: dict?)
+        'Undesired' meaning fields that should not be rendered in a default
+        table view on the main 'description' page.
+
         """
-        pass
+        return [is_main_field,
+                is_not_selfrendered_field,
+                ]
+
+    def chars_table_field_predicates(self):
+        """Return predicates that filter out undesired fields.
+
+        'Undesired' meaning fields that should not be rendered in a default
+        table view on the characteristics page.
+
+        """
+        return [is_characteristics_field,
+                is_not_selfrendered_field,
+                ]
 
     @memoize
     def CookedPrice(self):
@@ -225,7 +256,8 @@ class RealEstateView(BrowserView):
         return self.getMainText()
 
     @memoize
-    def photo_batch(self):
+    def photo_batch(self, floorplans=False):
+        """Return batched photos (or floorplans, if desired)."""
         brains = self.image_brains()
         selected = int(self.context.request.get('selected', 0))
         batch = utils.batch(brains, selected=selected)

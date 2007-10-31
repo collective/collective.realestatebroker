@@ -19,12 +19,14 @@ GeneralSchema =  atapi.Schema((
     atapi.StringField('zipCode',
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
+        selfrendered=True, # For REB-specific template rendering.
         widget = atapi.StringWidget(label = _(u'Zip code'),
                  )
         ),
     atapi.StringField('city',
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
+        selfrendered=True, # For REB-specific template rendering.
         vocabulary_factory="collective.realestatebroker.city_list",
         widget = atapi.SelectionWidget(label = _(u'City'),
                  )
@@ -33,6 +35,7 @@ GeneralSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
         validators = ('isTidyHtmlWithCleanup',),
+        selfrendered=True, # For REB-specific template rendering.
         default_output_type = 'text/x-html-safe',
         widget = atapi.RichWidget(label = _(u'Body text'),
                  description = _(u'Enter the main description for this object.'),
@@ -107,6 +110,7 @@ GeneralSchema =  atapi.Schema((
     atapi.IntegerField('price',
         storage=atapi.AnnotationStorage(),
         schemata=u'financial',
+        selfrendered=True, # For REB-specific template rendering.
         widget = atapi.IntegerWidget(label = _(u'Price'),
                  description = _(u'Fill in the price without dots or commas.'),
                  size=10,

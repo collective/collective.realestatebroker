@@ -18,10 +18,6 @@
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
-      <metal:field use-macro="python:context.widget('text', mode='view')">
-        Body text
-      </metal:field>
-
       <div class="reb-photo-show"
            tal:define="batch view/photo_batch"
            tal:condition="batch">

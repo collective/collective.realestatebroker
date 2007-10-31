@@ -28,7 +28,7 @@
             </td>
           </tr>
           <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view"
-               tal:repeat="field python:here.Schema().filterFields(schemata=current_schemata)">
+               tal:repeat="field python:here.Schema().filterFields(schemata=current_schemata, *view.chars_table_field_predicates())">
             <tal:if_visible define="mode string:view;
                                     visState python:field.widget.isVisible(here, mode);
                                     visCondition python:field.widget.testCondition(context.aq_inner.aq_parent, portal, context);"
