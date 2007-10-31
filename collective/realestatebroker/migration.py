@@ -302,8 +302,9 @@ class RebMigrator(CMFItemMigrator):
 
         """
         NOTAVAILABLE = 'ouch, missing!'
+        logger.info("Starting the migration of mapped attributes.")
         for oldKey, newKey in self.map.items():
-
+            logger.info("Map-migrating %s.", oldKey)
             if not newKey:
                 newKey = oldKey
             oldVal = getattr(self.old, oldKey, NOTAVAILABLE)
