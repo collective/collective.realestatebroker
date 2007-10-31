@@ -85,13 +85,24 @@ this state we can publish the content, which will bring it to the 'new' state.
 
 
 Portal Properties
---------------------
+-----------------
 
 RealEstateBroker installs under portal_properties a file with default attributes
 
     >>> pptool = self.portal.portal_properties
     >>> self.failUnless('realestatebroker_properties' in pptool.objectIds())
 
+
+Site Properties
+---------------
+
+Don't show Resdiential or Commecial objects in the navigation tree.
+
+   >>> navtree_props = pptool.navtree_properties
+   >>> types_not_to_list = navtree_props.getProperty('metaTypesNotToList')
+   >>> self.failUnless('Residential' in types_not_to_list)
+   >>> self.failUnless('Commercial' in types_not_to_list)
+   
 
 Vocabularies
 ------------

@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <object name="portal_properties" meta_type="Plone Properties Tool">
+  <object name="navtree_properties" meta_type="Plone Property Sheet">
+    <property name="metaTypesNotToList" type="lines" purge="False">
+       <element value="Residential"/>
+       <element value="Commercial"/>
+    </property>
+  </object>
  <object name="maps_properties" meta_type="Plone Property Sheet">
   <property name="title">Maps Properties</property>
   <property name="map_google_api_keys" type="lines">
