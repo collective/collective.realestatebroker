@@ -6,7 +6,6 @@ from collective.realestatebroker import config
 
 from Products.Archetypes import atapi
 from Products.CMFCore import utils as cmfutils
-from Products.CMFCore.permissions import setDefaultRoles
 
 # Define a message factory for when this product is internationalised.
 # This will be imported with the special name "_" in most modules. Strings
@@ -44,9 +43,6 @@ def initialize(context):
 
     from content import residential
     from content import commercial
-    residential #PYFLAKES
-    commercial #PYFLAKES
-
 
     content_types, constructors, ftis = atapi.process_types(
         atapi.listTypes(config.PROJECTNAME),
