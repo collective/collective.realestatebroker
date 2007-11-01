@@ -214,8 +214,6 @@ class RebMigrator(CMFItemMigrator):
                 image.setDescription(description)
                 image.setImage(binary_data)
                 logger.info("Migrated photo %s.", photo_id)
-            # Find the CMFPhoto objects in the album.
-        # Create new images based on the CMFPhotos.
 
     def migrate_withmap(self):
         """Copies over attributes according to a map{}.
@@ -326,8 +324,8 @@ class RebMigrator(CMFItemMigrator):
                             newKey, oldKey)
             else:
                 setattr(self.new, newKey, value)
-                logger.info("Used setattr to set %s to the value from old field %s.",
-                            newKey, oldKey)
+                logger.info("Used setattr to set %s to the value from "
+                            "old field %s.", newKey, oldKey)
 
     def migrate_kk_von(self):
         """Migrate the kk_von field that existed in some versions.
@@ -367,8 +365,6 @@ class RebMigrator(CMFItemMigrator):
             logger.info("Set commercial_type on new object.")
         else:
             logger.info("No commercial_type field found on new object.")
-
-
 
     def migrate_workflow(self):
         """We need to check for the status field of old content types. Since
