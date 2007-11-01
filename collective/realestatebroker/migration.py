@@ -351,6 +351,7 @@ class RebMigrator(CMFItemMigrator):
         """Migrate 'type' to 'house_type' or 'commercial_type'."""
         if not hasattr(self.old, 'getType'):
             logger.info("No type field, continuing.")
+            return
         value = self.old.getType()
         schema = self.new.Schema()
         house_field = schema.getField('house_type')
