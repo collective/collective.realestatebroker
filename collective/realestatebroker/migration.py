@@ -339,6 +339,7 @@ class RebMigrator(CMFItemMigrator):
         """
         if not hasattr(self.old, 'getKk_von'):
             logger.info("No kk_von field, continuing.")
+            return
         value = self.old.getKk_von()
         schema = self.new.Schema()
         new_field = schema.getField('kk_von')
