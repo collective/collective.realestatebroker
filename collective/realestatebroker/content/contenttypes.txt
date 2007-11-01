@@ -106,6 +106,9 @@ Ouch, this is a unittest, so the zcml-loaded ISchema adapter doesn't work
 yet. We'll have to enable it by hand. Just a default plone will do this for
 you.
 
+    >>> from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+    >>> from zope import interface
+    >>> from Products.Archetypes import atapi
     >>> from Products.Archetypes.Schema.factory import instanceSchemaFactory
     >>> from zope import component
     >>> component.provideAdapter(instanceSchemaFactory)
@@ -137,11 +140,10 @@ section. For this unittest we'll do the work by hand:
     >>> from archetypes.schemaextender.extender import instanceSchemaFactory
     >>> component.provideAdapter(instanceSchemaFactory)
 
-Step 3. Create field classes for the fields you want to adapt. Say, a
+Step 2. Create field classes for the fields you want to adapt. Say, a
 StringField. Make sure you inherit from ExtensionField, first.
 
     >>> from archetypes.schemaextender.field import ExtensionField
-    >>> from Products.Archetypes import atapi
     >>> class ExtendedStringField(ExtensionField, atapi.StringField):
     ...     pass
 
@@ -149,8 +151,6 @@ Step 3. Create a schema extender. An extender is a named adapter behind the
 scenes, so you have to say which interface you adapt. In our case,
 IResidential and/or ICommercial.
 
-    >>> from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
-    >>> from zope import interface
     >>> class MyExtender(object):
     ...     component.adapts(IResidential)
     ...     interface.implements(IOrderableSchemaExtender)
@@ -168,7 +168,7 @@ IResidential and/or ICommercial.
     ...         # Possibility to move fields.
     ...         return original
 
-Step 3. Wire up your extender with some zcml by defining an adapter with your
+Step 4. Wire up your extender with some zcml by defining an adapter with your
 extender as the "factory" and give it some name (so that it is a named
 adapter). We'll again enable it manually here (it *is* a unit test):
 
