@@ -58,7 +58,7 @@ class BatchedEstateMixin(object):
             if form.has_key('min_price') and form.has_key('max_price'):
                 kw['min_price']=form['min_price']
                 kw['max_price']=form['max_price']
-                
+
         query = kw and ('?%s' % make_query(kw)) or ''
         return u'%s%s' % (target, query)
 
@@ -106,7 +106,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
 
         self.catalog = getToolByName(self.context, 'portal_catalog')
         self.wftool = getToolByName(self.context, 'portal_workflow')
-        
+
     def sorted_listing(self, count):
         """Returns a list of dicts representing an overview of the Commercial
            real estate. Needs to be implemented in subclasses.
@@ -158,17 +158,15 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         form = self.request.form
         search_action = form.get('form.button.submit', False)
         if search_action:
-                if form.has_key('search_city'):
-                    query['getCity'] = [form['search_city'],]
-                if form.has_key('min_price') and form.has_key('max_price'):
-                    minprice=int(form['min_price'])
-                    maxprice=int(form['min_price'])
+            if form.has_key('search_city'):
+                query['getCity'] = [form['search_city'],]
+            if form.has_key('min_price') and form.has_key('max_price'):
+                minprice=int(form['min_price'])
+                maxprice=int(form['min_price'])
+            logger.info("%s\n" % pprint(query))
 
-                        
-                logger.info("%s\n" % pprint(query))
+        return catalog.queryCatalog(query)
 
-        return catalog.queryCatalog(query) 
-                   
         #return self.context.listFolderContents(contentFilter=folderfilter)
 
     def get_batched_folder_contents(self):
@@ -182,7 +180,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         for brain in batch_list:
             obj = brain.getObject()
             realestate_view = obj.restrictedTraverse('@@realestate')
-            
+
             image_tag = realestate_view.image_tile()
             cooked_price = realestate_view.CookedPrice()
             result.append( {
@@ -194,19 +192,19 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                 'description': brain.Description,
                 'image_tag': image_tag,
                 'cooked_price': cooked_price,
-                'review_state': brain.review_state,  
+                'review_state': brain.review_state,
                 })
 
         return result
-        
+
     def available_cities(self):
         """Return list of cities from the city_list vocabulary
-           FIXME: more user friendly would be search over the available cities 
+           FIXME: more user friendly would be search over the available cities
            from all the available realestate property in this folder
         """
         cities_vocab = getUtility(IVocabularyFactory,'collective.realestatebroker.city_list')
         return [city.value for city in cities_vocab(None)]
-                    
+
 
 # Couple of field filter functions. Used by RealEstateView.
 def is_main_field(field):
@@ -261,7 +259,7 @@ class RealEstateView(BrowserView):
         """Return formatted price"""
         pr = str(aq_inner(self.context.price))
         elements = []
-        
+
         if len(pr) > 9:
             elements.append(pr[-12:-9])
         if len(pr) > 6:
@@ -269,12 +267,12 @@ class RealEstateView(BrowserView):
         if len(pr) > 3:
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
-        
+
         #get default currency from the properties
         pprops = getToolByName(self.context, 'portal_properties')
         props = pprops.realestatebroker_properties
         currency = str(props.getProperty('currency'))
-        
+
         return currency + " " + '.'.join(elements)
 
     @memoize
