@@ -21,10 +21,10 @@
     
     <!-- simple search form -->
     
-        <form action="RESearch_result"
+        <form action=""
               method="get"
               name="search"
-              onsubmit="validate();">
+              onsubmit="">
 
 
         <fieldset>
@@ -102,7 +102,7 @@
                 <input class="context"
                        tabindex=""
                        type="submit"
-                       name="submit"
+                       name="form.button.submit"
                        value="Search"
                        i18n:attributes="value"
                        tal:attributes="tabindex tabindex/next;"
@@ -140,8 +140,9 @@
     </thead>
 
       <tbody>
-
-        <tr tal:repeat="item view/get_batched_folder_contents">
+        <tr tal:condition="not: view/get_batched_folder_contents">
+            <td colspan="4">No realestate found</td></tr>  
+        <tr tal:repeat="item view/get_batched_folder_contents" tal:condition="view/get_batched_folder_contents">
           <td>
             <a href=""
                tal:attributes="href item/url"
@@ -161,7 +162,7 @@
           <td>
               <span tal:replace="item/cooked_price"></span>
           </td>
-          <td>
+          <td i18n:domain="plone">
             	<br><span i18n:translate="" tal:replace="item/review_state"></span>
           </td>
         </tr>

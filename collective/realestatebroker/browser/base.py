@@ -12,12 +12,17 @@ from Products.CMFDefault.utils import Message as _
 
 # from CMFDefault.utils import ViewBase
 
-from interfaces import IRealEstateListing
-from interfaces import IRealEstateView
+from interfaces import IRealEstateListing, IRealEstateView
+from collective.realestatebroker.interfaces import IResidential, ICommercial
 from interfaces import IFloorInfo
 from collective.realestatebroker import REBMessageFactory as _
 
 from collective.realestatebroker import utils
+
+import logging
+from pprint import pprint
+
+logger = logging.getLogger('fredtest')
 
 # Image sizes for which we want tags.
 SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
@@ -94,7 +99,7 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
 
         self.catalog = getToolByName(self.context, 'portal_catalog')
         self.wftool = getToolByName(self.context, 'portal_workflow')
-
+        
     def sorted_listing(self, count):
         """Returns a list of dicts representing an overview of the Commercial
            real estate. Needs to be implemented in subclasses.
@@ -136,33 +141,57 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
             to create a batched sequence and by helper methods to provide
             values to the template for the next and previous items """
 
-        folderfilter = {'portal_type':['Residential','Commercial']}
-        return self.context.listFolderContents(contentFilter=folderfilter)
+        query = {'object_provides':[ICommercial.__identifier__,IResidential.__identifier__],
+                 'sort_on':'getObjPositionInParent',
+                 'path': '/'.join(self.context.getPhysicalPath()),
+                 }
+
+        catalog = getToolByName(self.context, 'portal_catalog')
+
+        form = self.request.form
+        search_action = form.get('form.button.submit', False)
+        if search_action:
+                if form.has_key('getCity'):
+                    query['getCity'] = [form['getCity'],]
+                if form.has_key('min_price') && form.has_key('max_price'):
+                    minprice=value(form['min_price'])
+                    maxprice=value(form['min_price'])
+                
+                if va
+                    
+                
+                logger.info("%s\n" % pprint(query))
+
+        return catalog.queryCatalog(query) 
+                   
+        #return self.context.listFolderContents(contentFilter=folderfilter)
 
     def get_batched_folder_contents(self):
         """Return a list of dictionaries with the realestate objects
            in the folder
         """
 
-        result = []
 
-        for obj in self._getBatchObj():
-            #if obj.portal_type != 'Residential':
-            #    continue
+        batch_list = self._getBatchObj()
+        result = []
+        for brain in batch_list:
+            obj = brain.getObject()
             realestate_view = obj.restrictedTraverse('@@realestate')
-            image_tag = realestate_view.image_tag()
+            
+            image_tag = realestate_view.image_tile()
             cooked_price = realestate_view.CookedPrice()
             result.append( {
-                'id' : obj.getId(),
+                'id' : brain.id,
                 'url': obj.absolute_url(),
-                'title':  obj.Title(),
+                'title':  brain.Title,
                 'zipcode': obj.zipcode,
-                'city': obj.city,
-                'description': obj.Description(),
+                'city': brain.getCity,
+                'description': brain.Description,
                 'image_tag': image_tag,
                 'cooked_price': cooked_price,
-                'review_state': self.wftool.getInfoFor(obj,'review_state'),
+                'review_state': brain.review_state,  
                 })
+
         return result
         
     def available_cities(self):
@@ -271,6 +300,15 @@ class RealEstateView(BrowserView):
             first_image = self.image_brains()[0]
             info = self.decorate_image(first_image)
             return info['tag_thumb']
+
+    @memoize
+    def image_tile(self, **kwargs):
+        """Generate image tag using the api of the ImageField
+        """
+        if self.image_brains():
+            first_image = self.image_brains()[0]
+            info = self.decorate_image(first_image)
+            return info['tag_tile']
 
     @memoize
     def CookedBody(self):
