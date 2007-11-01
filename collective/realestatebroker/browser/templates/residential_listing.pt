@@ -37,7 +37,7 @@
                       i18n:translate="label_required">(Required)</span>
                 <div class="formHelp" i18n:translate="help_brokersearch_city">Fill in the name of the city</div>
                 <select id="city"
-                       name="getCity"
+                       name="search_city"
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
                        >

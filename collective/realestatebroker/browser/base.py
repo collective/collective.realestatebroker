@@ -51,7 +51,14 @@ class BatchedEstateMixin(object):
         kw = {}
 
         kw['b_start'] = b_start
-
+        if self.request.has_key('form'):
+            form=self.request.form
+            if form.has_key('city'):
+                kw['city']= form['city']
+            if form.has_key('min_price') and form.has_key('max_price'):
+                kw['min_price']=form['min_price']
+                kw['max_price']=form['max_price']
+                
         query = kw and ('?%s' % make_query(kw)) or ''
         return u'%s%s' % (target, query)
 
@@ -151,15 +158,13 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         form = self.request.form
         search_action = form.get('form.button.submit', False)
         if search_action:
-                if form.has_key('getCity'):
-                    query['getCity'] = [form['getCity'],]
-                if form.has_key('min_price') && form.has_key('max_price'):
-                    minprice=value(form['min_price'])
-                    maxprice=value(form['min_price'])
-                
-                if va
-                    
-                
+                if form.has_key('search_city'):
+                    query['getCity'] = [form['search_city'],]
+                if form.has_key('min_price') and form.has_key('max_price'):
+                    minprice=int(form['min_price'])
+                    maxprice=int(form['min_price'])
+
+                        
                 logger.info("%s\n" % pprint(query))
 
         return catalog.queryCatalog(query) 
