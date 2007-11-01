@@ -10,11 +10,7 @@ from Products.CMFCore import utils as cmfutils
 # Define a message factory for when this product is internationalised.
 # This will be imported with the special name "_" in most modules. Strings
 # like _(u"message") will then be extracted by i18n tools for translation.
-
 REBMessageFactory = MessageFactory('collective.realestatebroker')
-
-# Bring custom permissions to life. We also map this in configure.zcml,
-# to make it available in <browser:page /> and other directives.
 
 
 def initialize(context):
@@ -58,7 +54,7 @@ def initialize(context):
     for atype, constructor in zip(content_types, constructors):
         cmfutils.ContentInit(
             "%s: %s" % (config.PROJECTNAME, atype.portal_type),
-            content_types      = (atype,),
-            permission         = config.ADD_PERMISSIONS[atype.portal_type],
+            content_types = (atype,),
+            permission = config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors = (constructor,),
             ).initialize(context)
