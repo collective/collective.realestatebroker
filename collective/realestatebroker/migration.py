@@ -26,9 +26,9 @@ from StringIO import StringIO
 from collective.realestatebroker.config import MIGRATIONPRODUCTAVAILABLE
 
 if MIGRATIONPRODUCTAVAILABLE:
-   from Products.contentmigration import walker
-   from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
-   from Products.contentmigration.common import _createObjectByType
+    from Products.contentmigration import walker
+    from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
+    from Products.contentmigration.common import _createObjectByType
 from Products.CMFCore.utils import getToolByName
 
 from config import STATE_TRANSITION_MAP
@@ -328,6 +328,46 @@ class RebMigrator(CMFItemMigrator):
                 setattr(self.new, newKey, value)
                 logger.info("Used setattr to set %s to the value from old field %s.",
                             newKey, oldKey)
+
+    def migrate_kk_von(self):
+        """Migrate the kk_von field that existed in some versions.
+
+        Dutch-specific one. Probably only of interest to Zest
+        sfotware. Included here as it is the only field in the old schema that
+        has been moved to a customer-specific schemaextender field.
+
+        """
+        if not hasattr(self.old, 'getKk_von'):
+            logger.info("No kk_von field, continuing.")
+        value = self.old.getKk_von()
+        schema = self.new.Schema()
+        new_field = schema.getField('kk_von')
+        if not new_field:
+            logger.info("No kk_von field found on new object.")
+        else:
+            new_field.set(self.new, value)
+            logger.info("Set kk_von on new object.")
+
+    def migrate_type(self):
+        """Migrate 'type' to 'house_type' or 'commercial_type'."""
+        if not hasattr(self.old, 'getType'):
+            logger.info("No type field, continuing.")
+        value = self.old.getType()
+        schema = self.new.Schema()
+        house_field = schema.getField('house_type')
+        if house_field:
+            house_field.set(self.new, value)
+            logger.info("Set house_type on new object.")
+        else:
+            logger.info("No house_type field found on new object.")
+        commercial_field = schema.getField('commercial_type')
+        if commercial_field:
+            commercial_field.set(self.new, value)
+            logger.info("Set commercial_type on new object.")
+        else:
+            logger.info("No commercial_type field found on new object.")
+
+
 
     def migrate_workflow(self):
         """We need to check for the status field of old content types. Since
