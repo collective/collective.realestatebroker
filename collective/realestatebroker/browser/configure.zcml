@@ -56,6 +56,15 @@
 
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate_floorplans"
+        class=".base.RealEstateView"
+        template="templates/realestate_floorplans.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IRealEstateView"
+    />
+
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate_map"
         class=".base.RealEstateView"
         template="templates/realestate_map.pt"
