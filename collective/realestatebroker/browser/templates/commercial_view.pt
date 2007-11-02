@@ -7,21 +7,27 @@
 
   <body>
 
-    <div metal:fill-slot="main"
-         tal:define="obj view/details">
+    <div metal:fill-slot="main">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
       <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <div class="rebDescription">
+        <metal:field use-macro="python:context.widget('description', mode='view')">
+          Description
+        </metal:field>
+      </div>
+
       <ul id="rebTabs"
-        class="formTabs">
+          class="formTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
       <table>
         <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view"
-             tal:repeat="field python:here.Schema().filterFields(*view.base_table_field_predicates())">
+             tal:repeat="field view/base_fields">
           <tal:if_visible define="mode string:view;
                                   visState python:field.widget.isVisible(here, mode);
                                   visCondition python:field.widget.testCondition(context.aq_inner.aq_parent, portal, context);"
@@ -31,6 +37,9 @@
         </div>
       </table>
 
+      <h2 i18n:translate="heading_main_text">
+        Textual description
+      </h2>
       <div>
         <metal:field use-macro="python:context.widget('text', mode='view')">
           Main text
