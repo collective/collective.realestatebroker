@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-10-31 14:05+0000\n"
+"POT-Creation-Date: 2007-11-02 08:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/base.py:337
+#: ./browser/base.py:440
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/base.py:345
+#: ./browser/base.py:448
 msgid "${image} is now the default."
 msgstr ""
 
@@ -149,11 +149,11 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ./browser/base.py:75
+#: ./browser/base.py:93
 msgid "Next ${count} items"
 msgstr ""
 
-#: ./browser/base.py:73
+#: ./browser/base.py:91
 msgid "Next item"
 msgstr ""
 
@@ -170,11 +170,11 @@ msgstr ""
 msgid "Photo"
 msgstr ""
 
-#: ./browser/base.py:61
+#: ./browser/base.py:79
 msgid "Previous ${count} items"
 msgstr ""
 
-#: ./browser/base.py:59
+#: ./browser/base.py:77
 msgid "Previous item"
 msgstr ""
 
@@ -193,6 +193,11 @@ msgstr ""
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
 msgid "Residential real estate"
+msgstr ""
+
+#. Default: "Search"
+#: ./browser/templates/residential_listing.pt:102
+msgid "Search"
 msgstr ""
 
 #: ./content/schemata.py:223
@@ -228,6 +233,36 @@ msgstr ""
 msgid "Zip code"
 msgstr ""
 
+#. Default: "Address"
+#: ./browser/templates/residential_listing.pt:133
+msgid "broker_address"
+msgstr ""
+
+#. Default: "Photos"
+#: ./browser/templates/residential_listing.pt:132
+msgid "broker_photos"
+msgstr ""
+
+#. Default: "Price"
+#: ./browser/templates/residential_listing.pt:135
+msgid "broker_price"
+msgstr ""
+
+#. Default: "No Limit"
+#: ./browser/templates/residential_listing.pt:85
+msgid "broker_price_no_limit"
+msgstr ""
+
+#. Default: "to"
+#: ./browser/templates/residential_listing.pt:74
+msgid "broker_price_to"
+msgstr ""
+
+#. Default: "Status"
+#: ./browser/templates/residential_listing.pt:137
+msgid "broker_status"
+msgstr ""
+
 #. Default: "Characteristics"
 #: ./browser/templates/chars_tab.pt:6
 msgid "chars_tab"
@@ -238,9 +273,21 @@ msgstr ""
 msgid "description_tab"
 msgstr ""
 
+#: ./browser/base.py:30
+msgid "details"
+msgstr ""
+
+#: ./browser/base.py:31
+msgid "environment"
+msgstr ""
+
 #. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floor plans. Also you can select the default photo."
 #: ./browser/templates/photo_management.pt:74
 msgid "explanation_photo_configuration"
+msgstr ""
+
+#: ./browser/base.py:32
+msgid "financial"
 msgstr ""
 
 #. Default: "Bulk-upload of multiple photos"
@@ -267,6 +314,15 @@ msgstr ""
 msgid "heating"
 msgstr ""
 
+#. Default: "Fill in the name of the city"
+#: ./browser/templates/residential_listing.pt:38
+msgid "help_brokersearch_city"
+msgstr ""
+
+#: ./browser/templates/residential_listing.pt:55
+msgid "help_search_price"
+msgstr ""
+
 #: ./content/schemata.py:94
 msgid "insulation"
 msgstr ""
@@ -279,9 +335,24 @@ msgstr ""
 msgid "kindOfStorage"
 msgstr ""
 
+#. Default: "City"
+#: ./browser/templates/residential_listing.pt:34
+msgid "label_brokersearch_city"
+msgstr ""
+
 #. Default: "Description"
 #: ./browser/templates/realestate_map.pt:31
 msgid "label_description"
+msgstr ""
+
+#. Default: "Maximum price"
+#: ./browser/templates/residential_listing.pt:76
+msgid "label_max_price"
+msgstr ""
+
+#. Default: "Minimum price"
+#: ./browser/templates/residential_listing.pt:54
+msgid "label_min_price"
 msgstr ""
 
 #. Default: "More..."
@@ -294,6 +365,16 @@ msgstr ""
 msgid "label_related_items"
 msgstr ""
 
+#. Default: "(Required)"
+#: ./browser/templates/residential_listing.pt:35
+msgid "label_required"
+msgstr ""
+
+#. Default: "Search Terms"
+#: ./browser/templates/residential_listing.pt:32
+msgid "legend_search_terms"
+msgstr ""
+
 #: ./content/schemata.py:105
 msgid "location"
 msgstr ""
@@ -303,8 +384,17 @@ msgstr ""
 msgid "map_tab"
 msgstr ""
 
+#: ./browser/base.py:29
+msgid "measurements"
+msgstr ""
+
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
 msgid "photos_tab"
+msgstr ""
+
+#. Default: "advanced search"
+#: ./browser/templates/residential_listing.pt:113
+msgid "search_advanced_link"
 msgstr ""
 

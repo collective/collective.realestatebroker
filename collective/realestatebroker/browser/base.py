@@ -26,7 +26,11 @@ logger = logging.getLogger('fredtest')
 
 # Image sizes for which we want tags.
 SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
-
+SCHEMATA_I18N = {'measurements': _(u'measurements'),
+                 'details': _(u'details'),
+                 'environment': _(u'environment'),
+                 'financial': _(u'financial'),
+                 }
 
 class BatchedEstateMixin(object):
     """Provide helper methods for batching a folder listing.
@@ -253,6 +257,42 @@ class RealEstateView(BrowserView):
         return [is_characteristics_field,
                 is_not_selfrendered_field,
                 ]
+
+    @memoize
+    def filtered_fields(self, schemata_name, *predicates):
+        """Return schemata's fields, filtered for emptyness and selfrendered.
+
+        Empty fields should not be rendered, neither fields that are rendered
+        explicitly elsewhere in the template (as indicated by the
+        'selfrendered' property on the field.
+
+        """
+        schema = self.context.Schema()
+        fields = schema.filterFields(schemata=schemata_name,
+                                     *predicates)
+        filtered = [field for field in fields
+                    if field.get(self.context) == False
+                    or field.get(self.context)]
+        return filtered
+
+    @memoize
+    def base_fields(self):
+        """Return list of base fields (those on the first page)."""
+        return self.filtered_fields('default',
+                                    *self.base_table_field_predicates())
+
+    @memoize
+    def characteristic_fields(self):
+        """Return list of characteristic schemata/fields.
+        """
+        schemata_ids = ['measurements', 'details', 'environment', 'financial']
+        results = []
+        for schemata_id in schemata_ids:
+            result = {}
+            result['title'] = SCHEMATA_I18N.get(schemata_id, schemata_id)
+            result['fields'] = self.filtered_fields(schemata_id, *self.chars_table_field_predicates())
+            results.append(result)
+        return results
 
     @memoize
     def CookedPrice(self):

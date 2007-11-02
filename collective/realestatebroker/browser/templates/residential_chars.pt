@@ -20,15 +20,14 @@
       </ul>
 
       <table>
-        <tal:schemata tal:repeat="current_schemata
-                                  python:['measurements', 'details', 'environment', 'financial']">
+        <tal:schemata tal:repeat="schemata view/characteristic_fields">
           <tr>
             <td colspan="2">
-              <h2 tal:content="current_schemata"/>
+              <h2 tal:content="schemata/title" />
             </td>
           </tr>
-          <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view"
-               tal:repeat="field python:here.Schema().filterFields(schemata=current_schemata, *view.chars_table_field_predicates())">
+          <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view;"
+               tal:repeat="field schemata/fields">
             <tal:if_visible define="mode string:view;
                                     visState python:field.widget.isVisible(here, mode);
                                     visCondition python:field.widget.testCondition(context.aq_inner.aq_parent, portal, context);"
