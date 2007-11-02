@@ -72,8 +72,9 @@ class FloorplansTab(ViewletBase):
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
         url = self.context_state.current_page_url()
-        self.is_selected = (url.endswith('floorplans') or 'floorplans?selected' in url)
-        self.floorplans_view = self.context_state.object_url() + '/floorplans'
+        self.is_selected = (url.endswith('plans') or
+                            'plans?selected' in url)
+        self.floorplans_view = self.context_state.object_url() + '/plans'
 
 
 class MapTab(ViewletBase):
