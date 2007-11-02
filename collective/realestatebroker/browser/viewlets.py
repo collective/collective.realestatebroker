@@ -61,6 +61,21 @@ class PhotosTab(ViewletBase):
         self.photos_view = self.context_state.object_url() + '/photos'
 
 
+class FloorplansTab(ViewletBase):
+    """Floorplans tab viewlet for ITabManager viewlet manager."""
+
+    render = ViewPageTemplateFile('templates/floorplans_tab.pt')
+
+    def update(self):
+        self.portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        self.context_state = getMultiAdapter((self.context, self.request),
+                                             name=u'plone_context_state')
+        url = self.context_state.current_page_url()
+        self.is_selected = (url.endswith('floorplans') or 'floorplans?selected' in url)
+        self.floorplans_view = self.context_state.object_url() + '/floorplans'
+
+
 class MapTab(ViewletBase):
     """Map tab viewlet for ITabManager viewlet manager."""
 
