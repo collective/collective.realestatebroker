@@ -3,14 +3,14 @@
            i18n_domain="collective.realestatebroker">
 
     <include package="plone.app.contentmenu" />
-    
+
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate"
         class=".base.RealEstateView"
         permission="zope2.View"
     />
-    
+
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="photo-management"
@@ -116,6 +116,13 @@
         name="realestatebroker.photos.tab"
         manager=".interfaces.ITabsManager"
         class=".viewlets.PhotosTab"
+        permission="zope2.View"
+        />
+
+    <browser:viewlet
+        name="realestatebroker.floorplans.tab"
+        manager=".interfaces.ITabsManager"
+        class=".viewlets.FloorplansTab"
         permission="zope2.View"
         />
 
@@ -227,5 +234,5 @@
           action="@@residential_listing"
           description="Show all Realestate objects in this folder in a Residential listing"
           />
-    
+
 </configure>

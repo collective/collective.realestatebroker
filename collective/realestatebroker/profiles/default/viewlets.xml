@@ -4,6 +4,7 @@
     <viewlet name="realestatebroker.description.tab" />
     <viewlet name="realestatebroker.chars.tab" />
     <viewlet name="realestatebroker.photos.tab" />
+    <viewlet name="realestatebroker.floorplans.tab" />
     <viewlet name="realestatebroker.map.tab" />
   </order>
   <order manager="realestatebroker.titlemanager" skinname="Plone Default">
