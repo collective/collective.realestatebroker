@@ -1,0 +1,13 @@
+<li class="formTab"
+  i18n:domain="collective.realestatebroker">
+  <a tal:condition="view/is_selected"
+     class="selected"
+     href="">
+    <span i18n:translate="floorplans_tab">Floorplans</span>
+  </a>
+  <a href=""
+     tal:attributes="href view/floorplans_view"
+     tal:condition="not:view/is_selected">
+    <span i18n:translate="floorplans_tab">Floorplans</span>
+  </a>
+</li>
