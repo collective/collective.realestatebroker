@@ -1,23 +1,17 @@
 from Acquisition import aq_inner
-from zope.interface import implements
-from zope.component import getUtility
-from zope.schema.interfaces import IVocabularyFactory
-from Products.Five.browser import BrowserView
-from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface.image import IATImage
-from plone.memoize.view import memoize
-
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
 from ZTUtils import Batch, make_query
-from Products.CMFDefault.utils import Message as _
-
-# from CMFDefault.utils import ViewBase
-
-from interfaces import IRealEstateListing, IRealEstateView
+from collective.realestatebroker import utils
 from collective.realestatebroker.interfaces import IResidential, ICommercial
 from interfaces import IFloorInfo
+from interfaces import IRealEstateListing, IRealEstateView
+from plone.memoize.view import memoize
+from zope.component import getUtility
+from zope.interface import implements
+from zope.schema.interfaces import IVocabularyFactory
 from collective.realestatebroker import REBMessageFactory as _
-
-from collective.realestatebroker import utils
 
 import logging
 from pprint import pprint
@@ -55,13 +49,13 @@ class BatchedEstateMixin(object):
         kw = {}
 
         kw['b_start'] = b_start
-        if self.request.has_key('form'):
+        if 'form' in self.request:
             form=self.request.form
-            if form.has_key('city'):
-                kw['city']= form['city']
-            if form.has_key('min_price') and form.has_key('max_price'):
-                kw['min_price']=form['min_price']
-                kw['max_price']=form['max_price']
+            if 'city' in form:
+                kw['city'] = form['city']
+            if 'min_price' in form and 'max_price' in form:
+                kw['min_price'] = form['min_price']
+                kw['max_price'] = form['max_price']
 
         query = kw and ('?%s' % make_query(kw)) or ''
         return u'%s%s' % (target, query)
@@ -96,7 +90,8 @@ class BatchedEstateMixin(object):
     @memoize
     def summary_length(self):
         length = self._getBatchObj().sequence_length
-        return length and thousands_commas(length) or ''
+        raise("TODO! thousands_commas not defined!")
+        #return length and thousands_commas(length) or ''
 
 
 class RealEstateListing(BrowserView, BatchedEstateMixin):
@@ -129,20 +124,21 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         """
         result = []
         contentFilter = {'portal_type':['Residential','Commercial']}
-        for obj in self.context.listFolderContents(contentFilter=contentFilter):
+        for obj in self.context.listFolderContents(
+            contentFilter=contentFilter):
             #if obj.portal_type != 'Residential':
             #    continue
             realestate_view = obj.restrictedTraverse('@@realestate')
             image_tag = realestate_view.image_tag()
-            result.append( {
-                'id' : obj.getId(),
+            result.append({
+                'id': obj.getId(),
                 'url': obj.absolute_url(),
                 'title':  obj.Title(),
                 'zipcode': obj.zipcode,
                 'city': obj.city,
                 'description': obj.Description(),
                 'image_tag': image_tag,
-                'review_state': self.wftool.getInfoFor(obj,'review_state')
+                'review_state': self.wftool.getInfoFor(obj,'review_state'),
                 })
         return result
 
@@ -152,7 +148,8 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
             to create a batched sequence and by helper methods to provide
             values to the template for the next and previous items """
 
-        query = {'object_provides':[ICommercial.__identifier__,IResidential.__identifier__],
+        query = {'object_provides':
+                 [ICommercial.__identifier__,IResidential.__identifier__],
                  'sort_on':'getObjPositionInParent',
                  'path': '/'.join(self.context.getPhysicalPath()),
                  }
@@ -162,11 +159,13 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
         form = self.request.form
         search_action = form.get('form.button.submit', False)
         if search_action:
-            if form.has_key('search_city'):
+            if 'search_city' in form:
                 query['getCity'] = [form['search_city'],]
-            if form.has_key('min_price') and form.has_key('max_price'):
-                minprice=int(form['min_price'])
-                maxprice=int(form['min_price'])
+            if 'min_price' in form and 'max_price' in form:
+                # TODO: why no searches with only a min or a max price?
+                minprice = int(form['min_price'])
+                maxprice = int(form['min_price'])
+                # TODO:              ^^^ max?
             logger.info("%s\n" % pprint(query))
 
         return catalog.queryCatalog(query)
@@ -187,8 +186,8 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
 
             image_tag = realestate_view.image_tile()
             cooked_price = realestate_view.CookedPrice()
-            result.append( {
-                'id' : brain.id,
+            result.append({
+                'id': brain.id,
                 'url': obj.absolute_url(),
                 'title':  brain.Title,
                 'zipcode': obj.zipcode,
@@ -206,7 +205,8 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
            FIXME: more user friendly would be search over the available cities
            from all the available realestate property in this folder
         """
-        cities_vocab = getUtility(IVocabularyFactory,'collective.realestatebroker.city_list')
+        cities_vocab = getUtility(IVocabularyFactory,
+                                  'collective.realestatebroker.city_list')
         return [city.value for city in cities_vocab(None)]
 
 
@@ -290,7 +290,9 @@ class RealEstateView(BrowserView):
         for schemata_id in schemata_ids:
             result = {}
             result['title'] = SCHEMATA_I18N.get(schemata_id, schemata_id)
-            result['fields'] = self.filtered_fields(schemata_id, *self.chars_table_field_predicates())
+            result['fields'] = self.filtered_fields(
+                schemata_id,
+                *self.chars_table_field_predicates())
             results.append(result)
         return results
 
@@ -393,6 +395,19 @@ class RealEstateView(BrowserView):
         return names
 
     @memoize
+    def floorplans(self):
+        """Return dict for displaying floors
+
+        Return a dict like this:
+
+        {'floors': [{'name': 'BG', 'selected': False, 'url': 'aaa'},
+        {'name': '1e', 'selected': True, 'url': 'bbb'}],
+        'floorplans': ['&lt;img src=&quot;favicon.ico /&gt;']}
+
+        """
+        pass
+
+    @memoize
     def photo_configuration(self):
         configuration = []
         for index, image_brain in enumerate(self.image_brains()):
@@ -417,7 +432,6 @@ class RealEstateView(BrowserView):
         """Return form action for uploading flash files."""
         base = self.context.absolute_url()
         return base + '/photo-management'
-
 
 
 class HandleConfiguration(BrowserView):
