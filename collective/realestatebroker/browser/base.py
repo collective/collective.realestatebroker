@@ -401,11 +401,32 @@ class RealEstateView(BrowserView):
         Return a dict like this:
 
         {'floors': [{'name': 'BG', 'selected': False, 'url': 'aaa'},
-        {'name': '1e', 'selected': True, 'url': 'bbb'}],
-        'floorplans': ['&lt;img src=&quot;favicon.ico /&gt;']}
+                    {'name': '1e', 'selected': True, 'url': 'bbb'}],
+         'floorplans': ['&lt;img src=&quot;favicon.ico /&gt;']}
 
         """
-        pass
+        result = {}
+        pprops = getToolByName(self.context, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        names = list(props.getProperty('floor_names'))
+        if not names:
+            return
+        floors = []
+        selected = self.request.form.get('selected', None)
+        if not selected:
+            selected = names[0]
+        base_url = self.context.absolute_url() + '/plans?selected='
+        for name in names:
+            floor = {}
+            floor['name'] = name
+            floor['selected'] = (name == selected)
+            floor['url'] = base_url + name
+            floors.append(floor)
+        floorplans = []
+        # Grab floorplans, not implemented yet.
+        result['floors'] = floors
+        result['floorplans'] = floorplans
+        return result
 
     @memoize
     def photo_configuration(self):

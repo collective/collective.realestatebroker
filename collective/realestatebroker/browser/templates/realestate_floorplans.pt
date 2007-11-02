@@ -14,49 +14,30 @@
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
       <ul id="rebTabs"
-        class="formTabs">
+          class="formTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
-      <div class="reb-photo-show"
-           tal:define="batch view/photo_batch"
-           tal:condition="batch">
-        <div class="reb-selected-photo">
-          <img tal:replace="structure batch/selected_tag" />
-        </div>
-        <ul class="reb-photo-controls">
-          <li tal:condition="batch/fastreverse">
-            <a href=""
-               tal:attributes="href batch/fastreverse"
-               class="reb-nav-reverse">
-              <img src="++resource++collective.realestatebroker.images/media-seek-backward.png"
-                   alt="reverse"
-                   width="22"
-                   height="22" />
-            </a>
-          </li>
-          <li tal:repeat="photo python:batch['items']"
-              >
-            <a href=""
-               class=""
-               tal:attributes="href photo/url;
-                               class python:photo['selected'] and 'reb-selected' or '';">
-              <img tal:replace="structure photo/tag_tile" />
-            </a>
-          </li>
-          <li tal:condition="batch/fastforward">
-            <a href=""
-               tal:attributes="href batch/fastforward"
-               class="reb-nav-forward">
-              <img src="++resource++collective.realestatebroker.images/media-seek-forward.png"
-                   alt="forward"
-                   width="22"
-                   height="22" />
+      <div class="reb-floorplan-show"
+           tal:define="data view/floorplans"
+           tal:condition="data">
+        <ul>
+          <li tal:repeat="floor data/floors"
+              class=""
+              tal:attributes="class python:floor['selected'] and 'selected' or ''">
+            <a tal:content="floor/name"
+               href=""
+               tal:attributes="href floor/url">
+              floor name
             </a>
           </li>
         </ul>
-      </div>
 
+        <div tal:repeat="floorplan data/floorplans">
+          <img tal:replace="structure floorplan"/>
+        </div>
+
+      </div>
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </div>
