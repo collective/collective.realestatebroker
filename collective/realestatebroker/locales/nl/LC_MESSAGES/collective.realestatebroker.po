@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-02 09:41+0100\n"
+"PO-Revision-Date: 2007-11-02 12:12+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -227,17 +227,17 @@ msgid "Zip code"
 msgstr "Postcode"
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:133
+#: ./browser/templates/residential_listing.pt:127
 msgid "broker_address"
 msgstr "Adres"
 
 #. Default: "Photos"
-#: ./browser/templates/residential_listing.pt:132
+#: ./browser/templates/residential_listing.pt:126
 msgid "broker_photos"
 msgstr ""
 
 #. Default: "Price"
-#: ./browser/templates/residential_listing.pt:135
+#: ./browser/templates/residential_listing.pt:129
 msgid "broker_price"
 msgstr ""
 
@@ -252,7 +252,7 @@ msgid "broker_price_to"
 msgstr ""
 
 #. Default: "Status"
-#: ./browser/templates/residential_listing.pt:137
+#: ./browser/templates/residential_listing.pt:131
 msgid "broker_status"
 msgstr ""
 
@@ -382,15 +382,10 @@ msgstr "Kaart"
 
 #: ./browser/base.py:29
 msgid "measurements"
-msgstr ""
+msgstr "Maatvoering"
 
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
 msgid "photos_tab"
 msgstr "Foto's"
-
-#. Default: "advanced search"
-#: ./browser/templates/residential_listing.pt:113
-msgid "search_advanced_link"
-msgstr ""
 

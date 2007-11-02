@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-02 08:41+0000\n"
+"POT-Creation-Date: 2007-11-02 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,17 +234,17 @@ msgid "Zip code"
 msgstr ""
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:133
+#: ./browser/templates/residential_listing.pt:127
 msgid "broker_address"
 msgstr ""
 
 #. Default: "Photos"
-#: ./browser/templates/residential_listing.pt:132
+#: ./browser/templates/residential_listing.pt:126
 msgid "broker_photos"
 msgstr ""
 
 #. Default: "Price"
-#: ./browser/templates/residential_listing.pt:135
+#: ./browser/templates/residential_listing.pt:129
 msgid "broker_price"
 msgstr ""
 
@@ -259,7 +259,7 @@ msgid "broker_price_to"
 msgstr ""
 
 #. Default: "Status"
-#: ./browser/templates/residential_listing.pt:137
+#: ./browser/templates/residential_listing.pt:131
 msgid "broker_status"
 msgstr ""
 
@@ -391,10 +391,5 @@ msgstr ""
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
 msgid "photos_tab"
-msgstr ""
-
-#. Default: "advanced search"
-#: ./browser/templates/residential_listing.pt:113
-msgid "search_advanced_link"
 msgstr ""
 
