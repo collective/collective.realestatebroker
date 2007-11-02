@@ -361,8 +361,8 @@ class RealEstateView(BrowserView):
         return self.getMainText()
 
     @memoize
-    def photo_batch(self, floorplans=False):
-        """Return batched photos (or floorplans, if desired)."""
+    def photo_batch(self):
+        """Return batched photos."""
         brains = self.image_brains()
         selected = int(self.context.request.get('selected', 0))
         batch = utils.batch(brains, selected=selected)
@@ -422,8 +422,12 @@ class RealEstateView(BrowserView):
             floor['selected'] = (name == selected)
             floor['url'] = base_url + name
             floors.append(floor)
-        floorplans = []
-        # Grab floorplans, not implemented yet.
+        # Grab floorplans, not fully implemented yet.
+        floorplan_brains = [brain for brain in self.image_brains()
+                            # if brain.isPlattegrond == True
+                            ]
+        decorated = [self.decorate_image(brain) for brain in floorplan_brains]
+        floorplans = [item['tag_large'] for item in decorated]
         result['floors'] = floors
         result['floorplans'] = floorplans
         return result
