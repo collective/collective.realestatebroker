@@ -1,21 +1,12 @@
 from zope.component import getMultiAdapter
 
-
-from zope.interface import Interface
-from zope.formlib import form
-from zope import schema
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.Five.formlib import formbase
-
-from Products.CMFCore.utils import getToolByName
-
 from plone.app.layout.viewlets import ViewletBase
+#from collective.realestatebroker import REBMessageFactory as _
 
-from collective.realestatebroker import REBMessageFactory as _
 
 class DescriptionTab(ViewletBase):
-    """ Viewlet that renders the the description tab with the ITabManager viewlet manager
-    """
+    """Description tab viewlet for ITabManager viewlet manager."""
 
     render = ViewPageTemplateFile('templates/description_tab.pt')
 
@@ -32,14 +23,13 @@ class DescriptionTab(ViewletBase):
             url.endswith('map')):
             self.is_selected = False
 
-        # Both Residential and Commercial with have a description alias that point
-        # to their own <type>_description.pt
+        # Both Residential and Commercial with have a description alias that
+        # point to their own <type>_description.pt
         self.description_view = self.context_state.object_url() + '/view'
 
 
 class CharsTab(ViewletBase):
-    """ Viewlet that renders the personal data within the employee viewlet manager
-    """
+    """Characteristics tab viewlet for ITabManager viewlet manager."""
 
     render = ViewPageTemplateFile('templates/chars_tab.pt')
 
@@ -48,7 +38,8 @@ class CharsTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.current_page_url().endswith('chars')
+        self.is_selected = self.context_state.current_page_url().endswith(
+            'chars')
 
         # Both Residential and Commercial with have a chars alias that point
         # to their own <type>_chars.pt
@@ -56,8 +47,7 @@ class CharsTab(ViewletBase):
 
 
 class PhotosTab(ViewletBase):
-    """ Viewlet that renders the personal data within the employee viewlet manager
-    """
+    """Photos tab viewlet for ITabManager viewlet manager."""
 
     render = ViewPageTemplateFile('templates/photos_tab.pt')
 
@@ -72,8 +62,7 @@ class PhotosTab(ViewletBase):
 
 
 class MapTab(ViewletBase):
-    """ Viewlet that renders the personal data within the employee viewlet manager
-    """
+    """Map tab viewlet for ITabManager viewlet manager."""
 
     render = ViewPageTemplateFile('templates/map_tab.pt')
 
@@ -82,7 +71,8 @@ class MapTab(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
-        self.is_selected = self.context_state.current_page_url().endswith('map')
+        self.is_selected = self.context_state.current_page_url().endswith(
+            'map')
 
         self.map_view = self.context_state.object_url() + '/map'
 
@@ -99,6 +89,7 @@ class RealEstateTitle(ViewletBase):
                                             name=u'plone_portal_state')
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
+
     def title(self):
         return self.context.title
 
@@ -120,6 +111,3 @@ class RealEstateTitle(ViewletBase):
     def image_tag(self):
         realestate_view = self.context.restrictedTraverse('@@realestate')
         return realestate_view.image_tag()
-
-
-
