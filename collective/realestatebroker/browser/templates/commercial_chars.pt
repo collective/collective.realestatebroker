@@ -19,12 +19,12 @@
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
 
-      <table>
+      <table class="listing nosort charsTable">
         <tal:schemata tal:repeat="schemata view/characteristic_fields">
           <tr>
-            <td colspan="2">
-              <h2 tal:content="schemata/title" />
-            </td>
+              <th colspan="2" tal:content="schemata/title">
+                  Schemata Title
+              </th>
           </tr>
           <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view;"
                tal:repeat="field schemata/fields">
