@@ -1,12 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
-<index name="getPrice" meta_type="FieldIndex">
- <indexed_attr value="getPrice"/>
-</index>
-<index name="getCity" meta_type="FieldIndex">
- <indexed_attr value="getCity"/>
-</index>
-<index name="review_state" meta_type="FieldIndex">
- <indexed_attr value="review_state"/>
-</index>
+  <index name="getPrice" meta_type="FieldIndex">
+    <indexed_attr value="getPrice"/>
+  </index>
+  <index name="getCity" meta_type="FieldIndex">
+    <indexed_attr value="getCity"/>
+  </index>
 </object>
