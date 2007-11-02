@@ -20,6 +20,8 @@ class DescriptionTab(ViewletBase):
         if (url.endswith('chars') or
             url.endswith('photos') or
             'photos?selected' in url or
+            url.endswith('plans') or
+            'plans?selected' in url or
             url.endswith('map')):
             self.is_selected = False
 
