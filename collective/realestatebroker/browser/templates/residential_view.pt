@@ -26,15 +26,21 @@
       </ul>
 
       <table>
-        <div tal:define="field_macro field_macro | here/widgets/field_table/macros/view"
-             tal:repeat="field view/base_fields">
+        <tal:row tal:define="label_macro label_macro|context/widgets/field_table/macros/label;
+                             data_macro data_macro|context/widgets/field_table/macros/data;
+                             field_macro field_macro | context/widgets/field_table/macros/view;"
+                 tal:repeat="field view/base_fields">
           <tal:if_visible define="mode string:view;
-                                  visState python:field.widget.isVisible(here, mode);
+                                  visState python:field.widget.isVisible(context, mode);
                                   visCondition python:field.widget.testCondition(context.aq_inner.aq_parent, portal, context);"
                           condition="python:visState == 'visible' and visCondition">
-            <metal:use_field use-macro="field_macro" />
+            <tr class="field"
+                tal:define="oddrow repeat/field/odd"
+                tal:attributes="class python:oddrow and 'field odd' or 'field even'">
+              <metal:use_base_view use-macro="context/widgets/field/macros/base_view" />
+            </tr>
           </tal:if_visible>
-        </div>
+        </tal:row>
       </table>
 
       <h2 i18n:translate="heading_main_text">
