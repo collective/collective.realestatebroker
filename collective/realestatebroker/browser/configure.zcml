@@ -29,18 +29,18 @@
 
     <browser:page
         for="collective.realestatebroker.interfaces.IResidential"
-        name="residential_view"
+        name="realestate_view"
         class=".residential.ResidentialView"
-        template="templates/residential_view.pt"
+        template="templates/realestate_view.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.IResidentialView"
     />
 
     <browser:page
         for="collective.realestatebroker.interfaces.IResidential"
-        name="residential_chars"
+        name="realestate_chars"
         class=".residential.ResidentialView"
-        template="templates/residential_chars.pt"
+        template="templates/realestate_chars.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.IResidentialView"
     />
@@ -74,18 +74,18 @@
 
     <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
-        name="commercial_view"
+        name="realestate_view"
         class=".commercial.CommercialView"
-        template="templates/commercial_view.pt"
+        template="templates/realestate_view.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.ICommercialView"
     />
 
     <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
-        name="commercial_chars"
+        name="realestate_chars"
         class=".commercial.CommercialView"
-        template="templates/commercial_chars.pt"
+        template="templates/realestate_chars.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.ICommercialView"
     />

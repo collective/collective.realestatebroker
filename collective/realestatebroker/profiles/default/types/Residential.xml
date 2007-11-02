@@ -12,7 +12,7 @@
   <property name="content_meta_type">Residential</property>
   <property name="product">collective.realestatebroker</property>
   <property name="factory">addResidential</property>
-  <property name="immediate_view">residential_view</property>
+  <property name="immediate_view">realestate_view</property>
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
@@ -20,15 +20,15 @@
     <element value="File"/>
   </property>
   <property name="allow_discussion">False</property>
-  <alias from="view" to="residential_view"/>
-  <alias from="(Default)" to="residential_view"/>
+  <alias from="view" to="realestate_view"/>
+  <alias from="(Default)" to="realestate_view"/>
   <alias from="edit" to="base_edit"/>
-  <alias from="chars" to="residential_chars"/>
+  <alias from="chars" to="realestate_chars"/>
   <alias from="photos" to="realestate_photos"/>
   <alias from="plans" to="realestate_floorplans"/>
   <alias from="map" to="realestate_map"/>
   <action title="view" action_id="view" category="object"
-          condition_expr="python:1" url_expr="string:${object_url}/residential_view"
+          condition_expr="python:1" url_expr="string:${object_url}/realestate_view"
           visible="True">
     <permission value="View"/>
   </action>
