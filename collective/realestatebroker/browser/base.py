@@ -13,10 +13,7 @@ from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from collective.realestatebroker import REBMessageFactory as _
 
-import logging
-from pprint import pprint
 
-logger = logging.getLogger('fredtest')
 
 # Image sizes for which we want tags.
 SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
@@ -47,7 +44,6 @@ class BatchedEstateMixin(object):
     def _getNavigationURL(self, b_start):
         target = self.request['ACTUAL_URL']
         kw = {}
-
         kw['b_start'] = b_start
         if 'form' in self.request:
             form=self.request.form
@@ -94,7 +90,7 @@ class BatchedEstateMixin(object):
         #return length and thousands_commas(length) or ''
 
 
-class RealEstateListing(BrowserView, BatchedEstateMixin):
+class RealEstateListing(BrowserView):
     """Base view for all objects with IRealEstateContent.
     """
 
@@ -142,9 +138,28 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                 })
         return result
 
+    def DottedPrice(self, pr=0):
+        # create a price with 10^3 dotted separators and the currency from the properties
+        elements = []
+        if len(pr) > 9:
+            elements.append(pr[-12:-9])
+        if len(pr) > 6:
+            elements.append(pr[-9:-6])
+        if len(pr) > 3:
+            elements.append(pr[-6:-3])
+        elements.append(pr[-3:])
+        
+        #get default currency from the properties
+        pprops = getToolByName(self.context, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        currency = str(props.getProperty('currency'))
+
+        return currency + " " + '.'.join(elements)        
+            
+
     def _getItems(self):
         """ Return a list of (filtered) objects in a folder
-            Used by BathedEstateMixin and get_batched_folder_contents
+            Used by get_batched_folder_contents
             to create a batched sequence and by helper methods to provide
             values to the template for the next and previous items """
 
@@ -153,34 +168,48 @@ class RealEstateListing(BrowserView, BatchedEstateMixin):
                  'sort_on':'getObjPositionInParent',
                  'path': '/'.join(self.context.getPhysicalPath()),
                  }
-
+                 
         catalog = getToolByName(self.context, 'portal_catalog')
+
+        plone_utils = getToolByName(self.context,'plone_utils')
 
         form = self.request.form
         search_action = form.get('form.button.submit', False)
         if search_action:
             if 'search_city' in form:
-                query['getCity'] = [form['search_city'],]
+                if form['search_city'] != 'any city':
+                    query['getCity'] = [form['search_city'],]
             if 'min_price' in form and 'max_price' in form:
-                # TODO: why no searches with only a min or a max price?
-                minprice = int(form['min_price'])
-                maxprice = int(form['min_price'])
-                # TODO:              ^^^ max?
-            logger.info("%s\n" % pprint(query))
+                min_price=int(form['min_price'])
+                max_price=int(form['max_price'])
+                if min_price < max_price:
+                    # range search
+                    query['getPrice']={"query": [min_price,max_price], "range": "minmax"} 
+                elif (min_price == 0) and (max_price == 0):
+                    # do nothing, empty select
+                    pass
+                elif (min_price > 0) and (max_price == 0):
+                    # only minimum price selected, no maximum price
+                    query['getPrice']={"query": min_price, "range": "min"} 
+                elif (min_price >= max_price):
+                    # invalid value
+                    plone_utils.addPortalMessage(_(u'Please select a valid price range.'), 'warning')
+                else:
+                    # should not happen
+                    plone_utils.addPortalMessage(_(u'Please select a valid price range. Should not happen'),'warning')
 
         return catalog.queryCatalog(query)
 
-        #return self.context.listFolderContents(contentFilter=folderfilter)
-
+        
     def get_batched_folder_contents(self):
         """Return a list of dictionaries with the realestate objects
-           in the folder
+           in the folder. Not doing batching at this moment.
         """
 
 
-        batch_list = self._getBatchObj()
+        item_list = self._getItems()
         result = []
-        for brain in batch_list:
+        for brain in item_list:
             obj = brain.getObject()
             realestate_view = obj.restrictedTraverse('@@realestate')
 
@@ -295,7 +324,7 @@ class RealEstateView(BrowserView):
                 *self.chars_table_field_predicates())
             results.append(result)
         return results
-
+    
     @memoize
     def CookedPrice(self):
         """Return formatted price"""

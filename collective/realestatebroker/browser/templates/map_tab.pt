@@ -3,11 +3,11 @@
   <a tal:condition="view/is_selected"
      class="selected"
      href="">
-    <span i18n:translate="map_tab">Map</span>  
+    <span i18n:translate="map">Map</span>  
   </a>
   <a href=""
      tal:attributes="href view/map_view"
      tal:condition="not:view/is_selected">
-    <span i18n:translate="map_tab">Map</span>
+    <span i18n:translate="map">Map</span>
   </a>
 </li>

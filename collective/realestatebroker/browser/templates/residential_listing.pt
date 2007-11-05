@@ -20,7 +20,8 @@
 
     
     <!-- simple search form -->
-    
+        <div >
+
         <form action=""
               method="get"
               name="search"
@@ -31,18 +32,21 @@
 
             <legend i18n:translate="legend_search_terms" id="legendSearch">Search Terms</legend>
             <div class="field">
-                <label for="city" i18n:translate="label_brokersearch_city">City</label>
+                <label for="city" i18n:translate="city">City</label>
                 <span class="fieldRequired" title="Required"
                       i18n:attributes="city"
                       i18n:translate="label_required">(Required)</span>
-                <div class="formHelp" i18n:translate="help_brokersearch_city">Fill in the name of the city</div>
-                <select id="city"
+                <div class="formHelp" i18n:translate="help_search_city"> Which city to list property?</div>
+                <select id="search_city"
                        name="search_city"
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
                        >
-                <option tal:repeat="city view/available_cities"><span tal:replace="city"></span>
-                </option>
+                <option tal:attributes="selected python: not ('search_city' in request.form)"  i18n:translate="any_city">Any city</option>
+                <span tal:omit-tag="" tal:repeat="city view/available_cities">
+                <option tal:attributes="selected python: ('search_city' in request.form) and (request.form['search_city'] == city)" tal:content="city">city</option>
+                </span>
+               
                 </select>
             </div>
 
@@ -59,16 +63,13 @@
                         tabindex=""
                         tal:define="realestate_properties portal_properties/realestatebroker_properties;"
                         tal:attributes="tabindex tabindex/next;">
-                    <option value="0" selected="selected">
-                       <span tal:omit-tag=""
-                             tal:define="realestate_properties portal_properties/realestatebroker_properties;"
-                             tal:replace="realestate_properties/currency">currency</span> 0 </option>
-                    <option tal:repeat="price realestate_properties/min_price"
-                            tal:attributes="value price"> 
-                        <span tal:omit-tag=""
-                              tal:replace="realestate_properties/currency">currency</span> <span tal:omit-tag=""
-                                                                                                 tal:replace="price">250</span>                    
+                    <option value="0" tal:attributes="selected python: not ('min_price' in request.form)">
+                       <span tal:omit-tag="" tal:replace="realestate_properties/currency">currency</span> 0 </option>
+                    <span tal:omit-tag="" tal:repeat="price realestate_properties/min_price" >
+                    <option  tal:attributes="selected python: ('min_price' in request.form) and (int(request.form['min_price']) == int(price)); value price"> 
+                        <span tal:omit-tag="" tal:replace="python: view.DottedPrice(price)">250</span>                    
                     </option>
+                    </span>
                 </select>
                 </td>
                 <td i18n:translate="broker_price_to"> to </td>
@@ -82,15 +83,13 @@
                         tabindex=""
                         tal:define="realestate_properties portal_properties/realestatebroker_properties;"
                         tal:attributes="tabindex tabindex/next;">
-                    <option value="0" selected="selected" i18n:translate="broker_price_no_limit"> No Limit </option>
-                    <option tal:repeat="price realestate_properties/max_price"
-                            tal:attributes="value price"> 
-                        <span tal:omit-tag=""
-                              tal:replace="realestate_properties/currency">currency</span> <span tal:omit-tag=""
-                                                                                                 tal:replace="price">250</span>                    
+                    <option value="0" tal:attributes="selected python: not ('min_price' in request.form)" i18n:translate="broker_price_no_limit"> No Limit </option>
+                       <span tal:omit-tag="" tal:repeat="price realestate_properties/max_price" >
+                    <option tal:attributes="selected python: ('max_price' in request.form) and (int(request.form['max_price']) == int(price)); value price"> 
+                         <span tal:omit-tag="" tal:replace="python: view.DottedPrice(price)">250</span>                 
                     </option>
+                    </span>
                 </select>
-                <input type="hidden" name="created_usage" value="range:min" />
                 </td>
 
                </tr>
@@ -98,7 +97,7 @@
             </div>   
 
             <div class="formControls">
-            <input type="hidden" name="portal_type" value="REHome" />
+          
                 <input class="context"
                        tabindex=""
                        type="submit"
@@ -112,8 +111,6 @@
         </fieldset>
 
     </form>
-    <metal:macro metal:use-macro="context/@@batch_widget/navigation" />
-
 
      <table id="sortable" 
          class="listing" 
@@ -123,19 +120,19 @@
 
     <thead>
         <tr>
-          <th class="nosort" i18n:translate="broker_photos">Photos</th>
-          <th class="">&nbsp;<tal:address i18n:translate="broker_address"
+          <th class="nosort" i18n:translate="photos">Photos</th>
+          <th class="">&nbsp;<tal:address i18n:translate="address"
               >Address</tal:address>&nbsp;</th>
-          <th class="">&nbsp;<tal:price i18n:translate="broker_price"
+          <th class="">&nbsp;<tal:price i18n:translate="price"
               >Price</tal:price>&nbsp;</th>
-          <th class="">&nbsp;<tal:status i18n:translate="broker_status"
+          <th class="">&nbsp;<tal:status i18n:translate="property_status"
               >Status</tal:status>&nbsp;</th>
         </tr>
     </thead>
 
       <tbody>
         <tr tal:condition="not: view/get_batched_folder_contents">
-            <td colspan="4">No realestate found</td></tr>  
+            <td colspan="4" i18n:translate="no_realestate_found">No realestate found.</td></tr>  
         <tr tal:repeat="item view/get_batched_folder_contents" tal:condition="view/get_batched_folder_contents">
           <td>
             <a href=""

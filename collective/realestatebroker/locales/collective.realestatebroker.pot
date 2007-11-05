@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-05 10:58+0000\n"
+"POT-Creation-Date: 2007-11-05 11:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/base.py:494
+#: ./browser/base.py:529
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/base.py:484
+#: ./browser/base.py:519
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/base.py:491
+#: ./browser/base.py:526
 msgid "${image} is now marked as floor plan."
 msgstr ""
 
-#: ./browser/base.py:502
+#: ./browser/base.py:537
 msgid "${image} is now the default."
 msgstr ""
 
@@ -173,6 +173,14 @@ msgstr ""
 msgid "Photo"
 msgstr ""
 
+#: ./browser/base.py:200
+msgid "Please select a valid price range."
+msgstr ""
+
+#: ./browser/base.py:203
+msgid "Please select a valid price range. Should not happen"
+msgstr ""
+
 #: ./browser/base.py:73
 msgid "Previous ${count} items"
 msgstr ""
@@ -199,7 +207,7 @@ msgid "Residential real estate"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/templates/residential_listing.pt:102
+#: ./browser/templates/residential_listing.pt:101
 msgid "Search"
 msgstr ""
 
@@ -237,38 +245,33 @@ msgid "Zip code"
 msgstr ""
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:127
-msgid "broker_address"
+#: ./browser/templates/residential_listing.pt:124
+msgid "address"
 msgstr ""
 
-#. Default: "Photos"
-#: ./browser/templates/residential_listing.pt:126
-msgid "broker_photos"
-msgstr ""
-
-#. Default: "Price"
-#: ./browser/templates/residential_listing.pt:129
-msgid "broker_price"
+#. Default: "Any city"
+#: ./browser/templates/residential_listing.pt:45
+msgid "any_city"
 msgstr ""
 
 #. Default: "No Limit"
-#: ./browser/templates/residential_listing.pt:85
+#: ./browser/templates/residential_listing.pt:86
 msgid "broker_price_no_limit"
 msgstr ""
 
 #. Default: "to"
-#: ./browser/templates/residential_listing.pt:74
+#: ./browser/templates/residential_listing.pt:75
 msgid "broker_price_to"
-msgstr ""
-
-#. Default: "Status"
-#: ./browser/templates/residential_listing.pt:131
-msgid "broker_status"
 msgstr ""
 
 #. Default: "Characteristics"
 #: ./browser/templates/chars_tab.pt:6
 msgid "chars_tab"
+msgstr ""
+
+#. Default: "City"
+#: ./browser/templates/residential_listing.pt:35
+msgid "city"
 msgstr ""
 
 #. Default: "Description"
@@ -322,12 +325,12 @@ msgstr ""
 msgid "heating"
 msgstr ""
 
-#. Default: "Fill in the name of the city"
-#: ./browser/templates/residential_listing.pt:38
-msgid "help_brokersearch_city"
+#. Default: "Which city to list property?"
+#: ./browser/templates/residential_listing.pt:39
+msgid "help_search_city"
 msgstr ""
 
-#: ./browser/templates/residential_listing.pt:55
+#: ./browser/templates/residential_listing.pt:59
 msgid "help_search_price"
 msgstr ""
 
@@ -341,11 +344,6 @@ msgstr ""
 
 #: ./content/schemata.py:176
 msgid "kindOfStorage"
-msgstr ""
-
-#. Default: "City"
-#: ./browser/templates/residential_listing.pt:34
-msgid "label_brokersearch_city"
 msgstr ""
 
 #. Default: "Default"
@@ -364,12 +362,12 @@ msgid "label_is_floorplan"
 msgstr ""
 
 #. Default: "Maximum price"
-#: ./browser/templates/residential_listing.pt:76
+#: ./browser/templates/residential_listing.pt:77
 msgid "label_max_price"
 msgstr ""
 
 #. Default: "Minimum price"
-#: ./browser/templates/residential_listing.pt:54
+#: ./browser/templates/residential_listing.pt:58
 msgid "label_min_price"
 msgstr ""
 
@@ -384,12 +382,12 @@ msgid "label_related_items"
 msgstr ""
 
 #. Default: "(Required)"
-#: ./browser/templates/residential_listing.pt:35
+#: ./browser/templates/residential_listing.pt:36
 msgid "label_required"
 msgstr ""
 
 #. Default: "Search Terms"
-#: ./browser/templates/residential_listing.pt:32
+#: ./browser/templates/residential_listing.pt:33
 msgid "legend_search_terms"
 msgstr ""
 
@@ -399,15 +397,30 @@ msgstr ""
 
 #. Default: "Map"
 #: ./browser/templates/map_tab.pt:6
-msgid "map_tab"
+msgid "map"
 msgstr ""
 
 #: ./browser/base.py:23
 msgid "measurements"
 msgstr ""
 
+#. Default: "No realestate found."
+#: ./browser/templates/residential_listing.pt:135
+msgid "no_realestate_found"
+msgstr ""
+
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
-msgid "photos_tab"
+msgid "photos"
+msgstr ""
+
+#. Default: "Price"
+#: ./browser/templates/residential_listing.pt:126
+msgid "price"
+msgstr ""
+
+#. Default: "Status"
+#: ./browser/templates/residential_listing.pt:128
+msgid "property_status"
 msgstr ""
 
