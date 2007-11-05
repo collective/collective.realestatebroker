@@ -29,7 +29,7 @@ mechanism.
 
 We can grab an IFloorInfo adapter that allows us to query and set the floor info.
 
-    >>> from collective.realestatebroker.browser.floor import FloorInfo
+    >>> from collective.realestatebroker.adapter.floor import FloorInfo
     >>> from collective.realestatebroker.browser.interfaces import IFloorInfo
 
 We have to provide the adapter manually, as it is normally handled through
@@ -64,8 +64,8 @@ And grab it again:
 Behind the scenes, the floor info is handled with annotations.
 
     >>> from zope.annotation.interfaces import IAnnotations
-    >>> from collective.realestatebroker.browser.floor import FLOORKEY
-    >>> from collective.realestatebroker.browser.floor import FLOORPLANKEY
+    >>> from collective.realestatebroker.adapter.floor import FLOORKEY
+    >>> from collective.realestatebroker.adapter.floor import FLOORPLANKEY
     >>> annotation = IAnnotations(image)
     >>> annotation.get(FLOORKEY)
     '42 floor'
