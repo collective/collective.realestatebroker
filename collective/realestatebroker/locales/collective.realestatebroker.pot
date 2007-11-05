@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-05 10:38+0000\n"
+"POT-Creation-Date: 2007-11-05 10:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 
 #: ./browser/base.py:494
-msgid "${image} is no longer marked as floor plan."
+msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
 #: ./browser/base.py:484
@@ -284,7 +284,7 @@ msgstr ""
 msgid "environment"
 msgstr ""
 
-#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floor plans. Also you can select the default photo."
+#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo."
 #: ./browser/templates/photo_management.pt:74
 msgid "explanation_photo_configuration"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-05 11:38+0100\n"
+"PO-Revision-Date: 2007-11-05 11:58+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Domain: collective.realestatebroker\n"
 
 #: ./browser/base.py:494
-msgid "${image} is no longer marked as floor plan."
-msgstr "${image} is geen plattegrond meer."
+msgid "${image} is no longer marked as floorplan."
+msgstr ""
 
 #: ./browser/base.py:484
 msgid "${image} is now attached to ${floor}."
@@ -277,7 +277,7 @@ msgstr "Details"
 msgid "environment"
 msgstr "Omgeving/tuin"
 
-#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floor plans. Also you can select the default photo."
+#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo."
 #: ./browser/templates/photo_management.pt:74
 msgid "explanation_photo_configuration"
 msgstr ""

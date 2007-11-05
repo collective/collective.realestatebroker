@@ -417,13 +417,13 @@ class RealEstateView(BrowserView):
         if not selected:
             selected = names[0]
         base_url = self.context.absolute_url() + '/plans?selected='
-        # Grab floor plans.
+        # Grab floorplans.
         decorated = [self.decorate_image(brain) for brain in
                      self.image_brains()]
         floorplans = [item['tag_large'] for item in decorated
                       if item['is_floorplan']
                       and item['floor'] == selected]
-        # Determine which floors have floor plans.
+        # Determine which floors have floorplans.
         used_floorplans = [item['floor'] for item in decorated
                            if item['is_floorplan']]
         for name in names:
@@ -492,7 +492,7 @@ class HandleConfiguration(BrowserView):
                                       "plan.", mapping={'image': image_id}))
                 else:
                     messages.append(_(u"${image} is no longer marked as "
-                                      "floor plan.", mapping={'image':
+                                      "floorplan.", mapping={'image':
                                                               image_id}))
         current_default = brains[0]['id']
         default = form.get('default')

@@ -1,8 +1,8 @@
 """Floor annotation management for images.
 
 Images inside realestate objects should be attached to floors. And be tagged,
-if applicable, as floor plan. Both are handled by annotating images: floors
-with a textual label, floor plan is yes/no.
+if applicable, as floorplan. Both are handled by annotating images: floors
+with a textual label, floorplan is yes/no.
 
 Images implement the IATImage interface.  We'll use a mock image that provides
 the same interface.
@@ -43,7 +43,7 @@ Our image doesn't have any floor information yet:
     >>> floor_info.floor == None
     True
 
-By default, floor plan is False, also if nothing is set yet.
+By default, floorplan is False, also if nothing is set yet.
 
     >>> floor_info.is_floorplan
     False
