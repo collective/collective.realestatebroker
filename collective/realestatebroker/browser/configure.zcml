@@ -4,21 +4,7 @@
 
     <include package="plone.app.contentmenu" />
 
-    <browser:page
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="realestate"
-        class=".base.RealEstateView"
-        permission="zope2.View"
-    />
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="photo-management"
-        class=".base.RealEstateView"
-        permission="cmf.ModifyPortalContent"
-        template="templates/photo_management.pt"
-    />
-
+    <!-- Listings -->
     <browser:page
         for="*"
         name="residential_listing"
@@ -26,61 +12,6 @@
         template="templates/residential_listing.pt"
         permission="zope2.View"
     />
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IResidential"
-        name="realestate_view"
-        class=".residential.ResidentialView"
-        template="templates/realestate_view.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IResidentialView"
-    />
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IResidential"
-        name="realestate_chars"
-        class=".residential.ResidentialView"
-        template="templates/realestate_chars.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IResidentialView"
-    />
-
-    <!-- Photo album -->
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="realestate_photos"
-        class=".album.AlbumView"
-        template="templates/realestate_photos.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IRealEstateView"
-    />
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="realestate_album"
-        class=".album.AlbumView"
-        permission="zope2.View"
-    />    
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="realestate_floorplans"
-        class=".base.RealEstateView"
-        template="templates/realestate_floorplans.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IRealEstateView"
-    />
-
-    <browser:page
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="realestate_map"
-        class=".base.RealEstateView"
-        template="templates/realestate_map.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IRealEstateView"
-    />
-
     <browser:page
         for="*"
         name="commercial_listing"
@@ -90,6 +21,21 @@
         allowed_interface=".interfaces.ICommercialListing"
     />
 
+    <!-- Default views for real estate -->
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate"
+        class=".base.RealEstateView"
+        permission="zope2.View"
+    />
+    <browser:page
+        for="collective.realestatebroker.interfaces.IResidential"
+        name="realestate_view"
+        class=".residential.ResidentialView"
+        template="templates/realestate_view.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IResidentialView"
+    />
     <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
         name="realestate_view"
@@ -99,6 +45,67 @@
         allowed_interface=".interfaces.ICommercialView"
     />
 
+    <!-- Title for realestate content -->
+    <browser:viewletManager
+        name="realestatebroker.titlemanager"
+        provides=".interfaces.IRealEstateTitleManager"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+    <browser:viewlet
+        name="realestatebroker.title"
+        manager=".interfaces.IRealEstateTitleManager"
+        class=".viewlets.RealEstateTitle"
+        permission="zope2.View"
+        />
+
+    <!-- Tabs on real estate content. -->
+    <browser:viewletManager
+        name="realestatebroker.tabs"
+        provides=".interfaces.ITabsManager"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+    <browser:viewlet
+        name="realestatebroker.description.tab"
+        manager=".interfaces.ITabsManager"
+        class=".viewlets.DescriptionTab"
+        permission="zope2.View"
+        />
+    <browser:viewlet
+        name="realestatebroker.chars.tab"
+        manager=".interfaces.ITabsManager"
+        class=".viewlets.CharsTab"
+        permission="zope2.View"
+        />
+    <browser:viewlet
+        name="realestatebroker.photos.tab"
+        manager=".interfaces.ITabsManager"
+        class=".viewlets.PhotosTab"
+        permission="zope2.View"
+        />
+    <browser:viewlet
+        name="realestatebroker.floorplans.tab"
+        manager=".interfaces.ITabsManager"
+        class=".viewlets.FloorplansTab"
+        permission="zope2.View"
+        />
+    <browser:viewlet
+        name="realestatebroker.map.tab"
+        manager=".interfaces.ITabsManager"
+        class=".viewlets.MapTab"
+        permission="zope2.View"
+        />
+
+    <!-- Characteristics view -->
+    <browser:page
+        for="collective.realestatebroker.interfaces.IResidential"
+        name="realestate_chars"
+        class=".residential.ResidentialView"
+        template="templates/realestate_chars.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IResidentialView"
+    />
     <browser:page
         for="collective.realestatebroker.interfaces.ICommercial"
         name="realestate_chars"
@@ -107,105 +114,34 @@
         permission="zope2.View"
         allowed_interface=".interfaces.ICommercialView"
     />
-    <!-- Viewlets which will render the tabs on real estate content. -->
 
-    <browser:viewletManager
-        name="realestatebroker.tabs"
-        provides=".interfaces.ITabsManager"
-        permission="zope2.View"
-        class="plone.app.viewletmanager.manager.OrderedViewletManager"
-        />
-
-    <browser:viewlet
-        name="realestatebroker.description.tab"
-        manager=".interfaces.ITabsManager"
-        class=".viewlets.DescriptionTab"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="realestatebroker.chars.tab"
-        manager=".interfaces.ITabsManager"
-        class=".viewlets.CharsTab"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="realestatebroker.photos.tab"
-        manager=".interfaces.ITabsManager"
-        class=".viewlets.PhotosTab"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="realestatebroker.floorplans.tab"
-        manager=".interfaces.ITabsManager"
-        class=".viewlets.FloorplansTab"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="realestatebroker.map.tab"
-        manager=".interfaces.ITabsManager"
-        class=".viewlets.MapTab"
-        permission="zope2.View"
-        />
-
-    <!-- Photo management -->
-    <browser:page
-        name="handle-configuration"
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        class=".base.HandleConfiguration"
-        permission="cmf.ModifyPortalContent"
-        />
-
+    <!-- Photo album -->
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="maps_googlemaps_enabled_view"
-        class=".map.RealEstateMapView"
-        permission="zope.Public"
-        allowed_interface="Products.Maps.interfaces.map.IMapEnabledView"
-        />
-
+        name="realestate_photos"
+        class=".album.AlbumView"
+        template="templates/realestate_photos.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IRealEstateView"
+    />
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
-        name="maps_googlemaps_view"
-        class=".map.RealEstateMapView"
+        name="realestate_album"
+        class=".album.AlbumView"
         permission="zope2.View"
-        allowed_interface="Products.Maps.interfaces.map.IMapView"
-        />
-
-    <!-- Title for realestate content -->
-    <browser:viewletManager
-        name="realestatebroker.titlemanager"
-        provides=".interfaces.IRealEstateTitleManager"
-        permission="zope2.View"
-        class="plone.app.viewletmanager.manager.OrderedViewletManager"
-        />
-
-    <browser:viewlet
-        name="realestatebroker.title"
-        manager=".interfaces.IRealEstateTitleManager"
-        class=".viewlets.RealEstateTitle"
-        permission="zope2.View"
-        />
-
-    <!-- Photo album view -->
+    />    
     <browser:viewletManager
         name="realestatebroker.photomanager"
         provides=".interfaces.IAlbumManager"
         permission="zope2.View"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
-
     <browser:viewlet
         name="realestatebroker.photos"
         manager=".interfaces.IAlbumManager"
         class=".album.AlbumViewlet"
         permission="zope2.View"
         />
-
-    <!-- KSS view to update the album -->
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         attribute="refreshAlbum"
@@ -214,12 +150,60 @@
         permission="zope2.View"
         />
 
+    <!-- Album management -->
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="album-management"
+        class=".album.AlbumManagementView"
+        permission="cmf.ModifyPortalContent"
+        template="templates/album_management.pt"
+    />
+    <browser:page
+        name="handle-album-management"
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        class=".album.HandleAlbumManagement"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <!-- Floorplans view -->
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate_floorplans"
+        class=".base.FloorplansView"
+        template="templates/realestate_floorplans.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IRealEstateView"
+    />
+
+    <!-- Maps -->
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate_map"
+        class=".base.RealEstateView"
+        template="templates/realestate_map.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IRealEstateView"
+    />
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="maps_googlemaps_enabled_view"
+        class=".map.RealEstateMapView"
+        permission="zope.Public"
+        allowed_interface="Products.Maps.interfaces.map.IMapEnabledView"
+        />
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="maps_googlemaps_view"
+        class=".map.RealEstateMapView"
+        permission="zope2.View"
+        allowed_interface="Products.Maps.interfaces.map.IMapView"
+        />
+
     <!-- Resources -->
     <browser:resourceDirectory
       name="collective.realestatebroker.images"
       directory="images"
       />
-
     <browser:resource
       name="realestatebroker.css"
       file="realestatebroker.css"
@@ -232,6 +216,7 @@
       name="realestatebroker.kss"
       file="realestatebroker.kss"
       />
+
     <!-- These two contenttype icons are listed separately as GS didn't seem
          to want to deal with a resource with slashes in it. -->
     <browser:resource

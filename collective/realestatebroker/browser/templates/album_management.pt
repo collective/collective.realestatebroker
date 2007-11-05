@@ -30,7 +30,7 @@
                                z3curl string:${resourceurl}z3c.widget.flashupload;">
         <div class="upload-form-controls">
           <form action="" name="upload_complete" method="get"
-                tal:attributes="action string:${context/absolute_url}/photo-management">
+                tal:attributes="action string:${context/absolute_url}/album-management">
             <input type="hidden" name="portal_status_message" value="" />
             <input type="button" id="flash.start.browsing" value="Upload Files"
                    name="upload_button"
@@ -79,7 +79,7 @@
 
       <form action=""
             method="post"
-            tal:attributes="action string:${context/absolute_url}/@@handle-configuration;"
+            tal:attributes="action string:${context/absolute_url}/@@handle-album-management;"
             id="reb-photo-management">
         <table>
           <thead>

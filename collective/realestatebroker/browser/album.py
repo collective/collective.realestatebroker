@@ -7,7 +7,9 @@ from plone.app.kss.plonekssview import PloneKSSView
 from plone.app.layout.viewlets import ViewletBase
 from plone.memoize.view import memoize
 from Products.ATContentTypes.interface.image import IATImage
+from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker import utils
+from collective.realestatebroker.adapters.interfaces import IFloorInfo
 
 
 class AlbumView(BrowserView):
@@ -103,3 +105,75 @@ class AlbumKSSView(PloneKSSView):
         ksszope = self.getCommandSet('zope')
         selector = ksscore.getHtmlIdSelector('reb-photo-show')
         ksszope.refreshProvider(selector, 'realestatebroker.photomanager')
+
+
+class AlbumManagementView(BrowserView):
+    """ View for managing photos in an album"""
+
+    @memoize
+    def floor_names(self):
+        pprops = getToolByName(self.context, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        names = list(props.getProperty('floor_names'))
+        return names
+
+    @memoize
+    def photo_configuration(self):
+        configuration = []
+        album = self.context.restrictedTraverse('realestate_album')
+        for index, image_brain in enumerate(album.image_brains()):
+            obj = image_brain.getObject()
+            floor_info = IFloorInfo(obj)
+            image = album.image_info(obj, scale='tile')
+            image['id'] = image_brain['id']
+            image['choices'] = self.floor_names()
+            image['floor'] = floor_info.floor
+            image['is_floorplan'] = floor_info.is_floorplan
+            image['index'] = index
+            configuration.append(image)
+        return configuration
+
+
+class HandleAlbumManagement(BrowserView):
+
+    def __call__(self):
+        form = self.request.form
+        messages = []
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(object_provides=IATImage.__identifier__,
+                         sort_on='sortable_title',
+                         path='/'.join(self.context.getPhysicalPath()))
+        for image_brain in brains:
+            image_id = image_brain['id']
+            floor = form.get(image_id)
+            obj = image_brain.getObject()
+            annotation = IFloorInfo(obj)
+            existing_floor = annotation.floor
+            if floor != existing_floor:
+                annotation.floor = floor
+                messages.append(_(u"${image} is now attached to ${floor}.",
+                                  mapping={'image':
+                                           image_id, 'floor': floor}))
+            is_floorplan = bool(image_id in form.get('floorplan', []))
+            if is_floorplan != annotation.is_floorplan:
+                annotation.is_floorplan = is_floorplan
+                if is_floorplan:
+                    messages.append(_(u"${image} is now marked as floor "
+                                      "plan.", mapping={'image': image_id}))
+                else:
+                    messages.append(_(u"${image} is no longer marked as "
+                                      "floorplan.", mapping={'image':
+                                                              image_id}))
+            obj.reindexObject()
+        current_default = brains[0]['id']
+        default = form.get('default')
+        if default != current_default:
+            self.context.moveObjectsToTop(default)
+            self.context.plone_utils.reindexOnReorder(self.context)
+            messages.append(_(u"${image} is now the default.",
+                              mapping={'image': default}))
+        for message in messages:
+            self.context.plone_utils.addPortalMessage(message)
+        response = self.request.response
+        here_url = self.context.absolute_url()
+        response.redirect(here_url)

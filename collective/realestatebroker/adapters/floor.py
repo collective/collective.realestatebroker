@@ -29,8 +29,8 @@ mechanism.
 
 We can grab an IFloorInfo adapter that allows us to query and set the floor info.
 
-    >>> from collective.realestatebroker.adapter.floor import FloorInfo
-    >>> from collective.realestatebroker.interfaces import IFloorInfo
+    >>> from collective.realestatebroker.adapters.floor import FloorInfo
+    >>> from collective.realestatebroker.adapters.interfaces import IFloorInfo
 
 We have to provide the adapter manually, as it is normally handled through
 zcml.
@@ -79,7 +79,7 @@ from zope.component import adapts
 from zope.interface import implements
 from Products.CMFPlone import CatalogTool as catalogtool
 from Products.ATContentTypes.interface.image import IATImage
-from collective.realestatebroker.interfaces import IFloorInfo
+from interfaces import IFloorInfo
 
 FLOORKEY = 'REB_FLOOR'
 FLOORPLANKEY = 'REB_FLOORPLAN'

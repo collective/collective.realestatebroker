@@ -4,7 +4,7 @@
   <!-- Simple adapter that gets floor info from an annotation on ATImage -->
   <adapter
       for="Products.ATContentTypes.interface.image.IATImage"
-      provides="collective.realestatebroker.interfaces.IFloorInfo"
+      provides=".interfaces.IFloorInfo"
       factory=".floor.FloorInfo"
       />
 
