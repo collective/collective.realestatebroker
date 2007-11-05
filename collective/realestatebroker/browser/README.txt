@@ -3,7 +3,7 @@ coverage report starts to expose this.
 
     >>> from collective.realestatebroker.browser import base
     >>> from collective.realestatebroker.browser import commercial
-    >>> from collective.realestatebroker.browser import floor
+    >>> from collective.realestatebroker.adapters import floor
     >>> from collective.realestatebroker.browser import interfaces
     >>> from collective.realestatebroker.browser import map
     >>> from collective.realestatebroker.browser import residential

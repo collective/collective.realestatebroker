@@ -18,56 +18,25 @@ SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'financial': _(u'financial'),
                  }
 
+class RealEstateBaseView(BrowserView):
+    """Base view with some tools attached"""
+    
+    def __init__(self, context, request):
+        BrowserView.__init__(self, context,request)
+        self.catalog = getToolByName(self.context, 'portal_catalog')
+        self.wftool = getToolByName(self.context, 'portal_workflow')
+        pprops = getToolByName(self.context, 'portal_properties')
+        self.properties = pprops.realestatebroker_properties
+        self.plone_utils = getToolByName(self.context,'plone_utils')
 
-class RealEstateListing(BrowserView):
+
+class RealEstateListing(RealEstateBaseView):
     """Base view for all objects with IRealEstateContent.
     """
 
     implements(IRealEstateListing)
 
-    def __init__(self, context, request):
-        BrowserView.__init__(self, context,request)
-
-        self.catalog = getToolByName(self.context, 'portal_catalog')
-        self.wftool = getToolByName(self.context, 'portal_workflow')
-
-    def sorted_listing(self, count):
-        """Returns a list of dicts representing an overview of the Commercial
-           real estate. Needs to be implemented in subclasses.
-        """
-        raise NotImplementedError
-
-    def tag(self, **kwargs):
-        """Returns a html IMG tag of the firstimage in the folderish
-           RealEstate object. Needs to be implemented in subclasses.
-        """
-        raise NotImplementedError
-
-    def get_folder_contents(self):
-        """Return a list of dictionaries with the residential objects
-           in the folder
-        """
-        result = []
-        contentFilter = {'portal_type':['Residential','Commercial']}
-        for obj in self.context.listFolderContents(
-            contentFilter=contentFilter):
-            #if obj.portal_type != 'Residential':
-            #    continue
-            realestate_view = obj.restrictedTraverse('@@realestate')
-            image_tag = realestate_view.image_tag()
-            result.append({
-                'id': obj.getId(),
-                'url': obj.absolute_url(),
-                'title':  obj.Title(),
-                'zipcode': obj.zipcode,
-                'city': obj.city,
-                'description': obj.Description(),
-                'image_tag': image_tag,
-                'review_state': self.wftool.getInfoFor(obj,'review_state'),
-                })
-        return result
-
-    def DottedPrice(self, pr=0):
+    def dotted_price(self, pr=0):
         # create a price with 10^3 dotted separators and the currency from the properties
         elements = []
         if len(pr) > 9:
@@ -79,67 +48,56 @@ class RealEstateListing(BrowserView):
         elements.append(pr[-3:])
         
         #get default currency from the properties
-        pprops = getToolByName(self.context, 'portal_properties')
-        props = pprops.realestatebroker_properties
-        currency = str(props.getProperty('currency'))
+        currency = str(self.properties.getProperty('currency'))
 
         return currency + " " + '.'.join(elements)        
             
-
-    def _getItems(self):
+    @memoize
+    def items(self):
         """ Return a list of (filtered) objects in a folder
-            Used by get_batched_folder_contents
+            Used by batch
             to create a batched sequence and by helper methods to provide
             values to the template for the next and previous items """
 
-        query = {'object_provides':
-                 [ICommercial.__identifier__,IResidential.__identifier__],
-                 'sort_on':'getObjPositionInParent',
-                 'path': '/'.join(self.context.getPhysicalPath()),
-                 }
-                 
-        catalog = getToolByName(self.context, 'portal_catalog')
-
-        plone_utils = getToolByName(self.context,'plone_utils')
-
+        query = dict(object_provides = [ICommercial.__identifier__,
+                                        IResidential.__identifier__],
+                     sort_on = 'getObjPositionInParent',
+                     path = '/'.join(self.context.getPhysicalPath()))
         form = self.request.form
         search_action = form.get('form.button.submit', False)
         reset_action = form.get('form.button.reset', False)
         if search_action:
-            if 'search_city' in form:
-                if form['search_city'] != 'Any city':
-                    query['getCity'] = [form['search_city'],]
+            if 'search_city' in form and form['search_city'] != 'Any city':
+                query['getCity'] = [form['search_city'],]
             if 'min_price' in form and 'max_price' in form:
                 min_price=int(form['min_price'])
                 max_price=int(form['max_price'])
                 if min_price < max_price:
                     # range search
                     query['getPrice']={"query": [min_price,max_price], "range": "minmax"} 
-                elif (min_price == 0) and (max_price == 0):
+                elif min_price == 0 and max_price == 0:
                     # do nothing, empty select
                     pass
-                elif (min_price > 0) and (max_price == 0):
+                elif min_price > 0 and max_price == 0:
                     # only minimum price selected, no maximum price
                     query['getPrice']={"query": min_price, "range": "min"} 
-                elif (min_price >= max_price):
-                    # invalid value
-                    plone_utils.addPortalMessage(_(u'Please select a valid price range.'), 'warning')
-                else:
-                    # should not happen
-                    plone_utils.addPortalMessage(_(u'Please select a valid price range. Should not happen'),'warning')
+                elif min_price >= max_price:
+                    self.plone_utils.addPortalMessage(_(u'Please select a valid price range.'), 'warning')
         if reset_action:
             response = self.request.response
             here_url = self.context.absolute_url()
             response.redirect(here_url)
         
-        return catalog.queryCatalog(query)
+        return self.catalog.queryCatalog(query)
 
-        
-    def get_batched_folder_contents(self):
+    @memoize
+    def batch(self):
         """Return a list of dictionaries with the realestate objects
            in the folder. Not doing batching at this moment.
         """
-        batch = self._getItems()
+        items = self.items()
+        batch = items # Here we have to slice the items into a batch
+
         result = []
         for brain in batch:
             obj = brain.getObject()
@@ -188,7 +146,7 @@ def is_characteristics_field(field):
     return (field.schemata != 'default' and field.schemata != 'metadata')
 
 
-class RealEstateView(BrowserView):
+class RealEstateView(RealEstateBaseView):
     """Generic view for viewing one real estate object."""
     implements(IRealEstateView)
 
@@ -220,12 +178,10 @@ class RealEstateView(BrowserView):
 
         Empty fields should not be rendered, neither fields that are rendered
         explicitly elsewhere in the template (as indicated by the
-        'selfrendered' property on the field.
+        'selfrendered' property on the field."""
 
-        """
         schema = self.context.Schema()
-        fields = schema.filterFields(schemata=schemata_name,
-                                     *predicates)
+        fields = schema.filterFields(schemata=schemata_name, *predicates)
         filtered = [field for field in fields
                     if field.get(self.context) == False
                     or field.get(self.context)]
@@ -239,8 +195,7 @@ class RealEstateView(BrowserView):
 
     @memoize
     def characteristic_fields(self):
-        """Return list of characteristic schemata/fields.
-        """
+        """Return list of characteristic schemata/fields."""
         schemata_ids = ['measurements', 'details', 'environment', 'financial']
         results = []
         for schemata_id in schemata_ids:
@@ -266,17 +221,15 @@ class RealEstateView(BrowserView):
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
 
-        #get default currency from the properties
-        pprops = getToolByName(self.context, 'portal_properties')
-        props = pprops.realestatebroker_properties
-        currency = str(props.getProperty('currency'))
+        currency = str(self.properties.getProperty('currency'))
 
         return currency + " " + '.'.join(elements)
 
 
-class FloorplansView(BrowserView):
+class FloorplansView(RealEstateBaseView):
     """docstring for FloorplansView"""
 
+    @memoize
     def floorplans(self):
         """Return dict for displaying floors
 
@@ -290,9 +243,7 @@ class FloorplansView(BrowserView):
 
         """
         result = {}
-        pprops = getToolByName(self.context, 'portal_properties')
-        props = pprops.realestatebroker_properties
-        names = list(props.getProperty('floor_names'))
+        names = list(self.properties.getProperty('floor_names'))
         if not names:
             return
         floors = []
@@ -301,8 +252,7 @@ class FloorplansView(BrowserView):
             selected = names[0]
         base_url = self.context.absolute_url() + '/plans?selected='
         # Grab floorplans.
-        catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog(object_provides=IATImage.__identifier__,
+        brains = self.catalog(object_provides=IATImage.__identifier__,
                          is_floorplan=True,
                          sort_on='getObjPositionInParent',
                          path='/'.join(self.context.getPhysicalPath()))

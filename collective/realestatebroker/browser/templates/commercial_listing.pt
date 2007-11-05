@@ -24,7 +24,7 @@
       cellspacing="0"
       class="commercial-listing batchTable">
       <tbody valign="top">
-        <tr tal:repeat="item view/get_batched_folder_contents">
+        <tr tal:repeat="item view/batch">
           <td>
             <a href=""
                tal:attributes="href item/url"

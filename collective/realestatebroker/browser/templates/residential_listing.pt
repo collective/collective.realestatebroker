@@ -67,7 +67,7 @@
                        <span tal:omit-tag="" tal:replace="realestate_properties/currency">currency</span> 0 </option>
                     <span tal:omit-tag="" tal:repeat="price realestate_properties/min_price" >
                     <option  tal:attributes="selected python: ('min_price' in request.form) and (int(request.form['min_price']) == int(price)); value price"> 
-                        <span tal:omit-tag="" tal:replace="python: view.DottedPrice(price)">250</span>                    
+                        <span tal:omit-tag="" tal:replace="python: view.dotted_price(price)">250</span>                    
                     </option>
                     </span>
                 </select>
@@ -86,7 +86,7 @@
                     <option value="0" tal:attributes="selected python: not ('min_price' in request.form)" i18n:translate="broker_price_no_limit"> No Limit </option>
                        <span tal:omit-tag="" tal:repeat="price realestate_properties/max_price" >
                     <option tal:attributes="selected python: ('max_price' in request.form) and (int(request.form['max_price']) == int(price)); value price"> 
-                         <span tal:omit-tag="" tal:replace="python: view.DottedPrice(price)">250</span>                 
+                         <span tal:omit-tag="" tal:replace="python: view.dotted_price(price)">250</span>                 
                     </option>
                     </span>
                 </select>
@@ -139,9 +139,9 @@
     </thead>
 
       <tbody>
-        <tr tal:condition="not: view/get_batched_folder_contents">
+        <tr tal:condition="not: view/batch">
             <td colspan="4" i18n:translate="no_realestate_found">No realestate found.</td></tr>  
-        <tr tal:repeat="item view/get_batched_folder_contents" tal:condition="view/get_batched_folder_contents">
+        <tr tal:repeat="item view/batch" tal:condition="view/batch">
           <td>
             <a href=""
                tal:attributes="href string:${item/url}/photos;

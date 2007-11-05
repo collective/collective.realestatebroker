@@ -17,27 +17,7 @@ class ResidentialListing(RealEstateListing):
 
     implements(IResidentialListing)
 
-    @memoize
-    def sorted_listing(self, count=10):
-        """Returns a list of dicts representing an overview of the residential
-        real estate.
-        """
-        context = aq_inner(self.context)
-        brains = self.catalog(object_provides='IResidential',
-                              sort_on='sortable_title')[:count]
-        results = []
-        for brain in brains:
-            obj = brain.getObject()
-            item = dict(
-                title=obj.Title(),
-                description=obj.Description(),
-                thumb_tag=obj.tag(size='thumb'),
-                url=obj.absolute_url(),
-            )
-            results.append(item)
-
-        return results
-
+    pass
 
 class ResidentialView(RealEstateView):
     """ Methods which should be available to both types of real estate are

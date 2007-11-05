@@ -64,8 +64,8 @@ And grab it again:
 Behind the scenes, the floor info is handled with annotations.
 
     >>> from zope.annotation.interfaces import IAnnotations
-    >>> from collective.realestatebroker.adapter.floor import FLOORKEY
-    >>> from collective.realestatebroker.adapter.floor import FLOORPLANKEY
+    >>> from collective.realestatebroker.adapters.floor import FLOORKEY
+    >>> from collective.realestatebroker.adapters.floor import FLOORPLANKEY
     >>> annotation = IAnnotations(image)
     >>> annotation.get(FLOORKEY)
     '42 floor'
