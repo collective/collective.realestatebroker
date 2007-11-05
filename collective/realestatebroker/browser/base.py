@@ -175,6 +175,7 @@ class RealEstateListing(BrowserView):
 
         form = self.request.form
         search_action = form.get('form.button.submit', False)
+        reset_action = form.get('form.button.reset', False)
         if search_action:
             if 'search_city' in form:
                 if form['search_city'] != 'Any city':
@@ -197,7 +198,11 @@ class RealEstateListing(BrowserView):
                 else:
                     # should not happen
                     plone_utils.addPortalMessage(_(u'Please select a valid price range. Should not happen'),'warning')
-
+        if reset_action:
+            response = self.request.response
+            here_url = self.context.absolute_url()
+            response.redirect(here_url)
+        
         return catalog.queryCatalog(query)
 
         

@@ -14,19 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/base.py:529
+#: ./browser/base.py:528
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/base.py:519
+#: ./browser/base.py:518
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/base.py:526
+#: ./browser/base.py:525
 msgid "${image} is now marked as floor plan."
 msgstr "${image} is gemarkeerd als plattegrond.<"
 
-#: ./browser/base.py:537
+#: ./browser/base.py:536
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -48,7 +48,7 @@ msgstr "Gebouwtype"
 
 #: ./content/schemata.py:31
 msgid "City"
-msgstr "Plaats"
+msgstr ""
 
 #. Default: "Commercial real estate"
 #: ./profiles/default/types/Commercial.xml
@@ -145,11 +145,11 @@ msgstr "Soort berging"
 msgid "Location"
 msgstr "Locatie"
 
-#: ./browser/base.py:87
+#: ./browser/base.py:83
 msgid "Next ${count} items"
 msgstr "Volgende ${count} objecten"
 
-#: ./browser/base.py:85
+#: ./browser/base.py:81
 msgid "Next item"
 msgstr "Volgend object"
 
@@ -166,19 +166,19 @@ msgstr "Parkeergelegenheid"
 msgid "Photo"
 msgstr "Foto"
 
-#: ./browser/base.py:200
+#: ./browser/base.py:197
 msgid "Please select a valid price range."
-msgstr ""
+msgstr "Selecteer een geldig prijsbereik."
 
-#: ./browser/base.py:203
+#: ./browser/base.py:200
 msgid "Please select a valid price range. Should not happen"
-msgstr ""
+msgstr "Selecteer een geldig prijsbereik!"
 
-#: ./browser/base.py:73
+#: ./browser/base.py:69
 msgid "Previous ${count} items"
 msgstr "Vorige ${count} objecten"
 
-#: ./browser/base.py:71
+#: ./browser/base.py:67
 msgid "Previous item"
 msgstr "Vorig object"
 
@@ -193,6 +193,11 @@ msgstr "Privé parkeerterrein"
 #: ./content/schemata.py:239
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
+
+#. Default: "Reset"
+#: ./browser/templates/residential_listing.pt:109
+msgid "Reset"
+msgstr "Wis zoektermen"
 
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
@@ -238,13 +243,12 @@ msgid "Zip code"
 msgstr "Postcode"
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:124
+#: ./browser/templates/residential_listing.pt:132
 msgid "address"
 msgstr "Adres"
 
 #. Default: "Any city"
 #: ./browser/templates/residential_listing.pt:45
-#, fuzzy
 msgid "any_city"
 msgstr "Elke stad"
 
@@ -265,20 +269,19 @@ msgstr "Kenmerken"
 
 #. Default: "City"
 #: ./browser/templates/residential_listing.pt:35
-#, fuzzy
 msgid "city"
-msgstr "stad"
+msgstr "Stad"
 
 #. Default: "Description"
 #: ./browser/templates/description_tab.pt:6
 msgid "description_tab"
 msgstr "Omschrijving"
 
-#: ./browser/base.py:24
+#: ./browser/base.py:21
 msgid "details"
 msgstr "Details"
 
-#: ./browser/base.py:25
+#: ./browser/base.py:22
 msgid "environment"
 msgstr "Omgeving/tuin"
 
@@ -290,7 +293,7 @@ msgstr ""
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
 "worden."
 
-#: ./browser/base.py:26
+#: ./browser/base.py:23
 msgid "financial"
 msgstr "Financieel"
 
@@ -398,13 +401,12 @@ msgstr "Locatie"
 msgid "map"
 msgstr "Kaart"
 
-#: ./browser/base.py:23
+#: ./browser/base.py:20
 msgid "measurements"
 msgstr "Maatvoering"
 
 #. Default: "No realestate found."
-#: ./browser/templates/residential_listing.pt:135
-#, fuzzy
+#: ./browser/templates/residential_listing.pt:143
 msgid "no_realestate_found"
 msgstr "Geen objecten gevonden."
 
@@ -414,12 +416,12 @@ msgid "photos"
 msgstr "Foto's"
 
 #. Default: "Price"
-#: ./browser/templates/residential_listing.pt:126
+#: ./browser/templates/residential_listing.pt:134
 msgid "price"
 msgstr "Prijs"
 
 #. Default: "Status"
-#: ./browser/templates/residential_listing.pt:128
+#: ./browser/templates/residential_listing.pt:136
 msgid "property_status"
 msgstr "Beschikbaarheid"
 

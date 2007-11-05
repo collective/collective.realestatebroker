@@ -106,6 +106,14 @@
                        i18n:attributes="value"
                        tal:attributes="tabindex tabindex/next;"
                        />
+               <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="form.button.reset"
+                       value="Reset"
+                       i18n:attributes="value"
+                       tal:attributes="tabindex tabindex/next;"
+                       />       
             </div>
 
         </fieldset>
