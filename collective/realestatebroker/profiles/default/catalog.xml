@@ -6,4 +6,7 @@
   <index name="getCity" meta_type="FieldIndex">
     <indexed_attr value="getCity"/>
   </index>
+   <index name="is_floorplan" meta_type="KeywordIndex">
+    <indexed_attr value="is_floorplan"/>
+   </index>
 </object>

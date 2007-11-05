@@ -144,13 +144,14 @@
         <tr tal:repeat="item view/get_batched_folder_contents" tal:condition="view/get_batched_folder_contents">
           <td>
             <a href=""
-               tal:attributes="href item/url"
-               tal:condition="item/image_tag">
+               tal:attributes="href string:${item/url}/photos;
+                               title item/image/title"
+               tal:condition="item/image/tag">
               <img src=""
-                   tal:replace="structure item/image_tag" />
+                   tal:replace="structure item/image/tag" />
             </a>
             <span tal:omit-tag=""
-                  tal:condition="not: item/image_tag">
+                  tal:condition="not: item/image/tag">
               &nbsp;
             </span>
           </td>

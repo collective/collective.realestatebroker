@@ -1,0 +1,8 @@
+/* Select an image */
+
+a.kssPhotoChange:click {
+    evt-click-preventdefault: True;
+    evt-click-allowbubbling: True;
+    action-server: refreshPhotos;
+    refreshPhotos-selected: kssAttr(item);
+}

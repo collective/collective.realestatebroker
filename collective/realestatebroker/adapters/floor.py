@@ -74,14 +74,16 @@ Behind the scenes, the floor info is handled with annotations.
 
 """
 
+from zope.annotation.interfaces import IAnnotations
 from zope.component import adapts
 from zope.interface import implements
+from Products.CMFPlone import CatalogTool as catalogtool
 from Products.ATContentTypes.interface.image import IATImage
-from collective.realestatebroker.browser.interfaces import IFloorInfo
-from zope.annotation.interfaces import IAnnotations
+from collective.realestatebroker.interfaces import IFloorInfo
 
 FLOORKEY = 'REB_FLOOR'
 FLOORPLANKEY = 'REB_FLOORPLAN'
+
 
 class FloorInfo(object):
     implements(IFloorInfo)
@@ -105,3 +107,12 @@ class FloorInfo(object):
         annotation = IAnnotations(self.context)
         return annotation.get(FLOORPLANKEY, False)
     is_floorplan = property(get_is_floorplan, set_is_floorplan)
+
+
+def is_floorplan(object, portal, **kw):
+     adapted = IFloorInfo(object, None)
+     if adapted is not None:
+         return adapted.is_floorplan
+     return False
+
+catalogtool.registerIndexableAttribute('is_floorplan', is_floorplan)

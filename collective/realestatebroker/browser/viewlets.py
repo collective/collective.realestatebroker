@@ -97,8 +97,7 @@ class MapTab(ViewletBase):
 
 class RealEstateTitle(ViewletBase):
     """ Viewlet that renders the title of a real estate object, both
-    residential and commercial.
-    """
+    residential and commercial."""
 
     render = ViewPageTemplateFile('templates/realestate_title.pt')
 
@@ -119,13 +118,26 @@ class RealEstateTitle(ViewletBase):
 
 #     def price(self):
 #         realestate_view = self.context.restrictedTraverse('@@realestate')
-#         return realestate_view.CookedPrice()
+#         return realestate_view.cooked_price()
 
 #     def after_price(self):
 #         if hasattr(self.context, 'kk_von'):
 #             return self.context.kk_von
 #         return ''
 
-    def image_tag(self):
+    def image(self):
         realestate_view = self.context.restrictedTraverse('@@realestate')
-        return realestate_view.image_tag()
+        return realestate_view.first_image(scale='thumb')
+
+class Photos(ViewletBase):
+    """ Simple viewlet to render the photo ablum
+    """
+    render = ViewPageTemplateFile("templates/photos.pt")
+
+    def update(self):
+        self.portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        self.context_state = getMultiAdapter((self.context, self.request),
+                                             name=u'plone_context_state')
+        realestate = self.context.restrictedTraverse('@@realestate')
+        self.batch = realestate.photo_batch()

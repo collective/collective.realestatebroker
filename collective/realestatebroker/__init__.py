@@ -12,7 +12,6 @@ from Products.CMFCore import utils as cmfutils
 # like _(u"message") will then be extracted by i18n tools for translation.
 REBMessageFactory = MessageFactory('collective.realestatebroker')
 
-
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
 
@@ -39,6 +38,7 @@ def initialize(context):
 
     from content import residential
     from content import commercial
+
 
     content_types, constructors, ftis = atapi.process_types(
         atapi.listTypes(config.PROJECTNAME),

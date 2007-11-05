@@ -1,7 +1,11 @@
 <div class="realestate-header">
   <div class="reb-thumb"
-       tal:condition="view/image_tag">
-    <img tal:replace="structure view/image_tag" />
+       tal:define="image view/image"
+       tal:condition="image">
+    <a href="#" tal:attributes="href string:${context/absolute_url}/photos;
+                                title image/title">
+      <img tal:replace="structure image/tag" />
+    </a>
   </div>
 
   <div id="rebAddress">

@@ -17,46 +17,7 @@
         class="formTabs">
         <li tal:replace="structure provider:realestatebroker.tabs" />
       </ul>
-
-      <div class="reb-photo-show"
-           tal:define="batch view/photo_batch"
-           tal:condition="batch">
-        <div class="reb-selected-photo">
-          <img tal:replace="structure batch/selected_tag" />
-        </div>
-        <ul class="reb-photo-controls">
-          <li tal:condition="batch/fastreverse">
-            <a href=""
-               tal:attributes="href batch/fastreverse"
-               class="reb-nav-reverse">
-              <img src="++resource++collective.realestatebroker.images/media-seek-backward.png"
-                   alt="reverse"
-                   width="22"
-                   height="22" />
-            </a>
-          </li>
-          <li tal:repeat="photo python:batch['items']"
-              >
-            <a href=""
-               class=""
-               tal:attributes="href photo/url;
-                               class python:photo['selected'] and 'reb-selected' or '';">
-              <img tal:replace="structure photo/tag_tile" />
-            </a>
-          </li>
-          <li tal:condition="batch/fastforward">
-            <a href=""
-               tal:attributes="href batch/fastforward"
-               class="reb-nav-forward">
-              <img src="++resource++collective.realestatebroker.images/media-seek-forward.png"
-                   alt="forward"
-                   width="22"
-                   height="22" />
-            </a>
-          </li>
-        </ul>
-      </div>
-
+      <div tal:replace="structure provider:realestatebroker.photomanager" />
       <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </div>

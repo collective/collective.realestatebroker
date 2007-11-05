@@ -15,7 +15,7 @@
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="photo-management"
         class=".base.RealEstateView"
-        permission="zope2.View"
+        permission="cmf.ModifyPortalContent"
         template="templates/photo_management.pt"
     />
 
@@ -53,6 +53,8 @@
         permission="zope2.View"
         allowed_interface=".interfaces.IRealEstateView"
     />
+    
+    
 
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
@@ -142,33 +144,12 @@
         permission="zope2.View"
         />
 
-
     <!-- Photo management -->
     <browser:page
         name="handle-configuration"
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         class=".base.HandleConfiguration"
-        permission="zope2.View"
-        />
-    <!-- TODO: permission ^^^^ -->
-
-    <adapter
-        for="Products.ATContentTypes.interface.image.IATImage"
-        provides="collective.realestatebroker.browser.interfaces.IFloorInfo"
-        factory=".floor.FloorInfo"
-        />
-
-    <!-- Plone maps support -->
-    <adapter
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        provides="Products.Maps.interfaces.map.IMap"
-        factory=".map.RealEstateMap"
-        />
-
-    <adapter
-        for="collective.realestatebroker.interfaces.IRealEstateContent"
-        provides="Products.Maps.interfaces.marker.IMarker"
-        factory=".map.RealEstateMarker"
+        permission="cmf.ModifyPortalContent"
         />
 
     <browser:page
@@ -202,6 +183,29 @@
         permission="zope2.View"
         />
 
+    <!-- Photo album view -->
+    <browser:viewletManager
+        name="realestatebroker.photomanager"
+        provides=".interfaces.IPhotoAlbumManager"
+        permission="zope2.View"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />
+
+    <browser:viewlet
+        name="realestatebroker.photos"
+        manager=".interfaces.IPhotoAlbumManager"
+        class=".viewlets.Photos"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        attribute="refreshPhotos"
+        class=".album.PhotoKSSView"
+        name="refreshPhotos"
+        permission="zope2.View"
+        />
+
     <!-- Resources -->
 
     <browser:resourceDirectory
@@ -216,6 +220,10 @@
     <browser:resource
       name="realestatebroker.js"
       file="realestatebroker.js"
+      />
+    <browser:resource
+      name="realestatebroker.kss"
+      file="realestatebroker.kss"
       />
     <!-- These two contenttype icons are listed separately as GS didn't seem
          to want to deal with a resource with slashes in it. -->

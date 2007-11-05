@@ -2,8 +2,9 @@
 <object name="portal_properties" meta_type="Plone Properties Tool">
   <object name="navtree_properties" meta_type="Plone Property Sheet">
     <property name="metaTypesNotToList" type="lines" purge="False">
-       <element value="Residential"/>
-       <element value="Commercial"/>
+      <element value="Residential"/>
+      <element value="Commercial"/>
+      <element value="Image"/>
     </property>
   </object>
  <object name="maps_properties" meta_type="Plone Property Sheet">

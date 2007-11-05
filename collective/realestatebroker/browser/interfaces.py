@@ -1,5 +1,4 @@
 from zope.interface import Interface
-from zope.interface import Attribute
 from zope.viewlet.interfaces import IViewletManager
 
 
@@ -29,7 +28,7 @@ class IRealEstateView(Interface):
     """A base view for methods that are common for both Commercial and
     Residential items"""
 
-    def CookedPrice():
+    def cooked_price():
         """Return formatted price"""
 
     def image_tag():
@@ -78,7 +77,6 @@ class IRealEstateTitleManager(IViewletManager):
         """Extra info regarding the price e.g. tax/sales costs"""
 
 
-class IFloorInfo(Interface):
-    """Interface for getting/setting a floor annotation on an image."""
-    floor = Attribute('Floor the image is attached to.')
-    is_floorplan = Attribute('Boolean indicating a floorplan.')
+class IPhotoAlbumManager(IViewletManager):
+    """ A Viewlet manager that renders the selected photo and navigation"""
+    

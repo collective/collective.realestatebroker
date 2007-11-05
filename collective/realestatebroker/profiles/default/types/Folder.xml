@@ -4,7 +4,7 @@
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Folder</property>
  <property name="view_methods" purge="False">
-  <element value="teammember_listing"/>
-  <element value="project_listing"/>
+  <element value="residential_listing"/>
+  <element value="commercial_listing"/>
  </property>
 </object>

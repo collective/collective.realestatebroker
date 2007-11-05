@@ -1,27 +1,28 @@
+import logging
+from pprint import pprint
 from Acquisition import aq_inner
+from ZTUtils import Batch, make_query
+from zope.component import getUtility
+from zope.schema.interfaces import IVocabularyFactory
+from zope.interface import implements
+from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.image import IATImage
 from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
-from ZTUtils import Batch, make_query
+from plone.memoize.view import memoize
+from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker import utils
 from collective.realestatebroker.interfaces import IResidential, ICommercial
-from interfaces import IFloorInfo
-from interfaces import IRealEstateListing, IRealEstateView
-from plone.memoize.view import memoize
-from zope.component import getUtility
-from zope.interface import implements
-from zope.schema.interfaces import IVocabularyFactory
-from collective.realestatebroker import REBMessageFactory as _
+from collective.realestatebroker.interfaces import IFloorInfo
+from interfaces import IRealEstateListing
+from interfaces import IRealEstateView
+from viewlets import Photos
 
-
-
-# Image sizes for which we want tags.
-SIZES = ['large', 'mini', 'tile', 'icon', 'thumb']
 SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'details': _(u'details'),
                  'environment': _(u'environment'),
                  'financial': _(u'financial'),
                  }
+
 
 class BatchedEstateMixin(object):
     """Provide helper methods for batching a folder listing.
@@ -210,28 +211,20 @@ class RealEstateListing(BrowserView):
         """Return a list of dictionaries with the realestate objects
            in the folder. Not doing batching at this moment.
         """
-
-
-        item_list = self._getItems()
+        batch = self._getItems()
         result = []
-        for brain in item_list:
+        for brain in batch:
             obj = brain.getObject()
-            realestate_view = obj.restrictedTraverse('@@realestate')
-
-            image_tag = realestate_view.image_tile()
-            cooked_price = realestate_view.CookedPrice()
-            result.append({
-                'id': brain.id,
-                'url': obj.absolute_url(),
-                'title':  brain.Title,
-                'zipcode': obj.zipcode,
-                'city': brain.getCity,
-                'description': brain.Description,
-                'image_tag': image_tag,
-                'cooked_price': cooked_price,
-                'review_state': brain.review_state,
-                })
-
+            realestate = obj.restrictedTraverse('@@realestate')
+            result.append(dict(id = brain.id,
+                url = obj.absolute_url(),
+                title = obj.address,
+                zipcode = obj.zipcode,
+                city = obj.city,
+                description = obj.description,
+                image = realestate.first_image(scale='tile'),
+                cooked_price = realestate.cooked_price,
+                review_state = brain.review_state))
         return result
 
     def available_cities(self):
@@ -331,7 +324,7 @@ class RealEstateView(BrowserView):
         return results
     
     @memoize
-    def CookedPrice(self):
+    def cooked_price(self):
         """Return formatted price"""
         pr = str(aq_inner(self.context.price))
         elements = []
@@ -361,41 +354,32 @@ class RealEstateView(BrowserView):
                          path='/'.join(self.context.getPhysicalPath()))
         return brains
 
-    def decorate_image(self, brain):
-        item = {}
-        obj = brain.getObject()
-        for size in SIZES:
-            tagname = 'tag_' + size
-            item[tagname] = obj.getField('image').tag(obj, scale=size)
-        item['url'] = brain.getURL
-        item['title'] = brain.Title
-        annotation = IFloorInfo(obj)
-        item['floor'] = annotation.floor
-        item['is_floorplan'] = annotation.is_floorplan
-        return item
+    @memoize
+    def image_info(self, image, **kwargs):
+        """ This method expects an ATImage object as the first argument.
+            It returns a dict with the followin information:
+              - title
+              - tag
+            scale can be passed in as a kwarg to use image sizes from
+            ATCT Image.
+        """
+        annotation = IFloorInfo(image)
+        return dict(title = image.Title(),
+                    tag = self.image_tag(image, **kwargs))
 
     @memoize
-    def image_tag(self, **kwargs):
+    def image_tag(self, obj, **kwargs):
+        """ Return the image tag for a given object
+        """
+        return obj.getField('image').tag(obj, **kwargs)
+
+    @memoize
+    def first_image(self, **kwargs):
         """Generate image tag using the api of the ImageField
         """
-        if self.image_brains():
-            first_image = self.image_brains()[0]
-            info = self.decorate_image(first_image)
-            return info['tag_thumb']
-
-    @memoize
-    def image_tile(self, **kwargs):
-        """Generate image tag using the api of the ImageField
-        """
-        if self.image_brains():
-            first_image = self.image_brains()[0]
-            info = self.decorate_image(first_image)
-            return info['tag_tile']
-
-    @memoize
-    def CookedBody(self):
-        """Dummy attribute to allow drop-in replacement of Document"""
-        return self.getMainText()
+        brains = self.image_brains()
+        if brains:
+            return self.image_info(brains[0].getObject(), **kwargs)
 
     @memoize
     def photo_batch(self):
@@ -405,21 +389,25 @@ class RealEstateView(BrowserView):
         batch = utils.batch(brains, selected=selected)
         if not batch:
             return
+        selected_image = batch['selected'].getObject()
+        batch['selected_tag'] = self.image_tag(selected_image, scale='large')
         base_url = self.context.absolute_url() + '/photos?selected='
-        # Now decorate the bare stuff with what we need.
-        selected_brain = batch['selected']
-        decoration = self.decorate_image(selected_brain)
-        selected_tag = decoration['tag_large']
-        batch['selected_tag'] = selected_tag
         for item in batch['items']:
-            brain = item['item']
-            decoration = self.decorate_image(brain)
-            item.update(decoration)
+            obj = item['item'].getObject()
+            image_info = self.image_info(obj, scale='tile')
+            item.update(image_info)
             item['url'] = base_url + str(item['index'])
+            item['class'] = 'kssPhotoChange kssattr-item-' + str(item['index'])
         for direction in ['forward', 'reverse', 'fastforward', 'fastreverse']:
             if batch[direction] == None:
                 continue
-            batch[direction] = base_url + str(batch[direction])
+            nxt = batch[direction]
+            batch[direction] = base_url + str(nxt)
+            batch_class = 'kssPhotoChange kssattr-item-' + str(nxt)
+            if direction == 'fastreverse':
+                batch['fr_class'] = batch_class + ' reb-nav-reverse'
+            if direction == 'fastforward':
+                batch['ff_class'] = batch_class + ' reb-nav-forward'
         return batch
 
     @memoize
@@ -452,50 +440,44 @@ class RealEstateView(BrowserView):
             selected = names[0]
         base_url = self.context.absolute_url() + '/plans?selected='
         # Grab floorplans.
-        decorated = [self.decorate_image(brain) for brain in
-                     self.image_brains()]
-        floorplans = [item['tag_large'] for item in decorated
-                      if item['is_floorplan']
-                      and item['floor'] == selected]
-        # Determine which floors have floorplans.
-        used_floorplans = [item['floor'] for item in decorated
-                           if item['is_floorplan']]
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(object_provides=IATImage.__identifier__,
+                         is_floorplan=True,
+                         sort_on='getObjPositionInParent',
+                         path='/'.join(self.context.getPhysicalPath()))
+        used_floors = []
+        floorplans = []
+        for brain in brains:
+            obj = brain.getObject()
+            floor = IFloorInfo(obj).floor
+            used_floors.append(floor)
+            if floor == selected:
+                floorplans.append(self.image_tag(obj, scale="large"))
+        result['floorplans'] = floorplans
         for name in names:
             floor = {}
-            if not name in used_floorplans:
+            if not name in used_floors:
                 continue
             floor['name'] = name
             floor['selected'] = (name == selected)
             floor['url'] = base_url + name
             floors.append(floor)
         result['floors'] = floors
-        result['floorplans'] = floorplans
         return result
 
     @memoize
     def photo_configuration(self):
         configuration = []
         for index, image_brain in enumerate(self.image_brains()):
-            image = self.decorate_image(image_brain)
+            obj = image_brain.getObject()
+            image = self.image_info(obj, scale='tile')
             image['id'] = image_brain['id']
             image['choices'] = self.floor_names()
             # image['floor'] and image['is_floorplan'] are handled by
-            # decorate_image.
+            # image_info.
             image['index'] = index
             configuration.append(image)
         return configuration
-
-    @memoize
-    def configuration_action(self):
-        """Return form action for submitting configuration matrix."""
-        base = self.context.absolute_url()
-        return base + '/@@handle-configuration'
-
-    @memoize
-    def flash_upload_action(self):
-        """Return form action for uploading flash files."""
-        base = self.context.absolute_url()
-        return base + '/photo-management'
 
 
 class HandleConfiguration(BrowserView):
@@ -518,7 +500,7 @@ class HandleConfiguration(BrowserView):
                 messages.append(_(u"${image} is now attached to ${floor}.",
                                   mapping={'image':
                                            image_id, 'floor': floor}))
-            is_floorplan = bool(image_id in form.get('floorplan'))
+            is_floorplan = bool(image_id in form.get('floorplan', []))
             if is_floorplan != annotation.is_floorplan:
                 annotation.is_floorplan = is_floorplan
                 if is_floorplan:

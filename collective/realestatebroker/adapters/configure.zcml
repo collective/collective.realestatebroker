@@ -1,0 +1,24 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="collective.realestatebroker">
+
+  <!-- Simple adapter that gets floor info from an annotation on ATImage -->
+  <adapter
+      for="Products.ATContentTypes.interface.image.IATImage"
+      provides="collective.realestatebroker.interfaces.IFloorInfo"
+      factory=".floor.FloorInfo"
+      />
+
+  <!-- Plone maps support -->
+  <adapter
+      for="collective.realestatebroker.interfaces.IRealEstateContent"
+      provides="Products.Maps.interfaces.map.IMap"
+      factory=".map.RealEstateMap"
+      />
+
+  <adapter
+      for="collective.realestatebroker.interfaces.IRealEstateContent"
+      provides="Products.Maps.interfaces.marker.IMarker"
+      factory=".map.RealEstateMarker"
+      />
+
+</configure>

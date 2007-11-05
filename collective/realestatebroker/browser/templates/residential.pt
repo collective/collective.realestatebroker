@@ -11,7 +11,7 @@
 
         <h1 id="residential_view">Residential View</h1>
     <span tal:content="view/Title">test</span><br/>
-    <span tal:content="view/cookedPrice">test2</span>
+    <span tal:content="view/cooked_price">test2</span>
     </div>
 
 </body>

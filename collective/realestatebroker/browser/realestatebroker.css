@@ -80,7 +80,7 @@ a:hover {
 
 /* *** Start Photo slideshow *** */
 
-.reb-photo-show { }
+#reb-photo-show { }
 
 .reb-selected-photo { 
   padding: 0.5em;
