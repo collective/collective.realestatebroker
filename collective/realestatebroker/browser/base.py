@@ -177,7 +177,7 @@ class RealEstateListing(BrowserView):
         search_action = form.get('form.button.submit', False)
         if search_action:
             if 'search_city' in form:
-                if form['search_city'] != 'any city':
+                if form['search_city'] != 'Any city':
                     query['getCity'] = [form['search_city'],]
             if 'min_price' in form and 'max_price' in form:
                 min_price=int(form['min_price'])
