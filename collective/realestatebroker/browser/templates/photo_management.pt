@@ -84,11 +84,11 @@
         <table>
           <thead>
             <tr>
-              <th i18n:translate="">Default</th>
+              <th i18n:translate="label_default_photo">Default</th>
+              <th i18n:translate="label_is_floorplan">Floorplan</th>
               <th i18n:translate="Photo">Photo</th>
               <th tal:repeat="title view/floor_names"
                   tal:content="title"/>
-              <th i18n:translate="label_is_floorplan">Floorplan</th>
             </tr>
           </thead>
           <tbody>
@@ -109,6 +109,19 @@
                        tal:attributes="value photo_info/id" />
               </td>
               <td>
+                <input type="checkbox"
+                       tal:condition="not: python:photo_info['is_floorplan']"
+                       name="floorplan"
+                       value=""
+                       tal:attributes="value photo_info/id" />
+                <input type="checkbox"
+                       tal:condition="python:photo_info['is_floorplan']"
+                       name="floorplan"
+                       value=""
+                       checked="1"
+                       tal:attributes="value photo_info/id" />
+              </td>
+              <td>
                 <img tal:replace="structure photo_info/tag_tile" />
               </td>
               <td tal:repeat="choice photo_info/choices">
@@ -125,19 +138,6 @@
                        checked="1"
                        tal:attributes="name photo_info/id;
                                        value choice" />
-              </td>
-              <td>
-                <input type="checkbox"
-                       tal:condition="not: python:photo_info['is_floorplan']"
-                       name="floorplan"
-                       value=""
-                       tal:attributes="value photo_info/id" />
-                <input type="checkbox"
-                       tal:condition="python:photo_info['is_floorplan']"
-                       name="floorplan"
-                       value=""
-                       checked="1"
-                       tal:attributes="value photo_info/id" />
               </td>
             </tr>
             </tal:block>
