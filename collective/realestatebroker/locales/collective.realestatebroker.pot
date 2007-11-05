@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-05 07:59+0000\n"
+"POT-Creation-Date: 2007-11-05 10:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,11 +64,6 @@ msgstr ""
 
 #: ./content/schemata.py:56
 msgid "Construction year"
-msgstr ""
-
-#. Default: "Default"
-#: ./browser/templates/photo_management.pt:87
-msgid "Default"
 msgstr ""
 
 #: ./interfaces.py:16
@@ -174,7 +169,7 @@ msgid "Parking"
 msgstr ""
 
 #. Default: "Photo"
-#: ./browser/templates/photo_management.pt:88
+#: ./browser/templates/photo_management.pt:89
 msgid "Photo"
 msgstr ""
 
@@ -353,13 +348,18 @@ msgstr ""
 msgid "label_brokersearch_city"
 msgstr ""
 
+#. Default: "Default"
+#: ./browser/templates/photo_management.pt:87
+msgid "label_default_photo"
+msgstr ""
+
 #. Default: "Description"
 #: ./browser/templates/realestate_map.pt:31
 msgid "label_description"
 msgstr ""
 
 #. Default: "Floorplan"
-#: ./browser/templates/photo_management.pt:91
+#: ./browser/templates/photo_management.pt:88
 msgid "label_is_floorplan"
 msgstr ""
 

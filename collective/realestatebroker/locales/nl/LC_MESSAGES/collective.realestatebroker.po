@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-05 08:59+0100\n"
+"PO-Revision-Date: 2007-11-05 11:38+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -58,11 +58,6 @@ msgstr "Bedrijfspand"
 #: ./content/schemata.py:56
 msgid "Construction year"
 msgstr "Bouwjaar"
-
-#. Default: "Default"
-#: ./browser/templates/photo_management.pt:87
-msgid "Default"
-msgstr "Standaard afbeelding"
 
 #: ./interfaces.py:16
 msgid "Description"
@@ -167,7 +162,7 @@ msgid "Parking"
 msgstr "Parkeergelegenheid"
 
 #. Default: "Photo"
-#: ./browser/templates/photo_management.pt:88
+#: ./browser/templates/photo_management.pt:89
 msgid "Photo"
 msgstr "Foto"
 
@@ -349,13 +344,18 @@ msgstr "Soort berging"
 msgid "label_brokersearch_city"
 msgstr "Stad"
 
+#. Default: "Default"
+#: ./browser/templates/photo_management.pt:87
+msgid "label_default_photo"
+msgstr "Standaard afbeelding"
+
 #. Default: "Description"
 #: ./browser/templates/realestate_map.pt:31
 msgid "label_description"
 msgstr "Omschrijving"
 
 #. Default: "Floorplan"
-#: ./browser/templates/photo_management.pt:91
+#: ./browser/templates/photo_management.pt:88
 msgid "label_is_floorplan"
 msgstr "Plattegrond"
 
