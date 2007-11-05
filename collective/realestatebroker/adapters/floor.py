@@ -30,7 +30,7 @@ mechanism.
 We can grab an IFloorInfo adapter that allows us to query and set the floor info.
 
     >>> from collective.realestatebroker.adapter.floor import FloorInfo
-    >>> from collective.realestatebroker.browser.interfaces import IFloorInfo
+    >>> from collective.realestatebroker.interfaces import IFloorInfo
 
 We have to provide the adapter manually, as it is normally handled through
 zcml.
