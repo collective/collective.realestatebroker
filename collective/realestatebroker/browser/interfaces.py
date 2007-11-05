@@ -16,12 +16,12 @@ class IRealEstateListing(Interface):
 
 
 class IResidentialListing(IRealEstateListing):
-    """ This is a view class which returns a Residential listing of 'RealEstate' items"""
+    """View class: returns a Residential listing of 'RealEstate' items"""
     pass
 
 
 class ICommercialListing(IRealEstateListing):
-    """ This is a view class which returns a Commercial listing of 'Realestate' items"""
+    """View class: returns a Commercial listing of 'Realestate' items"""
     pass
 
 
@@ -31,7 +31,7 @@ class IRealEstateView(Interface):
 
     def CookedPrice():
         """Return formatted price"""
-        
+
     def image_tag():
         """Returns an HTML image tag for the first image found inside
         RealEstateContent, both commercial and residential  """
@@ -80,4 +80,5 @@ class IRealEstateTitleManager(IViewletManager):
 
 class IFloorInfo(Interface):
     """Interface for getting/setting a floor annotation on an image."""
-    floor = Attribute('String indicating a floor')
+    floor = Attribute('Floor the image is attached to.')
+    is_floorplan = Attribute('Boolean indicating a floorplan.')

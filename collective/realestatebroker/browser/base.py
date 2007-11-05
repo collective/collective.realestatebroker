@@ -335,6 +335,9 @@ class RealEstateView(BrowserView):
             item[tagname] = obj.getField('image').tag(obj, scale=size)
         item['url'] = brain.getURL
         item['title'] = brain.Title
+        annotation = IFloorInfo(obj)
+        item['floor'] = annotation.floor
+        item['is_floorplan'] = annotation.is_floorplan
         return item
 
     @memoize
@@ -390,8 +393,6 @@ class RealEstateView(BrowserView):
         pprops = getToolByName(self.context, 'portal_properties')
         props = pprops.realestatebroker_properties
         names = list(props.getProperty('floor_names'))
-        extra = props.getProperty('floorplans_title')
-        names.append(extra)
         return names
 
     @memoize
@@ -404,11 +405,11 @@ class RealEstateView(BrowserView):
                     {'name': '1e', 'selected': True, 'url': 'bbb'}],
          'floorplans': ['&lt;img src=&quot;favicon.ico /&gt;']}
 
+        Make sure to filter out floors that don't have any floorplan.
+
         """
         result = {}
-        pprops = getToolByName(self.context, 'portal_properties')
-        props = pprops.realestatebroker_properties
-        names = list(props.getProperty('floor_names'))
+        names = self.floor_names()
         if not names:
             return
         floors = []
@@ -416,18 +417,23 @@ class RealEstateView(BrowserView):
         if not selected:
             selected = names[0]
         base_url = self.context.absolute_url() + '/plans?selected='
+        # Grab floor plans.
+        decorated = [self.decorate_image(brain) for brain in
+                     self.image_brains()]
+        floorplans = [item['tag_large'] for item in decorated
+                      if item['is_floorplan']
+                      and item['floor'] == selected]
+        # Determine which floors have floor plans.
+        used_floorplans = [item['floor'] for item in decorated
+                           if item['is_floorplan']]
         for name in names:
             floor = {}
+            if not name in used_floorplans:
+                continue
             floor['name'] = name
             floor['selected'] = (name == selected)
             floor['url'] = base_url + name
             floors.append(floor)
-        # Grab floorplans, not fully implemented yet.
-        floorplan_brains = [brain for brain in self.image_brains()
-                            # if brain.isPlattegrond == True
-                            ]
-        decorated = [self.decorate_image(brain) for brain in floorplan_brains]
-        floorplans = [item['tag_large'] for item in decorated]
         result['floors'] = floors
         result['floorplans'] = floorplans
         return result
@@ -439,9 +445,8 @@ class RealEstateView(BrowserView):
             image = self.decorate_image(image_brain)
             image['id'] = image_brain['id']
             image['choices'] = self.floor_names()
-            image_object = image_brain.getObject()
-            annotation = IFloorInfo(image_object)
-            image['current'] = annotation.floor
+            # image['floor'] and image['is_floorplan'] are handled by
+            # decorate_image.
             image['index'] = index
             configuration.append(image)
         return configuration
@@ -479,6 +484,16 @@ class HandleConfiguration(BrowserView):
                 messages.append(_(u"${image} is now attached to ${floor}.",
                                   mapping={'image':
                                            image_id, 'floor': floor}))
+            is_floorplan = bool(image_id in form.get('floorplan'))
+            if is_floorplan != annotation.is_floorplan:
+                annotation.is_floorplan = is_floorplan
+                if is_floorplan:
+                    messages.append(_(u"${image} is now marked as floor "
+                                      "plan.", mapping={'image': image_id}))
+                else:
+                    messages.append(_(u"${image} is no longer marked as "
+                                      "floor plan.", mapping={'image':
+                                                              image_id}))
         current_default = brains[0]['id']
         default = form.get('default')
         if default != current_default:

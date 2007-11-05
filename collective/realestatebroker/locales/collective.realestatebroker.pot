@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-02 11:12+0000\n"
+"POT-Creation-Date: 2007-11-05 07:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/base.py:440
+#: ./browser/base.py:494
+msgid "${image} is no longer marked as floor plan."
+msgstr ""
+
+#: ./browser/base.py:484
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/base.py:448
+#: ./browser/base.py:491
+msgid "${image} is now marked as floor plan."
+msgstr ""
+
+#: ./browser/base.py:502
 msgid "${image} is now the default."
 msgstr ""
 
@@ -149,11 +157,11 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ./browser/base.py:93
+#: ./browser/base.py:87
 msgid "Next ${count} items"
 msgstr ""
 
-#: ./browser/base.py:91
+#: ./browser/base.py:85
 msgid "Next item"
 msgstr ""
 
@@ -170,11 +178,11 @@ msgstr ""
 msgid "Photo"
 msgstr ""
 
-#: ./browser/base.py:79
+#: ./browser/base.py:73
 msgid "Previous ${count} items"
 msgstr ""
 
-#: ./browser/base.py:77
+#: ./browser/base.py:71
 msgid "Previous item"
 msgstr ""
 
@@ -273,11 +281,11 @@ msgstr ""
 msgid "description_tab"
 msgstr ""
 
-#: ./browser/base.py:30
+#: ./browser/base.py:24
 msgid "details"
 msgstr ""
 
-#: ./browser/base.py:31
+#: ./browser/base.py:25
 msgid "environment"
 msgstr ""
 
@@ -286,8 +294,13 @@ msgstr ""
 msgid "explanation_photo_configuration"
 msgstr ""
 
-#: ./browser/base.py:32
+#: ./browser/base.py:26
 msgid "financial"
+msgstr ""
+
+#. Default: "Floorplans"
+#: ./browser/templates/floorplans_tab.pt:6
+msgid "floorplans_tab"
 msgstr ""
 
 #. Default: "Bulk-upload of multiple photos"
@@ -296,7 +309,7 @@ msgid "heading_bulk_upload"
 msgstr ""
 
 #. Default: "Textual description"
-#: ./browser/templates/residential_view.pt:40
+#: ./browser/templates/realestate_view.pt:46
 msgid "heading_main_text"
 msgstr ""
 
@@ -345,6 +358,11 @@ msgstr ""
 msgid "label_description"
 msgstr ""
 
+#. Default: "Floorplan"
+#: ./browser/templates/photo_management.pt:91
+msgid "label_is_floorplan"
+msgstr ""
+
 #. Default: "Maximum price"
 #: ./browser/templates/residential_listing.pt:76
 msgid "label_max_price"
@@ -384,7 +402,7 @@ msgstr ""
 msgid "map_tab"
 msgstr ""
 
-#: ./browser/base.py:29
+#: ./browser/base.py:23
 msgid "measurements"
 msgstr ""
 

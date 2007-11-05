@@ -1,7 +1,8 @@
 """Floor annotation management for images.
 
-Images inside realestate objects should be attached to floors. Or be labeled
-as floor plan. Both are handled by annotating images with a textual label.
+Images inside realestate objects should be attached to floors. And be tagged,
+if applicable, as floor plan. Both are handled by annotating images: floors
+with a textual label, floor plan is yes/no.
 
 Images implement the IATImage interface.  We'll use a mock image that provides
 the same interface.
@@ -42,23 +43,34 @@ Our image doesn't have any floor information yet:
     >>> floor_info.floor == None
     True
 
+By default, floor plan is False, also if nothing is set yet.
+
+    >>> floor_info.is_floorplan
+    False
+
 We can set it:
 
     >>> floor_info.floor = '42 floor'
+    >>> floor_info.is_floorplan = True
 
 And grab it again:
 
     >>> floor_info = IFloorInfo(image)
     >>> floor_info.floor
     '42 floor'
+    >>> floor_info.is_floorplan
+    True
 
 Behind the scenes, the floor info is handled with annotations.
 
     >>> from zope.annotation.interfaces import IAnnotations
-    >>> from collective.realestatebroker.browser.floor import ANNOKEY
+    >>> from collective.realestatebroker.browser.floor import FLOORKEY
+    >>> from collective.realestatebroker.browser.floor import FLOORPLANKEY
     >>> annotation = IAnnotations(image)
-    >>> annotation.get(ANNOKEY)
+    >>> annotation.get(FLOORKEY)
     '42 floor'
+    >>> annotation.get(FLOORPLANKEY)
+    True
 
 """
 
@@ -68,8 +80,8 @@ from Products.ATContentTypes.interface.image import IATImage
 from collective.realestatebroker.browser.interfaces import IFloorInfo
 from zope.annotation.interfaces import IAnnotations
 
-ANNOKEY = 'REB_FLOOR'
-
+FLOORKEY = 'REB_FLOOR'
+FLOORPLANKEY = 'REB_FLOORPLAN'
 
 class FloorInfo(object):
     implements(IFloorInfo)
@@ -80,8 +92,16 @@ class FloorInfo(object):
 
     def set_floor(self, floor):
         annotation = IAnnotations(self.context)
-        annotation[ANNOKEY] = floor
+        annotation[FLOORKEY] = floor
     def get_floor(self):
         annotation = IAnnotations(self.context)
-        return annotation.get(ANNOKEY)
+        return annotation.get(FLOORKEY)
     floor = property(get_floor, set_floor)
+
+    def set_is_floorplan(self, floorplan):
+        annotation = IAnnotations(self.context)
+        annotation[FLOORPLANKEY] = floorplan
+    def get_is_floorplan(self):
+        annotation = IAnnotations(self.context)
+        return annotation.get(FLOORPLANKEY, False)
+    is_floorplan = property(get_is_floorplan, set_is_floorplan)

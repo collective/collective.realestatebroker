@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-02 12:12+0100\n"
+"PO-Revision-Date: 2007-11-05 08:59+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,11 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/base.py:440
+#: ./browser/base.py:494
+msgid "${image} is no longer marked as floor plan."
+msgstr "${image} is geen plattegrond meer."
+
+#: ./browser/base.py:484
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/base.py:448
+#: ./browser/base.py:491
+msgid "${image} is now marked as floor plan."
+msgstr "${image} is gemarkeerd als plattegrond.<"
+
+#: ./browser/base.py:502
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -142,11 +150,11 @@ msgstr "Soort berging"
 msgid "Location"
 msgstr "Locatie"
 
-#: ./browser/base.py:93
+#: ./browser/base.py:87
 msgid "Next ${count} items"
 msgstr "Volgende ${count} objecten"
 
-#: ./browser/base.py:91
+#: ./browser/base.py:85
 msgid "Next item"
 msgstr "Volgend object"
 
@@ -163,11 +171,11 @@ msgstr "Parkeergelegenheid"
 msgid "Photo"
 msgstr "Foto"
 
-#: ./browser/base.py:79
+#: ./browser/base.py:73
 msgid "Previous ${count} items"
 msgstr "Vorige ${count} objecten"
 
-#: ./browser/base.py:77
+#: ./browser/base.py:71
 msgid "Previous item"
 msgstr "Vorig object"
 
@@ -191,7 +199,7 @@ msgstr "Woningen"
 #. Default: "Search"
 #: ./browser/templates/residential_listing.pt:102
 msgid "Search"
-msgstr ""
+msgstr "Zoek"
 
 #: ./content/schemata.py:223
 msgid "Select the available facilities by moving them to the right column."
@@ -266,11 +274,11 @@ msgstr "Kenmerken"
 msgid "description_tab"
 msgstr "Omschrijving"
 
-#: ./browser/base.py:30
+#: ./browser/base.py:24
 msgid "details"
 msgstr "Details"
 
-#: ./browser/base.py:31
+#: ./browser/base.py:25
 msgid "environment"
 msgstr "Omgeving/tuin"
 
@@ -282,9 +290,14 @@ msgstr ""
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
 "worden."
 
-#: ./browser/base.py:32
+#: ./browser/base.py:26
 msgid "financial"
 msgstr "Financieel"
+
+#. Default: "Floorplans"
+#: ./browser/templates/floorplans_tab.pt:6
+msgid "floorplans_tab"
+msgstr "Plattegronden"
 
 #. Default: "Bulk-upload of multiple photos"
 #: ./browser/templates/photo_management.pt:22
@@ -292,7 +305,7 @@ msgid "heading_bulk_upload"
 msgstr "Uploaden van meerdere foto's in één keer."
 
 #. Default: "Textual description"
-#: ./browser/templates/residential_view.pt:40
+#: ./browser/templates/realestate_view.pt:46
 msgid "heading_main_text"
 msgstr "Uitgebreide omschrijving"
 
@@ -341,6 +354,11 @@ msgstr "Stad"
 msgid "label_description"
 msgstr "Omschrijving"
 
+#. Default: "Floorplan"
+#: ./browser/templates/photo_management.pt:91
+msgid "label_is_floorplan"
+msgstr "Plattegrond"
+
 #. Default: "Maximum price"
 #: ./browser/templates/residential_listing.pt:76
 msgid "label_max_price"
@@ -380,7 +398,7 @@ msgstr "Locatie"
 msgid "map_tab"
 msgstr "Kaart"
 
-#: ./browser/base.py:29
+#: ./browser/base.py:23
 msgid "measurements"
 msgstr "Maatvoering"
 
