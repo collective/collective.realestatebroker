@@ -1,28 +1,45 @@
-from plone.app.kss.plonekssview import PloneKSSView
-from kss.core import kssaction
+from zope.component import getMultiAdapter
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
+from Products.CMFCore.utils import getToolByName
+from kss.core import kssaction
+from plone.app.kss.plonekssview import PloneKSSView
+from plone.app.layout.viewlets import ViewletBase
 from plone.memoize.view import memoize
+from Products.ATContentTypes.interface.image import IATImage
+from collective.realestatebroker import utils
 
 
-class PhotoKSSView(PloneKSSView):
+class AlbumView(BrowserView):
+    """View class to show the photo album"""
 
-    @kssaction
-    def refreshPhotos(self, selected=0):
-        self.request.form['selected'] = selected
-        ksscore = self.getCommandSet('core')
-        ksszope = self.getCommandSet('zope')
-        selector = ksscore.getHtmlIdSelector('reb-photo-show')
-        ksszope.refreshProvider(selector, 'realestatebroker.photomanager')
-
-
-class AblumView(BrowserView):
-    """docstring for AblumView"""
+    @memoize
+    def image_brains(self):
+        """Grab the brains of all images inside the object.
+        """
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(object_provides=IATImage.__identifier__,
+                         sort_on='getObjPositionInParent',
+                         path='/'.join(self.context.getPhysicalPath()))
+        return brains
 
     @memoize
     def image_tag(self, obj, **kwargs):
         """ Return the image tag for a given object
         """
         return obj.getField('image').tag(obj, **kwargs)
+
+    @memoize
+    def image_info(self, image, **kwargs):
+        """ This method expects an ATImage object as the first argument.
+            It returns a dict with the followin information:
+              - title
+              - tag
+            scale can be passed in as a kwarg to use image sizes from
+            ATCT Image.
+        """
+        return dict(title = image.Title(),
+                    tag = self.image_tag(image, **kwargs))
 
     @memoize
     def first_image(self, **kwargs):
@@ -60,3 +77,29 @@ class AblumView(BrowserView):
             if direction == 'fastforward':
                 batch['ff_class'] = batch_class + ' reb-nav-forward'
         return batch
+
+
+class AlbumViewlet(ViewletBase):
+    """ Simple viewlet to render the photo ablum"""
+
+    render = ViewPageTemplateFile("templates/photos.pt")
+
+    def update(self):
+        self.portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        self.context_state = getMultiAdapter((self.context, self.request),
+                                             name=u'plone_context_state')
+        album = self.context.restrictedTraverse('@@realestate_album')
+        self.batch = album.photo_batch()
+
+
+class AlbumKSSView(PloneKSSView):
+    """ KSS Server action to update the album"""
+
+    @kssaction
+    def refreshAlbum(self, selected=0):
+        self.request.form['selected'] = selected
+        ksscore = self.getCommandSet('core')
+        ksszope = self.getCommandSet('zope')
+        selector = ksscore.getHtmlIdSelector('reb-photo-show')
+        ksszope.refreshProvider(selector, 'realestatebroker.photomanager')

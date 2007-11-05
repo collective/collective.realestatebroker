@@ -126,18 +126,6 @@ class RealEstateTitle(ViewletBase):
 #         return ''
 
     def image(self):
-        realestate_view = self.context.restrictedTraverse('@@realestate')
-        return realestate_view.first_image(scale='thumb')
+        album = self.context.restrictedTraverse('@@realestate_album')
+        return album.first_image(scale='thumb')
 
-class Photos(ViewletBase):
-    """ Simple viewlet to render the photo ablum
-    """
-    render = ViewPageTemplateFile("templates/photos.pt")
-
-    def update(self):
-        self.portal_state = getMultiAdapter((self.context, self.request),
-                                            name=u'plone_portal_state')
-        self.context_state = getMultiAdapter((self.context, self.request),
-                                             name=u'plone_context_state')
-        realestate = self.context.restrictedTraverse('@@realestate')
-        self.batch = realestate.photo_batch()

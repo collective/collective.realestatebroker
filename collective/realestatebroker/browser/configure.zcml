@@ -45,16 +45,23 @@
         allowed_interface=".interfaces.IResidentialView"
     />
 
+    <!-- Photo album -->
+
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate_photos"
-        class=".base.RealEstateView"
+        class=".album.AlbumView"
         template="templates/realestate_photos.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.IRealEstateView"
     />
-    
-    
+
+    <browser:page
+        for="collective.realestatebroker.interfaces.IRealEstateContent"
+        name="realestate_album"
+        class=".album.AlbumView"
+        permission="zope2.View"
+    />    
 
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
@@ -186,28 +193,28 @@
     <!-- Photo album view -->
     <browser:viewletManager
         name="realestatebroker.photomanager"
-        provides=".interfaces.IPhotoAlbumManager"
+        provides=".interfaces.IAlbumManager"
         permission="zope2.View"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
 
     <browser:viewlet
         name="realestatebroker.photos"
-        manager=".interfaces.IPhotoAlbumManager"
-        class=".viewlets.Photos"
+        manager=".interfaces.IAlbumManager"
+        class=".album.AlbumViewlet"
         permission="zope2.View"
         />
 
+    <!-- KSS view to update the album -->
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
-        attribute="refreshPhotos"
-        class=".album.PhotoKSSView"
-        name="refreshPhotos"
+        attribute="refreshAlbum"
+        class=".album.AlbumKSSView"
+        name="refreshAlbum"
         permission="zope2.View"
         />
 
     <!-- Resources -->
-
     <browser:resourceDirectory
       name="collective.realestatebroker.images"
       directory="images"

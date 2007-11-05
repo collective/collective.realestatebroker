@@ -5,90 +5,21 @@ from ZTUtils import Batch, make_query
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implements
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.image import IATImage
-from Products.CMFCore.utils import getToolByName
 from plone.memoize.view import memoize
 from collective.realestatebroker import REBMessageFactory as _
-from collective.realestatebroker import utils
 from collective.realestatebroker.interfaces import IResidential, ICommercial
 from collective.realestatebroker.interfaces import IFloorInfo
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
-from viewlets import Photos
 
 SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'details': _(u'details'),
                  'environment': _(u'environment'),
                  'financial': _(u'financial'),
                  }
-
-
-class BatchedEstateMixin(object):
-    """Provide helper methods for batching a folder listing.
-       To be used with a BrowserView """
-
-    _BATCH_SIZE = 2
-
-    @memoize
-    def _getBatchStart(self):
-        return self.request.form.get('b_start', 0)
-
-    @memoize
-    def _getBatchObj(self):
-        b_start = self._getBatchStart()
-        items = self._getItems()
-        return Batch(items, self._BATCH_SIZE, b_start, orphan=0)
-
-
-    @memoize
-    def _getNavigationURL(self, b_start):
-        target = self.request['ACTUAL_URL']
-        kw = {}
-        kw['b_start'] = b_start
-        if 'form' in self.request:
-            form=self.request.form
-            if 'city' in form:
-                kw['city'] = form['city']
-            if 'min_price' in form and 'max_price' in form:
-                kw['min_price'] = form['min_price']
-                kw['max_price'] = form['max_price']
-
-        query = kw and ('?%s' % make_query(kw)) or ''
-        return u'%s%s' % (target, query)
-
-    def navigation_previous(self):
-        batch_obj = self._getBatchObj().previous
-        if batch_obj is None:
-            return None
-
-        length = len(batch_obj)
-        url = self._getNavigationURL(batch_obj.first)
-        if length == 1:
-            title = _(u'Previous item')
-        else:
-            title = _(u'Previous ${count} items', mapping={'count': length})
-        return {'title': title, 'url': url}
-
-    @memoize
-    def navigation_next(self):
-        batch_obj = self._getBatchObj().next
-        if batch_obj is None:
-            return None
-
-        length = len(batch_obj)
-        url = self._getNavigationURL(batch_obj.first)
-        if length == 1:
-            title = _(u'Next item')
-        else:
-            title = _(u'Next ${count} items', mapping={'count': length})
-        return {'title': title, 'url': url}
-
-    @memoize
-    def summary_length(self):
-        length = self._getBatchObj().sequence_length
-        raise("TODO! thousands_commas not defined!")
-        #return length and thousands_commas(length) or ''
 
 
 class RealEstateListing(BrowserView):
@@ -215,6 +146,7 @@ class RealEstateListing(BrowserView):
         result = []
         for brain in batch:
             obj = brain.getObject()
+            album = obj.restrictedTraverse('@@realestate_album')
             realestate = obj.restrictedTraverse('@@realestate')
             result.append(dict(id = brain.id,
                 url = obj.absolute_url(),
@@ -222,7 +154,7 @@ class RealEstateListing(BrowserView):
                 zipcode = obj.zipcode,
                 city = obj.city,
                 description = obj.description,
-                image = realestate.first_image(scale='tile'),
+                image = album.first_image(scale='tile'),
                 cooked_price = realestate.cooked_price,
                 review_state = brain.review_state))
         return result
@@ -343,73 +275,6 @@ class RealEstateView(BrowserView):
         currency = str(props.getProperty('currency'))
 
         return currency + " " + '.'.join(elements)
-
-    @memoize
-    def image_brains(self):
-        """Grab the brains of all images inside the object.
-        """
-        catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog(object_provides=IATImage.__identifier__,
-                         sort_on='getObjPositionInParent',
-                         path='/'.join(self.context.getPhysicalPath()))
-        return brains
-
-    @memoize
-    def image_info(self, image, **kwargs):
-        """ This method expects an ATImage object as the first argument.
-            It returns a dict with the followin information:
-              - title
-              - tag
-            scale can be passed in as a kwarg to use image sizes from
-            ATCT Image.
-        """
-        annotation = IFloorInfo(image)
-        return dict(title = image.Title(),
-                    tag = self.image_tag(image, **kwargs))
-
-    @memoize
-    def image_tag(self, obj, **kwargs):
-        """ Return the image tag for a given object
-        """
-        return obj.getField('image').tag(obj, **kwargs)
-
-    @memoize
-    def first_image(self, **kwargs):
-        """Generate image tag using the api of the ImageField
-        """
-        brains = self.image_brains()
-        if brains:
-            return self.image_info(brains[0].getObject(), **kwargs)
-
-    @memoize
-    def photo_batch(self):
-        """Return batched photos."""
-        brains = self.image_brains()
-        selected = int(self.context.request.get('selected', 0))
-        batch = utils.batch(brains, selected=selected)
-        if not batch:
-            return
-        selected_image = batch['selected'].getObject()
-        batch['selected_tag'] = self.image_tag(selected_image, scale='large')
-        base_url = self.context.absolute_url() + '/photos?selected='
-        for item in batch['items']:
-            obj = item['item'].getObject()
-            image_info = self.image_info(obj, scale='tile')
-            item.update(image_info)
-            item['url'] = base_url + str(item['index'])
-            item['class'] = 'kssPhotoChange kssattr-item-' + str(item['index'])
-        for direction in ['forward', 'reverse', 'fastforward', 'fastreverse']:
-            if batch[direction] == None:
-                continue
-            nxt = batch[direction]
-            batch[direction] = base_url + str(nxt)
-            batch_class = 'kssPhotoChange kssattr-item-' + str(nxt)
-            if direction == 'fastreverse':
-                batch['fr_class'] = batch_class + ' reb-nav-reverse'
-            if direction == 'fastforward':
-                batch['ff_class'] = batch_class + ' reb-nav-forward'
-        return batch
-
     @memoize
     def floor_names(self):
         pprops = getToolByName(self.context, 'portal_properties')
@@ -447,12 +312,13 @@ class RealEstateView(BrowserView):
                          path='/'.join(self.context.getPhysicalPath()))
         used_floors = []
         floorplans = []
+        album = self.context.restrictedTraverse('@@realestate_album')
         for brain in brains:
             obj = brain.getObject()
             floor = IFloorInfo(obj).floor
             used_floors.append(floor)
             if floor == selected:
-                floorplans.append(self.image_tag(obj, scale="large"))
+                floorplans.append(album.image_tag(obj, scale="large"))
         result['floorplans'] = floorplans
         for name in names:
             floor = {}
@@ -468,9 +334,11 @@ class RealEstateView(BrowserView):
     @memoize
     def photo_configuration(self):
         configuration = []
-        for index, image_brain in enumerate(self.image_brains()):
+        album = self.context.restrictedTraverse('@@realestate_album')
+        for index, image_brain in enumerate(album.image_brains()):
             obj = image_brain.getObject()
-            image = self.image_info(obj, scale='tile')
+
+            image = ablum.image_info(obj, scale='tile')
             image['id'] = image_brain['id']
             image['choices'] = self.floor_names()
             # image['floor'] and image['is_floorplan'] are handled by

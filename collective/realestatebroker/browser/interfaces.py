@@ -77,6 +77,6 @@ class IRealEstateTitleManager(IViewletManager):
         """Extra info regarding the price e.g. tax/sales costs"""
 
 
-class IPhotoAlbumManager(IViewletManager):
+class IAlbumManager(IViewletManager):
     """ A Viewlet manager that renders the selected photo and navigation"""
     

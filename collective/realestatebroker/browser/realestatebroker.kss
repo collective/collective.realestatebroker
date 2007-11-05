@@ -3,6 +3,6 @@
 a.kssPhotoChange:click {
     evt-click-preventdefault: True;
     evt-click-allowbubbling: True;
-    action-server: refreshPhotos;
-    refreshPhotos-selected: kssAttr(item);
+    action-server: refreshAlbum;
+    refreshAlbum-selected: kssAttr(item);
 }
