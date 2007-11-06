@@ -15,7 +15,8 @@
     <include package=".content" />
     <include package=".browser" />
     <include package=".adapters" />
-    
+    <include package=".pdf" />
+
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
       name="default"

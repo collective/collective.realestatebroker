@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
+
+  <adapter factory=".realestate.realestateToPDF" />
+
+  <browser:page
+      for="collective.realestatebroker.interfaces.IRealEstateContent"
+      name="pdf"
+      class=".browser.PDFView"
+      permission="zope2.View"
+      />
+
+</configure>

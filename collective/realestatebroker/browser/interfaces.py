@@ -25,7 +25,7 @@ class ICommercialListing(IRealEstateListing):
 class IRealEstateView(Interface):
     """A base view for methods that are common for both Commercial and
     Residential items"""
-    
+
     def base_fields():
         """Return list of base fields (those on the first page)."""
 
@@ -62,4 +62,9 @@ class IRealEstateTitleManager(IViewletManager):
 
 class IAlbumManager(IViewletManager):
     """ A Viewlet manager that renders the selected photo and navigation"""
-    
+
+
+class IPdfGenerator(Interface):
+    """PDF generator for real estate content."""
+    def rml(self):
+        """Render RML for debug purposes."""
