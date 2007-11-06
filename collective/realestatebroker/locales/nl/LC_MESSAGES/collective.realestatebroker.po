@@ -238,6 +238,9 @@ msgstr "Adres"
 msgid "any_city"
 msgstr "Elke stad"
 
+msgid "available"
+msgstr "Beschikbaar"
+
 #. Default: "No Limit"
 #: ./browser/templates/residential_listing.pt:86
 msgid "broker_price_no_limit"
@@ -391,14 +394,21 @@ msgstr "Kaart"
 msgid "measurements"
 msgstr "Maatvoering"
 
+msgid "negotiating"
+msgstr "In bemiddeling"
+
+msgid "new"
+msgstr "Nieuw"
+
 #. Default: "No realestate found."
 #: ./browser/templates/residential_listing.pt:145
 msgid "no_realestate_found"
 msgstr "Geen objecten gevonden."
 
 #. Default: "Niet zichtbaar"
+#: Workflow states translations
 msgid "offline"
-msgstr ""
+msgstr "Niet zichtbaar"
 
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
@@ -416,7 +426,9 @@ msgid "property_status"
 msgstr "Beschikbaarheid"
 
 #. Default: "Verkocht onder voorbehoud"
-#: Workflow states translations
 msgid "reserved"
-msgstr ""
+msgstr "Verkocht onder voorbehoud"
+
+msgid "sold"
+msgstr "Verkocht"
 

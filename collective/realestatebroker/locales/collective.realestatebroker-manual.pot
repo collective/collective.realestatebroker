@@ -18,9 +18,20 @@ msgstr ""
 "Domain: collective.realestatebroker\n"
 
 #: Workflow states translations
-msgid "reserved"
-msgstr ""
-
 msgid "offline"
 msgstr ""
 
+msgid  "new"
+msgstr ""
+
+msgid  "available"
+msgstr ""
+
+msgid  "negotiating"
+msgstr ""
+
+msgid  "reserved"
+msgstr ""
+
+msgid  "sold"
+msgstr ""

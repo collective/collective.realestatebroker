@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-06 10:12+0000\n"
+"POT-Creation-Date: 2007-11-06 10:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,6 +245,9 @@ msgstr ""
 msgid "any_city"
 msgstr ""
 
+msgid "available"
+msgstr ""
+
 #. Default: "No Limit"
 #: ./browser/templates/residential_listing.pt:86
 msgid "broker_price_no_limit"
@@ -395,11 +398,18 @@ msgstr ""
 msgid "measurements"
 msgstr ""
 
+msgid "negotiating"
+msgstr ""
+
+msgid "new"
+msgstr ""
+
 #. Default: "No realestate found."
 #: ./browser/templates/residential_listing.pt:145
 msgid "no_realestate_found"
 msgstr ""
 
+#: Workflow states translations
 msgid "offline"
 msgstr ""
 
@@ -418,7 +428,9 @@ msgstr ""
 msgid "property_status"
 msgstr ""
 
-#: Workflow states translations
 msgid "reserved"
+msgstr ""
+
+msgid "sold"
 msgstr ""
 
