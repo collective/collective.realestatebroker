@@ -294,7 +294,7 @@ msgid "heading_bulk_upload"
 msgstr "Uploaden van meerdere foto's in één keer."
 
 #. Default: "Textual description"
-#: ./browser/templates/realestate_view.pt:46
+#: ./browser/templates/realestate_view.pt:48
 msgid "heading_main_text"
 msgstr "Uitgebreide omschrijving"
 
@@ -396,6 +396,10 @@ msgstr "Maatvoering"
 msgid "no_realestate_found"
 msgstr "Geen objecten gevonden."
 
+#. Default: "Niet zichtbaar"
+msgid "offline"
+msgstr ""
+
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
 msgid "photos"
@@ -410,4 +414,9 @@ msgstr "Prijs"
 #: ./browser/templates/residential_listing.pt:138
 msgid "property_status"
 msgstr "Beschikbaarheid"
+
+#. Default: "Verkocht onder voorbehoud"
+#: Workflow states translations
+msgid "reserved"
+msgstr ""
 

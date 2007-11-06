@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-06 07:18+0000\n"
+"POT-Creation-Date: 2007-11-06 10:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,7 +298,7 @@ msgid "heading_bulk_upload"
 msgstr ""
 
 #. Default: "Textual description"
-#: ./browser/templates/realestate_view.pt:46
+#: ./browser/templates/realestate_view.pt:48
 msgid "heading_main_text"
 msgstr ""
 
@@ -400,6 +400,9 @@ msgstr ""
 msgid "no_realestate_found"
 msgstr ""
 
+msgid "offline"
+msgstr ""
+
 #. Default: "Photos"
 #: ./browser/templates/photos_tab.pt:6
 msgid "photos"
@@ -413,5 +416,9 @@ msgstr ""
 #. Default: "Status"
 #: ./browser/templates/residential_listing.pt:138
 msgid "property_status"
+msgstr ""
+
+#: Workflow states translations
+msgid "reserved"
 msgstr ""
 
