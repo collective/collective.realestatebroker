@@ -2,10 +2,12 @@ from Acquisition import aq_inner
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implements
+from zope.app.pagetemplate import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.ATContentTypes.interface.image import IATImage
 from plone.memoize.view import memoize
+from plone.app.content.batching import Batch
 from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker.interfaces import IResidential, ICommercial
 from collective.realestatebroker.adapters.interfaces import IFloorInfo
@@ -29,13 +31,17 @@ class RealEstateBaseView(BrowserView):
         pprops = getToolByName(self.context, 'portal_properties')
         self.properties = pprops.realestatebroker_properties
         self.plone_utils = getToolByName(self.context,'plone_utils')
-
+        
 
 class RealEstateListing(RealEstateBaseView):
     """Base view for all objects with IRealEstateContent.
     """
 
     implements(IRealEstateListing)
+
+    _batching_file = 'templates/batching.pt'
+    batching = ViewPageTemplateFile(_batching_file)
+
 
     def __init__(self, context, request):
         RealEstateBaseView.__init__(self,context,request)
@@ -50,7 +56,7 @@ class RealEstateListing(RealEstateBaseView):
         search_action = form.get('form.button.submit', False)
         reset_action = form.get('form.button.reset', False)
         
-        if search_action:
+        if not reset_action:
             if 'search_city' in form and form['search_city'] != 'Any city':
                 self.query['getCity'] = form['search_city']
             if 'min_price' in form and 'max_price' in form:
@@ -61,7 +67,6 @@ class RealEstateListing(RealEstateBaseView):
                     self.query['getPrice']={"query": [min_price,max_price], "range": "minmax"} 
                 elif min_price == 0 and max_price == 0:
                     # do nothing, empty select
-                    logging.warning('empty select only city\n')
                     pass
                 elif min_price > 0 and max_price == 0:
                     # only minimum price selected, no maximum price
@@ -90,19 +95,62 @@ class RealEstateListing(RealEstateBaseView):
 
         return currency + " " + '.'.join(elements)        
 
+
+    @property
+    @memoize
+    def search_filter(self):
+        """Construct search filter.
+
+        Only add valid search terms from the request.
+        """
+
+        form = self.request.form
+        search_filter = {}
+        for key in ['search_city', 'min_price', 'max_price']:
+            value = form.get(key)
+            if value is not None and not value == u'':
+                search_filter[key] = value
+        # When viewing a Brand, add its path to the filter.
+        return search_filter
+        
+            
+        
+    @property
+    @memoize
+    def url(self):
+        """Base url, needed by the batching template."""
+        url = self.context.absolute_url()
+        terms = ["%s=%s" % (key, value) for key, value in self.search_filter.items()]
+        extra = '&'.join(terms)
+        return url + '?' + extra
+
+    @property
+    @memoize
+    def pagenumber(self):
+        """Page number for batching.
+        """
+        return int(self.request.get('pagenumber', 1))
+
+    @property
     @memoize
     def batch(self):
+        """ Batch of Realestate (brains)"""
+        results = self.catalog.searchResults(self.query)
+        return Batch(items=results, pagesize=2, pagenumber=self.pagenumber, navlistsize=5) 
+
+    @memoize
+    def items(self):
         """Return a list of dictionaries with the realestate objects
            in the folder. Not doing batching at this moment.
         """
         result = []
         
         if self.formerror != u"":
+            print self.formerror
             return result
         
-        items = self.catalog.queryCatalog(self.query)
-        batch = items # Here we have to slice the items into a batch
-
+        batch = self.batch
+        
         for brain in batch:
             obj = brain.getObject()
             album = obj.restrictedTraverse('@@realestate_album')

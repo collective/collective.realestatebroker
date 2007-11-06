@@ -121,7 +121,7 @@
         </fieldset>
 
     </form>
-
+  <tal:batch replace="structure view/batching" />
      <table id="sortable"
          class="listing"
          border="1"
@@ -141,9 +141,9 @@
     </thead>
 
       <tbody>
-        <tr tal:condition="not: view/batch">
+        <tr tal:condition="not: view/items">
             <td colspan="4" i18n:translate="no_realestate_found">No realestate found.</td></tr>
-        <tr tal:repeat="item view/batch" tal:condition="view/batch">
+        <tr tal:repeat="item view/items" tal:condition="view/items">
           <td>
             <a href=""
                tal:attributes="href string:${item/url}/photos;
