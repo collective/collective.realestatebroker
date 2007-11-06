@@ -71,6 +71,11 @@ a:hover {
   border-bottom: none;
 }
 
+.reb-floorplan-show .selected a {
+  color: #000;
+  text-decoration: none;
+}
+
 /* *** End layout of REB object view *** */
 
 /* *** Start Photo slideshow *** */
