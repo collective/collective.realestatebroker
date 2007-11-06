@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-06 06:36+0000\n"
+"POT-Creation-Date: 2007-11-06 06:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,6 +163,12 @@ msgstr ""
 #. Default: "Photo"
 #: ./browser/templates/album_management.pt:89
 msgid "Photo"
+msgstr ""
+
+#. Default: "Photo album"
+#: ./profiles/default/types/Commercial.xml
+#: ./profiles/default/types/Residential.xml
+msgid "Photo album"
 msgstr ""
 
 #: ./browser/base.py:85

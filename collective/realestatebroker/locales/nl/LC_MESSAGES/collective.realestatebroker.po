@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-06 07:35+0100\n"
+"PO-Revision-Date: 2007-11-06 07:46+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: ./browser/album.py:164
 msgid "${image} is no longer marked as floorplan."
-msgstr ""
+msgstr "${image} is niet langer gemarkeerd als plattegrond"
 
 #: ./browser/album.py:154
 msgid "${image} is now attached to ${floor}."
@@ -48,7 +48,7 @@ msgstr "Gebouwtype"
 
 #: ./content/schemata.py:31
 msgid "City"
-msgstr ""
+msgstr "Stad"
 
 #. Default: "Commercial real estate"
 #: ./profiles/default/types/Commercial.xml
@@ -157,6 +157,12 @@ msgstr "Parkeergelegenheid"
 #: ./browser/templates/album_management.pt:89
 msgid "Photo"
 msgstr "Foto"
+
+#. Default: "Photo album"
+#: ./profiles/default/types/Commercial.xml
+#: ./profiles/default/types/Residential.xml
+msgid "Photo album"
+msgstr "Foto album"
 
 #: ./browser/base.py:85
 msgid "Please select a valid price range."

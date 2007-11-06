@@ -36,7 +36,9 @@
           url_expr="string:${object_url}/base_edit" visible="True">
     <permission value="Modify portal content"/>
   </action>
-  <action title="Photo Album" action_id="reb-flashupload" category="object" condition_expr=""
+  <action title="Photo album" action_id="reb-flashupload" category="object"
+          condition_expr=""
+          i18n:attributes="title"
           url_expr="string:${object_url}/album-management" visible="True">
     <permission value="Add portal content"/>
   </action>
