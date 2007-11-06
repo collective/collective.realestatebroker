@@ -1,3 +1,4 @@
+from Products.ATContentTypes.interface.image import IATImage
 from tempfile import TemporaryFile
 from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak, Image
 from StringIO import StringIO
@@ -33,26 +34,33 @@ def realestateToPDF(context, request):
     style = getStyleSheet()
     album = context.restrictedTraverse('@@realestate_album')
     realestate = context.restrictedTraverse('@@realestate')
+    structure = []
+
+    # Front page
     first_image = album.image_brains()[0].getObject() # TODO: no images
     first_image_url = first_image.absolute_url()
-    doc_structure = [
-        # Front page
-        Paragraph(_('For sale'), style['title']),
-        Image(first_image_url),
-        Paragraph(title, style['title']),
-        PageBreak(),
-#         Paragraph(_(u"Name of the dish:"), style['h3']),
-#         Paragraph(context.name.encode('utf-8'), style['Normal']),
-#         Paragraph(_(u"Ingredients:"), style['h3']),
-#         Paragraph(', '.join(ingr), style['Normal']),
-#         Paragraph(_(u"Needed kitchen tools:"), style['h3']),
-#         Paragraph(', '.join(tools), style['Normal']),
-#         Paragraph(_(u"Time needed for preparation:"), style['h3']),
-#         Paragraph(time_to_cook, style['Normal']),
-#         Paragraph(description,  style['Normal']),
-        ]
+    price = ' '.join([_(u'Price:'),
+                      str(context.getPrice())])
+    Paragraph(_(u'For sale'), style['title']),
+    structure.append(Image(first_image_url))
+    structure.append(Paragraph(title, style['title']))
+    structure.append(Paragraph(context.getCity().encode('utf-8'),
+                               style['title']))
+    structure.append(Paragraph(price, style['title']))
+    structure.append(PageBreak())
+
+    # Floorplans
+    floorplans = context.restrictedTraverse('@@realestate_floorplans')
+    brains = context.portal_catalog(object_provides=IATImage.__identifier__,
+                                    is_floorplan=True,
+                                    sort_on='getObjPositionInParent',
+                                    path='/'.join(context.getPhysicalPath()))
+    for brain in brains:
+        url = brain.getURL
+        structure.append(Image(url))
+    structure.append(PageBreak())
 
     #tempfile = TemporaryFile()
     stream = StringIO()
-    writeDocument(stream, doc_structure)
+    writeDocument(stream, structure)
     return stream.getvalue()
