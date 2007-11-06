@@ -96,7 +96,7 @@
                </table> 
             </div>   
 
-           <div class="formerror" tal:condition="view/formerror" tal:content="view/formerror|nothing">Form Error</div>
+           <div class="error" tal:condition="view/formerror" tal:content="view/formerror|nothing">Form Error</div>
 
             <div class="formControls">
           
