@@ -45,11 +45,6 @@ a:hover {
 
 /* *** Start layout of REB object view *** */
 
-#rebAddress {
-  height: 87px;
-  margin-bottom: 10px;
-}
-
 #rebTabs {
   margin: 20px 0 !important;
 }
