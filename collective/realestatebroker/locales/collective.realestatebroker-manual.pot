@@ -19,8 +19,8 @@ msgstr ""
 
 #: Workflow states translations
 msgid "reserved"
-msgstr "Verkocht onder voorbehoud"
+msgstr ""
 
 msgid "offline"
-msgstr "Niet zichtbaar"
+msgstr ""
 
