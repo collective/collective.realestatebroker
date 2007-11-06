@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-06 06:46+0000\n"
+"POT-Creation-Date: 2007-11-06 07:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,7 +171,7 @@ msgstr ""
 msgid "Photo album"
 msgstr ""
 
-#: ./browser/base.py:85
+#: ./browser/base.py:71
 msgid "Please select a valid price range."
 msgstr ""
 
@@ -188,7 +188,7 @@ msgid "Rent or buy"
 msgstr ""
 
 #. Default: "Reset"
-#: ./browser/templates/residential_listing.pt:109
+#: ./browser/templates/residential_listing.pt:111
 msgid "Reset"
 msgstr ""
 
@@ -198,7 +198,7 @@ msgid "Residential real estate"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/templates/residential_listing.pt:101
+#: ./browser/templates/residential_listing.pt:103
 msgid "Search"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgid "Zip code"
 msgstr ""
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:132
+#: ./browser/templates/residential_listing.pt:134
 msgid "address"
 msgstr ""
 
@@ -270,11 +270,11 @@ msgstr ""
 msgid "description_tab"
 msgstr ""
 
-#: ./browser/base.py:16
+#: ./browser/base.py:17
 msgid "details"
 msgstr ""
 
-#: ./browser/base.py:17
+#: ./browser/base.py:18
 msgid "environment"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgstr ""
 msgid "explanation_photo_configuration"
 msgstr ""
 
-#: ./browser/base.py:18
+#: ./browser/base.py:19
 msgid "financial"
 msgstr ""
 
@@ -391,12 +391,12 @@ msgstr ""
 msgid "map"
 msgstr ""
 
-#: ./browser/base.py:15
+#: ./browser/base.py:16
 msgid "measurements"
 msgstr ""
 
 #. Default: "No realestate found."
-#: ./browser/templates/residential_listing.pt:143
+#: ./browser/templates/residential_listing.pt:145
 msgid "no_realestate_found"
 msgstr ""
 
@@ -406,12 +406,12 @@ msgid "photos"
 msgstr ""
 
 #. Default: "Price"
-#: ./browser/templates/residential_listing.pt:134
+#: ./browser/templates/residential_listing.pt:136
 msgid "price"
 msgstr ""
 
 #. Default: "Status"
-#: ./browser/templates/residential_listing.pt:136
+#: ./browser/templates/residential_listing.pt:138
 msgid "property_status"
 msgstr ""
 

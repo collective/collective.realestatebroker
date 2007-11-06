@@ -12,6 +12,7 @@ from collective.realestatebroker.adapters.interfaces import IFloorInfo
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 
+
 SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'details': _(u'details'),
                  'environment': _(u'environment'),
@@ -36,6 +37,43 @@ class RealEstateListing(RealEstateBaseView):
 
     implements(IRealEstateListing)
 
+    def __init__(self, context, request):
+        RealEstateBaseView.__init__(self,context,request)
+
+        self.query = dict(object_provides = [ICommercial.__identifier__,
+                                        IResidential.__identifier__],
+                     sort_on = 'getObjPositionInParent',
+                     path = '/'.join(self.context.getPhysicalPath()))
+                     
+        self.formerror=u""             
+        form = self.request.form
+        search_action = form.get('form.button.submit', False)
+        reset_action = form.get('form.button.reset', False)
+        
+        if search_action:
+            if 'search_city' in form and form['search_city'] != 'Any city':
+                self.query['getCity'] = form['search_city']
+            if 'min_price' in form and 'max_price' in form:
+                min_price=int(form['min_price'])
+                max_price=int(form['max_price'])
+                if min_price < max_price:
+                    # range search
+                    self.query['getPrice']={"query": [min_price,max_price], "range": "minmax"} 
+                elif min_price == 0 and max_price == 0:
+                    # do nothing, empty select
+                    logging.warning('empty select only city\n')
+                    pass
+                elif min_price > 0 and max_price == 0:
+                    # only minimum price selected, no maximum price
+                    self.query['getPrice']={"query": min_price, "range": "min"} 
+                elif min_price >= max_price:
+                    # Wrong price range
+                    self.formerror=_(u'Please select a valid price range.')
+        if reset_action:
+            response = self.request.response
+            here_url = self.context.absolute_url()
+            response.redirect(here_url)
+
     def dotted_price(self, pr=0):
         # create a price with 10^3 dotted separators and the currency from the properties
         elements = []
@@ -51,54 +89,20 @@ class RealEstateListing(RealEstateBaseView):
         currency = str(self.properties.getProperty('currency'))
 
         return currency + " " + '.'.join(elements)        
-            
-    @memoize
-    def items(self):
-        """ Return a list of (filtered) objects in a folder
-            Used by batch
-            to create a batched sequence and by helper methods to provide
-            values to the template for the next and previous items """
-
-        query = dict(object_provides = [ICommercial.__identifier__,
-                                        IResidential.__identifier__],
-                     sort_on = 'getObjPositionInParent',
-                     path = '/'.join(self.context.getPhysicalPath()))
-        form = self.request.form
-        search_action = form.get('form.button.submit', False)
-        reset_action = form.get('form.button.reset', False)
-        if search_action:
-            if 'search_city' in form and form['search_city'] != 'Any city':
-                query['getCity'] = [form['search_city'],]
-            if 'min_price' in form and 'max_price' in form:
-                min_price=int(form['min_price'])
-                max_price=int(form['max_price'])
-                if min_price < max_price:
-                    # range search
-                    query['getPrice']={"query": [min_price,max_price], "range": "minmax"} 
-                elif min_price == 0 and max_price == 0:
-                    # do nothing, empty select
-                    pass
-                elif min_price > 0 and max_price == 0:
-                    # only minimum price selected, no maximum price
-                    query['getPrice']={"query": min_price, "range": "min"} 
-                elif min_price >= max_price:
-                    self.plone_utils.addPortalMessage(_(u'Please select a valid price range.'), 'warning')
-        if reset_action:
-            response = self.request.response
-            here_url = self.context.absolute_url()
-            response.redirect(here_url)
-        
-        return self.catalog.queryCatalog(query)
 
     @memoize
     def batch(self):
         """Return a list of dictionaries with the realestate objects
            in the folder. Not doing batching at this moment.
         """
-        items = self.items()
+        result = []
+        
+        if self.formerror != u"":
+            return result
+        
+        items = self.catalog.queryCatalog(self.query)
         batch = items # Here we have to slice the items into a batch
 
-        result = []
         for brain in batch:
             obj = brain.getObject()
             album = obj.restrictedTraverse('@@realestate_album')

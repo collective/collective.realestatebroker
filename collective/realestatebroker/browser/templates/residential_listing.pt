@@ -42,7 +42,7 @@
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
                        >
-                <option tal:attributes="selected python: not ('search_city' in request.form)"  i18n:translate="any_city">Any city</option>
+                <option tal:attributes="selected python: not ('search_city' in request.form); value string:Any city"  i18n:translate="any_city">Any city</option>
                 <span tal:omit-tag="" tal:repeat="city view/available_cities">
                 <option tal:attributes="selected python: ('search_city' in request.form) and (request.form['search_city'] == city)" tal:content="city">city</option>
                 </span>
@@ -95,6 +95,8 @@
                </tr>
                </table> 
             </div>   
+
+           <div class="formerror" tal:condition="view/formerror" tal:content="view/formerror|nothing">Form Error</div>
 
             <div class="formControls">
           

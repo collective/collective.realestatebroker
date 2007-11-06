@@ -164,7 +164,7 @@ msgstr "Foto"
 msgid "Photo album"
 msgstr "Foto album"
 
-#: ./browser/base.py:85
+#: ./browser/base.py:71
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
@@ -181,7 +181,7 @@ msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
 #. Default: "Reset"
-#: ./browser/templates/residential_listing.pt:109
+#: ./browser/templates/residential_listing.pt:111
 msgid "Reset"
 msgstr "Wis zoektermen"
 
@@ -191,7 +191,7 @@ msgid "Residential real estate"
 msgstr "Woningen"
 
 #. Default: "Search"
-#: ./browser/templates/residential_listing.pt:101
+#: ./browser/templates/residential_listing.pt:103
 msgid "Search"
 msgstr "Zoek"
 
@@ -229,7 +229,7 @@ msgid "Zip code"
 msgstr "Postcode"
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:132
+#: ./browser/templates/residential_listing.pt:134
 msgid "address"
 msgstr "Adres"
 
@@ -263,11 +263,11 @@ msgstr "Stad"
 msgid "description_tab"
 msgstr "Omschrijving"
 
-#: ./browser/base.py:16
+#: ./browser/base.py:17
 msgid "details"
 msgstr "Details"
 
-#: ./browser/base.py:17
+#: ./browser/base.py:18
 msgid "environment"
 msgstr "Omgeving/tuin"
 
@@ -279,7 +279,7 @@ msgstr ""
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
 "worden."
 
-#: ./browser/base.py:18
+#: ./browser/base.py:19
 msgid "financial"
 msgstr "Financieel"
 
@@ -387,12 +387,12 @@ msgstr "Locatie"
 msgid "map"
 msgstr "Kaart"
 
-#: ./browser/base.py:15
+#: ./browser/base.py:16
 msgid "measurements"
 msgstr "Maatvoering"
 
 #. Default: "No realestate found."
-#: ./browser/templates/residential_listing.pt:143
+#: ./browser/templates/residential_listing.pt:145
 msgid "no_realestate_found"
 msgstr "Geen objecten gevonden."
 
@@ -402,12 +402,12 @@ msgid "photos"
 msgstr "Foto's"
 
 #. Default: "Price"
-#: ./browser/templates/residential_listing.pt:134
+#: ./browser/templates/residential_listing.pt:136
 msgid "price"
 msgstr "Prijs"
 
 #. Default: "Status"
-#: ./browser/templates/residential_listing.pt:136
+#: ./browser/templates/residential_listing.pt:138
 msgid "property_status"
 msgstr "Beschikbaarheid"
 
