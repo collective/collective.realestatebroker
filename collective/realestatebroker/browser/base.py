@@ -236,6 +236,7 @@ class RealEstateView(RealEstateBaseView):
         fields = schema.filterFields(schemata=schemata_name, *predicates)
         filtered = [field for field in fields
                     if field.get(self.context) == False
+                    or field.get(self.context) != ''
                     or field.get(self.context)]
         return filtered
 
@@ -252,10 +253,12 @@ class RealEstateView(RealEstateBaseView):
         results = []
         for schemata_id in schemata_ids:
             result = {}
-            result['title'] = SCHEMATA_I18N.get(schemata_id, schemata_id)
-            result['fields'] = self.filtered_fields(
-                schemata_id,
+            result['fields'] = self.filtered_fields(schemata_id,
                 *self.chars_table_field_predicates())
+            if len(result['fields']) > 0:
+                result['title'] = SCHEMATA_I18N.get(schemata_id, schemata_id)
+            else:
+                result['title'] = False
             results.append(result)
         return results
     

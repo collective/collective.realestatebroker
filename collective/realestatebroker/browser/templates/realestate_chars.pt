@@ -21,7 +21,7 @@
 
       <table class="listing nosort charsTable">
         <tal:schemata tal:repeat="schemata view/characteristic_fields">
-          <tr>
+          <tr tal:condition="schemata/title">
             <th colspan="2" tal:content="schemata/title">
               Schemata Title
             </th>
