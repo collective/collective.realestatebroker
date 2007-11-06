@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-05 13:30+0000\n"
+"POT-Creation-Date: 2007-11-06 06:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./interfaces.py:17
+#: ./interfaces.py:12
 msgid ""
 msgstr ""
 
-#: ./browser/base.py:528
+#: ./browser/album.py:164
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/base.py:518
+#: ./browser/album.py:154
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/base.py:525
+#: ./browser/album.py:161
 msgid "${image} is now marked as floor plan."
 msgstr ""
 
-#: ./browser/base.py:536
+#: ./browser/album.py:173
 msgid "${image} is now the default."
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Construction year"
 msgstr ""
 
-#: ./interfaces.py:16
+#: ./interfaces.py:12
 msgid "Description"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Ground area"
 msgstr ""
 
-#: ./interfaces.py:54
+#: ./interfaces.py:31
 msgid "Heating"
 msgstr ""
 
@@ -124,11 +124,11 @@ msgstr ""
 msgid "House type"
 msgstr ""
 
-#: ./browser/map.py:49
+#: ./adapters/map.py:41
 msgid "Info"
 msgstr ""
 
-#: ./interfaces.py:58
+#: ./interfaces.py:33
 msgid "Insulation"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Kind of building"
 msgstr ""
 
-#: ./interfaces.py:99
+#: ./interfaces.py:60
 msgid "Kind of garage"
 msgstr ""
 
@@ -144,49 +144,29 @@ msgstr ""
 msgid "Kind of garden"
 msgstr ""
 
-#: ./interfaces.py:106
+#: ./interfaces.py:63
 msgid "Kind of storage"
 msgstr ""
 
-#: ./interfaces.py:65
+#: ./interfaces.py:38
 msgid "Location"
-msgstr ""
-
-#: ./browser/base.py:83
-msgid "Next ${count} items"
-msgstr ""
-
-#: ./browser/base.py:81
-msgid "Next item"
 msgstr ""
 
 #: ./content/schemata.py:185
 msgid "Number of rooms"
 msgstr ""
 
-#: ./interfaces.py:151
+#: ./interfaces.py:92
 msgid "Parking"
 msgstr ""
 
 #. Default: "Photo"
-#: ./browser/templates/photo_management.pt:89
+#: ./browser/templates/album_management.pt:89
 msgid "Photo"
 msgstr ""
 
-#: ./browser/base.py:197
+#: ./browser/base.py:85
 msgid "Please select a valid price range."
-msgstr ""
-
-#: ./browser/base.py:200
-msgid "Please select a valid price range. Should not happen"
-msgstr ""
-
-#: ./browser/base.py:69
-msgid "Previous ${count} items"
-msgstr ""
-
-#: ./browser/base.py:67
-msgid "Previous item"
 msgstr ""
 
 #: ./content/schemata.py:114
@@ -224,12 +204,12 @@ msgstr ""
 msgid "Storage"
 msgstr ""
 
-#: ./interfaces.py:13
+#: ./interfaces.py:11
 msgid "Title"
 msgstr ""
 
 #. Default: "Upload Files"
-#: ./browser/templates/photo_management.pt:35
+#: ./browser/templates/album_management.pt:35
 msgid "Upload Files"
 msgstr ""
 
@@ -284,20 +264,20 @@ msgstr ""
 msgid "description_tab"
 msgstr ""
 
-#: ./browser/base.py:21
+#: ./browser/base.py:16
 msgid "details"
 msgstr ""
 
-#: ./browser/base.py:22
+#: ./browser/base.py:17
 msgid "environment"
 msgstr ""
 
 #. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo."
-#: ./browser/templates/photo_management.pt:74
+#: ./browser/templates/album_management.pt:74
 msgid "explanation_photo_configuration"
 msgstr ""
 
-#: ./browser/base.py:23
+#: ./browser/base.py:18
 msgid "financial"
 msgstr ""
 
@@ -307,7 +287,7 @@ msgid "floorplans_tab"
 msgstr ""
 
 #. Default: "Bulk-upload of multiple photos"
-#: ./browser/templates/photo_management.pt:22
+#: ./browser/templates/album_management.pt:22
 msgid "heading_bulk_upload"
 msgstr ""
 
@@ -317,12 +297,12 @@ msgid "heading_main_text"
 msgstr ""
 
 #. Default: "Photo management"
-#: ./browser/templates/photo_management.pt:18
+#: ./browser/templates/album_management.pt:18
 msgid "heading_manage_photos"
 msgstr ""
 
 #. Default: "Photo configuration"
-#: ./browser/templates/photo_management.pt:71
+#: ./browser/templates/album_management.pt:71
 msgid "heading_photo_configuration"
 msgstr ""
 
@@ -352,7 +332,7 @@ msgid "kindOfStorage"
 msgstr ""
 
 #. Default: "Default"
-#: ./browser/templates/photo_management.pt:87
+#: ./browser/templates/album_management.pt:87
 msgid "label_default_photo"
 msgstr ""
 
@@ -362,7 +342,7 @@ msgid "label_description"
 msgstr ""
 
 #. Default: "Floorplan"
-#: ./browser/templates/photo_management.pt:88
+#: ./browser/templates/album_management.pt:88
 msgid "label_is_floorplan"
 msgstr ""
 
@@ -405,7 +385,7 @@ msgstr ""
 msgid "map"
 msgstr ""
 
-#: ./browser/base.py:20
+#: ./browser/base.py:15
 msgid "measurements"
 msgstr ""
 
