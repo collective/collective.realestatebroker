@@ -18,7 +18,7 @@
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
 
-    
+
     <!-- simple search form -->
         <div >
 
@@ -46,7 +46,7 @@
                 <span tal:omit-tag="" tal:repeat="city view/available_cities">
                 <option tal:attributes="selected python: ('search_city' in request.form) and (request.form['search_city'] == city)" tal:content="city">city</option>
                 </span>
-               
+
                 </select>
             </div>
 
@@ -66,8 +66,8 @@
                     <option value="0" tal:attributes="selected python: not ('min_price' in request.form)">
                        <span tal:omit-tag="" tal:replace="realestate_properties/currency">currency</span> 0 </option>
                     <span tal:omit-tag="" tal:repeat="price realestate_properties/min_price" >
-                    <option  tal:attributes="selected python: ('min_price' in request.form) and (int(request.form['min_price']) == int(price)); value price"> 
-                        <span tal:omit-tag="" tal:replace="python: view.dotted_price(price)">250</span>                    
+                    <option  tal:attributes="selected python: ('min_price' in request.form) and (int(request.form['min_price']) == int(price)); value price">
+                        <span tal:omit-tag="" tal:replace="python: view.dotted_price(price)">250</span>
                     </option>
                     </span>
                 </select>
@@ -85,21 +85,21 @@
                         tal:attributes="tabindex tabindex/next;">
                     <option value="0" tal:attributes="selected python: not ('min_price' in request.form)" i18n:translate="broker_price_no_limit"> No Limit </option>
                        <span tal:omit-tag="" tal:repeat="price realestate_properties/max_price" >
-                    <option tal:attributes="selected python: ('max_price' in request.form) and (int(request.form['max_price']) == int(price)); value price"> 
-                         <span tal:omit-tag="" tal:replace="python: view.dotted_price(price)">250</span>                 
+                    <option tal:attributes="selected python: ('max_price' in request.form) and (int(request.form['max_price']) == int(price)); value price">
+                         <span tal:omit-tag="" tal:replace="python: view.dotted_price(price)">250</span>
                     </option>
                     </span>
                 </select>
                 </td>
 
                </tr>
-               </table> 
-            </div>   
+               </table>
+            </div>
 
            <div class="error" tal:condition="view/formerror" tal:content="view/formerror|nothing">Form Error</div>
 
             <div class="formControls">
-          
+
                 <input class="context"
                        tabindex=""
                        type="submit"
@@ -115,17 +115,17 @@
                        value="Reset"
                        i18n:attributes="value"
                        tal:attributes="tabindex tabindex/next;"
-                       />       
+                       />
             </div>
 
         </fieldset>
 
     </form>
 
-     <table id="sortable" 
-         class="listing" 
+     <table id="sortable"
+         class="listing"
          border="1"
-         summary="Content listing" 
+         summary="Content listing"
          cellpadding="0" cellspacing="0">
 
     <thead>
@@ -142,18 +142,18 @@
 
       <tbody>
         <tr tal:condition="not: view/batch">
-            <td colspan="4" i18n:translate="no_realestate_found">No realestate found.</td></tr>  
+            <td colspan="4" i18n:translate="no_realestate_found">No realestate found.</td></tr>
         <tr tal:repeat="item view/batch" tal:condition="view/batch">
           <td>
             <a href=""
                tal:attributes="href string:${item/url}/photos;
                                title item/image/title"
-               tal:condition="item/image/tag">
+               tal:condition="item/image">
               <img src=""
                    tal:replace="structure item/image/tag" />
             </a>
             <span tal:omit-tag=""
-                  tal:condition="not: item/image/tag">
+                  tal:condition="not: item/image">
               &nbsp;
             </span>
           </td>
