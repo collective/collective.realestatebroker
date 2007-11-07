@@ -5,12 +5,14 @@
 
     <h5 class="hiddenStructure" i18n:translate="heading_realestate_actions">Real Estate Actions</h5>
 
-    <ul id="rebTabs" class="formTabs" tal:define="normalizeString nocall: context/@@plone/normalizeString">
+    <ul id="rebTabs" 
+      class="formTabs" 
+      tal:define="normalizeString nocall: context/@@plone/normalizeString">
     <tal:actions repeat="raction view/actions">
         <li tal:attributes="id python:'realestate-action-' + normalizeString(raction['id']);
                             class raction/class">
-            <a tal:attributes="href raction/url"
-               tal:content="raction/title">
+            <a tal:attributes="href raction/url">
+               <span tal:content="raction/title" />
             </a>
         </li>
     </tal:actions>

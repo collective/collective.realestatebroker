@@ -146,7 +146,7 @@
         <tr tal:repeat="item view/items" tal:condition="view/items">
           <td>
             <a href=""
-               tal:attributes="href string:${item/url}/photos;
+               tal:attributes="href string:${item/url}/album;
                                title item/image/title"
                tal:condition="item/image">
               <img src=""

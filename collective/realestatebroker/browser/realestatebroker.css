@@ -49,9 +49,10 @@ a:hover {
   margin: 20px 0 !important;
 }
 
-#rebTabs .selected {
+#rebTabs .selected a {
   cursor: text;
   color: #000;
+  background-color: #dee7ec;
 }
 
 #rebTabs a {
