@@ -54,10 +54,9 @@ def realestateToPDF(context, request):
     text = context.getText() #.encode('utf-8')
     structure.append(Paragraph(text, style['Normal']))
     photo_floors = album_view.photos_for_pdf()
-    for name in photo_floors:
-        image_urls = photo_floors[name]
-        structure.append(Paragraph(name, style['title']))
-        for url in image_urls:
+    for floor in photo_floors:
+        structure.append(Paragraph(floor['floorname'], style['title']))
+        for url in floor['urls']:
             structure.append(Image(url))
         #structure.append(PageBreak())
 
