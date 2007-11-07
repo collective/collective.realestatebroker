@@ -23,7 +23,7 @@ SCHEMATA_I18N = {'measurements': _(u'measurements'),
 
 class RealEstateBaseView(BrowserView):
     """Base view with some tools attached"""
-    
+
     def __init__(self, context, request):
         BrowserView.__init__(self, context,request)
         self.catalog = getToolByName(self.context, 'portal_catalog')
@@ -31,7 +31,7 @@ class RealEstateBaseView(BrowserView):
         pprops = getToolByName(self.context, 'portal_properties')
         self.properties = pprops.realestatebroker_properties
         self.plone_utils = getToolByName(self.context,'plone_utils')
-        
+
 
 class RealEstateListing(RealEstateBaseView):
     """Base view for all objects with IRealEstateContent.
@@ -42,7 +42,6 @@ class RealEstateListing(RealEstateBaseView):
     _batching_file = 'templates/batching.pt'
     batching = ViewPageTemplateFile(_batching_file)
 
-
     def __init__(self, context, request):
         RealEstateBaseView.__init__(self,context,request)
 
@@ -50,12 +49,12 @@ class RealEstateListing(RealEstateBaseView):
                                         IResidential.__identifier__],
                      sort_on = 'getObjPositionInParent',
                      path = '/'.join(self.context.getPhysicalPath()))
-                     
-        self.formerror=u""             
+
+        self.formerror=u""
         form = self.request.form
         search_action = form.get('form.button.submit', False)
         reset_action = form.get('form.button.reset', False)
-        
+
         if not reset_action:
             if 'search_city' in form and form['search_city'] != 'Any city':
                 self.query['getCity'] = form['search_city']
@@ -64,13 +63,14 @@ class RealEstateListing(RealEstateBaseView):
                 max_price=int(form['max_price'])
                 if min_price < max_price:
                     # range search
-                    self.query['getPrice']={"query": [min_price,max_price], "range": "minmax"} 
+                    self.query['getPrice'] = {"query": [min_price,max_price],
+                                              "range": "minmax"}
                 elif min_price == 0 and max_price == 0:
                     # do nothing, empty select
                     pass
                 elif min_price > 0 and max_price == 0:
                     # only minimum price selected, no maximum price
-                    self.query['getPrice']={"query": min_price, "range": "min"} 
+                    self.query['getPrice']={"query": min_price, "range": "min"}
                 elif min_price >= max_price:
                     # Wrong price range
                     self.formerror=_(u'Please select a valid price range.')
@@ -80,7 +80,8 @@ class RealEstateListing(RealEstateBaseView):
             response.redirect(here_url)
 
     def dotted_price(self, pr=0):
-        # create a price with 10^3 dotted separators and the currency from the properties
+        # create a price with 10^3 dotted separators and the currency from the
+        # properties
         elements = []
         if len(pr) > 9:
             elements.append(pr[-12:-9])
@@ -89,12 +90,11 @@ class RealEstateListing(RealEstateBaseView):
         if len(pr) > 3:
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
-        
+
         #get default currency from the properties
         currency = str(self.properties.getProperty('currency'))
 
-        return currency + " " + '.'.join(elements)        
-
+        return currency + " " + '.'.join(elements)
 
     @property
     @memoize
@@ -112,15 +112,14 @@ class RealEstateListing(RealEstateBaseView):
                 search_filter[key] = value
         # When viewing a Brand, add its path to the filter.
         return search_filter
-        
-            
-        
+
     @property
     @memoize
     def url(self):
         """Base url, needed by the batching template."""
         url = self.context.absolute_url()
-        terms = ["%s=%s" % (key, value) for key, value in self.search_filter.items()]
+        terms = ["%s=%s" % (key, value) for key, value in
+                 self.search_filter.items()]
         extra = '&'.join(terms)
         return url + '?' + extra
 
@@ -136,7 +135,8 @@ class RealEstateListing(RealEstateBaseView):
     def batch(self):
         """ Batch of Realestate (brains)"""
         results = self.catalog.searchResults(self.query)
-        return Batch(items=results, pagesize=2, pagenumber=self.pagenumber, navlistsize=5) 
+        return Batch(items=results, pagesize=2, pagenumber=self.pagenumber,
+                     navlistsize=5)
 
     @memoize
     def items(self):
@@ -144,13 +144,13 @@ class RealEstateListing(RealEstateBaseView):
            in the folder. Not doing batching at this moment.
         """
         result = []
-        
+
         if self.formerror != u"":
             print self.formerror
             return result
-        
+
         batch = self.batch
-        
+
         for brain in batch:
             obj = brain.getObject()
             album = obj.restrictedTraverse('@@realestate_album')
@@ -261,7 +261,7 @@ class RealEstateView(RealEstateBaseView):
                 result['title'] = False
             results.append(result)
         return results
-    
+
     @memoize
     def cooked_price(self):
         """Return formatted price"""
@@ -330,4 +330,40 @@ class FloorplansView(RealEstateBaseView):
             floor['url'] = base_url + name
             floors.append(floor)
         result['floors'] = floors
+        return result
+
+    @memoize
+    def floorplans_for_pdf(self):
+        """Return dict for displaying floors
+
+        Return a dict like this:
+
+        {'floorname': ['url1', 'url2']}
+
+        Make sure to filter out floors that don't have any floorplan.
+
+        """
+        result = {}
+        names = list(self.properties.getProperty('floor_names'))
+        if not names:
+            return
+        for name in names:
+            result[name] = []
+        # Grab floorplans.
+        brains = self.catalog(object_provides=IATImage.__identifier__,
+                         is_floorplan=True,
+                         sort_on='getObjPositionInParent',
+                         path='/'.join(self.context.getPhysicalPath()))
+        used_floors = []
+        for brain in brains:
+            obj = brain.getObject()
+            floor = IFloorInfo(obj).floor
+            used_floors.append(floor)
+            url = obj.absolute_url()
+            result[floor].append(url)
+        # Filter out unused floors
+        unused = [name for name in names
+                  if name not in used_floors]
+        for name in unused:
+            del result[name]
         return result

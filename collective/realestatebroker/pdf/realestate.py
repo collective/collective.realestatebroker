@@ -1,6 +1,4 @@
-from Products.ATContentTypes.interface.image import IATImage
-from tempfile import TemporaryFile
-from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak, Image
+from reportlab.platypus import Paragraph, PageBreak, Image
 from StringIO import StringIO
 
 from zope.interface import implementer
@@ -48,17 +46,23 @@ def realestateToPDF(context, request):
                                style['title']))
     structure.append(Paragraph(price, style['title']))
     structure.append(PageBreak())
+    # Second page plus photos
+    description = context.Description().encode('utf-8')
+    structure.append(Paragraph(description, style['Normal']))
+    text = context.getText() #.encode('utf-8')
+    structure.append(Paragraph(text, style['Normal']))
 
-    # Floorplans
-    floorplans = context.restrictedTraverse('@@realestate_floorplans')
-    brains = context.portal_catalog(object_provides=IATImage.__identifier__,
-                                    is_floorplan=True,
-                                    sort_on='getObjPositionInParent',
-                                    path='/'.join(context.getPhysicalPath()))
-    for brain in brains:
-        url = brain.getURL
-        structure.append(Image(url))
     structure.append(PageBreak())
+    # Floorplans
+    floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
+    floorplans = floorplan_view.floorplans_for_pdf()
+    for name in floorplans:
+        image_urls = floorplans[name]
+        structure.append(Paragraph(name, style['title']))
+        for url in image_urls:
+            structure.append(Image(url))
+        structure.append(PageBreak())
+
 
     #tempfile = TemporaryFile()
     stream = StringIO()
