@@ -40,7 +40,7 @@ def realestateToPDF(context, request):
     first_image_url = first_image.absolute_url()
     price = ' '.join([_(u'Price:'),
                       str(context.getPrice())])
-    Paragraph(_(u'For sale'), style['title']),
+    structure.append(Paragraph(_(u'For sale'), style['title']))
     structure.append(Image(first_image_url))
     structure.append(Paragraph(title, style['title']))
     structure.append(Paragraph(context.getCity().encode('utf-8'),
@@ -55,7 +55,7 @@ def realestateToPDF(context, request):
     structure.append(Paragraph(text, style['Normal']))
     photo_floors = album_view.photos_for_pdf()
     for floor in photo_floors:
-        structure.append(Paragraph(floor['floorname'], style['title']))
+        structure.append(Paragraph(floor['floorname'], style['h1']))
         for url in floor['urls']:
             structure.append(Image(url))
         structure.append(PageBreak())
@@ -66,7 +66,7 @@ def realestateToPDF(context, request):
     for floor in floorplan_floors:
         name = _(u'Floor plan for ${floorname}',
                  mapping={'floorname': floor['floorname']})
-        structure.append(Paragraph(name, style['title']))
+        structure.append(Paragraph(name, style['h1']))
         for url in floor['urls']:
             structure.append(Image(url))
         structure.append(PageBreak())
@@ -94,7 +94,7 @@ def realestateToPDF(context, request):
     structure.append(PageBreak())
 
     # Location + map
-    structure.append(Paragraph(_(u'Address data'), style['title']))
+    structure.append(Paragraph(_(u'Address data'), style['h1']))
     data = []
     data.append([Paragraph(_(u'Address'), style['title']),
                  Paragraph(context.Title(), style['title'])])

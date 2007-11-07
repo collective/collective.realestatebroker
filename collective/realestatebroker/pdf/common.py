@@ -19,10 +19,10 @@ def getStyleSheet():
     stylesheet['h1'].fontName = 'LuxiSansBold'
     stylesheet['h2'].fontName = 'LuxiSansBold'
     stylesheet['h3'].fontName = 'LuxiSansBoldOblique'
+    stylesheet['title'].alignment = 0
     return stylesheet
 
 def writeDocument(stream, structure):
-    logofile = os.path.join(os.path.dirname(__file__), 'worldcookery.png')
-    logo = Image(logofile, 2060.0*units.inch/600, 651*units.inch/600)
+    #logofile = os.path.join(os.path.dirname(__file__), 'worldcookery.png')
     doc = SimpleDocTemplate(stream, pagesize=pagesizes.A4)
-    doc.build([logo] + list(structure))
+    doc.build(list(structure))
