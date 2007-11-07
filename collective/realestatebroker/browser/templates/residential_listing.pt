@@ -167,7 +167,7 @@
               <span tal:replace="item/cooked_price"></span>
           </td>
           <td>
-            	<br><span i18n:translate="" tal:replace="item/review_state"></span>
+            <span i18n:translate="" tal:replace="item/review_state"></span>
           </td>
         </tr>
       </tbody>
