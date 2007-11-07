@@ -1,10 +1,62 @@
 <?xml version="1.0"?>
 <object name="portal_actions" meta_type="Plone Actions Tool"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-  <object name="object" meta_type="CMF Action Category">
-    <!-- Disable ploneflashupload action globally -->
-    <object name="folderflashupload" meta_type="CMF Action" i18n:domain="plone">
-      <property name="visible">False</property>
+  <object name="realestate" meta_type="CMF Action Category">
+    <property name="title"></property>
+    <object name="description" meta_type="CMF Action" i18n:domain="collective.realestatebroker">
+     <property name="title" i18n:translate="">Description</property>
+     <property name="description" i18n:translate=""></property>
+     <property name="url_expr">string:${globals_view/getCurrentObjectUrl}/view</property>
+     <property name="icon_expr"></property>
+     <property name="available_expr"></property>
+     <property name="permissions">
+      <element value="View"/>
+     </property>
+     <property name="visible">True</property>
+    </object>
+    <object name="details" meta_type="CMF Action" i18n:domain="collective.realestatebroker">
+     <property name="title" i18n:translate="">Details</property>
+     <property name="description" i18n:translate=""></property>
+     <property name="url_expr">string:${globals_view/getCurrentObjectUrl}/details</property>
+     <property name="icon_expr"></property>
+     <property name="available_expr"></property>
+     <property name="permissions">
+      <element value="View"/>
+     </property>
+     <property name="visible">True</property>
+    </object>
+    <object name="album" meta_type="CMF Action" i18n:domain="collective.realestatebroker">
+     <property name="title" i18n:translate="">Album</property>
+     <property name="description" i18n:translate=""></property>
+     <property name="url_expr">string:${globals_view/getCurrentObjectUrl}/album</property>
+     <property name="icon_expr"></property>
+     <property name="available_expr"></property>
+     <property name="permissions">
+      <element value="View"/>
+     </property>
+     <property name="visible">True</property>
+    </object>
+    <object name="plans" meta_type="CMF Action" i18n:domain="collective.realestatebroker">
+     <property name="title" i18n:translate="">Plans</property>
+     <property name="description" i18n:translate=""></property>
+     <property name="url_expr">string:${globals_view/getCurrentObjectUrl}/plans</property>
+     <property name="icon_expr"></property>
+     <property name="available_expr"></property>
+     <property name="permissions">
+      <element value="View"/>
+     </property>
+     <property name="visible">True</property>
+    </object>
+    <object name="map" meta_type="CMF Action" i18n:domain="collective.realestatebroker">
+     <property name="title" i18n:translate="">Map</property>
+     <property name="description" i18n:translate=""></property>
+     <property name="url_expr">string:${globals_view/getCurrentObjectUrl}/map</property>
+     <property name="icon_expr"></property>
+     <property name="available_expr"></property>
+     <property name="permissions">
+      <element value="View"/>
+     </property>
+     <property name="visible">True</property>
     </object>
   </object>
 </object>

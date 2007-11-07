@@ -13,11 +13,7 @@
       <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
-
-      <ul id="rebTabs"
-          class="formTabs">
-        <li tal:replace="structure provider:realestatebroker.tabs" />
-      </ul>
+      <div tal:replace="structure provider:realestatebroker.actionsmanager" />
 
       <table class="listing nosort charsTable">
         <tal:schemata tal:repeat="schemata view/characteristic_fields">

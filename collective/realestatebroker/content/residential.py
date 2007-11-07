@@ -57,5 +57,10 @@ class Residential(atapi.OrderedBaseFolder):
     garage = atapi.ATFieldProperty('garage')
     kind_of_garage = atapi.ATFieldProperty('kindOfGarage')
 
+    def exclude_from_nav(self):
+        """We don't want real estate to show up in the nav tree.
+        """
+        return True
+
 
 atapi.registerType(Residential, PROJECTNAME)

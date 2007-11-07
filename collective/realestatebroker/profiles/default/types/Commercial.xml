@@ -23,8 +23,8 @@
   <alias from="view" to="realestate_view"/>
   <alias from="(Default)" to="realestate_view"/>
   <alias from="edit" to="base_edit"/>
-  <alias from="chars" to="realestate_chars"/>
-  <alias from="photos" to="realestate_photos"/>
+  <alias from="details" to="realestate_chars"/>
+  <alias from="album" to="realestate_photos"/>
   <alias from="plans" to="realestate_floorplans"/>
   <alias from="map" to="realestate_map"/>
   <action title="view" action_id="view" category="object"

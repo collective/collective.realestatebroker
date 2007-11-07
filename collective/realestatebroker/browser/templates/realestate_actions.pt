@@ -1,0 +1,18 @@
+<div class="visualClear"><!-- --></div>
+<div i18n:domain="collective.realestatebroker"
+     class="realestateActions"
+     tal:condition="view/actions">
+
+    <h5 class="hiddenStructure" i18n:translate="heading_realestate_actions">Real Estate Actions</h5>
+
+    <ul id="rebTabs" class="formTabs" tal:define="normalizeString nocall: context/@@plone/normalizeString">
+    <tal:actions repeat="raction view/actions">
+        <li tal:attributes="id python:'realestate-action-' + normalizeString(raction['id']);
+                            class raction/class">
+            <a tal:attributes="href raction/url"
+               tal:content="raction/title">
+            </a>
+        </li>
+    </tal:actions>
+    </ul>
+</div>

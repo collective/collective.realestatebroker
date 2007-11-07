@@ -50,7 +50,7 @@ class ICommercialView(IRealEstateView):
     object."""
 
 
-class ITabsManager(IViewletManager):
+class IRealEstateActionsManager(IViewletManager):
     """ A Viewlet manager that renders a set of tabs for RealEstateContent
     objects."""
 

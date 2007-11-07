@@ -13,10 +13,7 @@
       <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
-      <ul id="rebTabs"
-          class="formTabs">
-        <li tal:replace="structure provider:realestatebroker.tabs" />
-      </ul>
+      <div tal:replace="structure provider:realestatebroker.actionsmanager" />
 
       <div class="reb-floorplan-show"
            tal:define="data view/floorplans"

@@ -22,10 +22,7 @@
         </metal:field>
       </div>
 
-      <ul id="rebTabs"
-          class="formTabs">
-        <li tal:replace="structure provider:realestatebroker.tabs" />
-      </ul>
+      <div tal:replace="structure provider:realestatebroker.actionsmanager" />
 
       <table>
         <tal:row tal:define="label_macro label_macro|context/widgets/field_table/macros/label;

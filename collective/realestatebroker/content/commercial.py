@@ -54,5 +54,10 @@ class Commercial(atapi.OrderedBaseFolder):
     parking = atapi.ATFieldProperty('parking')
     facilities = atapi.ATFieldProperty('facilities')
 
+    def exclude_from_nav(self):
+        """We don't want real estate to show up in the nav tree.
+        """
+        return True
+
 
 atapi.registerType(Commercial, PROJECTNAME)
