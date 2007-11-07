@@ -182,7 +182,7 @@ def is_main_field(field):
 
 
 def is_not_selfrendered_field(field):
-    if field.getName() in ['title', 'description']:
+    if field.getName() in ['id', 'title', 'description']:
         # These are not in "our" schema, so we'll hard-code them here.
         return False
     if not hasattr(field, 'selfrendered'):

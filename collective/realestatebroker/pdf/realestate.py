@@ -71,6 +71,23 @@ def realestateToPDF(context, request):
             structure.append(Image(url))
         structure.append(PageBreak())
 
+    # Characteristics
+    structure.append(Paragraph(_(u'Object data'), style['title']))
+    for field in realestate_view.base_fields():
+        label = field.widget.Label(context)
+        value = unicode(field.getAccessor(context)())
+        structure.append(Paragraph(label, style['Normal']))
+        structure.append(Paragraph(value, style['Normal']))
+    for section in realestate_view.characteristic_fields():
+        if not section['title']:
+            continue
+        structure.append(Paragraph(section['title'], style['title']))
+        for field in section['fields']:
+            label = field.widget.Label(context)
+            value = unicode(field.getAccessor(context)())
+            structure.append(Paragraph(label, style['Normal']))
+            structure.append(Paragraph(value, style['Normal']))
+    structure.append(PageBreak())
 
     # Write it out. (Originally this code used a tempfile, but I guess that
     # that's something that's not handled right in this zope version.
