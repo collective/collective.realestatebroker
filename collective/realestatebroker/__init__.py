@@ -12,6 +12,9 @@ from Products.CMFCore import utils as cmfutils
 # like _(u"message") will then be extracted by i18n tools for translation.
 REBMessageFactory = MessageFactory('collective.realestatebroker')
 
+# We want the original_size of an image field set to (768,768)
+from Products.ATContentTypes.content.image import ATImage
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
 
@@ -58,3 +61,5 @@ def initialize(context):
             permission = config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors = (constructor,),
             ).initialize(context)
+
+    ATImage.schema['image'].original_size = (768,768)
