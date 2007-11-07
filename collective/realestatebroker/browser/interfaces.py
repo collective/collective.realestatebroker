@@ -68,3 +68,7 @@ class IPdfGenerator(Interface):
     """PDF generator for real estate content."""
     def rml(self):
         """Render RML for debug purposes."""
+
+
+class IUpdateWorkflowStatesView(Interface):
+    """ Marker interface for workflow updater"""

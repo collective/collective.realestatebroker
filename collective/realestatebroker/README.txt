@@ -148,7 +148,7 @@ Test if the index have been created in the portal_catalog tool.
 
     >>> indexes = self.portal.portal_catalog.indexes()
     >>> for idx in ('getPrice', 'getCity', 'is_floorplan'):
-    >>>     self.failUnless(idx in indexes)
+    ...     self.failUnless(idx in indexes)
 
 Google maps support
 -------------------

@@ -246,5 +246,12 @@
       class=".controlpanel.RealEstateBrokerControlPanel"
       permission="cmf.ManagePortal"
       />
+  
+  <browser:page
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      name="update_workflow_states"
+      class=".base.UpdateWorkflowStatesView"
+      permission="cmf.ManagePortal"
+  />
 
 </configure>

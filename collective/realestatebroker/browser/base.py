@@ -1,4 +1,6 @@
+from StringIO import StringIO
 from Acquisition import aq_inner
+from DateTime import DateTime
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.interface import implements
@@ -12,6 +14,7 @@ from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker.interfaces import IResidential, ICommercial
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
+from interfaces import IUpdateWorkflowStatesView
 
 
 SCHEMATA_I18N = {'measurements': _(u'measurements'),
@@ -280,3 +283,39 @@ class RealEstateView(RealEstateBaseView):
 
         return currency + " " + '.'.join(elements)
 
+
+class UpdateWorkflowStatesView(RealEstateBaseView):
+    """ The view needs to get called on a daily basis.
+    It checks for Real estate in the states new and sold. In case the state
+    change is done more than 2 weeks ago we do a transition:
+    
+    new -> available
+    sold -> offline
+    """
+    implements(IUpdateWorkflowStatesView)
+    
+    def __call__(self, days=14):
+        """ perform updates
+        """
+        wf_tool = getToolByName(self.context, 'portal_workflow')
+        new_items = self.catalog(portal_type=['Residential', 'Commercial'],
+                                 review_state='new')
+        sold_items = self.catalog(portal_type=['Residential', 'Commercial'],
+                              review_state='sold')
+        out = StringIO()
+        for item in new_items:
+            obj = item.getObject()
+            history = wf_tool.getHistoryOf('realestate_workflow', obj)
+            if history[-1]['time'] < (DateTime() - days):
+                wf_tool.doActionFor(obj,'available', wf_id='realestate_workflow')
+                print >> out, "updated transition for %r" % item.id
+                
+        for item in sold_items:
+            obj = item.getObject()
+            history = wf_tool.getHistoryOf('realestate_workflow', obj)
+            if history[-1]['time'] < (DateTime() - days):
+                wf_tool.doActionFor(obj,'retract', wf_id='realestate_workflow')
+                print >> out, "updated transition for %r" % item.id        
+        return out.getvalue()
+            
+            
