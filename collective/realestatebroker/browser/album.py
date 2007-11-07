@@ -80,6 +80,45 @@ class AlbumView(BrowserView):
                 batch['ff_class'] = batch_class + ' reb-nav-forward'
         return batch
 
+    @memoize
+    def photos_for_pdf(self):
+        """Return dict for displaying photos
+
+        Return a dict like this:
+
+        {'floorname': ['url1', 'url2']}
+
+        Make sure to filter out floors that don't have any photos.
+
+        """
+        result = {}
+        pprops = getToolByName(self.context, 'portal_properties')
+        properties = pprops.realestatebroker_properties
+        names = list(properties.getProperty('floor_names'))
+        if not names:
+            return
+        for name in names:
+            result[name] = []
+        # Grab photos.
+        catalog = getToolByName(self.context, 'portal_catalog')
+        brains = catalog(object_provides=IATImage.__identifier__,
+                         is_floorplan=False,
+                         sort_on='getObjPositionInParent',
+                         path='/'.join(self.context.getPhysicalPath()))
+        used_floors = []
+        for brain in brains:
+            obj = brain.getObject()
+            floor = IFloorInfo(obj).floor
+            used_floors.append(floor)
+            url = obj.absolute_url()
+            result[floor].append(url)
+        # Filter out unused floors
+        unused = [name for name in names
+                  if name not in used_floors]
+        for name in unused:
+            del result[name]
+        return result
+
 
 class AlbumViewlet(ViewletBase):
     """ Simple viewlet to render the photo ablum"""

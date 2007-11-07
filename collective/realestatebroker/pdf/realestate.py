@@ -30,12 +30,13 @@ def realestateToPDF(context, request):
 
     # create the document structure
     style = getStyleSheet()
-    album = context.restrictedTraverse('@@realestate_album')
-    realestate = context.restrictedTraverse('@@realestate')
+    album_view = context.restrictedTraverse('@@realestate_album')
+    realestate_view = context.restrictedTraverse('@@realestate')
+    floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
     structure = []
 
     # Front page
-    first_image = album.image_brains()[0].getObject() # TODO: no images
+    first_image = album_view.image_brains()[0].getObject() # TODO: no images
     first_image_url = first_image.absolute_url()
     price = ' '.join([_(u'Price:'),
                       str(context.getPrice())])
@@ -46,15 +47,23 @@ def realestateToPDF(context, request):
                                style['title']))
     structure.append(Paragraph(price, style['title']))
     structure.append(PageBreak())
-    # Second page plus photos
+
+    # Second page: desc, main text, plus photos
     description = context.Description().encode('utf-8')
     structure.append(Paragraph(description, style['Normal']))
     text = context.getText() #.encode('utf-8')
     structure.append(Paragraph(text, style['Normal']))
+    photo_floors = album_view.photos_for_pdf()
+    for name in photo_floors:
+        image_urls = photo_floors[name]
+        structure.append(Paragraph(name, style['title']))
+        for url in image_urls:
+            structure.append(Image(url))
+        #structure.append(PageBreak())
 
     structure.append(PageBreak())
+
     # Floorplans
-    floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
     floorplans = floorplan_view.floorplans_for_pdf()
     for name in floorplans:
         image_urls = floorplans[name]
@@ -64,7 +73,8 @@ def realestateToPDF(context, request):
         structure.append(PageBreak())
 
 
-    #tempfile = TemporaryFile()
+    # Write it out. (Originally this code used a tempfile, but I guess that
+    # that's something that's not handled right in this zope version.
     stream = StringIO()
     writeDocument(stream, structure)
     return stream.getvalue()
