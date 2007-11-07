@@ -258,18 +258,16 @@
 
   <!-- configlet -->
 
-  <!--
   <adapter
       zcml:condition="installed plone.app.controlpanel"
       factory=".controlpanel.REBControlPanelAdapter" />
-                ^^^^^^^^^^^ Missing commit? I don't see it.
+      
   <browser:page
       zcml:condition="installed plone.app.controlpanel"
       name="reb-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".controlpanel.RealEstateBrokerControlPanel"
+      class=".conAtrolpanel.RealEstateBrokerControlPanel"
       permission="cmf.ManagePortal"
       />
-  -->
 
 </configure>
