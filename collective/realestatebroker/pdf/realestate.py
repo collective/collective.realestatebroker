@@ -90,6 +90,24 @@ def realestateToPDF(context, request):
                          Paragraph(value, style['Normal'])])
     table = Table(data=data)
     structure.append(table)
+    # TODO: even/odd, headings.
+    structure.append(PageBreak())
+
+    # Location + map
+    structure.append(Paragraph(_(u'Address data'), style['title']))
+    data = []
+    data.append([Paragraph(_(u'Address'), style['title']),
+                 Paragraph(context.Title(), style['title'])])
+    data.append([Paragraph(_(u'Zip code'), style['title']),
+                 Paragraph(context.getZipCode(), style['title'])])
+    data.append([Paragraph(_(u'City'), style['title']),
+                 Paragraph(context.getCity(), style['title'])])
+    table = Table(data=data)
+    structure.append(table)
+    # TODO: map
+    structure.append(PageBreak())
+
+    # Back matter
 
     # Write it out. (Originally this code used a tempfile, but I guess that
     # that's something that's not handled right in this zope version.
