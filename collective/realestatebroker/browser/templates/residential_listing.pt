@@ -160,6 +160,7 @@
           <td class="residential-listing-content">
             	<a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
             	<span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
+          		<div tal:content="item/description">Description</div>
           </td>
           <td>
               <span tal:replace="item/cooked_price"></span>
