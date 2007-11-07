@@ -1,3 +1,4 @@
+from Products.ATContentTypes.interface.image import IATImage
 from base import RealEstateBaseView
 from collective.realestatebroker.adapters.interfaces import IFloorInfo
 from plone.memoize.view import memoize
@@ -60,7 +61,7 @@ class FloorplansView(RealEstateBaseView):
 
         Return a list like this:
 
-        [{'floorname': '1st floor', 'urls': ['url1', 'url2']}]
+        [{'floorname': '1st floor', 'photos': ['obj1', 'obj2']}]
 
         Make sure to filter out floors that don't have any floorplan.
 
@@ -81,8 +82,7 @@ class FloorplansView(RealEstateBaseView):
             obj = brain.getObject()
             floor = IFloorInfo(obj).floor
             used_floors.append(floor)
-            url = obj.absolute_url()
-            floors[floor].append(url)
+            floors[floor].append(obj)
         # Filter out unused floors
         unused = [name for name in names
                   if name not in used_floors]
@@ -93,5 +93,5 @@ class FloorplansView(RealEstateBaseView):
         for name in names:
             if name in floors:
                 result.append({'floorname': name,
-                               'urls': floors[name]})
+                               'photos': floors[name]})
         return result

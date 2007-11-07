@@ -1,4 +1,6 @@
-from reportlab.platypus import Paragraph, PageBreak, Image, Table
+from  reportlab.lib import units
+from reportlab.platypus import Paragraph, PageBreak, Image, Table, Spacer
+from reportlab.lib.styles import ParagraphStyle
 from StringIO import StringIO
 
 from zope.interface import implementer
@@ -7,7 +9,9 @@ from zope.publisher.interfaces import IRequest
 from zope.i18n import translate
 
 from collective.realestatebroker.interfaces import IRealEstateContent
-from collective.realestatebroker.pdf.common import getStyleSheet, writeDocument
+from collective.realestatebroker.pdf.common import getStyleSheet
+from collective.realestatebroker.pdf.common import writeDocument
+from collective.realestatebroker.pdf.common import insert_image
 from collective.realestatebroker.pdf.interfaces import IPDFPresentation
 
 @adapter(IRealEstateContent, IRequest)
@@ -35,13 +39,18 @@ def realestateToPDF(context, request):
     floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
     structure = []
 
+    # Custom styles
+    huge_style = ParagraphStyle('huge')
+    huge_style.fontSize = 48
+    huge_style.spaceAfter = 10
+
     # Front page
     first_image = album_view.image_brains()[0].getObject() # TODO: no images
-    first_image_url = first_image.absolute_url()
     price = ' '.join([_(u'Price:'),
                       str(context.getPrice())])
-    structure.append(Paragraph(_(u'For sale'), style['title']))
-    structure.append(Image(first_image_url))
+    structure.append(Paragraph(_(u'For sale'), huge_style))
+    structure.append(Spacer(1, 2 * units.cm)) # Somehow the image overlaps...
+    structure += insert_image(first_image, full_width=True)
     structure.append(Paragraph(title, style['title']))
     structure.append(Paragraph(context.getCity().encode('utf-8'),
                                style['title']))
@@ -56,8 +65,8 @@ def realestateToPDF(context, request):
     photo_floors = album_view.photos_for_pdf()
     for floor in photo_floors:
         structure.append(Paragraph(floor['floorname'], style['h1']))
-        for url in floor['urls']:
-            structure.append(Image(url))
+        for photo in floor['photos']:
+            structure += insert_image(photo)
         structure.append(PageBreak())
     #structure.append(PageBreak())
 
@@ -67,8 +76,8 @@ def realestateToPDF(context, request):
         name = _(u'Floor plan for ${floorname}',
                  mapping={'floorname': floor['floorname']})
         structure.append(Paragraph(name, style['h1']))
-        for url in floor['urls']:
-            structure.append(Image(url))
+        for photo in floor['photos']:
+            structure += insert_image(photo, full_width=True)
         structure.append(PageBreak())
 
     # Characteristics
