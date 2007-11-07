@@ -147,7 +147,7 @@
     <browser:page
         for="collective.realestatebroker.interfaces.IRealEstateContent"
         name="realestate_floorplans"
-        class=".base.FloorplansView"
+        class=".floor.FloorplansView"
         template="templates/realestate_floorplans.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.IRealEstateView"
@@ -194,15 +194,15 @@
       />
     <browser:resource
       name="realestatebroker.css"
-      file="realestatebroker.css"
+      file="resources/realestatebroker.css"
       />
     <browser:resource
       name="realestatebroker.js"
-      file="realestatebroker.js"
+      file="resources/realestatebroker.js"
       />
     <browser:resource
       name="realestatebroker.kss"
-      file="realestatebroker.kss"
+      file="resources/realestatebroker.kss"
       />
 
     <!-- These two contenttype icons are listed separately as GS didn't seem
