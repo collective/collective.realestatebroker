@@ -336,19 +336,19 @@ class FloorplansView(RealEstateBaseView):
     def floorplans_for_pdf(self):
         """Return dict for displaying floors
 
-        Return a dict like this:
+        Return a list like this:
 
-        {'floorname': ['url1', 'url2']}
+        [{'floorname': '1st floor', 'urls': ['url1', 'url2']}]
 
         Make sure to filter out floors that don't have any floorplan.
 
         """
-        result = {}
+        floors = {}
         names = list(self.properties.getProperty('floor_names'))
         if not names:
             return
         for name in names:
-            result[name] = []
+            floors[name] = []
         # Grab floorplans.
         brains = self.catalog(object_provides=IATImage.__identifier__,
                          is_floorplan=True,
@@ -360,10 +360,16 @@ class FloorplansView(RealEstateBaseView):
             floor = IFloorInfo(obj).floor
             used_floors.append(floor)
             url = obj.absolute_url()
-            result[floor].append(url)
+            floors[floor].append(url)
         # Filter out unused floors
         unused = [name for name in names
                   if name not in used_floors]
         for name in unused:
-            del result[name]
+            del floors[name]
+        # Now pack 'em up in a list: in the right order.
+        result = []
+        for name in names:
+            if name in floors:
+                result.append({'floorname': name,
+                               'urls': floors[name]})
         return result

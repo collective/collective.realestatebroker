@@ -58,16 +58,16 @@ def realestateToPDF(context, request):
         structure.append(Paragraph(floor['floorname'], style['title']))
         for url in floor['urls']:
             structure.append(Image(url))
-        #structure.append(PageBreak())
-
-    structure.append(PageBreak())
+        structure.append(PageBreak())
+    #structure.append(PageBreak())
 
     # Floorplans
-    floorplans = floorplan_view.floorplans_for_pdf()
-    for name in floorplans:
-        image_urls = floorplans[name]
+    floorplan_floors = floorplan_view.floorplans_for_pdf()
+    for floor in floorplan_floors:
+        name = _(u'Floor plan for ${floorname}',
+                 mapping={'floorname': floor['floorname']})
         structure.append(Paragraph(name, style['title']))
-        for url in image_urls:
+        for url in floor['urls']:
             structure.append(Image(url))
         structure.append(PageBreak())
 
