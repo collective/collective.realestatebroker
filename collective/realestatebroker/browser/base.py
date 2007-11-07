@@ -92,7 +92,7 @@ class RealEstateListing(RealEstateBaseView):
         elements.append(pr[-3:])
 
         #get default currency from the properties
-        currency = str(self.properties.getProperty('currency'))
+        currency = self.properties.getProperty('currency')
 
         return currency + " " + '.'.join(elements)
 
@@ -278,7 +278,7 @@ class RealEstateView(RealEstateBaseView):
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
 
-        currency = str(self.properties.getProperty('currency'))
+        currency = self.properties.getProperty('currency')
 
         return currency + " " + '.'.join(elements)
 

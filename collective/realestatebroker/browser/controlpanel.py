@@ -11,9 +11,9 @@ from plone.app.controlpanel.form import ControlPanelForm
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.formlib.schema import SchemaAdapterBase
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.CMFPlone.utils import safe_unicode, getSiteEncoding
 
 _ = MessageFactory('collective.realestatebroker')
-
 
 
 class IRealEstateBrokerSchema(Interface):
@@ -40,9 +40,12 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context = properties.realestatebroker_properties
 
     def get_currency(self):
-        return getattr(self.context, 'currency', '')
+        value = getattr(self.context, 'currency', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
 
     def set_currency(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
         self.context._updateProperty('currency', value)
 
     currency = property(get_currency, set_currency)

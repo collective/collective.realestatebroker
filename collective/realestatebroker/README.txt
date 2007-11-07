@@ -98,10 +98,10 @@ Site Properties
 
 Don't show Resdiential or Commecial objects in the navigation tree.
 
-   >>> navtree_props = pptool.navtree_properties
-   >>> types_not_to_list = navtree_props.getProperty('metaTypesNotToList')
-   >>> self.failUnless('Residential' in types_not_to_list)
-   >>> self.failUnless('Commercial' in types_not_to_list)
+    >>> navtree_props = pptool.navtree_properties
+    >>> types_not_to_list = navtree_props.getProperty('metaTypesNotToList')
+    >>> self.failUnless('Residential' in types_not_to_list)
+    >>> self.failUnless('Commercial' in types_not_to_list)
    
 
 Vocabularies
@@ -139,6 +139,16 @@ propertysheet.
     >>> [item.value for item in vocab]
     ['Kosten koper (k.k.)', 'Vrij op naam (v.o.n.)']
 
+
+
+portal_catalog Indexes
+----------------------
+
+Test if the index have been created in the portal_catalog tool.
+
+    >>> indexes = self.portal.portal_catalog.indexes()
+    >>> for idx in ('getPrice', 'getCity', 'is_floorplan'):
+    >>>     self.failUnless(idx in indexes)
 
 Google maps support
 -------------------
