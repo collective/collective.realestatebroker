@@ -234,10 +234,12 @@ class RealEstateView(RealEstateBaseView):
 
         schema = self.context.Schema()
         fields = schema.filterFields(schemata=schemata_name, *predicates)
-        filtered = [field for field in fields
-                    if field.get(self.context) == False
-                    or field.get(self.context) != ''
-                    or field.get(self.context)]
+
+        filtered = []
+        for field in fields:
+            value = field.get(self.context) 
+            if value and value not in ['',['']] or value == False:
+                filtered.append(field)
         return filtered
 
     @memoize
