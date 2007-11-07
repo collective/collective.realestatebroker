@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-07 15:02+0000\n"
+"POT-Creation-Date: 2007-11-07 16:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,6 +134,10 @@ msgstr ""
 msgid "Garden"
 msgstr ""
 
+#: ./browser/controlpanel.py:124
+msgid "General"
+msgstr ""
+
 #: ./content/schemata.py:71
 msgid "Ground area"
 msgstr ""
@@ -187,6 +191,11 @@ msgstr ""
 msgid "Object data"
 msgstr ""
 
+#. Default: "PDF"
+#: ./profiles/default/actions.xml
+msgid "PDF"
+msgstr ""
+
 #: ./interfaces.py:92
 msgid "Parking"
 msgstr ""
@@ -223,7 +232,7 @@ msgstr ""
 msgid "Private car park"
 msgstr ""
 
-#: ./browser/controlpanel.py:58
+#: ./browser/controlpanel.py:134
 msgid "RealEstateBroker settings"
 msgstr ""
 
@@ -244,6 +253,10 @@ msgstr ""
 #. Default: "Search"
 #: ./browser/templates/commercial_listing.pt:103
 msgid "Search"
+msgstr ""
+
+#: ./browser/controlpanel.py:128
+msgid "Search form"
 msgstr ""
 
 #: ./content/schemata.py:223
@@ -280,7 +293,7 @@ msgid "Zip code"
 msgstr ""
 
 #. Default: "Address"
-#: ./browser/templates/commercial_listing.pt:134
+#: ./browser/templates/commercial_listing.pt:138
 msgid "address"
 msgstr ""
 
@@ -353,9 +366,24 @@ msgstr ""
 msgid "heating"
 msgstr ""
 
+#. Default: "Real Estate objects can only be in these cities."
+#: ./browser/controlpanel.py:24
+msgid "help_cities"
+msgstr ""
+
 #. Default: "Specify the default currency to be used for prices."
-#: ./browser/controlpanel.py:23
-msgid "help_default_coordinated"
+#: ./browser/controlpanel.py:32
+msgid "help_default_currency"
+msgstr ""
+
+#. Default: "Specify the values to list as minimum prices in theprice range of the search form."
+#: ./browser/controlpanel.py:51
+msgid "help_max_price"
+msgstr ""
+
+#. Default: "Specify the values to list as minimum prices in theprice range of the search form."
+#: ./browser/controlpanel.py:42
+msgid "help_min_price"
 msgstr ""
 
 #. Default: "Which city to list property?"
@@ -379,8 +407,13 @@ msgstr ""
 msgid "kindOfStorage"
 msgstr ""
 
+#. Default: "Cities where Real Estate can be added"
+#: ./browser/controlpanel.py:22
+msgid "label_cities"
+msgstr ""
+
 #. Default: "Default currency."
-#: ./browser/controlpanel.py:21
+#: ./browser/controlpanel.py:30
 msgid "label_default_currency"
 msgstr ""
 
@@ -439,7 +472,7 @@ msgid "new"
 msgstr ""
 
 #. Default: "No realestate found."
-#: ./browser/templates/commercial_listing.pt:145
+#: ./browser/templates/commercial_listing.pt:126
 msgid "no_realestate_found"
 msgstr ""
 
@@ -448,17 +481,17 @@ msgid "offline"
 msgstr ""
 
 #. Default: "Photos"
-#: ./browser/templates/commercial_listing.pt:133
+#: ./browser/templates/commercial_listing.pt:137
 msgid "photos"
 msgstr ""
 
 #. Default: "Price"
-#: ./browser/templates/commercial_listing.pt:136
+#: ./browser/templates/commercial_listing.pt:140
 msgid "price"
 msgstr ""
 
 #. Default: "Status"
-#: ./browser/templates/commercial_listing.pt:138
+#: ./browser/templates/commercial_listing.pt:142
 msgid "property_status"
 msgstr ""
 
