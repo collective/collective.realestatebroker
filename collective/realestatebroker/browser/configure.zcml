@@ -266,7 +266,7 @@
       zcml:condition="installed plone.app.controlpanel"
       name="reb-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".conAtrolpanel.RealEstateBrokerControlPanel"
+      class=".controlpanel.RealEstateBrokerControlPanel"
       permission="cmf.ManagePortal"
       />
 
