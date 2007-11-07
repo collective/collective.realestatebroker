@@ -14,19 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/album.py:164
+#: ./browser/album.py:209
 msgid "${image} is no longer marked as floorplan."
 msgstr "${image} is niet langer gemarkeerd als plattegrond"
 
-#: ./browser/album.py:154
+#: ./browser/album.py:199
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/album.py:161
+#: ./browser/album.py:206
 msgid "${image} is now marked as floor plan."
 msgstr "${image} is gemarkeerd als plattegrond."
 
-#: ./browser/album.py:173
+#: ./browser/album.py:218
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -37,6 +37,15 @@ msgstr "Oplevering"
 #: ./content/commercial.py:16
 msgid "Address"
 msgstr "Adres"
+
+#: ./pdf/realestate.py:97
+msgid "Address data"
+msgstr ""
+
+#. Default: "Album"
+#: ./profiles/default/actions.xml
+msgid "Album"
+msgstr ""
 
 #: ./content/schemata.py:40
 msgid "Body text"
@@ -63,6 +72,11 @@ msgstr "Bouwjaar"
 msgid "Description"
 msgstr "Omschrijving"
 
+#. Default: "Details"
+#: ./profiles/default/actions.xml
+msgid "Details"
+msgstr ""
+
 #: ./content/schemata.py:123
 msgid "Enter a brief description for the acceptance."
 msgstr "Geef een korte omschrijving voor de oplevering"
@@ -87,6 +101,10 @@ msgstr "Vul de prijs in zonder punten of komma's"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
+#: ./pdf/realestate.py:67
+msgid "Floor plan for ${floorname}"
+msgstr ""
+
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
 msgid "Folderish content type for commercial real estate."
@@ -96,6 +114,10 @@ msgstr "Mapweergave voor bedrijfspanden."
 #: ./profiles/default/types/Residential.xml
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
+
+#: ./pdf/realestate.py:43
+msgid "For sale"
+msgstr ""
 
 #: ./content/schemata.py:156
 msgid "Garage"
@@ -145,9 +167,18 @@ msgstr "Soort berging"
 msgid "Location"
 msgstr "Locatie"
 
+#. Default: "Map"
+#: ./profiles/default/actions.xml
+msgid "Map"
+msgstr ""
+
 #: ./content/schemata.py:185
 msgid "Number of rooms"
 msgstr "Aantal kamers"
+
+#: ./pdf/realestate.py:76
+msgid "Object data"
+msgstr ""
 
 #: ./interfaces.py:92
 msgid "Parking"
@@ -164,7 +195,12 @@ msgstr "Foto"
 msgid "Photo album"
 msgstr "Foto album"
 
-#: ./browser/base.py:71
+#. Default: "Plans"
+#: ./profiles/default/actions.xml
+msgid "Plans"
+msgstr ""
+
+#: ./browser/base.py:75
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
@@ -172,16 +208,24 @@ msgstr "Selecteer een geldig prijsbereik."
 msgid "Price"
 msgstr "Prijs"
 
+#: ./pdf/realestate.py:41
+msgid "Price:"
+msgstr ""
+
 #: ./content/schemata.py:248
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
+
+#: ./browser/controlpanel.py:58
+msgid "RealEstateBroker settings"
+msgstr "Real Estate Broker instellingen"
 
 #: ./content/schemata.py:239
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
 #. Default: "Reset"
-#: ./browser/templates/residential_listing.pt:111
+#: ./browser/templates/commercial_listing.pt:111
 msgid "Reset"
 msgstr "Wis zoektermen"
 
@@ -191,7 +235,7 @@ msgid "Residential real estate"
 msgstr "Woningen"
 
 #. Default: "Search"
-#: ./browser/templates/residential_listing.pt:103
+#: ./browser/templates/commercial_listing.pt:103
 msgid "Search"
 msgstr "Zoek"
 
@@ -229,12 +273,12 @@ msgid "Zip code"
 msgstr "Postcode"
 
 #. Default: "Address"
-#: ./browser/templates/residential_listing.pt:134
+#: ./browser/templates/commercial_listing.pt:134
 msgid "address"
 msgstr "Adres"
 
 #. Default: "Any city"
-#: ./browser/templates/residential_listing.pt:45
+#: ./browser/templates/commercial_listing.pt:45
 msgid "any_city"
 msgstr "Elke stad"
 
@@ -242,35 +286,25 @@ msgid "available"
 msgstr "Beschikbaar"
 
 #. Default: "No Limit"
-#: ./browser/templates/residential_listing.pt:86
+#: ./browser/templates/commercial_listing.pt:86
 msgid "broker_price_no_limit"
 msgstr "Geen bovengrens"
 
 #. Default: "to"
-#: ./browser/templates/residential_listing.pt:75
+#: ./browser/templates/commercial_listing.pt:75
 msgid "broker_price_to"
 msgstr "tot"
 
-#. Default: "Characteristics"
-#: ./browser/templates/chars_tab.pt:6
-msgid "chars_tab"
-msgstr "Kenmerken"
-
 #. Default: "City"
-#: ./browser/templates/residential_listing.pt:35
+#: ./browser/templates/commercial_listing.pt:35
 msgid "city"
 msgstr "Stad"
 
-#. Default: "Description"
-#: ./browser/templates/description_tab.pt:6
-msgid "description_tab"
-msgstr "Omschrijving"
-
-#: ./browser/base.py:17
+#: ./browser/base.py:18
 msgid "details"
 msgstr "Details"
 
-#: ./browser/base.py:18
+#: ./browser/base.py:19
 msgid "environment"
 msgstr "Omgeving/tuin"
 
@@ -282,14 +316,9 @@ msgstr ""
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
 "worden."
 
-#: ./browser/base.py:19
+#: ./browser/base.py:20
 msgid "financial"
 msgstr "Financieel"
-
-#. Default: "Floorplans"
-#: ./browser/templates/floorplans_tab.pt:6
-msgid "floorplans_tab"
-msgstr "Plattegronden"
 
 #. Default: "Bulk-upload of multiple photos"
 #: ./browser/templates/album_management.pt:22
@@ -297,7 +326,7 @@ msgid "heading_bulk_upload"
 msgstr "Uploaden van meerdere foto's in één keer."
 
 #. Default: "Textual description"
-#: ./browser/templates/realestate_view.pt:48
+#: ./browser/templates/realestate_view.pt:45
 msgid "heading_main_text"
 msgstr "Uitgebreide omschrijving"
 
@@ -311,16 +340,26 @@ msgstr "Foto beheer"
 msgid "heading_photo_configuration"
 msgstr "Foto configuratie"
 
+#. Default: "Real Estate Actions"
+#: ./browser/templates/realestate_actions.pt:6
+msgid "heading_realestate_actions"
+msgstr ""
+
 #: ./content/schemata.py:86
 msgid "heating"
 msgstr "Verwarming"
 
+#. Default: "Specify the default currency to be used for prices."
+#: ./browser/controlpanel.py:23
+msgid "help_default_coordinated"
+msgstr "Geef de munteenheid op die voor prijzen moet staan."
+
 #. Default: "Which city to list property?"
-#: ./browser/templates/residential_listing.pt:39
+#: ./browser/templates/commercial_listing.pt:39
 msgid "help_search_city"
 msgstr "Beperk de weergave op plaats"
 
-#: ./browser/templates/residential_listing.pt:59
+#: ./browser/templates/commercial_listing.pt:59
 msgid "help_search_price"
 msgstr ""
 
@@ -336,13 +375,18 @@ msgstr "Soort garage"
 msgid "kindOfStorage"
 msgstr "Soort berging"
 
+#. Default: "Default currency."
+#: ./browser/controlpanel.py:21
+msgid "label_default_currency"
+msgstr "Munteenheid"
+
 #. Default: "Default"
 #: ./browser/templates/album_management.pt:87
 msgid "label_default_photo"
 msgstr "Standaard afbeelding"
 
 #. Default: "Description"
-#: ./browser/templates/realestate_map.pt:31
+#: ./browser/templates/realestate_map.pt:28
 msgid "label_description"
 msgstr "Omschrijving"
 
@@ -352,32 +396,27 @@ msgid "label_is_floorplan"
 msgstr "Plattegrond"
 
 #. Default: "Maximum price"
-#: ./browser/templates/residential_listing.pt:77
+#: ./browser/templates/commercial_listing.pt:77
 msgid "label_max_price"
 msgstr "Maximum prijs"
 
 #. Default: "Minimum price"
-#: ./browser/templates/residential_listing.pt:58
+#: ./browser/templates/commercial_listing.pt:58
 msgid "label_min_price"
 msgstr "Ondergrens prijs"
 
-#. Default: "More..."
-#: ./browser/templates/commercial_listing.pt:43
-msgid "label_more"
-msgstr "Meer..."
-
 #. Default: "Related Items"
-#: ./browser/templates/realestate_map.pt:56
+#: ./browser/templates/realestate_map.pt:53
 msgid "label_related_items"
 msgstr "Gerelateerde items"
 
 #. Default: "(Required)"
-#: ./browser/templates/residential_listing.pt:36
+#: ./browser/templates/commercial_listing.pt:36
 msgid "label_required"
 msgstr "(Verplicht)"
 
 #. Default: "Search Terms"
-#: ./browser/templates/residential_listing.pt:33
+#: ./browser/templates/commercial_listing.pt:33
 msgid "legend_search_terms"
 msgstr "Zoektermen"
 
@@ -385,12 +424,7 @@ msgstr "Zoektermen"
 msgid "location"
 msgstr "Locatie"
 
-#. Default: "Map"
-#: ./browser/templates/map_tab.pt:6
-msgid "map"
-msgstr "Kaart"
-
-#: ./browser/base.py:16
+#: ./browser/base.py:17
 msgid "measurements"
 msgstr "Maatvoering"
 
@@ -401,7 +435,7 @@ msgid "new"
 msgstr "Nieuw"
 
 #. Default: "No realestate found."
-#: ./browser/templates/residential_listing.pt:145
+#: ./browser/templates/commercial_listing.pt:145
 msgid "no_realestate_found"
 msgstr "Geen objecten gevonden."
 
@@ -411,17 +445,17 @@ msgid "offline"
 msgstr "Niet zichtbaar"
 
 #. Default: "Photos"
-#: ./browser/templates/photos_tab.pt:6
+#: ./browser/templates/commercial_listing.pt:133
 msgid "photos"
 msgstr "Foto's"
 
 #. Default: "Price"
-#: ./browser/templates/residential_listing.pt:136
+#: ./browser/templates/commercial_listing.pt:136
 msgid "price"
 msgstr "Prijs"
 
 #. Default: "Status"
-#: ./browser/templates/residential_listing.pt:138
+#: ./browser/templates/commercial_listing.pt:138
 msgid "property_status"
 msgstr "Beschikbaarheid"
 

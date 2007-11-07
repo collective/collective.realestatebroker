@@ -145,7 +145,6 @@ class RealEstateListing(RealEstateBaseView):
         result = []
 
         if self.formerror != u"":
-            print self.formerror
             return result
 
         batch = self.batch
