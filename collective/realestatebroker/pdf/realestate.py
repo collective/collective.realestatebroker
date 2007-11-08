@@ -5,6 +5,7 @@ from reportlab.platypus import PageBreak
 from reportlab.platypus import Paragraph
 from reportlab.platypus import Spacer
 from reportlab.platypus import Table
+from reportlab.platypus import TableStyle
 from zope.component import adapter
 from zope.i18n import translate
 from zope.interface import implementer
@@ -12,6 +13,7 @@ from zope.publisher.interfaces import IRequest
 
 from collective.realestatebroker.interfaces import IRealEstateContent
 from collective.realestatebroker.pdf.common import insert_image
+from collective.realestatebroker.pdf.common import rebColors
 from collective.realestatebroker.pdf.common import rebStyleSeet
 from collective.realestatebroker.pdf.common import writeDocument
 from collective.realestatebroker.pdf.interfaces import IPDFPresentation
@@ -37,6 +39,7 @@ def realestateToPDF(context, request):
 
     # create the document structure
     style = rebStyleSeet()
+    colors = rebColors()
     album_view = context.restrictedTraverse('@@realestate_album')
     realestate_view = context.restrictedTraverse('@@realestate')
     floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
@@ -80,28 +83,54 @@ def realestateToPDF(context, request):
 
     # Characteristics
     data = []
+    index = 0
+    heading_rows = []
+    even_rows = []
     data.append([Paragraph(_(u'Object data'), style['table_header']), ''])
-    for field in realestate_view.base_fields():
+    heading_rows.append(index)
+    index += 1
+    for local_index, field in enumerate(realestate_view.base_fields()):
         label = field.widget.Label(context)
         value = unicode(field.getAccessor(context)())
         data.append([Paragraph(label, style['table_text']),
                      Paragraph(value, style['table_text'])])
+        if (local_index // 2.0 == local_index / 2.0):
+            even_rows.append(index)
+        index += 1
     for section in realestate_view.characteristic_fields():
         if not section['title']:
             continue
         data.append([Paragraph(section['title'], style['table_header']), ''])
-        for field in section['fields']:
+        heading_rows.append(index)
+        index += 1
+        for local_index, field in enumerate(section['fields']):
             label = field.widget.Label(context)
             value = unicode(field.getAccessor(context)())
             data.append([Paragraph(label, style['table_text']),
                          Paragraph(value, style['table_text'])])
+            if (local_index // 2.0 == local_index / 2.0):
+                even_rows.append(index)
+            index += 1
     table = Table(data=data)
+    #TODOxxxxxxxxxxxxxx
+    table_style = TableStyle([])
+    for row in heading_rows:
+        table_style.add('BACKGROUND', (0, row), (1, row),
+                        colors['table_heading_background'])
+        table_style.add('BOTTOMPADDING', (0, row), (1, row), 7)
+    for row in even_rows:
+        table_style.add('BACKGROUND', (0, row), (1, row),
+                        colors['table_even_background'])
+    table_style.add('GRID', (0, 0), (1, -1), 1,
+                    colors['table_grid_color'])
+    table.setStyle(table_style)
     structure.append(table)
     # TODO: even/odd, headings.
     structure.append(PageBreak())
 
     # Location + map
     structure.append(Paragraph(_(u'Address data'), style['heading1']))
+    table_style = TableStyle([])
     data = []
     data.append([Paragraph(_(u'Address'), style['big']),
                  Paragraph(context.Title(), style['big'])])
@@ -110,6 +139,8 @@ def realestateToPDF(context, request):
     data.append([Paragraph(_(u'City'), style['big']),
                  Paragraph(context.getCity(), style['big'])])
     table = Table(data=data)
+    table_style.add('BOTTOMPADDING', (0, 0), (1, -1), 12)
+    table.setStyle(table_style)
     structure.append(table)
     # TODO: map
     structure.append(PageBreak())

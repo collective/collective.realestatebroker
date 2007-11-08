@@ -3,7 +3,9 @@ import os.path
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Image, SimpleDocTemplate, Spacer
-from reportlab.lib import styles, units, pagesizes
+from reportlab.lib import styles
+from reportlab.lib import units
+from reportlab.lib import pagesizes
 
 
 def getStyleSheet():
@@ -25,9 +27,22 @@ def getStyleSheet():
     return stylesheet
 
 
+def rebColors():
+    """Return standard colors, but for the stylesheet and for the pdf."""
+    colors = {}
+    colors['table_heading_background'] = (1, 0, 0) # Red as example.
+    colors['table_heading_textcolor'] = (1, 1, 1) # White.
+    colors['table_odd_background'] = (1, 1, 1) # White.
+    colors['table_even_background'] = (0.9, 0.9, 0.9) # Light gray.
+    colors['table_grid_color'] = (0, 0, 0)
+    # TODO: grab adapter and give it a chance to modify the colors.
+    return colors
+
+
 def rebStyleSeet():
     """Return realestatebroker stylesheet."""
     stylesheet = {}
+    colors = rebColors()
     fonts = {'LuxiSans': 'luxisr.ttf',
              'LuxiSansOblique': 'luxisri.ttf',
              'LuxiSansBold': 'luxisb.ttf',
@@ -46,7 +61,7 @@ def rebStyleSeet():
     # Big: large text on the front page and for the address at the end.
     big = ParagraphStyle('big')
     big.fontSize = 24
-    big.spaceAfter = 24
+    big.spaceAfter = 30
     big.fontName = bold_font
     stylesheet['big'] = big
     # Footer: small text at the bottom of every page.
@@ -73,19 +88,23 @@ def rebStyleSeet():
     heading1.spaceAfter = 16
     heading1.fontName = bold_font
     stylesheet['heading1'] = heading1
-    # Table_header: table header text. White as the header is dark gray.
+    # Table_header: table header text.
     table_header = ParagraphStyle('table_header')
     table_header.fontSize = 14
-    table_header.spaceAfter = 0
+    table_header.spaceAfter = 14
     table_header.fontName = bold_font
-    table_header.textColor = (1, 1, 1)
+    table_header.textColor = colors['table_heading_textcolor']
     stylesheet['table_header'] = table_header
     # Table_text: table header text. White as the header is dark gray.
     table_text = ParagraphStyle('table_text')
     table_text.fontSize = 12
-    table_text.spaceAfter = 0
+    table_text.spaceAfter = 12
     table_text.fontName = normal_font
     stylesheet['table_text'] = table_text
+
+    # TODO: grab adapter if available and give it a change to modify these
+    # settings.
+
     return stylesheet
 
 def writeDocument(stream, structure):
