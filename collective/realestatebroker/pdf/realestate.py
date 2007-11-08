@@ -75,6 +75,7 @@ def realestateToPDF(context, request):
         structure.append(PageBreak())
 
     # Characteristics
+    structure.append(Paragraph(_(u'Characteristics'), style['heading1']))
     data = []
     index = 0
     heading_rows = []
@@ -105,7 +106,6 @@ def realestateToPDF(context, request):
                 even_rows.append(index)
             index += 1
     table = Table(data=data)
-    #TODOxxxxxxxxxxxxxx
     table_style = TableStyle([])
     for row in heading_rows:
         table_style.add('BACKGROUND', (0, row), (1, row),
@@ -118,7 +118,6 @@ def realestateToPDF(context, request):
                     colors['table_grid_color'])
     table.setStyle(table_style)
     structure.append(table)
-    # TODO: even/odd, headings.
     structure.append(PageBreak())
 
     # Location + map
