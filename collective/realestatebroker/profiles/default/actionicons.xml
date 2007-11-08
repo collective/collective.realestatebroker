@@ -3,6 +3,5 @@
  <action-icon category="controlpanel"
               action_id="RealEstateBroker"
               title="Real Estate Broker settings" priority="0"
-              icon_expr="++resource++
-                         residential_icon.gif" />
+              icon_expr="++resource++residential_icon.gif" />
 </action-icons>
