@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-08 12:33+0000\n"
+"POT-Creation-Date: 2007-11-08 13:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:104
+#: ./pdf/realestate.py:124
 msgid "Address data"
 msgstr ""
 
@@ -68,6 +68,10 @@ msgstr ""
 
 #: ./content/schemata.py:214
 msgid "Building type"
+msgstr ""
+
+#: ./pdf/realestate.py:78
+msgid "Characteristics"
 msgstr ""
 
 #: ./content/schemata.py:31
@@ -120,7 +124,7 @@ msgstr ""
 msgid "Floor area"
 msgstr ""
 
-#: ./pdf/realestate.py:74
+#: ./pdf/realestate.py:70
 msgid "Floor plan for ${floorname}"
 msgstr ""
 
@@ -134,7 +138,7 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./pdf/realestate.py:49
+#: ./pdf/realestate.py:43
 msgid "For sale"
 msgstr ""
 
@@ -236,7 +240,7 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: ./pdf/realestate.py:47
+#: ./pdf/realestate.py:41
 msgid "Price:"
 msgstr ""
 

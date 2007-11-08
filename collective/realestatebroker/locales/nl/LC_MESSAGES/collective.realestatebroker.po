@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-06 07:46+0100\n"
+"PO-Revision-Date: 2007-11-08 14:08+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -38,9 +38,9 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:104
+#: ./pdf/realestate.py:124
 msgid "Address data"
-msgstr ""
+msgstr "Adresgegevens"
 
 #: ./browser/controlpanel.py:90
 msgid "Airco"
@@ -49,7 +49,7 @@ msgstr "Airconditioning"
 #. Default: "Album"
 #: ./profiles/default/actions.xml
 msgid "Album"
-msgstr ""
+msgstr "Fotoalbum"
 
 #: ./browser/controlpanel.py:60
 msgid "Balcony"
@@ -62,6 +62,10 @@ msgstr "Hoofdtekst"
 #: ./content/schemata.py:214
 msgid "Building type"
 msgstr "Gebouwtype"
+
+#: ./pdf/realestate.py:78
+msgid "Characteristics"
+msgstr "Kenmerken"
 
 #: ./content/schemata.py:31
 msgid "City"
@@ -113,7 +117,7 @@ msgstr "Vul de prijs in zonder punten of komma's"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:74
+#: ./pdf/realestate.py:70
 msgid "Floor plan for ${floorname}"
 msgstr "Plattegrond voor ${floorname}"
 
@@ -127,7 +131,7 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./pdf/realestate.py:49
+#: ./pdf/realestate.py:43
 msgid "For sale"
 msgstr "Te koop"
 
@@ -229,7 +233,7 @@ msgstr "Selecteer een geldig prijsbereik."
 msgid "Price"
 msgstr "Prijs"
 
-#: ./pdf/realestate.py:47
+#: ./pdf/realestate.py:41
 msgid "Price:"
 msgstr "Prijs:"
 
