@@ -28,15 +28,6 @@ def realestateToPDF(context, request):
                          mapping=mapping,
                          context=request).encode('utf-8')
 
-    title = ('<para spaceBefore="20" spaceAfter="40">%s</para>'
-             % context.Title().encode('utf-8'))
-#     description = ('<para spaceBefore="15">%s</para>'
-#                    % context.description.encode('utf-8'))
-#     ingr = [ingr.encode('utf-8') for ingr in context.ingredients]
-#     tools = [tool.encode('utf-8') for tool in context.tools]
-#     time_to_cook = _(u'${time_to_cook} mins',
-#                      mapping={'time_to_cook': context.time_to_cook})
-
     # create the document structure
     style = rebStyleSeet()
     colors = rebColors()
@@ -52,17 +43,19 @@ def realestateToPDF(context, request):
     structure.append(Paragraph(_(u'For sale'), style['huge']))
     structure.append(Spacer(1, 2 * units.cm)) # Somehow the image overlaps...
     structure += insert_image(first_image, full_width=True)
-    structure.append(Paragraph(title, style['big']))
-    structure.append(Paragraph(context.getCity().encode('utf-8'),
-                               style['big']))
+    structure.append(Paragraph(context.Title(), style['big']))
+    structure.append(Paragraph(context.getCity(), style['big']))
     structure.append(Paragraph(price, style['big']))
     structure.append(PageBreak())
 
-    # Second page: desc, main text, plus photos
-    description = context.Description().encode('utf-8')
+    # Second page: desc, main text.
+    description = context.Description()
     structure.append(Paragraph(description, style['description']))
-    text = context.getText() #.encode('utf-8')
+    text = context.getText()
     structure.append(Paragraph(text, style['normal']))
+    structure.append(PageBreak())
+
+    # Photos, sorted by page.
     photo_floors = album_view.photos_for_pdf()
     for floor in photo_floors:
         structure.append(Paragraph(floor['floorname'], style['heading1']))

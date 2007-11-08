@@ -55,50 +55,57 @@ def rebStyleSeet():
     # Huge is for the huge "for sale" text on the default frontpage.
     huge = ParagraphStyle('huge')
     huge.fontSize = 48
-    huge.spaceAfter = 10
+    huge.leading = 50
+    huge.spaceAfter = 0
     huge.fontName = bold_font
     stylesheet['huge'] = huge
     # Big: large text on the front page and for the address at the end.
     big = ParagraphStyle('big')
     big.fontSize = 24
-    big.spaceAfter = 30
+    big.leading = 26
+    big.spaceAfter = 10
     big.fontName = bold_font
     stylesheet['big'] = big
     # Footer: small text at the bottom of every page.
     footer = ParagraphStyle('footer')
     footer.fontSize = 10
-    footer.spaceAfter = 2
+    footer.spaceAfter = 0
     footer.fontName = normal_font
     stylesheet['footer'] = footer
     # Normal: normal text
     normal = ParagraphStyle('normal')
     normal.fontSize = 12
+    normal.leading = 14
     normal.spaceAfter = 12
     normal.fontName = normal_font
     stylesheet['normal'] = normal
     # Description: description text, you might want to have this bold or so.
     description = ParagraphStyle('description')
     description.fontSize = 16
-    description.spaceAfter = 20
+    description.leading = 18
+    description.spaceAfter = 16
     description.fontName = bold_font
     stylesheet['description'] = description
     # Heading1: heading1 text
     heading1 = ParagraphStyle('heading1')
     heading1.fontSize = 16
+    heading1.leading = 18
     heading1.spaceAfter = 16
     heading1.fontName = bold_font
     stylesheet['heading1'] = heading1
     # Table_header: table header text.
     table_header = ParagraphStyle('table_header')
     table_header.fontSize = 14
-    table_header.spaceAfter = 14
+    table_header.leading = 16
+    table_header.spaceAfter = 0
     table_header.fontName = bold_font
     table_header.textColor = colors['table_heading_textcolor']
     stylesheet['table_header'] = table_header
     # Table_text: table header text. White as the header is dark gray.
     table_text = ParagraphStyle('table_text')
     table_text.fontSize = 12
-    table_text.spaceAfter = 12
+    table_text.leading = 14
+    table_text.spaceAfter = 0
     table_text.fontName = normal_font
     stylesheet['table_text'] = table_text
 
