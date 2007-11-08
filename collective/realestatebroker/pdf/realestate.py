@@ -40,7 +40,13 @@ def realestateToPDF(context, request):
     first_image = album_view.image_brains()[0].getObject() # TODO: no images
     price = ' '.join([_(u'Price:'),
                       str(context.getPrice())])
-    structure.append(Paragraph(_(u'For sale'), style['huge']))
+    try:
+        # Only available right now on commercial
+        rent_buy = context.getRent_buy()
+    except:
+        # Real estate brokers often only sell houses, they don't rent them.
+        rent_buy = _(u'For sale')
+    structure.append(Paragraph(rent_buy, style['huge']))
     structure.append(Spacer(1, 2 * units.cm)) # Somehow the image overlaps...
     structure += insert_image(first_image, full_width=True)
     structure.append(Paragraph(context.Title(), style['big']))
