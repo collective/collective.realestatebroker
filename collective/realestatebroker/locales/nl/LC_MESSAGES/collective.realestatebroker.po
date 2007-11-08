@@ -42,7 +42,7 @@ msgstr "Adres"
 msgid "Address data"
 msgstr "Adresgegevens"
 
-#: ./browser/controlpanel.py:86
+#: ./browser/controlpanel.py:92
 msgid "Airco"
 msgstr "Airconditioning"
 
@@ -51,7 +51,7 @@ msgstr "Airconditioning"
 msgid "Album"
 msgstr "Fotoalbum"
 
-#: ./browser/controlpanel.py:56
+#: ./browser/controlpanel.py:62
 msgid "Balcony"
 msgstr "Balkon"
 
@@ -75,11 +75,11 @@ msgstr "Steden"
 msgid "City"
 msgstr "Stad"
 
-#: ./browser/controlpanel.py:352
+#: ./browser/controlpanel.py:371
 msgid "Commercial"
 msgstr "Bedrijfspanden"
 
-#: ./browser/controlpanel.py:113
+#: ./browser/controlpanel.py:119
 msgid "Commercial Type"
 msgstr "Type bedrijfspand"
 
@@ -117,7 +117,7 @@ msgstr "Geeef een ruime omschrijving voor dit object."
 msgid "Enter the options to choose from."
 msgstr "Geef de opties op waaruit te kiezen valt."
 
-#: ./browser/controlpanel.py:119
+#: ./browser/controlpanel.py:125
 msgid "Facilities"
 msgstr "Faciliteiten"
 
@@ -151,15 +151,15 @@ msgstr "Mapweergave voor woningen."
 msgid "For sale"
 msgstr "Te koop"
 
-#: ./browser/controlpanel.py:74
+#: ./browser/controlpanel.py:80
 msgid "Garage"
 msgstr "Garage"
 
-#: ./browser/controlpanel.py:62
+#: ./browser/controlpanel.py:68
 msgid "Garden"
 msgstr "Tuin"
 
-#: ./browser/controlpanel.py:344
+#: ./browser/controlpanel.py:363
 msgid "General"
 msgstr "Algemeen"
 
@@ -171,7 +171,7 @@ msgstr "Grondoppervlak"
 msgid "Heating"
 msgstr "Verwarming"
 
-#: ./content/schemata.py:149
+#: ./browser/controlpanel.py:50
 msgid "House type"
 msgstr "Huistype"
 
@@ -187,11 +187,11 @@ msgstr "Isolatie"
 msgid "Kind of building"
 msgstr "Soort gebouw"
 
-#: ./browser/controlpanel.py:80
+#: ./browser/controlpanel.py:86
 msgid "Kind of garage"
 msgstr "Soort garage"
 
-#: ./browser/controlpanel.py:68
+#: ./browser/controlpanel.py:74
 msgid "Kind of garden"
 msgstr "Soort tuin"
 
@@ -216,7 +216,7 @@ msgstr "Maximum prijs in zoekformulier"
 msgid "Minimum search price"
 msgstr "Minimum prijs in zoekformulier"
 
-#: ./browser/controlpanel.py:50
+#: ./browser/controlpanel.py:56
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
@@ -229,7 +229,7 @@ msgstr "Objectgegevens"
 msgid "PDF"
 msgstr "PDF"
 
-#: ./browser/controlpanel.py:125
+#: ./browser/controlpanel.py:131
 msgid "Parking"
 msgstr "Parkeergelegenheid"
 
@@ -265,7 +265,7 @@ msgstr "Prijs:"
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
-#: ./browser/controlpanel.py:360
+#: ./browser/controlpanel.py:379
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
@@ -273,7 +273,7 @@ msgstr "Real Estate Broker instellingen"
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
-#: ./browser/controlpanel.py:107
+#: ./browser/controlpanel.py:113
 msgid "Rent/Buy"
 msgstr "Huur/Koop"
 
@@ -282,7 +282,7 @@ msgstr "Huur/Koop"
 msgid "Reset"
 msgstr "Wis zoektermen"
 
-#: ./browser/controlpanel.py:348
+#: ./browser/controlpanel.py:367
 msgid "Residential"
 msgstr "Woonhuizen"
 
@@ -296,7 +296,7 @@ msgstr "Woningen"
 msgid "Search"
 msgstr "Zoek"
 
-#: ./browser/controlpanel.py:356
+#: ./browser/controlpanel.py:375
 msgid "Searching"
 msgstr "Zoekformulier"
 
@@ -308,15 +308,15 @@ msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voege
 msgid "Select the currency that should be prepended before prices."
 msgstr "Selecteer het valutasymbool dat voor bedragen wordt geplaatst."
 
-#: ./browser/controlpanel.py:361
+#: ./browser/controlpanel.py:380
 msgid "Specify the different default values and value lists that are used througout Real Estate Broker"
 msgstr "Beheer de verschillende standaard waardes en waardelijsten die in Real Estate Broker worden gebruikt."
 
-#: ./browser/controlpanel.py:92
+#: ./browser/controlpanel.py:98
 msgid "Storage"
 msgstr "Opslag"
 
-#: ./browser/controlpanel.py:101
+#: ./browser/controlpanel.py:107
 msgid "Tax"
 msgstr "Belasting"
 

@@ -17,7 +17,7 @@ def HouseTypeVocabularyFactory(context):
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
-    house_type_props = props.getProperty('house_type')
+    house_type_props = props.getProperty('residential_house_type')
     return SimpleVocabulary.fromValues(house_type_props)
 
 def CommercialTypeVocabularyFactory(context):

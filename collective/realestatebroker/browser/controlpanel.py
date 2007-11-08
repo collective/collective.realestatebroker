@@ -46,6 +46,12 @@ class IREBSearchFormSchema(Interface):
     )
 
 class IREBResidentialSchema(Interface):
+    residential_house_type = schema.List (
+        title = _('House type'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )    
     residential_rooms = schema.List (
         title = _('Number of rooms'),
         description = _('Enter the options to choose from.'),
@@ -169,6 +175,19 @@ class REBControlPanelAdapter(SchemaAdapterBase):
 
 
     # Residential Fieldset Setters/Getters
+
+
+    def get_residential_house_type(self):
+        value = getattr(self.context, 'residential_house_type', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_residential_house_type(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('residential_house_type', value)
+
+    residential_house_type = property(get_residential_house_type, set_residential_house_type)
+    
     def get_residential_rooms(self):
         value = getattr(self.context, 'residential_rooms', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))

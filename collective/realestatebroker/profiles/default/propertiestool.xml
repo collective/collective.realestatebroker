@@ -109,7 +109,7 @@
    <element value="Kosten koper (k.k.)"/>
    <element value="Vrij op naam (v.o.n.)"/>
   </property>
-  <property name="house_type" type="lines" purge="False">
+  <property name="residential_house_type" type="lines" purge="False">
    <element value="Apartment"/>
    <element value="Villa"/>
    <element value="Mansion"/>
