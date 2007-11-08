@@ -110,6 +110,9 @@ class AlbumView(BrowserView):
             obj = brain.getObject()
             floor = IFloorInfo(obj).floor
             used_floors.append(floor)
+            if not floor in floors:
+                # List of floors changed, we still have an old one.
+                floors[floor] = []
             floors[floor].append(obj)
         # Filter out unused floors
         unused = [name for name in names
