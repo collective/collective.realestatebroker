@@ -38,11 +38,11 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:124
+#: ./pdf/realestate.py:137
 msgid "Address data"
 msgstr "Adresgegevens"
 
-#: ./browser/controlpanel.py:90
+#: ./browser/controlpanel.py:86
 msgid "Airco"
 msgstr "Airconditioning"
 
@@ -51,7 +51,7 @@ msgstr "Airconditioning"
 msgid "Album"
 msgstr "Fotoalbum"
 
-#: ./browser/controlpanel.py:60
+#: ./browser/controlpanel.py:56
 msgid "Balcony"
 msgstr "Balkon"
 
@@ -63,13 +63,25 @@ msgstr "Hoofdtekst"
 msgid "Building type"
 msgstr "Gebouwtype"
 
-#: ./pdf/realestate.py:78
+#: ./pdf/realestate.py:90
 msgid "Characteristics"
 msgstr "Kenmerken"
+
+#: ./browser/controlpanel.py:22
+msgid "Cities"
+msgstr "Steden"
 
 #: ./content/schemata.py:31
 msgid "City"
 msgstr "Stad"
+
+#: ./browser/controlpanel.py:352
+msgid "Commercial"
+msgstr "Bedrijfspanden"
+
+#: ./browser/controlpanel.py:113
+msgid "Commercial Type"
+msgstr "Type bedrijfspand"
 
 #. Default: "Commercial real estate"
 #: ./profiles/default/types/Commercial.xml
@@ -79,6 +91,10 @@ msgstr "Bedrijfspand"
 #: ./content/schemata.py:56
 msgid "Construction year"
 msgstr "Bouwjaar"
+
+#: ./browser/controlpanel.py:28
+msgid "Currency"
+msgstr "Valuta"
 
 #: ./interfaces.py:12
 msgid "Description"
@@ -97,11 +113,11 @@ msgstr "Geef een korte omschrijving voor de oplevering"
 msgid "Enter the main description for this object."
 msgstr "Geeef een ruime omschrijving voor dit object."
 
-#: ./browser/controlpanel.py:61
+#: ./browser/controlpanel.py:23
 msgid "Enter the options to choose from."
 msgstr "Geef de opties op waaruit te kiezen valt."
 
-#: ./content/schemata.py:222
+#: ./browser/controlpanel.py:119
 msgid "Facilities"
 msgstr "Faciliteiten"
 
@@ -117,7 +133,7 @@ msgstr "Vul de prijs in zonder punten of komma's"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:70
+#: ./pdf/realestate.py:82
 msgid "Floor plan for ${floorname}"
 msgstr "Plattegrond voor ${floorname}"
 
@@ -131,19 +147,19 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./pdf/realestate.py:43
+#: ./pdf/realestate.py:54
 msgid "For sale"
 msgstr "Te koop"
 
-#: ./browser/controlpanel.py:78
+#: ./browser/controlpanel.py:74
 msgid "Garage"
 msgstr "Garage"
 
-#: ./browser/controlpanel.py:66
+#: ./browser/controlpanel.py:62
 msgid "Garden"
 msgstr "Tuin"
 
-#: ./browser/controlpanel.py:249
+#: ./browser/controlpanel.py:344
 msgid "General"
 msgstr "Algemeen"
 
@@ -171,11 +187,11 @@ msgstr "Isolatie"
 msgid "Kind of building"
 msgstr "Soort gebouw"
 
-#: ./browser/controlpanel.py:84
+#: ./browser/controlpanel.py:80
 msgid "Kind of garage"
 msgstr "Soort garage"
 
-#: ./browser/controlpanel.py:72
+#: ./browser/controlpanel.py:68
 msgid "Kind of garden"
 msgstr "Soort tuin"
 
@@ -192,11 +208,19 @@ msgstr "Locatie"
 msgid "Map"
 msgstr "Kaart"
 
-#: ./content/schemata.py:185
+#: ./browser/controlpanel.py:42
+msgid "Maximum search price"
+msgstr "Maximum prijs in zoekformulier"
+
+#: ./browser/controlpanel.py:36
+msgid "Minimum search price"
+msgstr "Minimum prijs in zoekformulier"
+
+#: ./browser/controlpanel.py:50
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
-#: ./pdf/realestate.py:83
+#: ./pdf/realestate.py:95
 msgid "Object data"
 msgstr "Objectgegevens"
 
@@ -205,7 +229,7 @@ msgstr "Objectgegevens"
 msgid "PDF"
 msgstr "PDF"
 
-#: ./interfaces.py:92
+#: ./browser/controlpanel.py:125
 msgid "Parking"
 msgstr "Parkeergelegenheid"
 
@@ -233,7 +257,7 @@ msgstr "Selecteer een geldig prijsbereik."
 msgid "Price"
 msgstr "Prijs"
 
-#: ./pdf/realestate.py:41
+#: ./pdf/realestate.py:47
 msgid "Price:"
 msgstr "Prijs:"
 
@@ -241,7 +265,7 @@ msgstr "Prijs:"
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
-#: ./browser/controlpanel.py:261
+#: ./browser/controlpanel.py:360
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
@@ -249,14 +273,18 @@ msgstr "Real Estate Broker instellingen"
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
+#: ./browser/controlpanel.py:107
+msgid "Rent/Buy"
+msgstr "Huur/Koop"
+
 #. Default: "Reset"
 #: ./browser/templates/commercial_listing.pt:111
 msgid "Reset"
 msgstr "Wis zoektermen"
 
-#: ./browser/controlpanel.py:253
-msgid "Residential form"
-msgstr "Huizen"
+#: ./browser/controlpanel.py:348
+msgid "Residential"
+msgstr "Woonhuizen"
 
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
@@ -268,17 +296,29 @@ msgstr "Woningen"
 msgid "Search"
 msgstr "Zoek"
 
-#: ./browser/controlpanel.py:257
-msgid "Search form"
+#: ./browser/controlpanel.py:356
+msgid "Searching"
 msgstr "Zoekformulier"
 
 #: ./content/schemata.py:223
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
-#: ./browser/controlpanel.py:96
+#: ./browser/controlpanel.py:29
+msgid "Select the currency that should be prepended before prices."
+msgstr "Selecteer het valutasymbool dat voor bedragen wordt geplaatst."
+
+#: ./browser/controlpanel.py:361
+msgid "Specify the different default values and value lists that are used througout Real Estate Broker"
+msgstr "Beheer de verschillende standaard waardes en waardelijsten die in Real Estate Broker worden gebruikt."
+
+#: ./browser/controlpanel.py:92
 msgid "Storage"
 msgstr "Opslag"
+
+#: ./browser/controlpanel.py:101
+msgid "Tax"
+msgstr "Belasting"
 
 #: ./interfaces.py:11
 msgid "Title"
@@ -382,26 +422,6 @@ msgstr ""
 msgid "heating"
 msgstr "Verwarming"
 
-#. Default: "Real Estate objects can only be in these cities."
-#: ./browser/controlpanel.py:24
-msgid "help_cities"
-msgstr ""
-
-#. Default: "Specify the default currency to be used for prices."
-#: ./browser/controlpanel.py:32
-msgid "help_default_currency"
-msgstr ""
-
-#. Default: "Specify the values to list as minimum prices in theprice range of the search form."
-#: ./browser/controlpanel.py:51
-msgid "help_max_price"
-msgstr ""
-
-#. Default: "Specify the values to list as minimum prices in theprice range of the search form."
-#: ./browser/controlpanel.py:42
-msgid "help_min_price"
-msgstr ""
-
 #. Default: "Which city to list property?"
 #: ./browser/templates/commercial_listing.pt:39
 msgid "help_search_city"
@@ -422,16 +442,6 @@ msgstr "Soort garage"
 #: ./content/schemata.py:176
 msgid "kindOfStorage"
 msgstr "Soort berging"
-
-#. Default: "Cities where Real Estate can be added"
-#: ./browser/controlpanel.py:22
-msgid "label_cities"
-msgstr ""
-
-#. Default: "Default currency."
-#: ./browser/controlpanel.py:30
-msgid "label_default_currency"
-msgstr "Munteenheid"
 
 #. Default: "Default"
 #: ./browser/templates/album_management.pt:87
