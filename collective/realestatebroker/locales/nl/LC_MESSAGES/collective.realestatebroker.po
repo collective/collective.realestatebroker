@@ -14,19 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/album.py:209
+#: ./browser/album.py:211
 msgid "${image} is no longer marked as floorplan."
 msgstr "${image} is niet langer gemarkeerd als plattegrond"
 
-#: ./browser/album.py:199
+#: ./browser/album.py:201
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/album.py:206
+#: ./browser/album.py:208
 msgid "${image} is now marked as floor plan."
 msgstr "${image} is gemarkeerd als plattegrond."
 
-#: ./browser/album.py:218
+#: ./browser/album.py:220
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -38,14 +38,22 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:97
+#: ./pdf/realestate.py:104
 msgid "Address data"
 msgstr ""
+
+#: ./browser/controlpanel.py:90
+msgid "Airco"
+msgstr "Airconditioning"
 
 #. Default: "Album"
 #: ./profiles/default/actions.xml
 msgid "Album"
 msgstr ""
+
+#: ./browser/controlpanel.py:60
+msgid "Balcony"
+msgstr "Balkon"
 
 #: ./content/schemata.py:40
 msgid "Body text"
@@ -75,7 +83,7 @@ msgstr "Omschrijving"
 #. Default: "Details"
 #: ./profiles/default/actions.xml
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: ./content/schemata.py:123
 msgid "Enter a brief description for the acceptance."
@@ -84,6 +92,10 @@ msgstr "Geef een korte omschrijving voor de oplevering"
 #: ./content/schemata.py:41
 msgid "Enter the main description for this object."
 msgstr "Geeef een ruime omschrijving voor dit object."
+
+#: ./browser/controlpanel.py:61
+msgid "Enter the options to choose from."
+msgstr "Geef de opties op waaruit te kiezen valt."
 
 #: ./content/schemata.py:222
 msgid "Facilities"
@@ -101,9 +113,9 @@ msgstr "Vul de prijs in zonder punten of komma's"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:67
+#: ./pdf/realestate.py:74
 msgid "Floor plan for ${floorname}"
-msgstr ""
+msgstr "Plattegrond voor ${floorname}"
 
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
@@ -115,21 +127,21 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./pdf/realestate.py:43
+#: ./pdf/realestate.py:49
 msgid "For sale"
-msgstr ""
+msgstr "Te koop"
 
-#: ./content/schemata.py:156
+#: ./browser/controlpanel.py:78
 msgid "Garage"
 msgstr "Garage"
 
-#: ./content/schemata.py:193
+#: ./browser/controlpanel.py:66
 msgid "Garden"
 msgstr "Tuin"
 
-#: ./browser/controlpanel.py:124
+#: ./browser/controlpanel.py:249
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: ./content/schemata.py:71
 msgid "Ground area"
@@ -155,11 +167,11 @@ msgstr "Isolatie"
 msgid "Kind of building"
 msgstr "Soort gebouw"
 
-#: ./interfaces.py:60
+#: ./browser/controlpanel.py:84
 msgid "Kind of garage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:200
+#: ./browser/controlpanel.py:72
 msgid "Kind of garden"
 msgstr "Soort tuin"
 
@@ -174,20 +186,20 @@ msgstr "Locatie"
 #. Default: "Map"
 #: ./profiles/default/actions.xml
 msgid "Map"
-msgstr ""
+msgstr "Kaart"
 
 #: ./content/schemata.py:185
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
-#: ./pdf/realestate.py:76
+#: ./pdf/realestate.py:83
 msgid "Object data"
-msgstr ""
+msgstr "Objectgegevens"
 
 #. Default: "PDF"
 #: ./profiles/default/actions.xml
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: ./interfaces.py:92
 msgid "Parking"
@@ -207,9 +219,9 @@ msgstr "Foto album"
 #. Default: "Plans"
 #: ./profiles/default/actions.xml
 msgid "Plans"
-msgstr ""
+msgstr "Plattegronden"
 
-#: ./browser/base.py:75
+#: ./browser/base.py:78
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
@@ -217,15 +229,15 @@ msgstr "Selecteer een geldig prijsbereik."
 msgid "Price"
 msgstr "Prijs"
 
-#: ./pdf/realestate.py:41
+#: ./pdf/realestate.py:47
 msgid "Price:"
-msgstr ""
+msgstr "Prijs:"
 
 #: ./content/schemata.py:248
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
-#: ./browser/controlpanel.py:134
+#: ./browser/controlpanel.py:261
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
@@ -238,6 +250,10 @@ msgstr "Huren of kopen mogelijk"
 msgid "Reset"
 msgstr "Wis zoektermen"
 
+#: ./browser/controlpanel.py:253
+msgid "Residential form"
+msgstr "Huizen"
+
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
 msgid "Residential real estate"
@@ -248,15 +264,15 @@ msgstr "Woningen"
 msgid "Search"
 msgstr "Zoek"
 
-#: ./browser/controlpanel.py:128
+#: ./browser/controlpanel.py:257
 msgid "Search form"
-msgstr ""
+msgstr "Zoekformulier"
 
 #: ./content/schemata.py:223
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
-#: ./content/schemata.py:169
+#: ./browser/controlpanel.py:96
 msgid "Storage"
 msgstr "Opslag"
 
@@ -313,11 +329,11 @@ msgstr "tot"
 msgid "city"
 msgstr "Stad"
 
-#: ./browser/base.py:18
+#: ./browser/base.py:21
 msgid "details"
 msgstr "Details"
 
-#: ./browser/base.py:19
+#: ./browser/base.py:22
 msgid "environment"
 msgstr "Omgeving/tuin"
 
@@ -329,7 +345,7 @@ msgstr ""
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
 "worden."
 
-#: ./browser/base.py:20
+#: ./browser/base.py:23
 msgid "financial"
 msgstr "Financieel"
 
@@ -457,7 +473,7 @@ msgstr "Zoektermen"
 msgid "location"
 msgstr "Locatie"
 
-#: ./browser/base.py:17
+#: ./browser/base.py:20
 msgid "measurements"
 msgstr "Maatvoering"
 

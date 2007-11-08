@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-07 16:42+0000\n"
+"POT-Creation-Date: 2007-11-08 12:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/album.py:209
+#: ./browser/album.py:211
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/album.py:199
+#: ./browser/album.py:201
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/album.py:206
+#: ./browser/album.py:208
 msgid "${image} is now marked as floor plan."
 msgstr ""
 
-#: ./browser/album.py:218
+#: ./browser/album.py:220
 msgid "${image} is now the default."
 msgstr ""
 
@@ -45,13 +45,21 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:97
+#: ./pdf/realestate.py:104
 msgid "Address data"
+msgstr ""
+
+#: ./browser/controlpanel.py:90
+msgid "Airco"
 msgstr ""
 
 #. Default: "Album"
 #: ./profiles/default/actions.xml
 msgid "Album"
+msgstr ""
+
+#: ./browser/controlpanel.py:60
+msgid "Balcony"
 msgstr ""
 
 #: ./content/schemata.py:40
@@ -92,6 +100,10 @@ msgstr ""
 msgid "Enter the main description for this object."
 msgstr ""
 
+#: ./browser/controlpanel.py:61
+msgid "Enter the options to choose from."
+msgstr ""
+
 #: ./content/schemata.py:222
 msgid "Facilities"
 msgstr ""
@@ -108,7 +120,7 @@ msgstr ""
 msgid "Floor area"
 msgstr ""
 
-#: ./pdf/realestate.py:67
+#: ./pdf/realestate.py:74
 msgid "Floor plan for ${floorname}"
 msgstr ""
 
@@ -122,19 +134,19 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./pdf/realestate.py:43
+#: ./pdf/realestate.py:49
 msgid "For sale"
 msgstr ""
 
-#: ./content/schemata.py:156
+#: ./browser/controlpanel.py:78
 msgid "Garage"
 msgstr ""
 
-#: ./content/schemata.py:193
+#: ./browser/controlpanel.py:66
 msgid "Garden"
 msgstr ""
 
-#: ./browser/controlpanel.py:124
+#: ./browser/controlpanel.py:249
 msgid "General"
 msgstr ""
 
@@ -162,11 +174,11 @@ msgstr ""
 msgid "Kind of building"
 msgstr ""
 
-#: ./interfaces.py:60
+#: ./browser/controlpanel.py:84
 msgid "Kind of garage"
 msgstr ""
 
-#: ./content/schemata.py:200
+#: ./browser/controlpanel.py:72
 msgid "Kind of garden"
 msgstr ""
 
@@ -187,7 +199,7 @@ msgstr ""
 msgid "Number of rooms"
 msgstr ""
 
-#: ./pdf/realestate.py:76
+#: ./pdf/realestate.py:83
 msgid "Object data"
 msgstr ""
 
@@ -216,7 +228,7 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
-#: ./browser/base.py:75
+#: ./browser/base.py:78
 msgid "Please select a valid price range."
 msgstr ""
 
@@ -224,7 +236,7 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: ./pdf/realestate.py:41
+#: ./pdf/realestate.py:47
 msgid "Price:"
 msgstr ""
 
@@ -232,7 +244,7 @@ msgstr ""
 msgid "Private car park"
 msgstr ""
 
-#: ./browser/controlpanel.py:134
+#: ./browser/controlpanel.py:261
 msgid "RealEstateBroker settings"
 msgstr ""
 
@@ -245,6 +257,10 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: ./browser/controlpanel.py:253
+msgid "Residential form"
+msgstr ""
+
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
 msgid "Residential real estate"
@@ -255,7 +271,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ./browser/controlpanel.py:128
+#: ./browser/controlpanel.py:257
 msgid "Search form"
 msgstr ""
 
@@ -263,7 +279,7 @@ msgstr ""
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
-#: ./content/schemata.py:169
+#: ./browser/controlpanel.py:96
 msgid "Storage"
 msgstr ""
 
@@ -320,11 +336,11 @@ msgstr ""
 msgid "city"
 msgstr ""
 
-#: ./browser/base.py:18
+#: ./browser/base.py:21
 msgid "details"
 msgstr ""
 
-#: ./browser/base.py:19
+#: ./browser/base.py:22
 msgid "environment"
 msgstr ""
 
@@ -333,7 +349,7 @@ msgstr ""
 msgid "explanation_photo_configuration"
 msgstr ""
 
-#: ./browser/base.py:20
+#: ./browser/base.py:23
 msgid "financial"
 msgstr ""
 
@@ -461,7 +477,7 @@ msgstr ""
 msgid "location"
 msgstr ""
 
-#: ./browser/base.py:17
+#: ./browser/base.py:20
 msgid "measurements"
 msgstr ""
 
