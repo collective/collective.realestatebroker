@@ -43,7 +43,11 @@ def realestateToPDF(context, request):
     structure = []
 
     # Front page
-    first_image = album_view.image_brains()[0].getObject() # TODO: no images
+    brains = album_view.image_brains()
+    if len(brains) == 0:
+        first_image = None
+    else:
+        first_image = brains[0].getObject()
     price = ' '.join([_(u'Price:'),
                       str(context.getPrice())])
     try:
@@ -53,8 +57,11 @@ def realestateToPDF(context, request):
         # Real estate brokers often only sell houses, they don't rent them.
         rent_buy = _(u'For sale')
     structure.append(Paragraph(rent_buy, style['huge']))
-    structure.append(Spacer(1, 0.5 * units.cm)) # The image overlaps a tiny bit
-    structure += insert_image(first_image, full_width=True)
+    structure.append(Spacer(1, 0.5 * units.cm)) # The image overlaps a bit.
+    if first_image:
+        structure += insert_image(first_image, full_width=True)
+    else:
+        structure.append(Spacer(1, 10 * units.cm))
     structure.append(Paragraph(context.Title(), style['big']))
     structure.append(Paragraph(context.getCity(), style['big']))
     structure.append(Paragraph(price, style['big']))

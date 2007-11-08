@@ -1,7 +1,7 @@
 from zope.interface import Interface
-from zope.schema import Bytes
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory('collective.realestatebroker')
+
 
 class IPDFPresentation(Interface):
     """Present objects as PDF in a file object
@@ -14,3 +14,11 @@ class IPDFPresentation(Interface):
 
     def seek(offset, whence=0):
         """Set the file's current position"""
+
+
+class IHeaderAndFooter(Interface):
+    """Utility (function) to modify header/footer."""
+
+
+class IStyleModifier(Interface):
+    """Utility (function) to modify styles."""

@@ -1,11 +1,14 @@
 from reportlab.lib.styles import ParagraphStyle
 import os.path
+from zope.component import queryUtility
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Image, SimpleDocTemplate, Spacer
 from reportlab.lib import styles
 from reportlab.lib import units
 from reportlab.lib import pagesizes
+from collective.realestatebroker.pdf.interfaces import IStyleModifier
+from collective.realestatebroker.pdf.interfaces import IHeaderAndFooter
 
 
 def getStyleSheet():
@@ -111,8 +114,20 @@ def rebStyleSeet():
 
     # TODO: grab adapter if available and give it a change to modify these
     # settings.
+    utility = queryUtility(IStyleModifier)
+    if not utility:
+        return stylesheet
+    else:
+        return utility(stylesheet)
 
-    return stylesheet
+
+def header_and_footer(canvas, doc):
+    utility = queryUtility(IHeaderAndFooter)
+    if not utility:
+        return
+    else:
+        utility(canvas, doc)
+
 
 def writeDocument(stream, structure):
     #logofile = os.path.join(os.path.dirname(__file__), 'worldcookery.png')
@@ -123,7 +138,10 @@ def writeDocument(stream, structure):
                             topMargin = 4 * units.cm,
                             bottomMargin = 3 * units.cm,
                             )
-    doc.build(list(structure))
+    doc.build(list(structure),
+              onFirstPage=header_and_footer,
+              onLaterPages=header_and_footer,
+              )
 
 
 def insert_image(image, full_width=False):
