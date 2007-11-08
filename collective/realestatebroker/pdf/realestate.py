@@ -53,7 +53,7 @@ def realestateToPDF(context, request):
         # Real estate brokers often only sell houses, they don't rent them.
         rent_buy = _(u'For sale')
     structure.append(Paragraph(rent_buy, style['huge']))
-    structure.append(Spacer(1, 2 * units.cm)) # Somehow the image overlaps...
+    structure.append(Spacer(1, 0.5 * units.cm)) # The image overlaps a tiny bit
     structure += insert_image(first_image, full_width=True)
     structure.append(Paragraph(context.Title(), style['big']))
     structure.append(Paragraph(context.getCity(), style['big']))
