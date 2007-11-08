@@ -33,7 +33,7 @@ def RoomsVocabularyFactory(context):
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
-    rooms_props = props.getProperty('rooms')
+    rooms_props = props.getProperty('residential_rooms')
     return SimpleVocabulary.fromValues(rooms_props)
     
 def KKVONVocabularyFactory(context):
@@ -50,11 +50,11 @@ def LocationVocabularyFactory(context):
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
-    location_props = props.getProperty('residential_location')
+    location_props = props.getProperty('location')
     return SimpleVocabulary.fromValues(location_props)
     
 def KindOfBuildingVocabularyFactory(context):
-    """ Location of property
+    """ Type of Building property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -62,7 +62,7 @@ def KindOfBuildingVocabularyFactory(context):
     return SimpleVocabulary.fromValues(kind_of_building_props)  
     
 def HeatingVocabularyFactory(context):
-    """ Location of property
+    """ Heating system installed property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -78,7 +78,7 @@ def InsulationVocabularyFactory(context):
     return SimpleVocabulary.fromValues(insulation_props)  
     
 def KindOfGardenVocabularyFactory(context):
-    """ Insulation system of property
+    """ Kind of garden property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -87,7 +87,7 @@ def KindOfGardenVocabularyFactory(context):
     
     
 def KindOfGarageVocabularyFactory(context):
-    """ Insulation system of property
+    """ Type of garage property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -95,7 +95,7 @@ def KindOfGarageVocabularyFactory(context):
     return SimpleVocabulary.fromValues(kind_of_garage_props)
 
 def VATVocabularyFactory(context):
-    """ Insulation system of property
+    """ VAT taxation property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -103,7 +103,7 @@ def VATVocabularyFactory(context):
     return SimpleVocabulary.fromValues(vat_props)
 
 def RentBuyVocabularyFactory(context):
-    """ Insulation system of property
+    """ To rent, buy or both property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -111,7 +111,7 @@ def RentBuyVocabularyFactory(context):
     return SimpleVocabulary.fromValues(rent_buy_props)
     
 def ParkingVocabularyFactory(context):
-    """ Insulation system of property
+    """ Parking property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
@@ -119,7 +119,7 @@ def ParkingVocabularyFactory(context):
     return SimpleVocabulary.fromValues(parking_props)
     
 def FacilitiesVocabularyFactory(context):
-    """ Insulation system of property
+    """ Available facilities property
     """
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties

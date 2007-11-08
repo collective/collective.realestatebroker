@@ -52,7 +52,7 @@
     <element value="Tokyo"/>
     <element value="Alberschwende"/>
   </property>
-  <property name="rooms" type="lines" purge="False">
+  <property name="residential_rooms" type="lines" purge="False">
    <element value="1"/>
    <element value="2"/>
    <element value="3"/>
@@ -145,10 +145,6 @@
   <property name="residential_storage" type="lines" purge="False">
    <element value="Yes"/>
    <element value="No"/>
-  </property>
-  <property name="residential_location" type="lines" purge="False">
-   <element value="Forest"/>
-   <element value="Shore"/>
   </property>
   <property name="heating" type="lines" purge="False">
    <element value="Fireplace"/>

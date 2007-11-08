@@ -19,88 +19,116 @@ _ = MessageFactory('collective.realestatebroker')
 
 class IREBGeneralSchema(Interface):
     cities = schema.List(
-        title = _('label_cities',
-                default = u'Cities where Real Estate can be added'),
-        description = _('help_cities',
-                      default = u"Real Estate objects can only be in these cities."),
+        title = _(u'Cities'),
+        description = _(u'Enter the options to choose from.'),    
         value_type = schema.TextLine(),
         required = True,
     )   
     currency = schema.TextLine(
-        title = _('label_default_currency',
-                default = u'Default currency.'),
-        description = _('help_default_currency',
-                default = u"Specify the default currency to be used for prices."),
+        title = _(u'Currency'),
+        description = _(u'Select the currency that should be prepended before prices.'),    
         default = u'EUR',
         required = True,
      )
         
 class IREBSearchFormSchema(Interface):
     min_price = schema.List(
-        title = _('label_min_price',
-                default = u'selectable minimum price'),
-        description = _('help_min_price',
-                default = u"Specify the values to list as minimum prices in the"
-                           "price range of the search form."),
+        title = _(u'Minimum search price'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
     max_price = schema.List(
-        title = _('label_max_price',
-                default = u'selectable minimum price'),
-        description = _('help_max_price',
-                default = u"Specify the values to list as minimum prices in the"
-                           "price range of the search form."),
+        title = _(u'Maximum search price'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
 
 class IREBResidentialSchema(Interface):
-    residential_balcony = schema.List (
-        title = _('Balcony'),
+    residential_rooms = schema.List (
+        title = _('Number of rooms'),
         description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )    
+    residential_balcony = schema.List (
+        title = _(u'Balcony'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
     residential_garden = schema.List (
-        title = _('Garden'),
-        description = _('Enter the options to choose from.'),
+        title = _(u'Garden'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     ) 
     residential_kindOfGarden = schema.List (
-        title = _('Kind of garden'),
-        description = _('Enter the options to choose from.'),
+        title = _(u'Kind of garden'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )  
     residential_garage = schema.List (
-        title = _('Garage'),
-        description = _('Enter the options to choose from.'),
+        title = _(u'Garage'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
     residential_kindOfGarage = schema.List (
-        title = _('Kind of garage'),
-        description = _('Enter the options to choose from.'),
+        title = _(u'Kind of garage'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
     residential_airco = schema.List (
-        title = _('Airco'),
-        description = _('Enter the options to choose from.'),
+        title = _(u'Airco'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
     residential_storage = schema.List (
-        title = _('Storage'),
-        description = _('Enter the options to choose from.'),
+        title = _(u'Storage'),
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
 
 
-class IRealEstateBrokerSchema(IREBGeneralSchema, IREBResidentialSchema, IREBSearchFormSchema):
+class IREBCommercialSchema(Interface):
+    commercial_vat = schema.List (
+        title = _('Tax'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    commercial_rent_buy = schema.List (
+        title = _('Rent/Buy'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    commercial_type = schema.List (
+        title = _('Commercial Type'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )    
+    commercial_facilities = schema.List (
+        title = _('Facilities'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )    
+    commercial_parking = schema.List (
+        title = _('Parking'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )    
+    
+class IRealEstateBrokerSchema(IREBGeneralSchema, IREBResidentialSchema, IREBCommercialSchema, IREBSearchFormSchema):
     """Combined schema for the adapter lookup.
     """
 
@@ -140,8 +168,18 @@ class REBControlPanelAdapter(SchemaAdapterBase):
     cities = property(get_cities, set_cities)
 
 
-    # Residentia Fieldset Setters/Getters
+    # Residential Fieldset Setters/Getters
+    def get_residential_rooms(self):
+        value = getattr(self.context, 'residential_rooms', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
 
+    def set_residential_rooms(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('residential_rooms', value)
+
+    residential_rooms = property(get_residential_rooms, set_residential_rooms)
+    
     def get_residential_balcony(self):
         value = getattr(self.context, 'residential_balcony', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))
@@ -219,6 +257,63 @@ class REBControlPanelAdapter(SchemaAdapterBase):
 
     residential_storage = property(get_residential_storage, set_residential_storage)
 
+    # Commercial Fieldset Setters/Getters
+
+    def get_commercial_vat(self):
+        value = getattr(self.context, 'commercial_vat', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_commercial_vat(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('commercial_vat', value)
+
+    commercial_vat = property(get_commercial_vat, set_commercial_vat)
+
+    def get_commercial_rent_buy(self):
+        value = getattr(self.context, 'commercial_rent_buy', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_commercial_rent_buy(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('commercial_rent_buy', value)
+
+    commercial_rent_buy = property(get_commercial_rent_buy, set_commercial_rent_buy)
+
+    def get_commercial_type(self):
+        value = getattr(self.context, 'commercial_type', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_commercial_type(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('commercial_type', value)
+
+    commercial_type = property(get_commercial_type, set_commercial_type)
+
+    def get_commercial_facilities(self):
+        value = getattr(self.context, 'commercial_facilities', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_commercial_facilities(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('commercial_facilities', value)
+
+    commercial_facilities = property(get_commercial_facilities, set_commercial_facilities)
+
+    def get_commercial_parking(self):
+        value = getattr(self.context, 'commercial_parking', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_commercial_parking(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('commercial_parking', value)
+
+    commercial_parking = property(get_commercial_parking, set_commercial_parking)
+
 
     # SearchForm Fieldset Setters/Getters
 
@@ -250,14 +345,19 @@ generalset.label = _(u'General')
 
 residentialset = FormFieldsets(IREBResidentialSchema)
 residentialset.id = 'residentialform'
-residentialset.label = _(u'Residential form')
+residentialset.label = _(u'Residential')
+
+commercialset = FormFieldsets(IREBCommercialSchema)
+commercialset.id = 'commercialform'
+commercialset.label = _(u'Commercial')
 
 searchset = FormFieldsets(IREBSearchFormSchema)
 searchset.id = 'searchform'
-searchset.label = _(u'Search form')
+searchset.label = _(u'Searching')
 
 class RealEstateBrokerControlPanel(ControlPanelForm):
-    form_fields = FormFieldsets(generalset,residentialset,searchset)
-    label = _("RealEstateBroker settings")
-    description = None
-    form_name = _("RealEstateBroker settings")
+    form_fields = FormFieldsets(generalset,residentialset,commercialset,searchset)
+    label = _(u"RealEstateBroker settings")
+    description = _(u"Specify the different default values and value lists that "
+                     "are used througout Real Estate Broker")
+    form_name = _(u"RealEstateBroker settings")
