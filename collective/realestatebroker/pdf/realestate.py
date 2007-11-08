@@ -27,6 +27,12 @@ def realestateToPDF(context, request):
         return translate(msg, domain='collective.realestatebroker',
                          mapping=mapping,
                          context=request).encode('utf-8')
+    def trans(msg):
+        """Just translate, used for field names."""
+        return translate(msg,
+                         domain='collective.realestatebroker',
+                         context=request)
+
 
     # create the document structure
     style = rebStyleSeet()
@@ -42,7 +48,7 @@ def realestateToPDF(context, request):
                       str(context.getPrice())])
     try:
         # Only available right now on commercial
-        rent_buy = context.getRent_buy()
+        rent_buy = trans(context.getRent_buy())
     except:
         # Real estate brokers often only sell houses, they don't rent them.
         rent_buy = _(u'For sale')
@@ -90,7 +96,7 @@ def realestateToPDF(context, request):
     heading_rows.append(index)
     index += 1
     for local_index, field in enumerate(realestate_view.base_fields()):
-        label = field.widget.Label(context)
+        label = trans(field.widget.Label(context))
         value = unicode(field.getAccessor(context)())
         data.append([Paragraph(label, style['table_text']),
                      Paragraph(value, style['table_text'])])
@@ -100,11 +106,12 @@ def realestateToPDF(context, request):
     for section in realestate_view.characteristic_fields():
         if not section['title']:
             continue
-        data.append([Paragraph(section['title'], style['table_header']), ''])
+        data.append([Paragraph(trans(section['title']),
+                               style['table_header']), ''])
         heading_rows.append(index)
         index += 1
         for local_index, field in enumerate(section['fields']):
-            label = field.widget.Label(context)
+            label = trans(field.widget.Label(context))
             value = unicode(field.getAccessor(context)())
             data.append([Paragraph(label, style['table_text']),
                          Paragraph(value, style['table_text'])])
