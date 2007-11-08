@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-08 15:08+0000\n"
+"POT-Creation-Date: 2007-11-08 15:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Address data"
 msgstr ""
 
-#: ./browser/controlpanel.py:92
+#: ./browser/controlpanel.py:116
 msgid "Airco"
 msgstr ""
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Album"
 msgstr ""
 
-#: ./browser/controlpanel.py:62
+#: ./browser/controlpanel.py:86
 msgid "Balcony"
 msgstr ""
 
@@ -82,11 +82,11 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-#: ./browser/controlpanel.py:371
+#: ./browser/controlpanel.py:438
 msgid "Commercial"
 msgstr ""
 
-#: ./browser/controlpanel.py:119
+#: ./browser/controlpanel.py:143
 msgid "Commercial Type"
 msgstr ""
 
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Enter the options to choose from."
 msgstr ""
 
-#: ./browser/controlpanel.py:125
+#: ./browser/controlpanel.py:149
 msgid "Facilities"
 msgstr ""
 
@@ -134,6 +134,10 @@ msgstr ""
 
 #: ./content/schemata.py:115
 msgid "Fill in the price without dots or commas."
+msgstr ""
+
+#: ./browser/controlpanel.py:52
+msgid "Floor Names"
 msgstr ""
 
 #: ./content/schemata.py:77
@@ -158,15 +162,15 @@ msgstr ""
 msgid "For sale"
 msgstr ""
 
-#: ./browser/controlpanel.py:80
+#: ./browser/controlpanel.py:104
 msgid "Garage"
 msgstr ""
 
-#: ./browser/controlpanel.py:68
+#: ./browser/controlpanel.py:92
 msgid "Garden"
 msgstr ""
 
-#: ./browser/controlpanel.py:363
+#: ./browser/controlpanel.py:430
 msgid "General"
 msgstr ""
 
@@ -174,11 +178,11 @@ msgstr ""
 msgid "Ground area"
 msgstr ""
 
-#: ./interfaces.py:31
+#: ./browser/controlpanel.py:40
 msgid "Heating"
 msgstr ""
 
-#: ./browser/controlpanel.py:50
+#: ./browser/controlpanel.py:74
 msgid "House type"
 msgstr ""
 
@@ -186,7 +190,7 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: ./interfaces.py:33
+#: ./browser/controlpanel.py:46
 msgid "Insulation"
 msgstr ""
 
@@ -194,11 +198,11 @@ msgstr ""
 msgid "Kind of building"
 msgstr ""
 
-#: ./browser/controlpanel.py:86
+#: ./browser/controlpanel.py:110
 msgid "Kind of garage"
 msgstr ""
 
-#: ./browser/controlpanel.py:74
+#: ./browser/controlpanel.py:98
 msgid "Kind of garden"
 msgstr ""
 
@@ -206,7 +210,7 @@ msgstr ""
 msgid "Kind of storage"
 msgstr ""
 
-#: ./interfaces.py:38
+#: ./browser/controlpanel.py:34
 msgid "Location"
 msgstr ""
 
@@ -215,15 +219,15 @@ msgstr ""
 msgid "Map"
 msgstr ""
 
-#: ./browser/controlpanel.py:42
+#: ./browser/controlpanel.py:66
 msgid "Maximum search price"
 msgstr ""
 
-#: ./browser/controlpanel.py:36
+#: ./browser/controlpanel.py:60
 msgid "Minimum search price"
 msgstr ""
 
-#: ./browser/controlpanel.py:56
+#: ./browser/controlpanel.py:80
 msgid "Number of rooms"
 msgstr ""
 
@@ -236,7 +240,7 @@ msgstr ""
 msgid "PDF"
 msgstr ""
 
-#: ./browser/controlpanel.py:131
+#: ./browser/controlpanel.py:155
 msgid "Parking"
 msgstr ""
 
@@ -272,7 +276,7 @@ msgstr ""
 msgid "Private car park"
 msgstr ""
 
-#: ./browser/controlpanel.py:379
+#: ./browser/controlpanel.py:446
 msgid "RealEstateBroker settings"
 msgstr ""
 
@@ -280,7 +284,7 @@ msgstr ""
 msgid "Rent or buy"
 msgstr ""
 
-#: ./browser/controlpanel.py:113
+#: ./browser/controlpanel.py:137
 msgid "Rent/Buy"
 msgstr ""
 
@@ -289,7 +293,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: ./browser/controlpanel.py:367
+#: ./browser/controlpanel.py:434
 msgid "Residential"
 msgstr ""
 
@@ -303,7 +307,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ./browser/controlpanel.py:375
+#: ./browser/controlpanel.py:442
 msgid "Searching"
 msgstr ""
 
@@ -315,15 +319,15 @@ msgstr ""
 msgid "Select the currency that should be prepended before prices."
 msgstr ""
 
-#: ./browser/controlpanel.py:380
+#: ./browser/controlpanel.py:447
 msgid "Specify the different default values and value lists that are used througout Real Estate Broker"
 msgstr ""
 
-#: ./browser/controlpanel.py:98
+#: ./browser/controlpanel.py:122
 msgid "Storage"
 msgstr ""
 
-#: ./browser/controlpanel.py:107
+#: ./browser/controlpanel.py:131
 msgid "Tax"
 msgstr ""
 

@@ -23,14 +23,38 @@ class IREBGeneralSchema(Interface):
         description = _(u'Enter the options to choose from.'),    
         value_type = schema.TextLine(),
         required = True,
-    )   
+    )
     currency = schema.TextLine(
         title = _(u'Currency'),
         description = _(u'Select the currency that should be prepended before prices.'),    
         default = u'EUR',
         required = True,
-     )
-        
+    )
+    location = schema.List (
+        title = _('Location'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    heating = schema.List (
+        title = _('Heating'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    insulation = schema.List (
+        title = _('Insulation'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    floor_names = schema.List (
+        title = _('Floor Names'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    
 class IREBSearchFormSchema(Interface):
     min_price = schema.List(
         title = _(u'Minimum search price'),
@@ -173,7 +197,50 @@ class REBControlPanelAdapter(SchemaAdapterBase):
 
     cities = property(get_cities, set_cities)
 
+    def get_location(self):
+        value = getattr(self.context, 'location', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
 
+    def set_location(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('location', value)
+
+    location = property(get_location, set_location)
+    
+    def get_heating(self):
+        value = getattr(self.context, 'heating', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_heating(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('heating', value)
+
+    heating = property(get_heating, set_heating)
+    
+    def get_insulation(self):
+        value = getattr(self.context, 'insulation', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_insulation(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('insulation', value)
+
+    insulation = property(get_insulation, set_insulation)
+    
+    def get_floor_names(self):
+        value = getattr(self.context, 'floor_names', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_floor_names(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('floor_names', value)
+
+    floor_names = property(get_floor_names, set_floor_names)
+    
     # Residential Fieldset Setters/Getters
 
 

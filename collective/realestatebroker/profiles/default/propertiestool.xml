@@ -62,6 +62,11 @@
    <element value="7"/>
    <element value="8"/>
   </property>
+    <property name="location" type="lines" purge="False">
+   <element value="Forest"/>
+   <element value="Shore"/>
+   <element value="Lake"/>
+  </property>
   <property name="min_price" type="lines" purge="False">
    <element value="50000"/>
    <element value="75000"/>
