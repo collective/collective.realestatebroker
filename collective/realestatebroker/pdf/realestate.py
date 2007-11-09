@@ -7,6 +7,7 @@ from reportlab.platypus import Spacer
 from reportlab.platypus import Table
 from reportlab.platypus import TableStyle
 from zope.component import adapter
+from zope.component import queryUtility
 from zope.i18n import translate
 from zope.interface import implementer
 from zope.publisher.interfaces import IRequest
@@ -17,32 +18,24 @@ from collective.realestatebroker.pdf.common import rebColors
 from collective.realestatebroker.pdf.common import rebStyleSeet
 from collective.realestatebroker.pdf.common import writeDocument
 from collective.realestatebroker.pdf.interfaces import IPDFPresentation
+from collective.realestatebroker.pdf.interfaces import IFrontPage
 
 
-@adapter(IRealEstateContent, IRequest)
-@implementer(IPDFPresentation)
-def realestateToPDF(context, request):
-    # this translates AND encodes to utf-8
+def frontpage(context, request, style):
+
     def _(msg, mapping=None):
         return translate(msg, domain='collective.realestatebroker',
                          mapping=mapping,
                          context=request).encode('utf-8')
+
     def trans(msg):
         """Just translate, used for field names."""
         return translate(msg,
                          domain='collective.realestatebroker',
                          context=request)
 
-
-    # create the document structure
-    style = rebStyleSeet()
-    colors = rebColors()
-    album_view = context.restrictedTraverse('@@realestate_album')
-    realestate_view = context.restrictedTraverse('@@realestate')
-    floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
     structure = []
-
-    # Front page
+    album_view = context.restrictedTraverse('@@realestate_album')
     brains = album_view.image_brains()
     if len(brains) == 0:
         first_image = None
@@ -67,6 +60,38 @@ def realestateToPDF(context, request):
     structure.append(Paragraph(context.getCity(), style['big']))
     structure.append(Paragraph(price, style['big']))
     structure.append(PageBreak())
+    return structure
+
+
+@adapter(IRealEstateContent, IRequest)
+@implementer(IPDFPresentation)
+def realestateToPDF(context, request):
+    # this translates AND encodes to utf-8
+    def _(msg, mapping=None):
+        return translate(msg, domain='collective.realestatebroker',
+                         mapping=mapping,
+                         context=request).encode('utf-8')
+
+    def trans(msg):
+        """Just translate, used for field names."""
+        return translate(msg,
+                         domain='collective.realestatebroker',
+                         context=request)
+
+    # create the document structure
+    style = rebStyleSeet()
+    colors = rebColors()
+    album_view = context.restrictedTraverse('@@realestate_album')
+    realestate_view = context.restrictedTraverse('@@realestate')
+    floorplan_view = context.restrictedTraverse('@@realestate_floorplans')
+    structure = []
+
+    # Front page
+    utility = queryUtility(IFrontPage)
+    if not utility:
+        structure += frontpage(context, request, style)
+    else:
+        structure += utility(context, request, style)
 
     # Second page: desc, main text.
     description = context.Description()

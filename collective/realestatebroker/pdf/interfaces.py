@@ -17,8 +17,12 @@ class IPDFPresentation(Interface):
 
 
 class IHeaderAndFooter(Interface):
-    """Utility (function) to modify header/footer."""
+    """Utility (function) to add header/footer."""
 
 
 class IStyleModifier(Interface):
     """Utility (function) to modify styles."""
+
+
+class IFrontPage(Interface):
+    """Utility (function) to replace frontpage."""

@@ -1,14 +1,18 @@
-from reportlab.lib.styles import ParagraphStyle
 import os.path
-from zope.component import queryUtility
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import Image, SimpleDocTemplate, Spacer
+
+from reportlab.lib import pagesizes
 from reportlab.lib import styles
 from reportlab.lib import units
-from reportlab.lib import pagesizes
-from collective.realestatebroker.pdf.interfaces import IStyleModifier
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import Image
+from reportlab.platypus import SimpleDocTemplate
+from reportlab.platypus import Spacer
+from zope.component import queryUtility
+
 from collective.realestatebroker.pdf.interfaces import IHeaderAndFooter
+from collective.realestatebroker.pdf.interfaces import IStyleModifier
 
 
 def getStyleSheet():
@@ -112,8 +116,6 @@ def rebStyleSeet():
     table_text.fontName = normal_font
     stylesheet['table_text'] = table_text
 
-    # TODO: grab adapter if available and give it a change to modify these
-    # settings.
     utility = queryUtility(IStyleModifier)
     if not utility:
         return stylesheet
