@@ -19,6 +19,7 @@ from collective.realestatebroker.pdf.common import rebStyleSeet
 from collective.realestatebroker.pdf.common import writeDocument
 from collective.realestatebroker.pdf.common import hack_kupu_text
 from collective.realestatebroker.pdf.interfaces import IPDFPresentation
+from collective.realestatebroker.pdf.interfaces import IBackMatter
 from collective.realestatebroker.pdf.interfaces import IFrontPage
 
 
@@ -186,6 +187,9 @@ def realestateToPDF(context, request):
     structure.append(PageBreak())
 
     # Back matter
+    utility = queryUtility(IBackMatter)
+    if utility:
+        structure += utility(context, request, style)
 
     # Write it out. (Originally this code used a tempfile, but I guess that
     # that's something that's not handled right in this zope version.

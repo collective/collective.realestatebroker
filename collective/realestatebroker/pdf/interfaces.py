@@ -26,3 +26,7 @@ class IStyleModifier(Interface):
 
 class IFrontPage(Interface):
     """Utility (function) to replace frontpage."""
+
+
+class IBackMatter(Interface):
+    """Utility (function) to insert back matter."""
