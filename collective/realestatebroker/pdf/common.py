@@ -181,3 +181,15 @@ def insert_image(image, full_width=False):
     return [Spacer(1, 0.1 * units.cm),
             Image(url, width=img_width, height=img_height),
             ]
+
+
+def hack_kupu_text(text):
+    """Hack up kupu's output to get something reasonable out of reportlab.
+
+    Replace <p> with <br> and replace <strong> with <b>.
+
+    """
+    new = text.replace('<p>', '<br/>')
+    new = new.replace('<strong>', '<b>')
+    new = new.replace('</strong>', '</b>')
+    return new

@@ -17,6 +17,7 @@ from collective.realestatebroker.pdf.common import insert_image
 from collective.realestatebroker.pdf.common import rebColors
 from collective.realestatebroker.pdf.common import rebStyleSeet
 from collective.realestatebroker.pdf.common import writeDocument
+from collective.realestatebroker.pdf.common import hack_kupu_text
 from collective.realestatebroker.pdf.interfaces import IPDFPresentation
 from collective.realestatebroker.pdf.interfaces import IFrontPage
 
@@ -67,6 +68,7 @@ def frontpage(context, request, style):
 @implementer(IPDFPresentation)
 def realestateToPDF(context, request):
     # this translates AND encodes to utf-8
+
     def _(msg, mapping=None):
         return translate(msg, domain='collective.realestatebroker',
                          mapping=mapping,
@@ -96,7 +98,7 @@ def realestateToPDF(context, request):
     # Second page: desc, main text.
     description = context.Description()
     structure.append(Paragraph(description, style['description']))
-    text = context.getText()
+    text = hack_kupu_text(context.getText())
     structure.append(Paragraph(text, style['normal']))
     structure.append(PageBreak())
 
