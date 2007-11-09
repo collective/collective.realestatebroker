@@ -9,6 +9,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Image
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Spacer
+from reportlab.lib.fonts import addMapping
 from zope.component import queryUtility
 
 from collective.realestatebroker.pdf.interfaces import IHeaderAndFooter
@@ -23,6 +24,10 @@ def getStyleSheet():
     for name, fn in fonts.items():
         filename = os.path.join(os.path.dirname(__file__), fn)
         pdfmetrics.registerFont(TTFont(name, filename))
+    addMapping('LuxiSans', 0, 0, 'LuxiSans') #normal
+    addMapping('LuxiSans', 0, 1, 'LuxiSansOblique') #italic
+    addMapping('LuxiSans', 1, 0, 'LuxiSansBold') #bold
+    addMapping('LuxiSans', 1, 1, 'LuxiSansBoldOblique') #italic and bold
 
     stylesheet = styles.getSampleStyleSheet()
     stylesheet['Normal'].fontName = 'LuxiSans'
