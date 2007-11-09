@@ -62,6 +62,7 @@ def realestateToPDF(context, request):
         structure += insert_image(first_image, full_width=True)
     else:
         structure.append(Spacer(1, 10 * units.cm))
+    structure.append(Spacer(1, 1 * units.cm))
     structure.append(Paragraph(context.Title(), style['big']))
     structure.append(Paragraph(context.getCity(), style['big']))
     structure.append(Paragraph(price, style['big']))

@@ -176,6 +176,6 @@ def insert_image(image, full_width=False):
         # Portrait.
         img_height = max_width * width / height
         img_width = img_height * width / height
-    return [Spacer(1, 0.2 * units.cm),
+    return [Spacer(1, 0.1 * units.cm),
             Image(url, width=img_width, height=img_height),
-            Spacer(1, 0.2 * units.cm)]
+            ]
