@@ -86,6 +86,14 @@ def rebStyleSeet():
     heading1.spaceAfter = 16
     heading1.fontName = bold_font
     stylesheet['heading1'] = heading1
+    # Heading2: heading2 text
+    heading2 = ParagraphStyle('heading2')
+    heading2.fontSize = 12
+    heading2.leading = 14
+    heading2.spaceAfter = 0
+    heading2.spaceBefore = 14
+    heading2.fontName = bold_font
+    stylesheet['heading2'] = heading2
     # Table_header: table header text.
     table_header = ParagraphStyle('table_header')
     table_header.fontSize = 14
