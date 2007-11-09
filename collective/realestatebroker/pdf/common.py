@@ -16,29 +16,6 @@ from collective.realestatebroker.pdf.interfaces import IHeaderAndFooter
 from collective.realestatebroker.pdf.interfaces import IStyleModifier
 
 
-def getStyleSheet():
-    fonts = {'LuxiSans': 'luxisr.ttf',
-             'LuxiSansOblique': 'luxisri.ttf',
-             'LuxiSansBold': 'luxisb.ttf',
-             'LuxiSansBoldOblique': 'luxisbi.ttf'}
-    for name, fn in fonts.items():
-        filename = os.path.join(os.path.dirname(__file__), fn)
-        pdfmetrics.registerFont(TTFont(name, filename))
-    addMapping('LuxiSans', 0, 0, 'LuxiSans') #normal
-    addMapping('LuxiSans', 0, 1, 'LuxiSansOblique') #italic
-    addMapping('LuxiSans', 1, 0, 'LuxiSansBold') #bold
-    addMapping('LuxiSans', 1, 1, 'LuxiSansBoldOblique') #italic and bold
-
-    stylesheet = styles.getSampleStyleSheet()
-    stylesheet['Normal'].fontName = 'LuxiSans'
-    stylesheet['title'].fontName = 'LuxiSansBold'
-    stylesheet['h1'].fontName = 'LuxiSansBold'
-    stylesheet['h2'].fontName = 'LuxiSansBold'
-    stylesheet['h3'].fontName = 'LuxiSansBoldOblique'
-    stylesheet['title'].alignment = 0
-    return stylesheet
-
-
 def rebColors():
     """Return standard colors, but for the stylesheet and for the pdf."""
     colors = {}
@@ -62,6 +39,10 @@ def rebStyleSeet():
     for name, fn in fonts.items():
         filename = os.path.join(os.path.dirname(__file__), fn)
         pdfmetrics.registerFont(TTFont(name, filename))
+    addMapping('LuxiSans', 0, 0, 'LuxiSans') #normal
+    addMapping('LuxiSans', 0, 1, 'LuxiSansOblique') #italic
+    addMapping('LuxiSans', 1, 0, 'LuxiSansBold') #bold
+    addMapping('LuxiSans', 1, 1, 'LuxiSansBoldOblique') #italic and bold
     normal_font = 'LuxiSans'
     bold_font = 'LuxiSansBold'
     # Huge is for the huge "for sale" text on the default frontpage.
