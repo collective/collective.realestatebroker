@@ -102,7 +102,7 @@ def rebStyleSeet():
     table_header.fontName = bold_font
     table_header.textColor = colors['table_heading_textcolor']
     stylesheet['table_header'] = table_header
-    # Table_text: table header text. White as the header is dark gray.
+    # Table_text: table text.
     table_text = ParagraphStyle('table_text')
     table_text.fontSize = 12
     table_text.leading = 14
