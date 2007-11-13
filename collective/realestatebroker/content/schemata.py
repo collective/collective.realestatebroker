@@ -85,7 +85,7 @@ GeneralSchema =  atapi.Schema((
         vocabulary_factory="collective.realestatebroker.heating_list",
         widget = atapi.MultiSelectionWidget(label = _(u'heating'),
                  description = _(u'You can choose more than one option.'),
-                 format='checkbox'),
+                 format='checkbox',
                  )
         ),
     atapi.StringField('insulation',
@@ -94,7 +94,8 @@ GeneralSchema =  atapi.Schema((
         vocabulary_factory="collective.realestatebroker.insulation_list",
         widget = atapi.MultiSelectionWidget(label = _(u'insulation'),
                  description = _(u'You can choose more than one option.'),
-                 format='checkbox'),
+                 format='checkbox',
+                 )
         ),
     # Environment/garden (common)
     # ---------------------------
@@ -200,8 +201,8 @@ ResidentialSpecificSchema =  atapi.Schema((
         vocabulary_factory='collective.realestatebroker.kind_of_garden_list',
         widget = atapi.MultiSelectionWidget(label = _(u'Kind of garden'),
                  description = _(u'You can choose more than one option.'),
-                 format='checkbox'),
-                 )
+                 format='checkbox',
+                 ),
         ),
     ))
 
