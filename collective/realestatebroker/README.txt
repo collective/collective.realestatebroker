@@ -45,17 +45,23 @@ products").
     >>> qi.installProduct('collective.realestatebroker')
 
 
-Testing for product dependencies
---------------------------------
+Add-on products
+---------------
 
 RealEstateBroker makes use of the Maps product to integrate Google Maps. Check
 that this product is also available in the site after RealEstateBroker has
-been installed. The same for PloneFlashUpload.
+been installed.
 
     >>> self.portal.portal_quickinstaller.isProductInstalled('Maps')
     True
+
+PloneFlashUpload is used for easy mass-uploading of images.
+
     >>> self.portal.portal_quickinstaller.isProductInstalled('PloneFlashUpload')
     True
+
+Behind the scenes, the reportlab library is used to export PDF.
+
 
 Commercial and residential real estate content types
 ----------------------------------------------------
