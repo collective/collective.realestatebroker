@@ -30,7 +30,7 @@ msgstr "${image} is gemarkeerd als plattegrond."
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
-#: ./content/schemata.py:122
+#: ./content/schemata.py:124
 msgid "Acceptance"
 msgstr "Oplevering"
 
@@ -38,7 +38,7 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:137
+#: ./pdf/realestate.py:181
 msgid "Address data"
 msgstr "Adresgegevens"
 
@@ -59,11 +59,11 @@ msgstr "Balkon"
 msgid "Body text"
 msgstr "Hoofdtekst"
 
-#: ./content/schemata.py:214
+#: ./content/schemata.py:217
 msgid "Building type"
 msgstr "Gebouwtype"
 
-#: ./pdf/realestate.py:90
+#: ./pdf/realestate.py:128
 msgid "Characteristics"
 msgstr "Kenmerken"
 
@@ -105,7 +105,7 @@ msgstr "Omschrijving"
 msgid "Details"
 msgstr "Details"
 
-#: ./content/schemata.py:123
+#: ./content/schemata.py:125
 msgid "Enter a brief description for the acceptance."
 msgstr "Geef een korte omschrijving voor de oplevering"
 
@@ -125,7 +125,7 @@ msgstr "Faciliteiten"
 msgid "Fill in the address of this object"
 msgstr "Geef de straatnaam op van dit object."
 
-#: ./content/schemata.py:115
+#: ./content/schemata.py:117
 msgid "Fill in the price without dots or commas."
 msgstr "Vul de prijs in zonder punten of komma's"
 
@@ -137,7 +137,7 @@ msgstr "Namen voor verdiepingen"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:82
+#: ./pdf/realestate.py:120
 msgid "Floor plan for ${floorname}"
 msgstr "Plattegrond voor ${floorname}"
 
@@ -151,7 +151,7 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./pdf/realestate.py:54
+#: ./pdf/realestate.py:55
 msgid "For sale"
 msgstr "Te koop"
 
@@ -224,7 +224,7 @@ msgstr "Minimum prijs in zoekformulier"
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
-#: ./pdf/realestate.py:95
+#: ./pdf/realestate.py:133
 msgid "Object data"
 msgstr "Objectgegevens"
 
@@ -257,15 +257,15 @@ msgstr "Plattegronden"
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
-#: ./content/schemata.py:114
+#: ./content/schemata.py:116
 msgid "Price"
 msgstr "Prijs"
 
-#: ./pdf/realestate.py:47
+#: ./pdf/realestate.py:48
 msgid "Price:"
 msgstr "Prijs:"
 
-#: ./content/schemata.py:248
+#: ./content/schemata.py:251
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
@@ -273,7 +273,7 @@ msgstr "Privé parkeerterrein"
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
-#: ./content/schemata.py:239
+#: ./content/schemata.py:242
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
@@ -304,7 +304,7 @@ msgstr "Zoek"
 msgid "Searching"
 msgstr "Zoekformulier"
 
-#: ./content/schemata.py:223
+#: ./content/schemata.py:226
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
@@ -333,7 +333,7 @@ msgstr "Title"
 msgid "Upload Files"
 msgstr "Bestanden uploaden"
 
-#: ./content/schemata.py:232
+#: ./content/schemata.py:235
 msgid "VAT"
 msgstr "B.T.W."
 
@@ -435,15 +435,15 @@ msgstr "Beperk de weergave op plaats"
 msgid "help_search_price"
 msgstr ""
 
-#: ./content/schemata.py:94
+#: ./content/schemata.py:95
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:163
+#: ./content/schemata.py:165
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:176
+#: ./content/schemata.py:178
 msgid "kindOfStorage"
 msgstr "Soort berging"
 
@@ -487,7 +487,7 @@ msgstr "(Verplicht)"
 msgid "legend_search_terms"
 msgstr "Zoektermen"
 
-#: ./content/schemata.py:105
+#: ./content/schemata.py:107
 msgid "location"
 msgstr "Locatie"
 

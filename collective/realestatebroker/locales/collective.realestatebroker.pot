@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-08 15:23+0000\n"
+"POT-Creation-Date: 2007-11-13 18:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "${image} is now the default."
 msgstr ""
 
-#: ./content/schemata.py:122
+#: ./content/schemata.py:124
 msgid "Acceptance"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:137
+#: ./pdf/realestate.py:181
 msgid "Address data"
 msgstr ""
 
@@ -66,11 +66,11 @@ msgstr ""
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:214
+#: ./content/schemata.py:217
 msgid "Building type"
 msgstr ""
 
-#: ./pdf/realestate.py:90
+#: ./pdf/realestate.py:128
 msgid "Characteristics"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: ./content/schemata.py:123
+#: ./content/schemata.py:125
 msgid "Enter a brief description for the acceptance."
 msgstr ""
 
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Fill in the address of this object"
 msgstr ""
 
-#: ./content/schemata.py:115
+#: ./content/schemata.py:117
 msgid "Fill in the price without dots or commas."
 msgstr ""
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Floor area"
 msgstr ""
 
-#: ./pdf/realestate.py:82
+#: ./pdf/realestate.py:120
 msgid "Floor plan for ${floorname}"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./pdf/realestate.py:54
+#: ./pdf/realestate.py:55
 msgid "For sale"
 msgstr ""
 
@@ -231,7 +231,7 @@ msgstr ""
 msgid "Number of rooms"
 msgstr ""
 
-#: ./pdf/realestate.py:95
+#: ./pdf/realestate.py:133
 msgid "Object data"
 msgstr ""
 
@@ -264,15 +264,15 @@ msgstr ""
 msgid "Please select a valid price range."
 msgstr ""
 
-#: ./content/schemata.py:114
+#: ./content/schemata.py:116
 msgid "Price"
 msgstr ""
 
-#: ./pdf/realestate.py:47
+#: ./pdf/realestate.py:48
 msgid "Price:"
 msgstr ""
 
-#: ./content/schemata.py:248
+#: ./content/schemata.py:251
 msgid "Private car park"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr ""
 msgid "RealEstateBroker settings"
 msgstr ""
 
-#: ./content/schemata.py:239
+#: ./content/schemata.py:242
 msgid "Rent or buy"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgstr ""
 msgid "Searching"
 msgstr ""
 
-#: ./content/schemata.py:223
+#: ./content/schemata.py:226
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:232
+#: ./content/schemata.py:235
 msgid "VAT"
 msgstr ""
 
@@ -439,15 +439,15 @@ msgstr ""
 msgid "help_search_price"
 msgstr ""
 
-#: ./content/schemata.py:94
+#: ./content/schemata.py:95
 msgid "insulation"
 msgstr ""
 
-#: ./content/schemata.py:163
+#: ./content/schemata.py:165
 msgid "kindOfGarage"
 msgstr ""
 
-#: ./content/schemata.py:176
+#: ./content/schemata.py:178
 msgid "kindOfStorage"
 msgstr ""
 
@@ -491,7 +491,7 @@ msgstr ""
 msgid "legend_search_terms"
 msgstr ""
 
-#: ./content/schemata.py:105
+#: ./content/schemata.py:107
 msgid "location"
 msgstr ""
 
