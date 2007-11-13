@@ -193,8 +193,12 @@ will perform a migration. The migration does the following:
 
 - Copy over all the fields if still present in the new content types.
 
-A unittest that tests out the whole migration mechanism can be found in
-`tests/migration-unittest.txt`.
+It is probably best to create a new site in 3.0 and to selectively move things
+over. You cannot do a direct 2.0 to 3.0 plone migration anyway. It works to
+make a `.zexp` export of the old houses and offices and to import them in a
+3.0 site, assuming you have the migration buildout installed: that buildout
+includes hacked-up versions of the old RealEstateBroker product, CMFPhoto and
+CMFPhotoAlbum that lets you load the old objects.
 
 
 Authors
