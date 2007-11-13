@@ -180,3 +180,10 @@ adapter). We'll again enable it manually here (it *is* a unit test):
     True
     >>> 'extra_field' in schema
     True
+
+
+Editor note
+-----------
+
+Note: this is the `content/contenttypes.txt` inside the realestatebroker
+product. So don't edit it directly on plone.org, but in svn.
