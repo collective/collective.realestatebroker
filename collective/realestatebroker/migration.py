@@ -62,15 +62,15 @@ class RebMigrator(CMFItemMigrator):
         'getIsolation': 'setInsulation',
         'getKindOfBuilding': 'setKindOfBuilding',
         'getKindOfGarden': 'setKindOfGarden',
-        #'getKk_von': 'setKk_von', TODO
-        'getLocation': 'setLocation',
+        #'getKk_von': 'setKk_von', # Handled separately
+        #'getLocation': 'setLocation', # Handled separately
         'getMainText': 'setText',
         'getParking': 'setParking',
         'getPrice': 'setPrice',
         'getRent_buy': 'setRent_buy',
         'getRooms': 'setRooms',
         'getStorage': 'setStorage',
-        #'getType': 'setType', # TODO: setHouse_type, setCommercial_type
+        #'getType': 'setType', # Handled separately
         'getVat': 'setVat',
         'getVolume': 'setVolume',
         'getZipCode': 'setZipCode',
@@ -331,8 +331,9 @@ class RebMigrator(CMFItemMigrator):
         """Migrate the kk_von field that existed in some versions.
 
         Dutch-specific one. Probably only of interest to Zest
-        sfotware. Included here as it is the only field in the old schema that
-        has been moved to a customer-specific schemaextender field.
+        software. Included here (in realestatebroker) as it is the only field
+        in the old schema that has been moved to a customer-specific
+        schemaextender field.
 
         """
         if not hasattr(self.old, 'getKk_von'):
@@ -366,6 +367,23 @@ class RebMigrator(CMFItemMigrator):
             logger.info("Set commercial_type on new object.")
         else:
             logger.info("No commercial_type field found on new object.")
+
+    def migrate_location(self):
+        """Migrate the location field from a selection to a string widget.
+
+        """
+        if not hasattr(self.old, 'getLocation'):
+            logger.info("No location field, continuing.")
+            return
+        values = self.old.getLocation() # A list/tuple.
+        value = ', '.join(values)
+        schema = self.new.Schema()
+        new_field = schema.getField('location')
+        if not new_field:
+            logger.info("No location field found on new object.")
+        else:
+            new_field.set(self.new, value)
+            logger.info("Set location (as a string) on new object.")
 
     def migrate_workflow(self):
         """We need to check for the status field of old content types. Since
@@ -438,16 +456,18 @@ class RebMigrator(CMFItemMigrator):
             current_review_state = wf_tool.getInfoFor(self.new, 'review_state')
             transition_chain = STATE_TRANSITION_MAP[oldStatus]
             if current_review_state != oldStatus:
-                logger.info("Migrating the workflow for %r." % self.new)
+                logger.info("Migrating the workflow for %r.", self.new)
                 for transition in transition_chain:
                     wf_tool.doActionFor(self.new, transition,
                                         wf_id='realestate_workflow')
                 if wf_tool.getInfoFor(self.new, 'review_state') == oldStatus:
                     # We succesfully migrated the status to a workflow state
-                    logger.info("Finished migrating workflow for %r." % self.new)
+                    logger.info("Finished migrating workflow for %r.",
+                                self.new)
                     return
                 else:
-                    logger.info("Failed to migrate workflow for %r." % self.new)
+                    logger.info("Failed to migrate workflow for %r.",
+                                self.new)
                     # something went wrong
 
 

@@ -1,4 +1,6 @@
 from StringIO import StringIO
+from types import ListType
+from types import TupleType
 
 from reportlab.lib import units
 from reportlab.platypus import PageBreak
@@ -133,7 +135,10 @@ def realestateToPDF(context, request):
     index += 1
     for local_index, field in enumerate(realestate_view.base_fields()):
         label = trans(field.widget.Label(context))
-        value = unicode(field.getAccessor(context)())
+        value = field.getAccessor(context)()
+        if isinstance(value, ListType) or isinstance(value, TupleType):
+            value = u', '.join(value)
+        value = unicode(value)
         data.append([Paragraph(label, style['table_text']),
                      Paragraph(value, style['table_text'])])
         if (local_index // 2.0 == local_index / 2.0):
@@ -148,7 +153,10 @@ def realestateToPDF(context, request):
         index += 1
         for local_index, field in enumerate(section['fields']):
             label = trans(field.widget.Label(context))
-            value = unicode(field.getAccessor(context)())
+            value = field.getAccessor(context)()
+            if isinstance(value, ListType) or isinstance(value, TupleType):
+                value = u', '.join(value)
+            value = unicode(value)
             data.append([Paragraph(label, style['table_text']),
                          Paragraph(value, style['table_text'])])
             if (local_index // 2.0 == local_index / 2.0):
