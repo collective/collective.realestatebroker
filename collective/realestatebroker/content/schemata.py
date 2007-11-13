@@ -83,8 +83,9 @@ GeneralSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"details",
         vocabulary_factory="collective.realestatebroker.heating_list",
-        widget = atapi.SelectionWidget(label = _(u'heating'),
+        widget = atapi.MultiSelectionWidget(label = _(u'heating'),
                  description = _(u'You can choose more than one option.'),
+                 format='checkbox'),
                  )
         ),
     atapi.StringField('insulation',
@@ -199,6 +200,7 @@ ResidentialSpecificSchema =  atapi.Schema((
         vocabulary_factory='collective.realestatebroker.kind_of_garden_list',
         widget = atapi.MultiSelectionWidget(label = _(u'Kind of garden'),
                  description = _(u'You can choose more than one option.'),
+                 format='checkbox'),
                  )
         ),
     ))
