@@ -182,6 +182,19 @@ adapter). We'll again enable it manually here (it *is* a unit test):
     True
 
 
+Influence on templates and pdf export
+-------------------------------------
+
+Unless you're doing real strange things, all templates and also the PDF export
+ought to work just fine with your additions. Most of the fields are rendered
+automatically by archetypes and this also works for everything you add with
+schemaextender.
+
+You can mark a field with `selfrendered=True`, in that case the field is not
+included in the automatic rendering. By default, this is "on" for the address
+and the main body text, for instance. So if you add a field that you want to
+render yourself, this is the way.
+
 Editor note
 -----------
 
