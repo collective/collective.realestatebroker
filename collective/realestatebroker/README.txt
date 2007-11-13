@@ -66,6 +66,9 @@ Behind the scenes, the reportlab library is used to export PDF.
 Commercial and residential real estate content types
 ----------------------------------------------------
 
+There are two content types, residential and commercial. They differ in a few
+fields.
+
     >>> self.portal.invokeFactory('Residential', id='home1')
     'home1'
     >>> self.portal.invokeFactory('Commercial', id='office1')
@@ -96,6 +99,10 @@ this state we can publish the content, which will bring it to the 'new' state.
     >>> wftool.getInfoFor(home1, 'review_state')
     'new'
 
+After two weeks, new items will become regular items so that new items can be
+displayed more prominently in the listing. Similarly, sold items will remain
+visible for two weeks (which is important for getting the "this realestate
+broker really sells quite some houses" impression).
 
 Portal Properties
 -----------------
@@ -169,6 +176,26 @@ contenttypes can be used by Maps:
     >>> view = home1.restrictedTraverse('@@maps_googlemaps_enabled_view')
     >>> view.enabled # We want to show maps.
     True
+
+Migration support for the old 1.0 version to 2.0
+------------------------------------------------
+
+If you installed using the migration buildout, a reinstall of realestatebroker
+will perform a migration. The migration does the following:
+
+- Replace old REHome/REBusiness objects with Residential/Commercial objects.
+
+- REHome/REBusiness have CMFPhotoAlbums with CMFPhotos in them, these photos
+  are moved directly into the (folderish) Residential/Commercial object as
+  regular Images.
+
+- Migrate old workflow states OR old status field to new workflow states.
+
+- Copy over all the fields if still present in the new content types.
+
+A unittest that tests out the whole migration mechanism can be found in
+`tests/migration-unittest.txt`.
+
 
 Authors
 -------
