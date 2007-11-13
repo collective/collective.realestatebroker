@@ -4,8 +4,8 @@ Real estate broker
 The real estate broker product turns plone into a real estate broker website.
 Show your commercial and residential real estate with the two real estate
 content types.  Allow visitors to search the database with the provided forms.
-Email updates for registered visitors.  Google map support.  Easy addition of
-images.
+Email updates for registered visitors.  Google map support.  Easy
+mass-addition of images.  PDF export.
 
 Verified documentation
 ----------------------
@@ -18,13 +18,23 @@ examples throughout this document.
 First a small bit of setup: adding an admin user and a registered visitor.
 
     >>> self.loginAsPortalOwner()
-    >>> self.portal.portal_membership.addMember('admin', 'secret', ['Manager'], [])
-    >>> self.portal.portal_membership.addMember('visitor', 'secret', ['Reader'], [])
+    >>> self.portal.portal_membership.addMember('admin', 'secret',
+    ...                                         ['Manager'], [])
+    >>> self.portal.portal_membership.addMember('visitor', 'secret',
+    ...                                         ['Reader'], [])
 
 Installing real estate broker
 -----------------------------
 
-TODO: Describe buildout.
+The handiest way to get up and running with plone 3.0 and realestatebroker is
+to use the buildout. The basic setup can be done with::
+
+ https://svn.plone.org/svn/collective/collective.realestatebroker/buildout/reb30/trunk
+
+If you have old content you can migrate that with another buildout that
+includes migration products::
+
+  https://svn.plone.org/svn/collective/collective.realestatebroker/buildout/reb30/branches/migration-from-20
 
 Inside plone, log in with an administrator account and install real estate
 broker through the quickinstaller (in the plone control panel: "add/remove
@@ -33,9 +43,6 @@ products").
     >>> self.login('admin')
     >>> qi = self.portal.portal_quickinstaller
     >>> qi.installProduct('collective.realestatebroker')
-
-(This returns not an empty string because we're using Extensions/Install.py
-which starts GS installation after installing the Maps product dependency.)
 
 
 Testing for product dependencies
@@ -102,7 +109,7 @@ Don't show Resdiential or Commecial objects in the navigation tree.
     >>> types_not_to_list = navtree_props.getProperty('metaTypesNotToList')
     >>> self.failUnless('Residential' in types_not_to_list)
     >>> self.failUnless('Commercial' in types_not_to_list)
-   
+
 
 Vocabularies
 ------------
@@ -130,16 +137,6 @@ propertysheet.
     >>> vocab = RoomsVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
     ['1', '2', '3', '4', '5', '6', '7', '8']
-
-For the k.k./v.o.n. field we make use of a vocabulary that reads it's values from a
-propertysheet.
-
-    >>> from collective.realestatebroker.content.vocabularies import KKVONVocabularyFactory
-    >>> vocab = KKVONVocabularyFactory(self.portal)
-    >>> [item.value for item in vocab]
-    ['Kosten koper (k.k.)', 'Vrij op naam (v.o.n.)']
-
-
 
 portal_catalog Indexes
 ----------------------
