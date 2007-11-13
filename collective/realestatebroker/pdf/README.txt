@@ -1,5 +1,5 @@
-PDF export
-==========
+PDF export customization
+========================
 
 PDF export first appeared in the 2.0 version, so there will be rough
 edges. Things that Zest software needed to customize for their initial
@@ -61,3 +61,9 @@ fonts you ought to be real careful of copyrights and licenses, btw.
 The Luxi TrueType fonts (luxis*.ttf) provided in this package are
 Copyright (c) 2001 by Bigelow & Holmes Inc.  See COPYRIGHT.BH for
 further information.
+
+Editor note
+-----------
+
+Note: this is the `pdf/README.txt` inside the realestatebroker product. So
+don't edit it directly on plone.org, but in svn.
