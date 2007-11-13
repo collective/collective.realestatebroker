@@ -169,3 +169,14 @@ contenttypes can be used by Maps:
     >>> view = home1.restrictedTraverse('@@maps_googlemaps_enabled_view')
     >>> view.enabled # We want to show maps.
     True
+
+Authors
+-------
+
+Original 1.0 version made by Ahmad Hadi and Jean-Paul Ladage.
+
+2.0 re-write done by "Reinout van Rees":http://vanrees.org/, "Jean-Paul
+Ladage":mailto:j.ladage@zestsoftware.nl, "Fred van
+Dijk":http://zestsoftware.nl/home/team/fvandijk and "Mirella van
+Teulingen":http://zestsoftware.nl/home/team/mirellavanteulingen, all of "Zest
+software":http://zestsoftware.nl/ .
