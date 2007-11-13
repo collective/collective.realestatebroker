@@ -75,6 +75,44 @@ fields.
     'office1'
 
 
+Migration support for the old 1.0 version to 2.0
+------------------------------------------------
+
+If you installed using the migration buildout, a reinstall of realestatebroker
+will perform a migration. The migration does the following:
+
+- Replace old REHome/REBusiness objects with Residential/Commercial objects.
+
+- REHome/REBusiness have CMFPhotoAlbums with CMFPhotos in them, these photos
+  are moved directly into the (folderish) Residential/Commercial object as
+  regular Images.
+
+- Migrate old workflow states OR old status field to new workflow states.
+
+- Copy over all the fields if still present in the new content types.
+
+It is probably best to create a new site in 3.0 and to selectively move things
+over. You cannot do a direct 2.0 to 3.0 plone migration anyway. It works to
+make a `.zexp` export of the old houses and offices and to import them in a
+3.0 site, assuming you have the migration buildout installed: that buildout
+includes hacked-up versions of the old RealEstateBroker product, CMFPhoto and
+CMFPhotoAlbum that lets you load the old objects.
+
+
+Customization
+-------------
+
+Almost surely, realestatebroker will need to be adapted to local
+circumstances. In the Netherlands, an airco is not common, but in the south of
+the USA it might be something you want to keep track of.
+
+archetypes.schemaextender is a great tool for cleanly adapting the schema. See
+realestatebroker's documentation_ section on plone.org for a how-to.
+
+Also, the PDF export will need work like adding a header/footer. And choosing
+a different font. Here also: see the plone.org documentation_.
+
+
 Real Estate Workflow
 --------------------
 
@@ -107,7 +145,8 @@ broker really sells quite some houses" impression).
 Portal Properties
 -----------------
 
-RealEstateBroker installs under portal_properties a file with default attributes
+RealEstateBroker installs under portal_properties a property sheet with
+default attributes.
 
     >>> pptool = self.portal.portal_properties
     >>> self.failUnless('realestatebroker_properties' in pptool.objectIds())
@@ -177,37 +216,16 @@ contenttypes can be used by Maps:
     >>> view.enabled # We want to show maps.
     True
 
-Migration support for the old 1.0 version to 2.0
-------------------------------------------------
-
-If you installed using the migration buildout, a reinstall of realestatebroker
-will perform a migration. The migration does the following:
-
-- Replace old REHome/REBusiness objects with Residential/Commercial objects.
-
-- REHome/REBusiness have CMFPhotoAlbums with CMFPhotos in them, these photos
-  are moved directly into the (folderish) Residential/Commercial object as
-  regular Images.
-
-- Migrate old workflow states OR old status field to new workflow states.
-
-- Copy over all the fields if still present in the new content types.
-
-It is probably best to create a new site in 3.0 and to selectively move things
-over. You cannot do a direct 2.0 to 3.0 plone migration anyway. It works to
-make a `.zexp` export of the old houses and offices and to import them in a
-3.0 site, assuming you have the migration buildout installed: that buildout
-includes hacked-up versions of the old RealEstateBroker product, CMFPhoto and
-CMFPhotoAlbum that lets you load the old objects.
-
-
 Authors
 -------
 
 Original 1.0 version made by Ahmad Hadi and Jean-Paul Ladage.
 
-2.0 re-write done by "Reinout van Rees":http://vanrees.org/, "Jean-Paul
-Ladage":mailto:j.ladage@zestsoftware.nl, "Fred van
-Dijk":http://zestsoftware.nl/home/team/fvandijk and "Mirella van
-Teulingen":http://zestsoftware.nl/home/team/mirellavanteulingen, all of "Zest
-software":http://zestsoftware.nl/ .
+2.0 re-write done by `Reinout van Rees <http://vanrees.org/>`_, `Jean-Paul
+Ladage <mailto:j.ladage@zestsoftware.nl>`_, `Fred van
+Dijk <http://zestsoftware.nl/home/team/fvandijk>`_ and `Mirella van
+Teulingen <http://zestsoftware.nl/home/team/mirellavanteulingen>`_, all of `Zest
+software <http://zestsoftware.nl/>`_ .
+
+
+.. _documentation: http://plone.org/products/realestatebroker/documentation/
