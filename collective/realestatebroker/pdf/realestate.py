@@ -13,6 +13,7 @@ from zope.component import queryUtility
 from zope.i18n import translate
 from zope.interface import implementer
 from zope.publisher.interfaces import IRequest
+from Products.CMFPlone.utils import safe_unicode, getSiteEncoding
 
 from collective.realestatebroker.interfaces import IRealEstateContent
 from collective.realestatebroker.pdf.common import insert_image
@@ -154,7 +155,9 @@ def realestateToPDF(context, request):
         for local_index, field in enumerate(section['fields']):
             label = trans(field.widget.Label(context))
             value = field.getAccessor(context)()
+            site_encoding = getSiteEncoding(context)
             if isinstance(value, ListType) or isinstance(value, TupleType):
+                value = [safe_unicode(item, site_encoding) for item in value]
                 value = u', '.join(value)
             value = unicode(value)
             data.append([Paragraph(label, style['table_text']),
