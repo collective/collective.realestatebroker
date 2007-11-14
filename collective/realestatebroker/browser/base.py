@@ -7,7 +7,6 @@ from zope.interface import implements
 from zope.app.pagetemplate import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from Products.ATContentTypes.interface.image import IATImage
 from plone.memoize.view import memoize
 from plone.app.content.batching import Batch
 from collective.realestatebroker import REBMessageFactory as _
@@ -15,6 +14,7 @@ from collective.realestatebroker.interfaces import IResidential, ICommercial
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 from interfaces import IUpdateWorkflowStatesView
+from Products.CMFPlone.utils import safe_unicode, getSiteEncoding
 
 
 SCHEMATA_I18N = {'measurements': _(u'measurements'),
@@ -23,16 +23,17 @@ SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'financial': _(u'financial'),
                  }
 
+
 class RealEstateBaseView(BrowserView):
     """Base view with some tools attached"""
 
     def __init__(self, context, request):
-        BrowserView.__init__(self, context,request)
+        BrowserView.__init__(self, context, request)
         self.catalog = getToolByName(self.context, 'portal_catalog')
         self.wftool = getToolByName(self.context, 'portal_workflow')
         pprops = getToolByName(self.context, 'portal_properties')
         self.properties = pprops.realestatebroker_properties
-        self.plone_utils = getToolByName(self.context,'plone_utils')
+        self.plone_utils = getToolByName(self.context, 'plone_utils')
 
 
 class RealEstateListing(RealEstateBaseView):
@@ -45,7 +46,7 @@ class RealEstateListing(RealEstateBaseView):
     batching = ViewPageTemplateFile(_batching_file)
 
     def __init__(self, context, request):
-        RealEstateBaseView.__init__(self,context,request)
+        RealEstateBaseView.__init__(self, context, request)
 
         self.query = dict(object_provides = [ICommercial.__identifier__,
                                         IResidential.__identifier__],
@@ -65,7 +66,7 @@ class RealEstateListing(RealEstateBaseView):
                 max_price=int(form['max_price'])
                 if min_price < max_price:
                     # range search
-                    self.query['getPrice'] = {"query": [min_price,max_price],
+                    self.query['getPrice'] = {"query": [min_price, max_price],
                                               "range": "minmax"}
                 elif min_price == 0 and max_price == 0:
                     # do nothing, empty select
@@ -238,8 +239,8 @@ class RealEstateView(RealEstateBaseView):
 
         filtered = []
         for field in fields:
-            value = field.get(self.context) 
-            if value and value not in ['',['']] or value == False:
+            value = field.get(self.context)
+            if value and value not in ['', ['']] or value == False:
                 filtered.append(field)
         return filtered
 
@@ -268,7 +269,7 @@ class RealEstateView(RealEstateBaseView):
     @memoize
     def cooked_price(self):
         """Return formatted price"""
-        pr = str(aq_inner(self.context.price))
+        pr = unicode(aq_inner(self.context.price))
         elements = []
 
         if len(pr) > 9:
@@ -279,21 +280,22 @@ class RealEstateView(RealEstateBaseView):
             elements.append(pr[-6:-3])
         elements.append(pr[-3:])
 
-        currency = self.properties.getProperty('currency')
+        currency = safe_unicode(self.properties.getProperty('currency'),
+                                getSiteEncoding(self.context))
 
-        return currency + " " + '.'.join(elements)
+        return currency + u' ' + u'.'.join(elements)
 
 
 class UpdateWorkflowStatesView(RealEstateBaseView):
     """ The view needs to get called on a daily basis.
     It checks for Real estate in the states new and sold. In case the state
     change is done more than 2 weeks ago we do a transition:
-    
+
     new -> available
     sold -> offline
     """
     implements(IUpdateWorkflowStatesView)
-    
+
     def __call__(self, days=14):
         """ perform updates
         """
@@ -307,15 +309,15 @@ class UpdateWorkflowStatesView(RealEstateBaseView):
             obj = item.getObject()
             history = wf_tool.getHistoryOf('realestate_workflow', obj)
             if history[-1]['time'] < (DateTime() - days):
-                wf_tool.doActionFor(obj,'available', wf_id='realestate_workflow')
+                wf_tool.doActionFor(obj, 'available',
+                                    wf_id='realestate_workflow')
                 print >> out, "updated transition for %r" % item.id
-                
+
         for item in sold_items:
             obj = item.getObject()
             history = wf_tool.getHistoryOf('realestate_workflow', obj)
             if history[-1]['time'] < (DateTime() - days):
-                wf_tool.doActionFor(obj,'retract', wf_id='realestate_workflow')
-                print >> out, "updated transition for %r" % item.id        
+                wf_tool.doActionFor(obj, 'retract',
+                                    wf_id='realestate_workflow')
+                print >> out, "updated transition for %r" % item.id
         return out.getvalue()
-            
-            
