@@ -43,6 +43,10 @@ a:hover {
   font-size: 100%;
 }
 
+.object-price {
+  white-space: nowrap;
+}
+
 /* *** Start layout of REB object view *** */
 
 #rebTabs {

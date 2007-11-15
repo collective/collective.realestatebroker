@@ -165,7 +165,7 @@
                 <div tal:condition="item/description"
                 tal:content="item/description">Description</div>
           </td>
-          <td>
+          <td class="object-price">
               <span tal:replace="item/cooked_price"></span>
           </td>
           <td>
