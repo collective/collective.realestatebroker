@@ -1,0 +1,21 @@
+TODO
+
+Control panel:
+* Form buttons in control panel are untranslated
+* Control panel uses default list editing widget, not UI friendly for
+  larger lists
+  
+Templates:
+* rent/buy pricing info in a commercial listing is unlogical if you want to
+  list two prices for both rent and buy
+
+Setup/Config:
+* Generic Setup has problems with supplying unicode characters to for
+  example the currency property. 
+* Entering Euro sign for currency and use of other extended character in the
+  control panel only works for FireFox at the moment. IE and Safari mangle
+  the encoding. Unverified whether this is a zope.formlib or browser
+  problem.
+  
+Python:
+* refactor and move cooked_price and dotted_price to utils.py
