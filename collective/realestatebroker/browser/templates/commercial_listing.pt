@@ -138,7 +138,7 @@
           <th class="">&nbsp;<tal:address i18n:translate="address"
               >Address</tal:address>&nbsp;</th>
           <th class="">&nbsp;<tal:price i18n:translate="price"
-              >Price</tal:price>&nbsp;</th>
+              >Price</tal:price>&nbsp;</th> 
           <th class="">&nbsp;<tal:status i18n:translate="property_status"
               >Status</tal:status>&nbsp;</th>
         </tr>
@@ -160,13 +160,14 @@
             </span>
           </td>
           <td class="residential-listing-content">
-            	<a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
-            	<span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
-          		<div tal:condition="item/description"
-          		tal:content="item/description">Description</div>
+                <a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
+                <span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
+                <div tal:condition="item/description"
+                tal:content="item/description">Description</div>
           </td>
           <td>
-              <span tal:replace="item/cooked_price"></span>
+              <span tal:replace="item/cooked_price"></span><br/>
+              <span tal:replace="item/rent_buy"></span>
           </td>
           <td>
             <span i18n:translate="" tal:replace="item/review_state"></span>

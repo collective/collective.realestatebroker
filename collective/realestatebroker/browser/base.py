@@ -22,7 +22,8 @@ SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'environment': _(u'environment'),
                  'financial': _(u'financial'),
                  }
-
+                 
+ESTATE_LISTING_BATCHSIZE=10
 
 class RealEstateBaseView(BrowserView):
     """Base view with some tools attached"""
@@ -138,7 +139,7 @@ class RealEstateListing(RealEstateBaseView):
     def batch(self):
         """ Batch of Realestate (brains)"""
         results = self.catalog.searchResults(self.query)
-        return Batch(items=results, pagesize=2, pagenumber=self.pagenumber,
+        return Batch(items=results, pagesize=ESTATE_LISTING_BATCHSIZE, pagenumber=self.pagenumber,
                      navlistsize=5)
 
     @memoize
@@ -157,6 +158,11 @@ class RealEstateListing(RealEstateBaseView):
             obj = brain.getObject()
             album = obj.restrictedTraverse('@@realestate_album')
             realestate = obj.restrictedTraverse('@@realestate')
+        
+            if ICommercial.providedBy(obj):
+                rent_buy = obj.rent_buy
+            else:
+                rent_buy= u''
             result.append(dict(id = brain.id,
                 url = obj.absolute_url(),
                 title = obj.address,
@@ -165,7 +171,9 @@ class RealEstateListing(RealEstateBaseView):
                 description = obj.description,
                 image = album.first_image(scale='tile'),
                 cooked_price = realestate.cooked_price,
-                review_state = brain.review_state))
+                review_state = brain.review_state,
+                rent_buy  = rent_buy,
+                ))
         return result
 
     def available_cities(self):
