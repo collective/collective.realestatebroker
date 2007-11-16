@@ -176,6 +176,7 @@ def realestateToPDF(context, request):
                         colors['table_even_background'])
     table_style.add('GRID', (0, 0), (1, -1), 1,
                     colors['table_grid_color'])
+    table_style.add('VALIGN', (0, 0), (-1, -1), 'TOP')
     table.setStyle(table_style)
     structure.append(table)
     structure.append(PageBreak())
@@ -192,9 +193,10 @@ def realestateToPDF(context, request):
                  Paragraph(context.getCity(), style['big'])])
     table = Table(data=data)
     table_style.add('BOTTOMPADDING', (0, 0), (1, -1), 12)
+    table_style.add('VALIGN', (0, 0), (-1, -1), 'TOP')
     table.setStyle(table_style)
     structure.append(table)
-    # TODO: map
+    # TODO: map (which isn't possible with google maps atm).
     structure.append(PageBreak())
 
     # Back matter
