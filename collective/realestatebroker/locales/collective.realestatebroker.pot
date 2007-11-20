@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-13 18:28+0000\n"
+"POT-Creation-Date: 2007-11-20 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:181
+#: ./pdf/realestate.py:185
 msgid "Address data"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Building type"
 msgstr ""
 
-#: ./pdf/realestate.py:128
+#: ./pdf/realestate.py:129
 msgid "Characteristics"
 msgstr ""
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Floor area"
 msgstr ""
 
-#: ./pdf/realestate.py:120
+#: ./pdf/realestate.py:121
 msgid "Floor plan for ${floorname}"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./pdf/realestate.py:55
+#: ./pdf/realestate.py:56
 msgid "For sale"
 msgstr ""
 
@@ -231,7 +231,7 @@ msgstr ""
 msgid "Number of rooms"
 msgstr ""
 
-#: ./pdf/realestate.py:133
+#: ./pdf/realestate.py:134
 msgid "Object data"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
-#: ./browser/base.py:78
+#: ./browser/base.py:80
 msgid "Please select a valid price range."
 msgstr ""
 
@@ -268,7 +268,7 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: ./pdf/realestate.py:48
+#: ./pdf/realestate.py:49
 msgid "Price:"
 msgstr ""
 

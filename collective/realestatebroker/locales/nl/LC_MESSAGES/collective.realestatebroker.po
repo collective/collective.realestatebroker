@@ -38,7 +38,7 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:181
+#: ./pdf/realestate.py:185
 msgid "Address data"
 msgstr "Adresgegevens"
 
@@ -63,7 +63,7 @@ msgstr "Hoofdtekst"
 msgid "Building type"
 msgstr "Gebouwtype"
 
-#: ./pdf/realestate.py:128
+#: ./pdf/realestate.py:129
 msgid "Characteristics"
 msgstr "Kenmerken"
 
@@ -137,7 +137,7 @@ msgstr "Namen voor verdiepingen"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:120
+#: ./pdf/realestate.py:121
 msgid "Floor plan for ${floorname}"
 msgstr "Plattegrond voor ${floorname}"
 
@@ -151,7 +151,7 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./pdf/realestate.py:55
+#: ./pdf/realestate.py:56
 msgid "For sale"
 msgstr "Te koop"
 
@@ -224,7 +224,7 @@ msgstr "Minimum prijs in zoekformulier"
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
-#: ./pdf/realestate.py:133
+#: ./pdf/realestate.py:134
 msgid "Object data"
 msgstr "Objectgegevens"
 
@@ -253,7 +253,7 @@ msgstr "Foto album"
 msgid "Plans"
 msgstr "Plattegronden"
 
-#: ./browser/base.py:78
+#: ./browser/base.py:80
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
@@ -261,7 +261,7 @@ msgstr "Selecteer een geldig prijsbereik."
 msgid "Price"
 msgstr "Prijs"
 
-#: ./pdf/realestate.py:48
+#: ./pdf/realestate.py:49
 msgid "Price:"
 msgstr "Prijs:"
 
@@ -357,7 +357,7 @@ msgstr "Adres"
 #. Default: "Any city"
 #: ./browser/templates/commercial_listing.pt:45
 msgid "any_city"
-msgstr "Elke stad"
+msgstr "Elke Plaats"
 
 msgid "available"
 msgstr "Beschikbaar"
@@ -375,7 +375,7 @@ msgstr "tot"
 #. Default: "City"
 #: ./browser/templates/commercial_listing.pt:35
 msgid "city"
-msgstr "Stad"
+msgstr "plaats"
 
 #: ./browser/base.py:21
 msgid "details"
@@ -465,12 +465,12 @@ msgstr "Plattegrond"
 #. Default: "Maximum price"
 #: ./browser/templates/commercial_listing.pt:77
 msgid "label_max_price"
-msgstr "Maximum prijs"
+msgstr "bovengrens prijs"
 
 #. Default: "Minimum price"
 #: ./browser/templates/commercial_listing.pt:58
 msgid "label_min_price"
-msgstr "Ondergrens prijs"
+msgstr "ondergrens prijs"
 
 #. Default: "Related Items"
 #: ./browser/templates/realestate_map.pt:53
