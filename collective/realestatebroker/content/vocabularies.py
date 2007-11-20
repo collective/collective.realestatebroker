@@ -2,7 +2,13 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
 
+def unicode_vocabulary(proplist):
+     #return a Vocabulary with valid ascii Token and unicode Title and Value
+     return [SimpleVocabulary.createTerm(safe_unicode(i), 
+             safe_unicode(i).encode('ascii','replace'),
+             safe_unicode(i)) for i in proplist] 
 
 def CityVocabularyFactory(context):
     """ Vocabulary Factory for cities in schemata
@@ -10,7 +16,7 @@ def CityVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     city_props = props.getProperty('city')
-    return SimpleVocabulary.fromValues(city_props)
+    return unicode_vocabulary(city_props)
     
 def HouseTypeVocabularyFactory(context):
     """ Vocabulary Factory for house type in schemata
@@ -75,7 +81,7 @@ def InsulationVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     insulation_props = props.getProperty('insulation')
-    return SimpleVocabulary.fromValues(insulation_props)  
+    return unicode_vocabulary(insulation_props)
     
 def KindOfGardenVocabularyFactory(context):
     """ Kind of garden property
