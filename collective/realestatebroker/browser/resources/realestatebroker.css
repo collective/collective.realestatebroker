@@ -153,3 +153,13 @@ a.reb-selected img {
 }
 
 /* ** End photo management.pt *** */
+
+.back-to-top {
+  text-align: right;
+  margin-right: 18px;
+  margin-bottom: 25px;
+}
+
+.back-to-top a {
+  text-decoration: none;
+}

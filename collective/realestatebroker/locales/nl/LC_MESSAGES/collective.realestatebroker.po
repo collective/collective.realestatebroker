@@ -362,6 +362,11 @@ msgstr "Elke Plaats"
 msgid "available"
 msgstr "Beschikbaar"
 
+#. Default: "Back to top"
+#: ./browser/templates/residential_listing.pt:181
+msgid "back_to_top"
+msgstr "Terug naar boven"
+
 #. Default: "No Limit"
 #: ./browser/templates/commercial_listing.pt:86
 msgid "broker_price_no_limit"

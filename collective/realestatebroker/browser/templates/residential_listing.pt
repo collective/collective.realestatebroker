@@ -11,13 +11,15 @@
   <tal:main-macro metal:define-macro="main">
 
     <div tal:replace="structure provider:plone.abovecontenttitle" />
-
+    <a name="top">
+      <span class="hiddenStructure">top</span>
+    </a>
     <h1 class="documentFirstHeading" tal:content="context/title_or_id" />
 
     <div tal:replace="structure provider:plone.belowcontenttitle" />
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
-
+    
 
     <!-- simple search form -->
         <div >
@@ -174,7 +176,10 @@
         </tr>
       </tbody>
     </table>
-
+    <div class="back-to-top">
+      <a href="#top"
+        i18n:translate="back_to_top">Back to top</a>
+    </div>
     <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
