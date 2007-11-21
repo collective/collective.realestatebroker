@@ -147,7 +147,9 @@
     </thead>
 
       <tbody>
-        <tr tal:repeat="item view/items">
+        <tal:items repeat="item view/items">
+        <tr tal:define="odd repeat/item/odd"
+          tal:attributes="class python:odd and 'odd' or 'even'">
           <td>
             <a href=""
                tal:attributes="href string:${item/url}/album;
@@ -174,6 +176,7 @@
             <span i18n:translate="" tal:replace="item/review_state"></span>
           </td>
         </tr>
+        </tal:items>
       </tbody>
     </table>
     <div class="back-to-top">
