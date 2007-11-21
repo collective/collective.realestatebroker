@@ -293,7 +293,7 @@ msgstr "Woonhuizen"
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
 msgid "Residential real estate"
-msgstr "Woningen"
+msgstr "Woning"
 
 #. Default: "Search"
 #: ./browser/templates/commercial_listing.pt:103
@@ -357,13 +357,13 @@ msgstr "Adres"
 #. Default: "Any city"
 #: ./browser/templates/commercial_listing.pt:45
 msgid "any_city"
-msgstr "Elke Plaats"
+msgstr "Elke plaats"
 
 msgid "available"
 msgstr "Beschikbaar"
 
 #. Default: "Back to top"
-#: ./browser/templates/residential_listing.pt:181
+#: ./browser/templates/residential_listing.pt:183
 msgid "back_to_top"
 msgstr "Terug naar boven"
 

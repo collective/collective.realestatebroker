@@ -169,7 +169,7 @@ class RealEstateListing(RealEstateBaseView):
                 zipcode = obj.zipcode,
                 city = obj.city,
                 description = obj.description,
-                image = album.first_image(scale='tile'),
+                image = album.first_image(scale='tile96'),
                 cooked_price = realestate.cooked_price,
                 review_state = brain.review_state,
                 rent_buy  = rent_buy,

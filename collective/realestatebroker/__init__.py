@@ -61,5 +61,12 @@ def initialize(context):
             permission = config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors = (constructor,),
             ).initialize(context)
-
+    
+    # Add an extra scaling size to the ATImage scaling list
+    image_sizes = ATImage.schema['image'].sizes
+    if not image_sizes.has_key('mirella'):
+        image_sizes['tile96'] = (96,96)
+        ATImage.schema['image'].sizes = image_sizes
+        
+        
     ATImage.schema['image'].original_size = (768,768)
