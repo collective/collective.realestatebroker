@@ -176,6 +176,14 @@
         permission="zope2.View"
         allowed_interface="Products.Maps.interfaces.map.IMapView"
         />
+    <browser:page
+        for="*"
+        name="reb-config.js"
+        class=".base.REBConfigView"
+        template="templates/reb-config.js.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IREBConfigView"
+    />
 
     <!-- pdf
     <browser:page

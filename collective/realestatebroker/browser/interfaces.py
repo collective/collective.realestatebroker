@@ -66,8 +66,14 @@ class IAlbumManager(IViewletManager):
 
 class IPdfGenerator(Interface):
     """PDF generator for real estate content."""
-    def rml(self):
+    def rml():
         """Render RML for debug purposes."""
+
+
+class IREBConfigView(Interface):
+    """ View to render reb-config.js.pt"""
+    def country():
+        """Return the country property"""
 
 
 class IUpdateWorkflowStatesView(Interface):

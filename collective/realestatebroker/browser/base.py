@@ -294,6 +294,17 @@ class RealEstateView(RealEstateBaseView):
         return currency + u' ' + u'.'.join(elements)
 
 
+class REBConfigView(RealEstateBaseView):
+    """ This view is used to render reb-config.js.pt
+    """
+    
+    def country(self):
+        """ Return the country property"""
+        pprops = getToolByName(self.context, 'portal_properties')
+        reb_props = pprops.realestatebroker_properties
+        return reb_props.getProperty('country', None)
+
+
 class UpdateWorkflowStatesView(RealEstateBaseView):
     """ The view needs to get called on a daily basis.
     It checks for Real estate in the states new and sold. In case the state

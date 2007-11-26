@@ -1,0 +1,10 @@
+<tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
+<metal:block i18n:domain="realestatebroker">
+
+/*
+ <span tal:omit-tag="" i18n:translate="">Dummy to get i18ndude working</span>
+*/
+
+var reb_country = '<tal:block tal:replace="view/country" />';
+
+</metal:block>

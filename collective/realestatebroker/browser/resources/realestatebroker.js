@@ -5,10 +5,11 @@ function updateMap(event) {
     var longitude = cssQuery("input#geolocation_longitude")[0];
     if (latitude.value != "0.0" && longitude.value != "0.0") {return false};
     var _mapsConfig = mapsConfig;
+    var _reb_country = reb_country;
     var _mapsConfig_google = _mapsConfig.google;
     var street = cssQuery('input#title');
     var city = cssQuery('select#city');
-    var address = street[0].value + ", " + city[0].value;
+    var address = street[0].value + ", " + city[0].value + ", " + _reb_country;
 
     var location = cssQuery('div.locationString')[0];    
     var map_node = cssQuery('div.googleMapPane')[0];
