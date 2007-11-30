@@ -172,7 +172,7 @@ propertysheet.
     >>> from collective.realestatebroker.content.vocabularies import CityVocabularyFactory
     >>> vocab = CityVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
-    ['New York', 'London', 'Amsterdam', 'Paris', 'Tokyo', 'Alberschwende']
+    [u'New York', u'London', u'Amsterdam', u'Paris', u'Tokyo', u'Alberschwende']
 
 For the house type field we make use of a vocabulary that reads it's values from a
 propertysheet.
