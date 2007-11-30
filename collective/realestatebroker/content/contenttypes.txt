@@ -129,13 +129,21 @@ So, now we can grab the schema the official way.
     >>> 'extra_field' in schema
     False
 
+One thing that archetypes.schemaextender needs is that your contenttype is
+implementing the IExtensible interface, which is a marker interface used by
+schemaextender to find the objects it needs to work on. For Residential and
+Commercial, this is already done.
+
+    >>> from archetypes.schemaextender.interfaces import IExtensible
+    >>> IExtensible.implementedBy(Residential)
+    True
+
 Now that the basics are in place, we can now start with the work you'll have
 to do yourself in your own extensions.
 
-Step 1. archetypes.schemaextender's ``overrides.zcml`` isn't applied, so the
-default ISchema handling is still in place. To fix this (if you use buildout)
-include an entry ``archetypes.schemaextender-overrides`` in your zcml
-section. For this unittest we'll do the work by hand:
+Step 1. archetypes.schemaextender's ``configure.zcml`` should be applied, so
+include an entry ``archetypes.schemaextender`` in your zcml section if you use
+buildout. For this unittest we'll do the work by hand:
 
     >>> from archetypes.schemaextender.extender import instanceSchemaFactory
     >>> component.provideAdapter(instanceSchemaFactory)
@@ -180,6 +188,7 @@ adapter). We'll again enable it manually here (it *is* a unit test):
     True
     >>> 'extra_field' in schema
     True
+
 
 
 Influence on templates and pdf export

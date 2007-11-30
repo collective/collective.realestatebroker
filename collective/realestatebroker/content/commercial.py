@@ -5,6 +5,7 @@ from collective.realestatebroker.content import schemata
 from collective.realestatebroker.interfaces import ICommercial
 from zope.interface import implements
 from Products.PloneFlashUpload.interfaces import IUploadingCapable
+from archetypes.schemaextender.interfaces import IExtensible
 
 from collective.realestatebroker import REBMessageFactory as _
 
@@ -31,7 +32,7 @@ class Commercial(atapi.OrderedBaseFolder):
     portal_type = "Commercial"
     _at_rename_after_creation = True
     schema = CommercialSchema
-    implements(ICommercial, IUploadingCapable)
+    implements(ICommercial, IUploadingCapable, IExtensible)
 
     address = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
@@ -58,6 +59,5 @@ class Commercial(atapi.OrderedBaseFolder):
         """We don't want real estate to show up in the nav tree.
         """
         return True
-
 
 atapi.registerType(Commercial, PROJECTNAME)
