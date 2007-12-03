@@ -48,9 +48,9 @@ a:hover {
 }
 
 /* *** Start layout of REB object view *** */
-
 #rebTabs {
   margin: 20px 0 !important;
+  border-bottom: none !important;
 }
 
 #rebTabs .selected a {
