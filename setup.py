@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '1.9'
+version = '2.0b2'
 
 setup(name='collective.realestatebroker',
       version=version,
@@ -26,6 +26,7 @@ setup(name='collective.realestatebroker',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'archetypes.schemaextender==1.0b1',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
