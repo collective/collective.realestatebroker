@@ -1,5 +1,4 @@
 from Products.CMFCore.utils import getToolByName
-from collective.realestatebroker.config import MIGRATIONPRODUCTAVAILABLE
 
 def importVarious(context):
     """This is the main step that is called by genericsetup."""
@@ -14,8 +13,6 @@ def importVarious(context):
     add_indexes(site, logger)
 
 def migrate_old_content(site, logger):
-    if not MIGRATIONPRODUCTAVAILABLE:
-        return
     from collective.realestatebroker.migration import migrate
     result = migrate(site)
     logger.info(result)
@@ -25,7 +22,7 @@ def remove_upload_action(site, logger):
     # Note that this only works with a clean Plone 3 Site
     atool.deleteActions([0])
     logger.info('Removed legacy folderflashupload action from portal_actions')
-    
+
 def add_indexes(site, logger):
     """Add indexes needed by collective.realestatebroker
 
@@ -42,7 +39,7 @@ def add_indexes(site, logger):
         if idx not in indexes:
             catalog.addIndex(idx, 'FieldIndex')
             logger.info('Added FieldIndex for %s.', idx)
-            
+
     # KeyordIndexes
     for idx in ('is_floorplan',):
         if idx not in indexes:

@@ -16,12 +16,10 @@ A unittest that tests out the whole migration mechanism can be found in
 """
 import logging
 from StringIO import StringIO
-from collective.realestatebroker.config import MIGRATIONPRODUCTAVAILABLE
 
-if MIGRATIONPRODUCTAVAILABLE:
-    from Products.contentmigration import walker
-    from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
-    from Products.contentmigration.common import _createObjectByType
+from Products.contentmigration import walker
+from Products.contentmigration.basemigrator.migrator import CMFItemMigrator
+from Products.contentmigration.common import _createObjectByType
 from Products.CMFCore.utils import getToolByName
 
 from config import STATE_TRANSITION_MAP
