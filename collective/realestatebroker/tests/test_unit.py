@@ -15,7 +15,7 @@ def tearDown(test):
 
 
 def test_suite():
-    normal_suites = (
+    suites = (
         doctestunit.DocFileSuite('content/contenttypes.txt',
                              package='collective.realestatebroker',
                              optionflags=OPTIONFLAGS,
