@@ -19,6 +19,7 @@
 
     <!-- Products we depend upon. -->
     <include package="Products.PloneFlashUpload" />
+    <include package="archetypes.schemaextender" />
 
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
