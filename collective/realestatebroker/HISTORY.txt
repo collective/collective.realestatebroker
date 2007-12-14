@@ -1,0 +1,10 @@
+History
+=======
+
+2.0 rc
+------
+
+- Translated the schemata names and the workflow names (in a separate
+  old-style Product: reb_i18n) [Reinout van Rees]
+
+- Added rent/buy field to Residential, too.
