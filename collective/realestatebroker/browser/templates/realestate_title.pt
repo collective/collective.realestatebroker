@@ -11,14 +11,14 @@
 
   <div id="rebAddress">
     <table>
-      <tr>
-        <td>
+      <tr tal:define="rentbuy context/getRent_buy">
+        <td tal:condition="rentbuy">
           <h1>
             <metal:field use-macro="python:context.widget('rent_buy',
                                     mode='view')"/>
           </h1>
         </td>
-        <td>
+        <td tal:condition="rentbuy">
           <h1>:</h1>
         </td>
         <td>
