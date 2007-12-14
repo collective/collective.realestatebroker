@@ -19,7 +19,7 @@
     <div tal:replace="structure provider:plone.belowcontenttitle" />
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
-    
+
 
     <!-- simple search form -->
         <div >
@@ -126,7 +126,7 @@
     <tal:batch replace="structure view/batching" />
 
     <div tal:condition="not: view/items" i18n:translate="no_realestate_found">No realestate found.</div>
-     
+
     <table id="sortable"
          class="listing"
          border="1"
@@ -170,7 +170,8 @@
                 tal:content="item/description">Description</div>
           </td>
           <td class="object-price">
-              <span tal:replace="item/cooked_price"></span>
+              <span tal:replace="item/cooked_price"></span><br/>
+              <span tal:replace="item/rent_buy"></span>
           </td>
           <td>
             <span i18n:translate="" tal:replace="item/review_state"></span>
