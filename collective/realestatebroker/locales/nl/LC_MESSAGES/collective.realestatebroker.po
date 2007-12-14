@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-11-08 14:08+0100\n"
+"PO-Revision-Date: 2007-12-14 11:30+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "${image} is als standaard foto ingesteld."
 msgid "Acceptance"
 msgstr "Oplevering"
 
-#: ./content/commercial.py:16
+#: ./content/commercial.py:17
 msgid "Address"
 msgstr "Adres"
 
@@ -121,7 +121,7 @@ msgstr "Geef de opties op waaruit te kiezen is."
 msgid "Facilities"
 msgstr "Faciliteiten"
 
-#: ./content/commercial.py:17
+#: ./content/commercial.py:18
 msgid "Fill in the address of this object"
 msgstr "Geef de straatnaam op van dit object."
 
@@ -390,13 +390,13 @@ msgstr "Details"
 msgid "environment"
 msgstr "Omgeving/tuin"
 
-#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo."
+#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo. The order can be set using the \"listing\" tab."
 #: ./browser/templates/album_management.pt:74
 msgid "explanation_photo_configuration"
 msgstr ""
 "In het onderstaande formulier kunt u de foto's over de verdiepingen verdelen\n"
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
-"worden."
+"worden. De volgorde kan eventueel veranderd worden via de \"inhoud\" tab."
 
 #: ./browser/base.py:23
 msgid "financial"
@@ -422,11 +422,6 @@ msgstr "Foto beheer"
 msgid "heading_photo_configuration"
 msgstr "Foto configuratie"
 
-#. Default: "Real Estate Actions"
-#: ./browser/templates/realestate_actions.pt:6
-msgid "heading_realestate_actions"
-msgstr ""
-
 #: ./content/schemata.py:86
 msgid "heating"
 msgstr "Verwarming"
@@ -438,7 +433,7 @@ msgstr "Beperk de weergave op plaats"
 
 #: ./browser/templates/commercial_listing.pt:59
 msgid "help_search_price"
-msgstr ""
+msgstr "Prijs"
 
 #: ./content/schemata.py:95
 msgid "insulation"
@@ -537,4 +532,3 @@ msgstr "Verkocht onder voorbehoud"
 
 msgid "sold"
 msgstr "Verkocht"
-

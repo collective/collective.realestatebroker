@@ -72,9 +72,9 @@
         Photo configuration
       </h2>
       <p i18n:translate="explanation_photo_configuration">
-        In the form below, you can assign the photos to specific floors or you
-        can assign them to the floorplans. Also you can select the default
-        photo.
+          In the form below, you can assign the photos to specific floors or
+          you can assign them to the floorplans. Also you can select the
+          default photo. The order can be set using the "listing" tab.
       </p>
 
       <form action=""

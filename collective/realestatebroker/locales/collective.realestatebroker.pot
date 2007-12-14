@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-11-21 13:26+0000\n"
+"POT-Creation-Date: 2007-12-14 10:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Acceptance"
 msgstr ""
 
-#: ./content/commercial.py:16
+#: ./content/commercial.py:17
 msgid "Address"
 msgstr ""
 
@@ -128,7 +128,7 @@ msgstr ""
 msgid "Facilities"
 msgstr ""
 
-#: ./content/commercial.py:17
+#: ./content/commercial.py:18
 msgid "Fill in the address of this object"
 msgstr ""
 
@@ -397,7 +397,7 @@ msgstr ""
 msgid "environment"
 msgstr ""
 
-#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo."
+#. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo. The order can be set using the \"listing\" tab."
 #: ./browser/templates/album_management.pt:74
 msgid "explanation_photo_configuration"
 msgstr ""
@@ -424,11 +424,6 @@ msgstr ""
 #. Default: "Photo configuration"
 #: ./browser/templates/album_management.pt:71
 msgid "heading_photo_configuration"
-msgstr ""
-
-#. Default: "Real Estate Actions"
-#: ./browser/templates/realestate_actions.pt:6
-msgid "heading_realestate_actions"
 msgstr ""
 
 #: ./content/schemata.py:86
