@@ -22,7 +22,7 @@ SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  'environment': _(u'environment'),
                  'financial': _(u'financial'),
                  }
-                 
+
 ESTATE_LISTING_BATCHSIZE=10
 
 class RealEstateBaseView(BrowserView):
@@ -158,11 +158,8 @@ class RealEstateListing(RealEstateBaseView):
             obj = brain.getObject()
             album = obj.restrictedTraverse('@@realestate_album')
             realestate = obj.restrictedTraverse('@@realestate')
-        
-            if ICommercial.providedBy(obj):
-                rent_buy = obj.rent_buy
-            else:
-                rent_buy= u''
+
+            rent_buy = obj.getRent_buy()
             result.append(dict(id = brain.id,
                 url = obj.absolute_url(),
                 title = obj.address,
@@ -297,7 +294,7 @@ class RealEstateView(RealEstateBaseView):
 class REBConfigView(RealEstateBaseView):
     """ This view is used to render reb-config.js.pt
     """
-    
+
     def country(self):
         """ Return the country property"""
         pprops = getToolByName(self.context, 'portal_properties')
