@@ -1,4 +1,6 @@
 from Products.CMFCore.utils import getToolByName
+from pkg_resources import parse_version
+import transaction
 
 
 def importVarious(context):
@@ -12,6 +14,54 @@ def importVarious(context):
     migrate_old_content(site, logger)
     remove_upload_action(site, logger)
     add_indexes(site, logger)
+    update_schemas(site, logger)
+    fix_schema_bug(site, logger)
+
+
+def fix_schema_bug(site, logger):
+    """Copied from http://dev.plone.org/collective/browser/eXtremeManagement
+    /trunk/Extensions/fix_schema.py"""
+    catalog = getToolByName(site, 'portal_catalog')
+    brains = catalog()
+    logger.debug("%s brains found.", len(brains))
+    count = 0
+    for brain in brains:
+        try:
+            obj = brain.getObject()
+        except AttributeError:
+            logger.warning('Ignoring dead brain pointing to %s.',
+                           brain.getPath())
+        if 'schema' in obj.__dict__:
+            logger.warning('Removing schema attribute from %s.',
+                           obj.absolute_url())
+            del obj.schema
+            count += 1
+    logger.info('In total %s schemas were removed.', count)
+    transaction.savepoint(optimistic=True)
+
+
+def update_schemas(site, logger):
+    qi = getToolByName(site, 'portal_quickinstaller')
+    installed_version = qi.getProductVersion('collective.realestatebroker')
+    installed_version = parse_version(installed_version)
+    update = [] # List of schemas to update.
+    # Now for some if/else, this could be expanded later on.
+    if installed_version < parse_version('2.0 rc'):
+        update.append('collective.realestatebroker.Residential')
+        update.append('collective.realestatebroker.Commercial')
+    # Update the schemas
+    at = getToolByName(site, 'archetype_tool')
+
+    class dummy:
+        form = {}
+
+    dummyRequest = dummy()
+    for name in update:
+        logger.info("Migrating schema for %s.", name)
+        dummyRequest.form[name] = 1
+    at.manage_updateSchema(update_all=1,
+                           REQUEST=dummyRequest)
+    transaction.savepoint(optimistic=True)
 
 
 def migrate_old_content(site, logger):
