@@ -3,7 +3,7 @@
      class="realestateActions"
      tal:condition="view/actions">
 
-    <h5 class="hiddenStructure" i18n:translate="heading_realestate_actions">Real Estate Actions</h5>
+    <h5 class="hiddenStructure">Real Estate Actions</h5>
 
     <ul id="rebTabs" 
       class="formTabs" 
