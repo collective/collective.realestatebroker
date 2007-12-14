@@ -331,13 +331,20 @@ class RebMigrator(CMFItemMigrator):
             logger.info("No kk_von field, continuing.")
             return
         value = self.old.getKk_von()
+        if value == 'k.k.':
+            value = 'Kosten koper (k.k.)'
+        if value == 'v.o.n.':
+            value = 'Vrij op naam (v.o.n.)'
         schema = self.new.Schema()
         new_field = schema.getField('kk_von')
         if not new_field:
             logger.info("No kk_von field found on new object.")
         else:
             new_field.set(self.new, value)
-            logger.info("Set kk_von on new object.")
+            logger.info("Set kk_von (%r) on new object.", value)
+            new_value = new_field.get(self.new)
+            if new_value != value:
+                logger.warn("kk_von value (%r) isn't %r.", new_value, value)
 
     def migrate_type(self):
         """Migrate 'type' to 'house_type' or 'commercial_type'."""
