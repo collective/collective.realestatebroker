@@ -128,6 +128,7 @@ GeneralSchema =  atapi.Schema((
     atapi.StringField('rent_buy',
         storage=atapi.AnnotationStorage(),
         schemata=u'default',
+        selfrendered=True, # For REB-specific template rendering.
         vocabulary_factory="collective.realestatebroker.rent_buy_list",
         widget = atapi.SelectionWidget(label = _(u'Rent or buy'),
                  )
