@@ -125,6 +125,13 @@ GeneralSchema =  atapi.Schema((
                  description = _(u'Enter a brief description for the acceptance.'),
                  )
         ),
+    atapi.StringField('rent_buy',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'default',
+        vocabulary_factory="collective.realestatebroker.rent_buy_list",
+        widget = atapi.SelectionWidget(label = _(u'Rent or buy'),
+                 )
+        ),
     # Location (= google maps)
     # -----------------------
     LocationField('geolocation',
@@ -233,13 +240,6 @@ CommercialSpecificSchema =  atapi.Schema((
         schemata=u'default',
         vocabulary_factory="collective.realestatebroker.vat_list",
         widget = atapi.SelectionWidget(label = _(u'VAT'),
-                 )
-        ),
-    atapi.StringField('rent_buy',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'default',
-        vocabulary_factory="collective.realestatebroker.rent_buy_list",
-        widget = atapi.SelectionWidget(label = _(u'Rent or buy'),
                  )
         ),
     # Outside/garden (commercial)
