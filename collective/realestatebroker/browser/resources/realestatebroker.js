@@ -46,7 +46,7 @@ function updateMap(event) {
                 }
             });
         }
-    }
+    };
     _mapsLocalSearch = new GlocalSearch();
     _mapsLocalSearch.setSearchCompleteCallback(
         null, _parseSearchResults
