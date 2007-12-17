@@ -73,11 +73,11 @@ msgstr "Steden"
 
 #: ./content/schemata.py:31
 msgid "City"
-msgstr "Stad"
+msgstr "Plaats"
 
 #: ./browser/controlpanel.py:438
 msgid "Commercial"
-msgstr "Bedrijfspanden"
+msgstr "Bedrijfspand"
 
 #: ./browser/controlpanel.py:143
 msgid "Commercial Type"
@@ -410,7 +410,7 @@ msgstr "Uploaden van meerdere foto's in één keer."
 #. Default: "Textual description"
 #: ./browser/templates/realestate_view.pt:45
 msgid "heading_main_text"
-msgstr "Uitgebreide omschrijving"
+msgstr "Omschrijving"
 
 #. Default: "Photo management"
 #: ./browser/templates/album_management.pt:18
