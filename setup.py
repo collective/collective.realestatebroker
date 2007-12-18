@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '2.0b2'
+version = open('collective/realestatebroker/version.txt').read().strip()
 
 setup(name='collective.realestatebroker',
       version=version,
