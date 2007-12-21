@@ -96,16 +96,16 @@ def rebStyleSeet():
     stylesheet['heading2'] = heading2
     # Table_header: table header text.
     table_header = ParagraphStyle('table_header')
-    table_header.fontSize = 14
-    table_header.leading = 16
+    table_header.fontSize = 12
+    table_header.leading = 14
     table_header.spaceAfter = 0
     table_header.fontName = bold_font
     table_header.textColor = colors['table_heading_textcolor']
     stylesheet['table_header'] = table_header
     # Table_text: table text.
     table_text = ParagraphStyle('table_text')
-    table_text.fontSize = 12
-    table_text.leading = 14
+    table_text.fontSize = 10
+    table_text.leading = 12
     table_text.spaceAfter = 0
     table_text.fontName = normal_font
     stylesheet['table_text'] = table_text

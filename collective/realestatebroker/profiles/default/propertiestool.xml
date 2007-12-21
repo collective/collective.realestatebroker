@@ -44,6 +44,9 @@
  </object>
  <object name="realestatebroker_properties" meta_type="Plone Property Sheet">
   <property name="title">Real Estate Properties</property>
+  <property name="show_all_fields_without_filtering_empty_ones"
+            type="boolean"
+            purge="False">False</property>
   <property name="city" type="lines" purge="False">
     <element value="New York"/>
     <element value="London"/>

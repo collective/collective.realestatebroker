@@ -1,6 +1,14 @@
 History
 =======
 
+2.0 rc2 (unreleased)
+--------------------
+
+- Optionally disabled filtering of empty fields [reinout].
+
+- Translation improvement for boolean fields [reinout].
+
+
 2.0 rc
 ------
 

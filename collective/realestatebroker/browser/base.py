@@ -239,13 +239,23 @@ class RealEstateView(RealEstateBaseView):
         explicitly elsewhere in the template (as indicated by the
         'selfrendered' property on the field."""
 
+        show_all = self.properties.getProperty(
+            'show_all_fields_without_filtering_empty_ones')
+
         schema = self.context.Schema()
         fields = schema.filterFields(schemata=schemata_name, *predicates)
 
         filtered = []
         for field in fields:
             value = field.get(self.context)
-            if value and value not in ['', ['']] or value == False:
+            if value in ['', ['']]:
+                pass
+            if value:
+                filtered.append(field)
+            elif value == False:
+                filtered.append(field)
+            elif show_all:
+                # Despite filtering, show all.
                 filtered.append(field)
         return filtered
 

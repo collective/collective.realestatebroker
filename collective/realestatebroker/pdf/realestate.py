@@ -189,7 +189,6 @@ def realestateToPDF(context, request):
     for row in heading_rows:
         table_style.add('BACKGROUND', (0, row), (1, row),
                         colors['table_heading_background'])
-        table_style.add('BOTTOMPADDING', (0, row), (1, row), 7)
     for row in even_rows:
         table_style.add('BACKGROUND', (0, row), (1, row),
                         colors['table_even_background'])
