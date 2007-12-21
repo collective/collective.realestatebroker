@@ -532,3 +532,4 @@ msgstr "Verkocht onder voorbehoud"
 
 msgid "sold"
 msgstr "Verkocht"
+
