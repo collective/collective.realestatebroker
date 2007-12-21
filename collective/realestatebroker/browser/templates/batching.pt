@@ -2,7 +2,7 @@
 <div class="listingBar"
      metal:define-macro="navigation"
      tal:define="batch view/batch"
-     tal:condition="batch/multiple_pages">
+     tal:condition="batch/multiple_pages" i18n:domain="plone">
     <span class="previous"
       tal:condition="batch/has_previous">
         <a href=""
