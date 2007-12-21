@@ -1,6 +1,7 @@
 from StringIO import StringIO
 from types import ListType
 from types import TupleType
+from types import BooleanType
 
 from reportlab.lib import units
 from reportlab.platypus import PageBreak
@@ -139,6 +140,15 @@ def realestateToPDF(context, request):
         value = field.getAccessor(context)()
         if isinstance(value, ListType) or isinstance(value, TupleType):
             value = u', '.join(value)
+        if isinstance(value, BooleanType):
+            if value:
+                value = _(u'True')
+            else:
+                value = _(u'False')
+        try:
+            value = trans(value)
+        except TypeError:
+            pass
         value = unicode(value)
         data.append([Paragraph(label, style['table_text']),
                      Paragraph(value, style['table_text'])])
@@ -159,6 +169,15 @@ def realestateToPDF(context, request):
             if isinstance(value, ListType) or isinstance(value, TupleType):
                 value = [safe_unicode(item, site_encoding) for item in value]
                 value = u', '.join(value)
+            if isinstance(value, BooleanType):
+                if value:
+                    value = _(u'True')
+                else:
+                    value = _(u'False')
+            try:
+                value = trans(value)
+            except TypeError:
+                pass
             value = unicode(value)
             data.append([Paragraph(label, style['table_text']),
                          Paragraph(value, style['table_text'])])

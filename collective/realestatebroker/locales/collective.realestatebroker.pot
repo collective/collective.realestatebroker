@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-12-14 10:29+0000\n"
+"POT-Creation-Date: 2007-12-21 16:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:185
+#: ./pdf/realestate.py:199
 msgid "Address data"
 msgstr ""
 
@@ -66,11 +66,11 @@ msgstr ""
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:217
+#: ./content/schemata.py:225
 msgid "Building type"
 msgstr ""
 
-#: ./pdf/realestate.py:129
+#: ./pdf/realestate.py:130
 msgid "Characteristics"
 msgstr ""
 
@@ -128,6 +128,10 @@ msgstr ""
 msgid "Facilities"
 msgstr ""
 
+#: ./pdf/realestate.py:147
+msgid "False"
+msgstr ""
+
 #: ./content/commercial.py:18
 msgid "Fill in the address of this object"
 msgstr ""
@@ -144,7 +148,7 @@ msgstr ""
 msgid "Floor area"
 msgstr ""
 
-#: ./pdf/realestate.py:121
+#: ./pdf/realestate.py:122
 msgid "Floor plan for ${floorname}"
 msgstr ""
 
@@ -158,7 +162,7 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./pdf/realestate.py:56
+#: ./pdf/realestate.py:57
 msgid "For sale"
 msgstr ""
 
@@ -231,7 +235,7 @@ msgstr ""
 msgid "Number of rooms"
 msgstr ""
 
-#: ./pdf/realestate.py:134
+#: ./pdf/realestate.py:135
 msgid "Object data"
 msgstr ""
 
@@ -268,11 +272,11 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: ./pdf/realestate.py:49
+#: ./pdf/realestate.py:50
 msgid "Price:"
 msgstr ""
 
-#: ./content/schemata.py:251
+#: ./content/schemata.py:252
 msgid "Private car park"
 msgstr ""
 
@@ -280,7 +284,7 @@ msgstr ""
 msgid "RealEstateBroker settings"
 msgstr ""
 
-#: ./content/schemata.py:242
+#: ./content/schemata.py:133
 msgid "Rent or buy"
 msgstr ""
 
@@ -311,7 +315,7 @@ msgstr ""
 msgid "Searching"
 msgstr ""
 
-#: ./content/schemata.py:226
+#: ./content/schemata.py:234
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
@@ -335,12 +339,16 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#: ./pdf/realestate.py:145
+msgid "True"
+msgstr ""
+
 #. Default: "Upload Files"
 #: ./browser/templates/album_management.pt:35
 msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:235
+#: ./content/schemata.py:243
 msgid "VAT"
 msgstr ""
 
@@ -370,7 +378,7 @@ msgid "available"
 msgstr ""
 
 #. Default: "Back to top"
-#: ./browser/templates/residential_listing.pt:183
+#: ./browser/templates/residential_listing.pt:184
 msgid "back_to_top"
 msgstr ""
 
@@ -443,11 +451,11 @@ msgstr ""
 msgid "insulation"
 msgstr ""
 
-#: ./content/schemata.py:165
+#: ./content/schemata.py:173
 msgid "kindOfGarage"
 msgstr ""
 
-#: ./content/schemata.py:178
+#: ./content/schemata.py:186
 msgid "kindOfStorage"
 msgstr ""
 
