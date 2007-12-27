@@ -4,10 +4,11 @@ History
 2.0 rc2 (unreleased)
 --------------------
 
-- Optionally disabled filtering of empty fields [reinout].
+- Optionally disabled filtering of empty fields. [reinout]
 
-- Translation improvement for boolean fields [reinout].
+- Translation improvement for boolean fields. [reinout]
 
+- Small pdf page margin changes. [reinout]
 
 2.0 rc
 ------
