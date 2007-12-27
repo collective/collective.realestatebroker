@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-12-27 11:08+0000\n"
+"POT-Creation-Date: 2007-12-27 12:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:203
+#: ./pdf/realestate.py:199
 msgid "Address data"
 msgstr ""
 
@@ -70,11 +70,15 @@ msgstr ""
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:225
+#: ./content/schemata.py:229
 msgid "Building type"
 msgstr ""
 
-#: ./pdf/realestate.py:130
+#: ./content/schemata.py:132
+msgid "Buy"
+msgstr ""
+
+#: ./pdf/realestate.py:126
 msgid "Characteristics"
 msgstr ""
 
@@ -132,7 +136,7 @@ msgstr ""
 msgid "Facilities"
 msgstr ""
 
-#: ./pdf/realestate.py:147
+#: ./pdf/realestate.py:143
 msgid "False"
 msgstr ""
 
@@ -152,7 +156,7 @@ msgstr ""
 msgid "Floor area"
 msgstr ""
 
-#: ./pdf/realestate.py:122
+#: ./pdf/realestate.py:118
 msgid "Floor plan for ${floorname}"
 msgstr ""
 
@@ -164,10 +168,6 @@ msgstr ""
 #. Default: "Folderish content type for residential real estate."
 #: ./profiles/default/types/Residential.xml
 msgid "Folderish content type for residential real estate."
-msgstr ""
-
-#: ./pdf/realestate.py:57
-msgid "For sale"
 msgstr ""
 
 #: ./browser/controlpanel.py:104
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Number of rooms"
 msgstr ""
 
-#: ./pdf/realestate.py:135
+#: ./pdf/realestate.py:131
 msgid "Object data"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Price:"
 msgstr ""
 
-#: ./content/schemata.py:252
+#: ./content/schemata.py:256
 msgid "Private car park"
 msgstr ""
 
@@ -289,6 +289,10 @@ msgid "RealEstateBroker settings"
 msgstr ""
 
 #: ./content/schemata.py:133
+msgid "Rent"
+msgstr ""
+
+#: ./content/schemata.py:137
 msgid "Rent or buy"
 msgstr ""
 
@@ -319,7 +323,7 @@ msgstr ""
 msgid "Searching"
 msgstr ""
 
-#: ./content/schemata.py:234
+#: ./content/schemata.py:238
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
@@ -343,7 +347,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ./pdf/realestate.py:145
+#: ./pdf/realestate.py:141
 msgid "True"
 msgstr ""
 
@@ -352,7 +356,7 @@ msgstr ""
 msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:243
+#: ./content/schemata.py:247
 msgid "VAT"
 msgstr ""
 
@@ -455,11 +459,11 @@ msgstr ""
 msgid "insulation"
 msgstr ""
 
-#: ./content/schemata.py:173
+#: ./content/schemata.py:177
 msgid "kindOfGarage"
 msgstr ""
 
-#: ./content/schemata.py:186
+#: ./content/schemata.py:190
 msgid "kindOfStorage"
 msgstr ""
 

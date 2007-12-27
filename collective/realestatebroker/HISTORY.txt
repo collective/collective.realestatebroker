@@ -10,6 +10,9 @@ History
 
 - Small pdf page margin changes. [reinout]
 
+- Rent/buy is now a fixed vocabulary (needed for a userfriendly default
+  value). [reinout]
+
 2.0 rc
 ------
 

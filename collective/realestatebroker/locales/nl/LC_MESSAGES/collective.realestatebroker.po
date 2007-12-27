@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-12-27 12:08+0100\n"
+"PO-Revision-Date: 2007-12-27 13:29+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:203
+#: ./pdf/realestate.py:199
 msgid "Address data"
 msgstr "Adresgegevens"
 
@@ -63,11 +63,15 @@ msgstr "Balkon"
 msgid "Body text"
 msgstr "Hoofdtekst"
 
-#: ./content/schemata.py:225
+#: ./content/schemata.py:229
 msgid "Building type"
 msgstr "Gebouwtype"
 
-#: ./pdf/realestate.py:130
+#: ./content/schemata.py:132
+msgid "Buy"
+msgstr "Te koop"
+
+#: ./pdf/realestate.py:126
 msgid "Characteristics"
 msgstr "Kenmerken"
 
@@ -125,7 +129,7 @@ msgstr "Geef de opties op waaruit te kiezen is."
 msgid "Facilities"
 msgstr "Faciliteiten"
 
-#: ./pdf/realestate.py:147
+#: ./pdf/realestate.py:143
 msgid "False"
 msgstr "Nee"
 
@@ -145,7 +149,7 @@ msgstr "Namen voor verdiepingen"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:122
+#: ./pdf/realestate.py:118
 msgid "Floor plan for ${floorname}"
 msgstr "Plattegrond voor ${floorname}"
 
@@ -158,10 +162,6 @@ msgstr "Mapweergave voor bedrijfspanden."
 #: ./profiles/default/types/Residential.xml
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
-
-#: ./pdf/realestate.py:57
-msgid "For sale"
-msgstr "Te koop"
 
 #: ./browser/controlpanel.py:104
 msgid "Garage"
@@ -232,7 +232,7 @@ msgstr "Minimum prijs in zoekformulier"
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
-#: ./pdf/realestate.py:135
+#: ./pdf/realestate.py:131
 msgid "Object data"
 msgstr "Objectgegevens"
 
@@ -273,7 +273,7 @@ msgstr "Prijs"
 msgid "Price:"
 msgstr "Prijs:"
 
-#: ./content/schemata.py:252
+#: ./content/schemata.py:256
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
@@ -282,12 +282,16 @@ msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
 #: ./content/schemata.py:133
+msgid "Rent"
+msgstr "Te huur"
+
+#: ./content/schemata.py:137
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
 #: ./browser/controlpanel.py:137
 msgid "Rent/Buy"
-msgstr "Huur/Koop"
+msgstr "Te huur/Te koop"
 
 #. Default: "Reset"
 #: ./browser/templates/commercial_listing.pt:111
@@ -312,7 +316,7 @@ msgstr "Zoek"
 msgid "Searching"
 msgstr "Zoekformulier"
 
-#: ./content/schemata.py:234
+#: ./content/schemata.py:238
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
@@ -336,7 +340,7 @@ msgstr "Belasting"
 msgid "Title"
 msgstr "Title"
 
-#: ./pdf/realestate.py:145
+#: ./pdf/realestate.py:141
 msgid "True"
 msgstr "Ja"
 
@@ -345,7 +349,7 @@ msgstr "Ja"
 msgid "Upload Files"
 msgstr "Bestanden uploaden"
 
-#: ./content/schemata.py:243
+#: ./content/schemata.py:247
 msgid "VAT"
 msgstr "B.T.W."
 
@@ -451,11 +455,11 @@ msgstr "Prijs"
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:173
+#: ./content/schemata.py:177
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:186
+#: ./content/schemata.py:190
 msgid "kindOfStorage"
 msgstr "Soort berging"
 

@@ -49,12 +49,7 @@ def frontpage(context, request, style):
         first_image = brains[0].getObject()
     price = ' '.join([_(u'Price:'),
                       str(context.getPrice())])
-    try:
-        # Only available right now on commercial
-        rent_buy = trans(context.getRent_buy())
-    except:
-        # Real estate brokers often only sell houses, they don't rent them.
-        rent_buy = _(u'For sale')
+    rent_buy = trans(context.getRent_buy())
     structure.append(Paragraph(rent_buy, style['huge']))
     structure.append(Spacer(1, 0.5 * units.cm)) # The image overlaps a bit.
     if first_image:
@@ -110,7 +105,8 @@ def realestateToPDF(context, request):
     # Photos, sorted by page.
     photo_floors = album_view.photos_for_pdf()
     for floor in photo_floors:
-        structure.append(Paragraph(floor['floorname'], style['heading1']))
+        structure.append(Paragraph(trans(floor['floorname']),
+                                   style['heading1']))
         for photo in floor['photos']:
             structure += insert_image(photo)
         structure.append(PageBreak())
