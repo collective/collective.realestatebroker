@@ -46,7 +46,7 @@ def update_schemas(site, logger):
     installed_version = parse_version(installed_version)
     update = [] # List of schemas to update.
     # Now for some if/else, this could be expanded later on.
-    if installed_version < parse_version('2.0 rc'):
+    if installed_version < parse_version('2.0 rc2'):
         update.append('collective.realestatebroker.Residential')
         update.append('collective.realestatebroker.Commercial')
     # Update the schemas

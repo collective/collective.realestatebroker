@@ -1,4 +1,5 @@
 import os.path
+import logging
 
 from reportlab.lib import pagesizes
 from reportlab.lib import styles
@@ -14,6 +15,8 @@ from zope.component import queryUtility
 
 from collective.realestatebroker.pdf.interfaces import IHeaderAndFooter
 from collective.realestatebroker.pdf.interfaces import IStyleModifier
+
+logger = logging.getLogger('pdf common')
 
 
 def rebColors():
@@ -172,9 +175,15 @@ def insert_image(image, full_width=False):
         # Portrait.
         img_height = max_width * width / height
         img_width = img_height * width / height
-    return [Spacer(1, 0.1 * units.cm),
-            Image(url, width=img_width, height=img_height),
-            ]
+    try:
+        image = Image(url, width=img_width, height=img_height)
+        return [Spacer(1, 0.1 * units.cm),
+                image,
+                ]
+    except ValueError:
+        # Corrupt jpg
+        logger.error("Corrupt jpeg: %s", url)
+        return []
 
 
 def hack_kupu_text(text):

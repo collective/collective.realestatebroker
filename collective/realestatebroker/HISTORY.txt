@@ -13,6 +13,9 @@ History
 - Rent/buy is now a fixed vocabulary (needed for a userfriendly default
   value). [reinout]
 
+- Added try/except for corrupt images (read: unaccessible images that redirect
+  to a login page). [Reinout]
+
 2.0 rc
 ------
 
