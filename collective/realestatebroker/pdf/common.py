@@ -1,8 +1,8 @@
 import os.path
 import logging
+import tempfile
 
 from reportlab.lib import pagesizes
-from reportlab.lib import styles
 from reportlab.lib import units
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
@@ -153,7 +153,6 @@ def insert_image(image, full_width=False):
 
     """
 
-    url = image.absolute_url()
     width, height = image.getSize()
     if full_width:
         max_width = (21 - 2.5 - 2.5) * units.cm
@@ -175,15 +174,24 @@ def insert_image(image, full_width=False):
         # Portrait.
         img_height = max_width * width / height
         img_width = img_height * width / height
+
+    url = image.absolute_url()
     try:
-        image = Image(url, width=img_width, height=img_height)
-        return [Spacer(1, 0.1 * units.cm),
-                image,
-                ]
+        image = Image(url,
+                      width=img_width,
+                      height=img_height)
     except ValueError:
-        # Corrupt jpg
-        logger.error("Corrupt jpeg: %s", url)
-        return []
+        # Unreadable image: anon doesn't have permission.
+        temp_name = tempfile.mktemp()
+        temp_file = open(temp_name, 'w')
+        temp_file.write(image.getImageAsFile().read())
+        temp_file.close()
+        image = Image(temp_name,
+                      width=img_width,
+                      height=img_height)
+    return [Spacer(1, 0.1 * units.cm),
+            image,
+            ]
 
 
 def hack_kupu_text(text):
