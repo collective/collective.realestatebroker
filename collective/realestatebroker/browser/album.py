@@ -112,6 +112,7 @@ class AlbumView(BrowserView):
             used_floors.append(floor)
             if not floor in floors:
                 # List of floors changed, we still have an old one.
+                # Or we have a None here: unassigned photos.
                 floors[floor] = []
             floors[floor].append(obj)
         # Filter out unused floors
@@ -125,6 +126,12 @@ class AlbumView(BrowserView):
             if name in floors:
                 result.append({'floorname': name,
                                'photos': floors[name]})
+        # If there are no assigned photos, show 'em all.
+        if result == []:
+            if len(floors[None]):
+                name = _(u'All photos')
+                result.append({'floorname': name,
+                               'photos': floors[None]})
         return result
 
 
