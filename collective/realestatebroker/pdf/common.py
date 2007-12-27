@@ -131,8 +131,8 @@ def writeDocument(stream, structure):
                             pagesize=pagesizes.A4,
                             leftMargin = 2.5 * units.cm,
                             rightMargin = 2.5 * units.cm,
-                            topMargin = 4 * units.cm,
-                            bottomMargin = 3 * units.cm,
+                            topMargin = 3.75 * units.cm,
+                            bottomMargin = 2.5 * units.cm,
                             )
     doc.build(list(structure),
               onFirstPage=header_and_footer,
