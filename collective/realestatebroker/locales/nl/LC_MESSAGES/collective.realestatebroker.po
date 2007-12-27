@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-12-21 17:02+0100\n"
+"PO-Revision-Date: 2007-12-27 12:08+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,19 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/album.py:211
+#: ./browser/album.py:218
 msgid "${image} is no longer marked as floorplan."
 msgstr "${image} is niet langer gemarkeerd als plattegrond"
 
-#: ./browser/album.py:201
+#: ./browser/album.py:208
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/album.py:208
+#: ./browser/album.py:215
 msgid "${image} is now marked as floor plan."
 msgstr "${image} is gemarkeerd als plattegrond."
 
-#: ./browser/album.py:220
+#: ./browser/album.py:227
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -38,7 +38,7 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:199
+#: ./pdf/realestate.py:203
 msgid "Address data"
 msgstr "Adresgegevens"
 
@@ -50,6 +50,10 @@ msgstr "Airconditioning"
 #: ./profiles/default/actions.xml
 msgid "Album"
 msgstr "Fotoalbum"
+
+#: ./browser/album.py:132
+msgid "All photos"
+msgstr "Alle foto's"
 
 #: ./browser/controlpanel.py:86
 msgid "Balcony"

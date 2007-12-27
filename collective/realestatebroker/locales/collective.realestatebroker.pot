@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-12-21 16:02+0000\n"
+"POT-Creation-Date: 2007-12-27 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/album.py:211
+#: ./browser/album.py:218
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/album.py:201
+#: ./browser/album.py:208
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/album.py:208
+#: ./browser/album.py:215
 msgid "${image} is now marked as floor plan."
 msgstr ""
 
-#: ./browser/album.py:220
+#: ./browser/album.py:227
 msgid "${image} is now the default."
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ./pdf/realestate.py:199
+#: ./pdf/realestate.py:203
 msgid "Address data"
 msgstr ""
 
@@ -56,6 +56,10 @@ msgstr ""
 #. Default: "Album"
 #: ./profiles/default/actions.xml
 msgid "Album"
+msgstr ""
+
+#: ./browser/album.py:132
+msgid "All photos"
 msgstr ""
 
 #: ./browser/controlpanel.py:86
