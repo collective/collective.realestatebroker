@@ -154,6 +154,8 @@ def insert_image(image, full_width=False):
     """
 
     width, height = image.getSize()
+    if not width:
+        return []
     if full_width:
         max_width = (21 - 2.5 - 2.5) * units.cm
     else:

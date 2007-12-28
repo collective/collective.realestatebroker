@@ -1,6 +1,12 @@
 History
 =======
 
+2.0 rc5
+-------
+
+- Fix for faulty images (width==0, so you get a division by zero error)
+  [reinout]
+
 2.0 rc4
 -------
 
