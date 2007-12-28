@@ -6,6 +6,7 @@ from collective.realestatebroker.interfaces import ICommercial
 from zope.interface import implements
 from Products.PloneFlashUpload.interfaces import IUploadingCapable
 from archetypes.schemaextender.interfaces import IExtensible
+from Products.CMFCore.utils import getToolByName
 
 from collective.realestatebroker import REBMessageFactory as _
 
@@ -59,5 +60,12 @@ class Commercial(atapi.OrderedBaseFolder):
         """We don't want real estate to show up in the nav tree.
         """
         return True
+
+    def default_rent_buy(self):
+        pprops = getToolByName(self, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        rent_buy_props = props.getProperty('commercial_rent_buy')
+        return rent_buy_props[0]
+
 
 atapi.registerType(Commercial, PROJECTNAME)

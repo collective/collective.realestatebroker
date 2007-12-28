@@ -1,8 +1,5 @@
 """Schema and content type for residential real estate."""
-from zope.interface import directlyProvides
 from zope.interface import implements
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
 from Products.Archetypes import atapi
 from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker.config import PROJECTNAME
@@ -10,6 +7,7 @@ from collective.realestatebroker.content import schemata
 from collective.realestatebroker.interfaces import IResidential
 from Products.PloneFlashUpload.interfaces import IUploadingCapable
 from archetypes.schemaextender.interfaces import IExtensible
+from Products.CMFCore.utils import getToolByName
 
 ResidentialSchema = (atapi.OrderedBaseFolderSchema.copy() +
                      schemata.GeneralSchema +
@@ -62,6 +60,12 @@ class Residential(atapi.OrderedBaseFolder):
         """We don't want real estate to show up in the nav tree.
         """
         return True
+
+    def default_rent_buy(self):
+        pprops = getToolByName(self, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        rent_buy_props = props.getProperty('commercial_rent_buy')
+        return rent_buy_props[0]
 
 
 atapi.registerType(Residential, PROJECTNAME)
