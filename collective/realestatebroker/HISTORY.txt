@@ -1,8 +1,13 @@
 History
 =======
 
-2.0 rc2 (unreleased)
---------------------
+2.0 rc3
+-------
+
+- rent_buy vocabulary is handled by the propertysheet again.
+
+2.0 rc2
+-------
 
 - Optionally disabled filtering of empty fields. [reinout]
 
