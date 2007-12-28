@@ -128,10 +128,11 @@ class AlbumView(BrowserView):
                                'photos': floors[name]})
         # If there are no assigned photos, show 'em all.
         if result == []:
-            if len(floors[None]):
-                name = _(u'All photos')
-                result.append({'floorname': name,
-                               'photos': floors[None]})
+            if None in floors:
+                if len(floors[None]):
+                    name = _(u'All photos')
+                    result.append({'floorname': name,
+                                   'photos': floors[None]})
         return result
 
 
