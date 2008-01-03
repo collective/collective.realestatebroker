@@ -1,6 +1,11 @@
 History
 =======
 
+2.0 final (unreleased)
+----------------------
+
+- README updated.
+
 2.0 rc5
 -------
 

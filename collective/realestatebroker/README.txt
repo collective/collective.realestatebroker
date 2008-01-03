@@ -31,10 +31,8 @@ to use the buildout. The basic setup can be done with::
 
  https://svn.plone.org/svn/collective/collective.realestatebroker/buildout/reb30/trunk
 
-If you have old content you can migrate that with another buildout that
-includes migration products::
-
-  https://svn.plone.org/svn/collective/collective.realestatebroker/buildout/reb30/branches/migration-from-20
+If you have old 1.0 content you can migrate that by uncommenting two lines in
+the buildout, as indicated there with a comment.
 
 Inside plone, log in with an administrator account and install real estate
 broker through the quickinstaller (in the plone control panel: "add/remove
