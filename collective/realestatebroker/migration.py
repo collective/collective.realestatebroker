@@ -53,8 +53,8 @@ class RebMigrator(CMFItemMigrator):
         'getIsolation': 'setInsulation',
         'getKindOfBuilding': 'setKindOfBuilding',
         'getKindOfGarden': 'setKindOfGarden',
-        'getKk_von': 'setKk_von',
-        'getLocation': 'setLocation',
+        #'getKk_von': 'setKk_von', # Handled separately
+        #'getLocation': 'setLocation', # Handled separately
         'getMainText': 'setText',
         'getParking': 'setParking',
         'getPrice': 'setPrice',
@@ -318,7 +318,7 @@ class RebMigrator(CMFItemMigrator):
                 logger.info("Used setattr to set %s to the value from "
                             "old field %s.", newKey, oldKey)
 
-    def xxx_unused_migrate_kk_von(self):
+    def migrate_kk_von(self):
         """Migrate the kk_von field that existed in some versions.
 
         Dutch-specific one. Probably only of interest to Zest
@@ -331,10 +331,6 @@ class RebMigrator(CMFItemMigrator):
             logger.info("No kk_von field, continuing.")
             return
         value = self.old.getKk_von()
-        if value == 'k.k.':
-            value = 'Kosten koper (k.k.)'
-        if value == 'v.o.n.':
-            value = 'Vrij op naam (v.o.n.)'
         schema = self.new.Schema()
         new_field = schema.getField('kk_von')
         if not new_field:
