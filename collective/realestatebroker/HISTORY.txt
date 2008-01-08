@@ -1,8 +1,8 @@
 History
 =======
 
-2.0 rc6 (unreleased)
-----------------------
+2.0 rc6
+-------
 
 - README updated. [reinout]
 
