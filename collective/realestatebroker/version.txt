@@ -1,1 +1,1 @@
-2.0 final dev 1
+2.0 rc6 dev 2

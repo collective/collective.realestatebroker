@@ -1,10 +1,16 @@
 History
 =======
 
-2.0 final (unreleased)
+2.0 rc6 (unreleased)
 ----------------------
 
-- README updated.
+- README updated. [reinout]
+
+- Old temporary image size name renamed to something more
+  appropriate. [fredvd]
+
+- Disabling special kk_von handling as the values of the field are the same
+  again as in the old database. Sorry for the noise. [reinout]
 
 2.0 rc5
 -------

@@ -53,8 +53,8 @@ class RebMigrator(CMFItemMigrator):
         'getIsolation': 'setInsulation',
         'getKindOfBuilding': 'setKindOfBuilding',
         'getKindOfGarden': 'setKindOfGarden',
-        #'getKk_von': 'setKk_von', # Handled separately
-        #'getLocation': 'setLocation', # Handled separately
+        'getKk_von': 'setKk_von',
+        'getLocation': 'setLocation',
         'getMainText': 'setText',
         'getParking': 'setParking',
         'getPrice': 'setPrice',
@@ -318,7 +318,7 @@ class RebMigrator(CMFItemMigrator):
                 logger.info("Used setattr to set %s to the value from "
                             "old field %s.", newKey, oldKey)
 
-    def migrate_kk_von(self):
+    def xxx_unused_migrate_kk_von(self):
         """Migrate the kk_von field that existed in some versions.
 
         Dutch-specific one. Probably only of interest to Zest
