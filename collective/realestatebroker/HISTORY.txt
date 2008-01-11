@@ -1,5 +1,10 @@
-History
-=======
+History of collective.realestatebroker
+======================================
+
+2.0 final
+---------
+
+- Released on 2008-01-11, no changes from the rc6.
 
 2.0 rc6
 -------
