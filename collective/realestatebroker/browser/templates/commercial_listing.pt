@@ -11,7 +11,9 @@
       <tal:main-macro metal:define-macro="main">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
-
+        <a name="top">
+          <span class="hiddenStructure">top</span>
+        </a>
         <h1 class="documentFirstHeading" tal:content="context/title_or_id" />
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
@@ -145,37 +147,43 @@
             </thead>
 
             <tbody>
-              <tr tal:repeat="item view/items">
-                <td>
-                  <a href=""
-                     tal:attributes="href string:${item/url}/album;
-                                     title item/image/title"
-                     tal:condition="item/image">
-                    <img src=""
-                         tal:replace="structure item/image/tag" />
-                  </a>
-                  <span tal:omit-tag=""
-                        tal:condition="not: item/image">
-                    &nbsp;
-                  </span>
-                </td>
-                <td class="residential-listing-content">
-                  <a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
-                  <span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
-                  <div tal:condition="item/description"
-                       tal:content="item/description">Description</div>
-                </td>
-                <td class="object-price">
-                  <span tal:replace="item/cooked_price"></span><br/>
-                  <span tal:replace="item/rent_buy"></span>
-                </td>
-                <td>
-                  <span i18n:translate="" tal:replace="item/review_state"></span>
-                </td>
-              </tr>
+              <tal:items repeat="item view/items">
+                <tr tal:define="odd repeat/item/odd"
+                    tal:attributes="class python:odd and 'odd' or 'even'">
+                  <td>
+                    <a href=""
+                       tal:attributes="href string:${item/url}/album;
+                                       title item/image/title"
+                       tal:condition="item/image">
+                      <img src=""
+                           tal:replace="structure item/image/tag" />
+                    </a>
+                    <span tal:omit-tag=""
+                          tal:condition="not: item/image">
+                      &nbsp;
+                    </span>
+                  </td>
+                  <td class="residential-listing-content">
+                    <a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
+                    <span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
+                    <div tal:condition="item/description"
+                         tal:content="item/description">Description</div>
+                  </td>
+                  <td class="object-price">
+                    <span tal:replace="item/cooked_price"></span><br/>
+                    <span tal:replace="item/rent_buy"></span>
+                  </td>
+                  <td>
+                    <span i18n:translate="" tal:replace="item/review_state"></span>
+                  </td>
+                </tr>
+              </tal:items>
             </tbody>
           </table>
-
+          <div class="back-to-top">
+            <a href="#top"
+               i18n:translate="back_to_top">Back to top</a>
+          </div>
           <div tal:replace="structure provider:plone.belowcontentbody" />
 
         </tal:main-macro>
