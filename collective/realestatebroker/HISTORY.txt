@@ -1,6 +1,9 @@
 History of collective.realestatebroker
 ======================================
 
+2.0.1 beta (unreleased)
+-----------------------
+
 2.0 final
 ---------
 
