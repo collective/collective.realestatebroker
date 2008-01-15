@@ -1,8 +1,8 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.1 beta (unreleased)
------------------------
+2.0.1 beta  (released 2008-01-15)
+---------------------------------
 
 - Capitalized the 'view' action so that the translation is picked up. [reinout]
 
