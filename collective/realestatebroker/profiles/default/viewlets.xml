@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object>
-  <order manager="realestatebroker.titlemanager">
+  <order manager="realestatebroker.titlemanager" skinname="Plone Default">
     <viewlet name="realestatebroker.title" />
   </order>
 </object>
