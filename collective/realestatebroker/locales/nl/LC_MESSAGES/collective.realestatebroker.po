@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2007-12-27 13:29+0100\n"
+"PO-Revision-Date: 2008-01-15 11:43+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -14,19 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/album.py:218
+#: ./browser/album.py:219
 msgid "${image} is no longer marked as floorplan."
 msgstr "${image} is niet langer gemarkeerd als plattegrond"
 
-#: ./browser/album.py:208
+#: ./browser/album.py:209
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/album.py:215
+#: ./browser/album.py:216
 msgid "${image} is now marked as floor plan."
 msgstr "${image} is gemarkeerd als plattegrond."
 
-#: ./browser/album.py:227
+#: ./browser/album.py:228
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -34,7 +34,7 @@ msgstr "${image} is als standaard foto ingesteld."
 msgid "Acceptance"
 msgstr "Oplevering"
 
-#: ./content/commercial.py:17
+#: ./content/commercial.py:18
 msgid "Address"
 msgstr "Adres"
 
@@ -51,7 +51,7 @@ msgstr "Airconditioning"
 msgid "Album"
 msgstr "Fotoalbum"
 
-#: ./browser/album.py:132
+#: ./browser/album.py:133
 msgid "All photos"
 msgstr "Alle foto's"
 
@@ -63,15 +63,12 @@ msgstr "Balkon"
 msgid "Body text"
 msgstr "Hoofdtekst"
 
-#: ./content/schemata.py:229
+#: ./content/schemata.py:226
 msgid "Building type"
 msgstr "Gebouwtype"
 
-#: ./content/schemata.py:132
-msgid "Buy"
-msgstr "Te koop"
-
-#: ./pdf/realestate.py:126
+#. Default: "Characteristics"
+#: ./browser/templates/realestate_view.pt:28
 msgid "Characteristics"
 msgstr "Kenmerken"
 
@@ -133,7 +130,7 @@ msgstr "Faciliteiten"
 msgid "False"
 msgstr "Nee"
 
-#: ./content/commercial.py:18
+#: ./content/commercial.py:19
 msgid "Fill in the address of this object"
 msgstr "Geef de straatnaam op van dit object."
 
@@ -273,7 +270,7 @@ msgstr "Prijs"
 msgid "Price:"
 msgstr "Prijs:"
 
-#: ./content/schemata.py:256
+#: ./content/schemata.py:253
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
@@ -281,11 +278,7 @@ msgstr "Privé parkeerterrein"
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
-#: ./content/schemata.py:133
-msgid "Rent"
-msgstr "Te huur"
-
-#: ./content/schemata.py:137
+#: ./content/schemata.py:134
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
@@ -316,7 +309,7 @@ msgstr "Zoek"
 msgid "Searching"
 msgstr "Zoekformulier"
 
-#: ./content/schemata.py:238
+#: ./content/schemata.py:235
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
@@ -330,7 +323,7 @@ msgstr "Beheer de verschillende standaard waardes en waardelijsten die in Real E
 
 #: ./browser/controlpanel.py:122
 msgid "Storage"
-msgstr "Opslag"
+msgstr "Berging"
 
 #: ./browser/controlpanel.py:131
 msgid "Tax"
@@ -349,7 +342,7 @@ msgstr "Ja"
 msgid "Upload Files"
 msgstr "Bestanden uploaden"
 
-#: ./content/schemata.py:247
+#: ./content/schemata.py:244
 msgid "VAT"
 msgstr "B.T.W."
 
@@ -423,11 +416,6 @@ msgstr "Financieel"
 msgid "heading_bulk_upload"
 msgstr "Uploaden van meerdere foto's in één keer."
 
-#. Default: "Textual description"
-#: ./browser/templates/realestate_view.pt:45
-msgid "heading_main_text"
-msgstr "Omschrijving"
-
 #. Default: "Photo management"
 #: ./browser/templates/album_management.pt:18
 msgid "heading_manage_photos"
@@ -455,11 +443,11 @@ msgstr "Prijs"
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:177
+#: ./content/schemata.py:174
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:190
+#: ./content/schemata.py:187
 msgid "kindOfStorage"
 msgstr "Soort berging"
 

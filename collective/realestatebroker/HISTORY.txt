@@ -4,6 +4,10 @@ History of collective.realestatebroker
 2.0.1 beta (unreleased)
 -----------------------
 
+- Capitalized the 'view' action so that the translation is picked up. [reinout]
+
+- Dutch translation fix ("opslag"). [reinout]
+
 2.0 final
 ---------
 

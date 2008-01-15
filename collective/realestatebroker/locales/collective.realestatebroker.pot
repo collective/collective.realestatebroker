@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-12-27 12:29+0000\n"
+"POT-Creation-Date: 2008-01-15 10:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/album.py:218
+#: ./browser/album.py:219
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/album.py:208
+#: ./browser/album.py:209
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/album.py:215
+#: ./browser/album.py:216
 msgid "${image} is now marked as floor plan."
 msgstr ""
 
-#: ./browser/album.py:227
+#: ./browser/album.py:228
 msgid "${image} is now the default."
 msgstr ""
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Acceptance"
 msgstr ""
 
-#: ./content/commercial.py:17
+#: ./content/commercial.py:18
 msgid "Address"
 msgstr ""
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Album"
 msgstr ""
 
-#: ./browser/album.py:132
+#: ./browser/album.py:133
 msgid "All photos"
 msgstr ""
 
@@ -70,15 +70,12 @@ msgstr ""
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:229
+#: ./content/schemata.py:226
 msgid "Building type"
 msgstr ""
 
-#: ./content/schemata.py:132
-msgid "Buy"
-msgstr ""
-
-#: ./pdf/realestate.py:126
+#. Default: "Characteristics"
+#: ./browser/templates/realestate_view.pt:28
 msgid "Characteristics"
 msgstr ""
 
@@ -140,7 +137,7 @@ msgstr ""
 msgid "False"
 msgstr ""
 
-#: ./content/commercial.py:18
+#: ./content/commercial.py:19
 msgid "Fill in the address of this object"
 msgstr ""
 
@@ -280,7 +277,7 @@ msgstr ""
 msgid "Price:"
 msgstr ""
 
-#: ./content/schemata.py:256
+#: ./content/schemata.py:253
 msgid "Private car park"
 msgstr ""
 
@@ -288,11 +285,7 @@ msgstr ""
 msgid "RealEstateBroker settings"
 msgstr ""
 
-#: ./content/schemata.py:133
-msgid "Rent"
-msgstr ""
-
-#: ./content/schemata.py:137
+#: ./content/schemata.py:134
 msgid "Rent or buy"
 msgstr ""
 
@@ -323,7 +316,7 @@ msgstr ""
 msgid "Searching"
 msgstr ""
 
-#: ./content/schemata.py:238
+#: ./content/schemata.py:235
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
@@ -356,7 +349,7 @@ msgstr ""
 msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:247
+#: ./content/schemata.py:244
 msgid "VAT"
 msgstr ""
 
@@ -427,11 +420,6 @@ msgstr ""
 msgid "heading_bulk_upload"
 msgstr ""
 
-#. Default: "Textual description"
-#: ./browser/templates/realestate_view.pt:45
-msgid "heading_main_text"
-msgstr ""
-
 #. Default: "Photo management"
 #: ./browser/templates/album_management.pt:18
 msgid "heading_manage_photos"
@@ -459,11 +447,11 @@ msgstr ""
 msgid "insulation"
 msgstr ""
 
-#: ./content/schemata.py:177
+#: ./content/schemata.py:174
 msgid "kindOfGarage"
 msgstr ""
 
-#: ./content/schemata.py:190
+#: ./content/schemata.py:187
 msgid "kindOfStorage"
 msgstr ""
 
