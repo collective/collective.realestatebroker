@@ -8,6 +8,9 @@ History of collective.realestatebroker
 
 - Dutch translation fix ("opslag"). [reinout]
 
+- Removed an unused viewletmanager configuration and enabled the titlemanager
+  for every skin.
+
 2.0 final
 ---------
 
