@@ -70,12 +70,14 @@ def realestateToPDF(context, request):
     # this translates AND encodes to utf-8
 
     def _(msg, mapping=None):
+        msg = safe_unicode(msg)
         return translate(msg, domain='collective.realestatebroker',
                          mapping=mapping,
                          context=request).encode('utf-8')
 
     def trans(msg):
         """Just translate, used for field names."""
+        msg = safe_unicode(msg)
         return translate(msg,
                          domain='collective.realestatebroker',
                          context=request)

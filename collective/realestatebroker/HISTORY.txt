@@ -11,6 +11,9 @@ History of collective.realestatebroker
 - Removed an unused viewletmanager configuration and enabled the titlemanager
   for every skin.
 
+- Added two extra safe_unicode() calls to the pdf generator to prevent decode
+  errors.
+
 2.0 final
 ---------
 
