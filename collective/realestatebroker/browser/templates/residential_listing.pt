@@ -20,15 +20,46 @@
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
+        <div tal:define="isManager python: checkPermission('Manage portal', here)">
 
-        <!-- simple search form -->
-        <div >
+          <form tal:condition="isManager"
+                method="get"
+                action=""
+                tal:attributes="action string:${context/absolute_url}/search?portal_type%3Alist=Commercial&amp;portal_type%3Alist=Document&amp;portal_type%3Alist=Residential&amp;review_state%3Alist=available&amp;review_state%3Alist=external&amp;review_state%3Alist=negotiating&amp;review_state%3Alist=internal&amp;review_state%3Alist=internally_published&amp;review_state%3Alist=new&amp;review_state%3Alist=pending&amp;review_state%3Alist=private&amp;review_state%3Alist=visible&amp;review_state%3Alist=published&amp;review_state%3Alist=reserved&amp;review_state%3Alist=sold&amp;review_state%3Alist=offline"
+                >
+            <fieldset>
+              <legend i18n:translate="legend_manager_search"
+                      id="managerSearch">Manager-only textual search</legend>
+              <label for="SearchableText"
+                     i18n:translate="label_manager_search">
+                Search text
+              </label>
+              <div class="formHelp"
+                   i18n:translate="help_manager_search">
+                You can use a * at the start or end of a word, for instance
+                churchill* if you don't know if it is churchillroad or
+                churchillstreet.
+              </div>
+              <div class="field">
+                <input name="SearchableText"/>
+              </div>
+              <div class="formControls">
+                <input class="context"
+                       type="submit"
+                       name="form.button.submit"
+                       value="Search"
+                       i18n:attributes="value"
+                       />
+              </div>
+            </fieldset>
+          </form>
 
-          <form action=""
+
+          <form tal:condition="not: isManager"
+                action=""
                 method="get"
                 name="search"
                 onsubmit="">
-
 
             <fieldset>
 
@@ -123,71 +154,72 @@
             </fieldset>
 
           </form>
-          <tal:batch replace="structure view/batching" />
+        </div>
+        <tal:batch replace="structure view/batching" />
 
-          <div tal:condition="not: view/items" i18n:translate="no_realestate_found">No realestate found.</div>
+        <div tal:condition="not: view/items" i18n:translate="no_realestate_found">No realestate found.</div>
 
-          <table id="sortable"
-                 class="listing"
-                 border="1"
-                 summary="Content listing"
-                 cellpadding="0" cellspacing="0"
-                 tal:condition="view/items">
+        <table id="sortable"
+               class="listing"
+               border="1"
+               summary="Content listing"
+               cellpadding="0" cellspacing="0"
+               tal:condition="view/items">
 
-            <thead>
-              <tr>
-                <th class="nosort" i18n:translate="photos">Photos</th>
-                <th class="">&nbsp;<tal:address i18n:translate="address"
-                >Address</tal:address>&nbsp;</th>
-                <th class="">&nbsp;<tal:price i18n:translate="price"
-                >Price</tal:price>&nbsp;</th>
-                <th class="">&nbsp;<tal:status i18n:translate="property_status"
-                >Status</tal:status>&nbsp;</th>
+          <thead>
+            <tr>
+              <th class="nosort" i18n:translate="photos">Photos</th>
+              <th class="">&nbsp;<tal:address i18n:translate="address"
+              >Address</tal:address>&nbsp;</th>
+              <th class="">&nbsp;<tal:price i18n:translate="price"
+              >Price</tal:price>&nbsp;</th>
+              <th class="">&nbsp;<tal:status i18n:translate="property_status"
+              >Status</tal:status>&nbsp;</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tal:items repeat="item view/items">
+              <tr tal:define="odd repeat/item/odd"
+                  tal:attributes="class python:odd and 'odd' or 'even'">
+                <td>
+                  <a href=""
+                     tal:attributes="href string:${item/url}/album;
+                                     title item/image/title"
+                     tal:condition="item/image">
+                    <img src=""
+                         tal:replace="structure item/image/tag" />
+                  </a>
+                  <span tal:omit-tag=""
+                        tal:condition="not: item/image">
+                    &nbsp;
+                  </span>
+                </td>
+                <td class="residential-listing-content">
+                  <a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
+                  <span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
+                  <div tal:condition="item/description"
+                       tal:content="item/description">Description</div>
+                </td>
+                <td class="object-price">
+                  <span tal:replace="item/cooked_price"></span><br/>
+                  <span tal:replace="item/rent_buy"></span>
+                </td>
+                <td>
+                  <span i18n:translate="" tal:replace="item/review_state"></span>
+                </td>
               </tr>
-            </thead>
+            </tal:items>
+          </tbody>
+        </table>
+        <div class="back-to-top">
+          <a href="#top"
+             i18n:translate="back_to_top">Back to top</a>
+        </div>
+        <div tal:replace="structure provider:plone.belowcontentbody" />
 
-            <tbody>
-              <tal:items repeat="item view/items">
-                <tr tal:define="odd repeat/item/odd"
-                    tal:attributes="class python:odd and 'odd' or 'even'">
-                  <td>
-                    <a href=""
-                       tal:attributes="href string:${item/url}/album;
-                                       title item/image/title"
-                       tal:condition="item/image">
-                      <img src=""
-                           tal:replace="structure item/image/tag" />
-                    </a>
-                    <span tal:omit-tag=""
-                          tal:condition="not: item/image">
-                      &nbsp;
-                    </span>
-                  </td>
-                  <td class="residential-listing-content">
-                    <a hef="" tal:attributes="href item/url"><span tal:replace="item/title">Street 1</span><br/>
-                    <span tal:replace="item/zipcode">1234 AB</span> <span tal:replace="item/city">Amsterdam</span></a>
-                    <div tal:condition="item/description"
-                         tal:content="item/description">Description</div>
-                  </td>
-                  <td class="object-price">
-                    <span tal:replace="item/cooked_price"></span><br/>
-                    <span tal:replace="item/rent_buy"></span>
-                  </td>
-                  <td>
-                    <span i18n:translate="" tal:replace="item/review_state"></span>
-                  </td>
-                </tr>
-              </tal:items>
-            </tbody>
-          </table>
-          <div class="back-to-top">
-            <a href="#top"
-               i18n:translate="back_to_top">Back to top</a>
-          </div>
-          <div tal:replace="structure provider:plone.belowcontentbody" />
+      </tal:main-macro>
+    </metal:main>
 
-        </tal:main-macro>
-      </metal:main>
-
-    </body>
-  </html>
+  </body>
+</html>

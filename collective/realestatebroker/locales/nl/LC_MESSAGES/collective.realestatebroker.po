@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2008-01-15 11:43+0100\n"
+"PO-Revision-Date: 2008-01-17 14:09+0100\n"
 "Last-Translator: Reinout van Rees <reinout@zestsoftware.nl>\n"
 "Language-Team: Zest software <info@zestsoftware.nl>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Oplevering"
 msgid "Address"
 msgstr "Adres"
 
-#: ./pdf/realestate.py:199
+#: ./pdf/realestate.py:201
 msgid "Address data"
 msgstr "Adresgegevens"
 
@@ -126,7 +126,7 @@ msgstr "Geef de opties op waaruit te kiezen is."
 msgid "Facilities"
 msgstr "Faciliteiten"
 
-#: ./pdf/realestate.py:143
+#: ./pdf/realestate.py:145
 msgid "False"
 msgstr "Nee"
 
@@ -146,7 +146,7 @@ msgstr "Namen voor verdiepingen"
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
-#: ./pdf/realestate.py:118
+#: ./pdf/realestate.py:120
 msgid "Floor plan for ${floorname}"
 msgstr "Plattegrond voor ${floorname}"
 
@@ -229,7 +229,7 @@ msgstr "Minimum prijs in zoekformulier"
 msgid "Number of rooms"
 msgstr "Aantal kamers"
 
-#: ./pdf/realestate.py:131
+#: ./pdf/realestate.py:133
 msgid "Object data"
 msgstr "Objectgegevens"
 
@@ -287,7 +287,7 @@ msgid "Rent/Buy"
 msgstr "Te huur/Te koop"
 
 #. Default: "Reset"
-#: ./browser/templates/commercial_listing.pt:111
+#: ./browser/templates/commercial_listing.pt:144
 msgid "Reset"
 msgstr "Wis zoektermen"
 
@@ -301,7 +301,7 @@ msgid "Residential real estate"
 msgstr "Woning"
 
 #. Default: "Search"
-#: ./browser/templates/commercial_listing.pt:103
+#: ./browser/templates/commercial_listing.pt:47
 msgid "Search"
 msgstr "Zoek"
 
@@ -333,7 +333,7 @@ msgstr "Belasting"
 msgid "Title"
 msgstr "Title"
 
-#: ./pdf/realestate.py:141
+#: ./pdf/realestate.py:143
 msgid "True"
 msgstr "Ja"
 
@@ -359,12 +359,12 @@ msgid "Zip code"
 msgstr "Postcode"
 
 #. Default: "Address"
-#: ./browser/templates/commercial_listing.pt:138
+#: ./browser/templates/commercial_listing.pt:172
 msgid "address"
 msgstr "Adres"
 
 #. Default: "Any city"
-#: ./browser/templates/commercial_listing.pt:45
+#: ./browser/templates/commercial_listing.pt:78
 msgid "any_city"
 msgstr "Elke plaats"
 
@@ -372,22 +372,22 @@ msgid "available"
 msgstr "Beschikbaar"
 
 #. Default: "Back to top"
-#: ./browser/templates/residential_listing.pt:184
+#: ./browser/templates/commercial_listing.pt:216
 msgid "back_to_top"
 msgstr "Terug naar boven"
 
 #. Default: "No Limit"
-#: ./browser/templates/commercial_listing.pt:86
+#: ./browser/templates/commercial_listing.pt:119
 msgid "broker_price_no_limit"
 msgstr "Geen bovengrens"
 
 #. Default: "to"
-#: ./browser/templates/commercial_listing.pt:75
+#: ./browser/templates/commercial_listing.pt:108
 msgid "broker_price_to"
 msgstr "tot"
 
 #. Default: "City"
-#: ./browser/templates/commercial_listing.pt:35
+#: ./browser/templates/commercial_listing.pt:68
 msgid "city"
 msgstr "plaats"
 
@@ -430,12 +430,17 @@ msgstr "Foto configuratie"
 msgid "heating"
 msgstr "Verwarming"
 
+#. Default: "You can use a * at the start or end of a word, for instance churchill* if you don't know if it is churchillroad or churchillstreet."
+#: ./browser/templates/commercial_listing.pt:37
+msgid "help_manager_search"
+msgstr "Je kan een * aan het begin of eind van een woord te gebruiken. Bijvoorbeeld floris* om zowel florislaan als florisstraat te vinden."
+
 #. Default: "Which city to list property?"
-#: ./browser/templates/commercial_listing.pt:39
+#: ./browser/templates/commercial_listing.pt:72
 msgid "help_search_city"
 msgstr "Beperk de weergave op plaats"
 
-#: ./browser/templates/commercial_listing.pt:59
+#: ./browser/templates/commercial_listing.pt:92
 msgid "help_search_price"
 msgstr "Prijs"
 
@@ -466,13 +471,18 @@ msgstr "Omschrijving"
 msgid "label_is_floorplan"
 msgstr "Plattegrond"
 
+#. Default: "Search text"
+#: ./browser/templates/commercial_listing.pt:33
+msgid "label_manager_search"
+msgstr "Zoektekst"
+
 #. Default: "Maximum price"
-#: ./browser/templates/commercial_listing.pt:77
+#: ./browser/templates/commercial_listing.pt:110
 msgid "label_max_price"
 msgstr "bovengrens prijs"
 
 #. Default: "Minimum price"
-#: ./browser/templates/commercial_listing.pt:58
+#: ./browser/templates/commercial_listing.pt:91
 msgid "label_min_price"
 msgstr "ondergrens prijs"
 
@@ -482,12 +492,17 @@ msgid "label_related_items"
 msgstr "Gerelateerde items"
 
 #. Default: "(Required)"
-#: ./browser/templates/commercial_listing.pt:36
+#: ./browser/templates/commercial_listing.pt:69
 msgid "label_required"
 msgstr "(Verplicht)"
 
+#. Default: "Manager-only textual search"
+#: ./browser/templates/commercial_listing.pt:31
+msgid "legend_manager_search"
+msgstr "Tekstueel zoeken (alleen voor beheerders)"
+
 #. Default: "Search Terms"
-#: ./browser/templates/commercial_listing.pt:33
+#: ./browser/templates/commercial_listing.pt:66
 msgid "legend_search_terms"
 msgstr "Zoektermen"
 
@@ -506,7 +521,7 @@ msgid "new"
 msgstr "Nieuw"
 
 #. Default: "No realestate found."
-#: ./browser/templates/commercial_listing.pt:126
+#: ./browser/templates/commercial_listing.pt:160
 msgid "no_realestate_found"
 msgstr "Geen objecten gevonden."
 
@@ -516,17 +531,17 @@ msgid "offline"
 msgstr "Niet zichtbaar"
 
 #. Default: "Photos"
-#: ./browser/templates/commercial_listing.pt:137
+#: ./browser/templates/commercial_listing.pt:171
 msgid "photos"
 msgstr "Foto's"
 
 #. Default: "Price"
-#: ./browser/templates/commercial_listing.pt:140
+#: ./browser/templates/commercial_listing.pt:174
 msgid "price"
 msgstr "Prijs"
 
 #. Default: "Status"
-#: ./browser/templates/commercial_listing.pt:142
+#: ./browser/templates/commercial_listing.pt:176
 msgid "property_status"
 msgstr "Beschikbaarheid"
 
