@@ -6,4 +6,10 @@ from zope.interface import implements
 class RealEstateMapView(BaseMapView):
     """Configuration adapter for plonemaps."""
     implements(IMapView)
-    enabled = True # Yes, we want the maps javascript.
+
+    @property
+    def enabled(self):
+        req_url = self.request.getURL()
+        if req_url.endswith('map'):
+            return True # Yes, we want the maps javascript.
+        return False

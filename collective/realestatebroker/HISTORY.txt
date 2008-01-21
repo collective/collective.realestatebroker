@@ -1,6 +1,12 @@
 History of collective.realestatebroker
 ======================================
 
+2.0.1 beta3 (unreleased)
+------------------------
+
+- Google maps' css is only enabled if the url ends on '/map' now, so the other
+  tabs don't have to load it.
+
 2.0.1 beta2 (released 2008-01-17)
 ---------------------------------
 
