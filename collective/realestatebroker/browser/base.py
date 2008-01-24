@@ -51,7 +51,7 @@ class RealEstateListing(RealEstateBaseView):
 
         self.query = dict(object_provides = [ICommercial.__identifier__,
                                         IResidential.__identifier__],
-                     sort_on = 'getObjPositionInParent',
+                     sort_on = 'review_state',
                      path = '/'.join(self.context.getPhysicalPath()))
 
         self.formerror=u""
@@ -138,7 +138,24 @@ class RealEstateListing(RealEstateBaseView):
     @memoize
     def batch(self):
         """ Batch of Realestate (brains)"""
-        results = self.catalog.searchResults(self.query)
+        
+        # get all possible workflow states minus the 'new' state
+        wfstates = list(self.catalog.uniqueValuesFor('review_state'))
+        if 'new' in wfstates:
+            wfstates.remove('new')
+
+        # prepare searchResults queries for 'new' objects and all other
+        # objects
+
+        query_new = self.query.copy()
+        query_others = self.query.copy()
+        query_new['review_state'] = 'new'
+        query_others['review_state'] = wfstates
+
+        # concatenate new and other objectbrains in one search result
+        results = ( self.catalog.searchResults(query_new) +
+                    self.catalog.searchResults(query_others) )
+                
         return Batch(items=results, pagesize=ESTATE_LISTING_BATCHSIZE, pagenumber=self.pagenumber,
                      navlistsize=5)
 

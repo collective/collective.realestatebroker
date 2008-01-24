@@ -7,6 +7,10 @@ History of collective.realestatebroker
 - Google maps' js is only enabled if the url ends on '/map' now, so the other
   tabs don't have to load it. [reinout]
 
+- Changed sort_order in the realestate view, so that 'new' real estate
+  objects are always on top of the list. These are the most interesting for
+  visitors checking your real_estate. [fred]
+
 2.0.1 beta2 (released 2008-01-17)
 ---------------------------------
 
