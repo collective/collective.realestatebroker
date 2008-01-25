@@ -1,8 +1,8 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.1 beta3 (unreleased)
-------------------------
+2.0.1 beta3 (released 2008-01-25)
+---------------------------------
 
 - Google maps' js is only enabled if the url ends on '/map' now, so the other
   tabs don't have to load it. [reinout]
