@@ -20,13 +20,13 @@ _ = MessageFactory('collective.realestatebroker')
 class IREBGeneralSchema(Interface):
     cities = schema.List(
         title = _(u'Cities'),
-        description = _(u'Enter the options to choose from.'),    
+        description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
     )
     currency = schema.TextLine(
         title = _(u'Currency'),
-        description = _(u'Select the currency that should be prepended before prices.'),    
+        description = _(u'Select the currency that should be prepended before prices.'),
         default = u'EUR',
         required = True,
     )
@@ -54,7 +54,7 @@ class IREBGeneralSchema(Interface):
         value_type = schema.TextLine(),
         required = True,
     )
-    
+
 class IREBSearchFormSchema(Interface):
     min_price = schema.List(
         title = _(u'Minimum search price'),
@@ -75,13 +75,13 @@ class IREBResidentialSchema(Interface):
         description = _('Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    )    
+    )
     residential_rooms = schema.List (
         title = _('Number of rooms'),
         description = _('Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    )    
+    )
     residential_balcony = schema.List (
         title = _(u'Balcony'),
         description = _(u'Enter the options to choose from.'),
@@ -93,13 +93,13 @@ class IREBResidentialSchema(Interface):
         description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    ) 
+    )
     residential_kindOfGarden = schema.List (
         title = _(u'Kind of garden'),
         description = _(u'Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    )  
+    )
     residential_garage = schema.List (
         title = _(u'Garage'),
         description = _(u'Enter the options to choose from.'),
@@ -144,20 +144,20 @@ class IREBCommercialSchema(Interface):
         description = _('Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    )    
+    )
     commercial_facilities = schema.List (
         title = _('Facilities'),
         description = _('Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    )    
+    )
     commercial_parking = schema.List (
         title = _('Parking'),
         description = _('Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
-    )    
-    
+    )
+
 class IRealEstateBrokerSchema(IREBGeneralSchema, IREBResidentialSchema, IREBCommercialSchema, IREBSearchFormSchema):
     """Combined schema for the adapter lookup.
     """
@@ -207,7 +207,7 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('location', value)
 
     location = property(get_location, set_location)
-    
+
     def get_heating(self):
         value = getattr(self.context, 'heating', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))
@@ -218,7 +218,7 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('heating', value)
 
     heating = property(get_heating, set_heating)
-    
+
     def get_insulation(self):
         value = getattr(self.context, 'insulation', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))
@@ -229,7 +229,7 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('insulation', value)
 
     insulation = property(get_insulation, set_insulation)
-    
+
     def get_floor_names(self):
         value = getattr(self.context, 'floor_names', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))
@@ -240,7 +240,7 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('floor_names', value)
 
     floor_names = property(get_floor_names, set_floor_names)
-    
+
     # Residential Fieldset Setters/Getters
 
 
@@ -254,7 +254,7 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('residential_house_type', value)
 
     residential_house_type = property(get_residential_house_type, set_residential_house_type)
-    
+
     def get_residential_rooms(self):
         value = getattr(self.context, 'residential_rooms', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))
@@ -265,7 +265,7 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('residential_rooms', value)
 
     residential_rooms = property(get_residential_rooms, set_residential_rooms)
-    
+
     def get_residential_balcony(self):
         value = getattr(self.context, 'residential_balcony', u'')
         value = safe_unicode(value, getSiteEncoding(self.context))
