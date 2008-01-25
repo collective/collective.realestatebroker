@@ -11,6 +11,9 @@ History of collective.realestatebroker
   objects are always on top of the list. These are the most interesting for
   visitors checking your real_estate. [fred]
 
+- Removed size limit on the construction year field. This allows you to add
+  '2007-2008' as a construction year, for instance. [reinout]
+
 2.0.1 beta2 (released 2008-01-17)
 ---------------------------------
 

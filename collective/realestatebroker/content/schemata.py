@@ -54,8 +54,7 @@ GeneralSchema =  atapi.Schema((
         storage=atapi.AnnotationStorage(),
         schemata=u"default",
         widget = atapi.StringWidget(label = _(u'Construction year'),
-                 maxlength=4,
-                 size=4,)
+                 size=9,)
         ),
     # Measurements (common)
     # ---------------------
