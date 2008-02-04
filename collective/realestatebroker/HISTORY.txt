@@ -1,6 +1,13 @@
 History of collective.realestatebroker
 ======================================
 
+2.0.1 rc (released 2008-02-04)
+------------------------------
+
+- Fixed bug in display of houses/offices: the main thumbnail picture now
+  points at /album instead of /photo. /photo could result in an orgy of
+  redirects. [reinout]
+
 2.0.1 beta3 (released 2008-01-25)
 ---------------------------------
 

@@ -2,7 +2,7 @@
   <div class="reb-thumb"
        tal:define="image view/image"
        tal:condition="image">
-    <a href="#" tal:attributes="href string:${context/absolute_url}/photos;
+    <a href="#" tal:attributes="href string:${context/absolute_url}/album;
                                 title image/title">
       <img tal:replace="structure image/tag" />
     </a>
