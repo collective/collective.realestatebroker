@@ -1,6 +1,12 @@
 History of collective.realestatebroker
 ======================================
 
+2.0.1 rc2 (released 2008-02-04)
+-------------------------------
+
+- Fixed bug in the condition for googlemaps' javascript: it was not loaded on
+  the edit form. [reinout]
+
 2.0.1 rc (released 2008-02-04)
 ------------------------------
 
