@@ -117,14 +117,6 @@ GeneralSchema =  atapi.Schema((
                  size=10,
                  )
         ),
-    atapi.StringField('rent_period',
-        storage=atapi.AnnotationStorage(),
-        schemata=u'financial',
-        vocabulary=("Monthly", "Yearly",),
-        widget = atapi.SelectionWidget(label = _(u'Rent price period'),
-                 description = _(u'Only applicable if this object is rented'),
-                 )
-        ),
     atapi.StringField('acceptance',
         storage=atapi.AnnotationStorage(),
         schemata=u'financial',
