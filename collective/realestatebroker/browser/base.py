@@ -150,6 +150,8 @@ class RealEstateListing(RealEstateBaseView):
         query_new = self.query.copy()
         query_others = self.query.copy()
         query_new['review_state'] = 'new'
+        query_new['sort_on'] = 'created'
+        query_new['sort_order'] = 'reverse'
         query_others['review_state'] = wfstates
 
         # concatenate new and other objectbrains in one search result
