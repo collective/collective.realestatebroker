@@ -15,7 +15,7 @@ Templates:
 - Rent/buy pricing info in a commercial listing is unlogical if you want to
   list two prices for both rent and buy
 
-- In a residential content object in the view, a 'by admin - last change' 
+- In a residential content object in the view, a 'by admin - last change'
   line appears in the middle of the page.
 
 Setup/Config:
@@ -33,7 +33,3 @@ Python:
 -------
 
 - Refactor and move cooked_price and dotted_price to utils.py
-
-- Test if a _() translation works for schemata names. They're currently
-  untranslated in the edit form. (In the view there's a hack that translates
-  them).
