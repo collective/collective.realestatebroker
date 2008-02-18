@@ -223,9 +223,15 @@ We're showing it on the "edit" form and the "map" tab:
     >>> class Dummy:
     ...     url = 'dummy'
     ...     def getURL(self):
-    ...         return url
-    >>> 
-    >>> view.enabled # We want to show maps.
+    ...         return self.url
+    >>> view.request = Dummy()
+    >>> view.enabled # still no.
+    False
+    >>> view.request.url = 'something/edit'
+    >>> view.enabled
+    True
+    >>> view.request.url = 'something/map'
+    >>> view.enabled
     True
 
 Authors

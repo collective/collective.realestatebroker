@@ -4,7 +4,9 @@ History of collective.realestatebroker
 2.0.1 rc3 (unreleased)
 ----------------------
 
--
+- View order fixed (state first, creation date second). [joris]
+
+- Fixed test to reflect change done in rc2. [reinout]
 
 2.0.1 rc2 (released 2008-02-04)
 -------------------------------
