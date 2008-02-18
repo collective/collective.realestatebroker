@@ -210,7 +210,21 @@ contenttypes can be used by Maps:
     >>> IResidential.providedBy(home1)
     True
     >>> from Products.Maps.interfaces import IMapView
+
+The maps javascripts aren't loaded on the main view (and several others) for
+performance reasons:
+
     >>> view = home1.restrictedTraverse('@@maps_googlemaps_enabled_view')
+    >>> view.enabled
+    False
+
+We're showing it on the "edit" form and the "map" tab:
+
+    >>> class Dummy:
+    ...     url = 'dummy'
+    ...     def getURL(self):
+    ...         return url
+    >>> 
     >>> view.enabled # We want to show maps.
     True
 
