@@ -89,9 +89,10 @@ def add_indexes(site, logger):
     indexes = catalog.indexes()
 
     # fieldindexes
-    for idx in ('getPrice', 'getCity'):
+    for idx in ('getPrice', 'getCity','getHouse_type'):
         if idx not in indexes:
             catalog.addIndex(idx, 'FieldIndex')
+            catalog.reindexIndex(idx,REQUEST=None)
             logger.info('Added FieldIndex for %s.', idx)
 
     # KeyordIndexes
