@@ -10,6 +10,8 @@ History of collective.realestatebroker
 
 - add house_type to the portal_catalog index (getHouse_type) [fred]
 
+- added discreet color on formHelp [mirella]
+
 2.0.1 rc2 (released 2008-02-04)
 -------------------------------
 
