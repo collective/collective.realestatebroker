@@ -4,11 +4,10 @@
              state_variable="review_state"
              initial_state="offline">
  <permission>Access contents information</permission>
+ <permission>List folder contents</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <permission>List folder contents</permission>
- <state state_id="available"
-        title="Available">
+ <state state_id="available" title="Available">
   <exit-transition transition_id="negotiate"/>
   <exit-transition transition_id="retract"/>
   <permission-map name="Access contents information"
@@ -29,8 +28,7 @@
    <permission-role>Anonymous</permission-role>
   </permission-map>
  </state>
- <state state_id="negotiating"
-        title="In negotiation">
+ <state state_id="negotiating" title="In negotiation">
   <exit-transition transition_id="available"/>
   <exit-transition transition_id="reserve"/>
   <exit-transition transition_id="retract"/>
@@ -103,9 +101,31 @@
    <permission-role>Reader</permission-role>
   </permission-map>
  </state>
+ <state state_id="rented"
+        title="Rented, but still visible for anonymous users">
+  <exit-transition transition_id="retract"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
  <state state_id="reserved"
-        title="Sold under reservation, still visible for anonymous users">
+        title="Under reservation, still visible for anonymous users">
   <exit-transition transition_id="available"/>
+  <exit-transition transition_id="rent"/>
   <exit-transition transition_id="retract"/>
   <exit-transition transition_id="sell"/>
   <permission-map name="Access contents information"
@@ -178,6 +198,15 @@
    <guard-role>Manager</guard-role>
   </guard>
  </transition>
+ <transition transition_id="rent" title="Rent"
+             new_state="rented" trigger="USER"
+             before_script="" after_script="">
+  <action url="" category="workflow">Rent</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+   <guard-role>Manager</guard-role>
+  </guard>
+ </transition>
  <transition transition_id="reserve" title="Reservation"
              new_state="reserved" trigger="USER"
              before_script="" after_script="">
@@ -210,7 +239,7 @@
            for_status="True" update_always="True">
   <description>Previous transition</description>
   <default>
-
+   
    <expression>transition/getId|nothing</expression>
   </default>
   <guard>
@@ -220,7 +249,7 @@
            for_status="True" update_always="True">
   <description>The ID of the user who performed the last transition</description>
   <default>
-
+   
    <expression>user/getId</expression>
   </default>
   <guard>
@@ -230,7 +259,7 @@
            for_status="True" update_always="True">
   <description>Comment about the last transition</description>
   <default>
-
+   
    <expression>python:state_change.kwargs.get('comment', '')</expression>
   </default>
   <guard>
@@ -240,7 +269,7 @@
            for_status="False" update_always="False">
   <description>Provides access to workflow history</description>
   <default>
-
+   
    <expression>state_change/getHistory</expression>
   </default>
   <guard>
@@ -252,7 +281,7 @@
            for_status="True" update_always="True">
   <description>When the previous transition was performed</description>
   <default>
-
+   
    <expression>state_change/getDateTime</expression>
   </default>
   <guard>
