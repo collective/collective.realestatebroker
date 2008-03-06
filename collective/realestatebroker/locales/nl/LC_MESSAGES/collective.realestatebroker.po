@@ -30,7 +30,7 @@ msgstr "${image} is gemarkeerd als plattegrond."
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
-#: ./content/schemata.py:124
+#: ./content/schemata.py:123
 msgid "Acceptance"
 msgstr "Oplevering"
 
@@ -63,7 +63,7 @@ msgstr "Balkon"
 msgid "Body text"
 msgstr "Hoofdtekst"
 
-#: ./content/schemata.py:226
+#: ./content/schemata.py:225
 msgid "Building type"
 msgstr "Gebouwtype"
 
@@ -110,7 +110,7 @@ msgstr "Omschrijving"
 msgid "Details"
 msgstr "Details"
 
-#: ./content/schemata.py:125
+#: ./content/schemata.py:124
 msgid "Enter a brief description for the acceptance."
 msgstr "Geef een korte omschrijving voor de oplevering"
 
@@ -134,7 +134,7 @@ msgstr "Nee"
 msgid "Fill in the address of this object"
 msgstr "Geef de straatnaam op van dit object."
 
-#: ./content/schemata.py:117
+#: ./content/schemata.py:116
 msgid "Fill in the price without dots or commas."
 msgstr "Vul de prijs in zonder punten of komma's"
 
@@ -142,7 +142,7 @@ msgstr "Vul de prijs in zonder punten of komma's"
 msgid "Floor Names"
 msgstr "Namen voor verdiepingen"
 
-#: ./content/schemata.py:77
+#: ./content/schemata.py:76
 msgid "Floor area"
 msgstr "Vloeroppervlak"
 
@@ -172,7 +172,7 @@ msgstr "Tuin"
 msgid "General"
 msgstr "Algemeen"
 
-#: ./content/schemata.py:71
+#: ./content/schemata.py:70
 msgid "Ground area"
 msgstr "Grondoppervlak"
 
@@ -262,7 +262,7 @@ msgstr "Plattegronden"
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
-#: ./content/schemata.py:116
+#: ./content/schemata.py:115
 msgid "Price"
 msgstr "Prijs"
 
@@ -270,7 +270,7 @@ msgstr "Prijs"
 msgid "Price:"
 msgstr "Prijs:"
 
-#: ./content/schemata.py:253
+#: ./content/schemata.py:252
 msgid "Private car park"
 msgstr "Privé parkeerterrein"
 
@@ -278,7 +278,7 @@ msgstr "Privé parkeerterrein"
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
-#: ./content/schemata.py:134
+#: ./content/schemata.py:133
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
@@ -309,7 +309,7 @@ msgstr "Zoek"
 msgid "Searching"
 msgstr "Zoekformulier"
 
-#: ./content/schemata.py:235
+#: ./content/schemata.py:234
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
@@ -342,15 +342,15 @@ msgstr "Ja"
 msgid "Upload Files"
 msgstr "Bestanden uploaden"
 
-#: ./content/schemata.py:244
+#: ./content/schemata.py:243
 msgid "VAT"
 msgstr "B.T.W."
 
-#: ./content/schemata.py:65
+#: ./content/schemata.py:64
 msgid "Volume"
 msgstr "Inhoud"
 
-#: ./content/schemata.py:87
+#: ./content/schemata.py:86
 msgid "You can choose more than one option."
 msgstr "Je kan meer dan één optie selecteren."
 
@@ -426,7 +426,7 @@ msgstr "Foto beheer"
 msgid "heading_photo_configuration"
 msgstr "Foto configuratie"
 
-#: ./content/schemata.py:86
+#: ./content/schemata.py:85
 msgid "heating"
 msgstr "Verwarming"
 
@@ -444,15 +444,15 @@ msgstr "Beperk de weergave op plaats"
 msgid "help_search_price"
 msgstr "Prijs"
 
-#: ./content/schemata.py:95
+#: ./content/schemata.py:94
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:174
+#: ./content/schemata.py:173
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:187
+#: ./content/schemata.py:186
 msgid "kindOfStorage"
 msgstr "Soort berging"
 
@@ -506,7 +506,7 @@ msgstr "Tekstueel zoeken (alleen voor beheerders)"
 msgid "legend_search_terms"
 msgstr "Zoektermen"
 
-#: ./content/schemata.py:107
+#: ./content/schemata.py:106
 msgid "location"
 msgstr "Locatie"
 
@@ -545,9 +545,12 @@ msgstr "Prijs"
 msgid "property_status"
 msgstr "Beschikbaarheid"
 
+msgid "rented"
+msgstr "Verhuurd"
+
 #. Default: "Verkocht onder voorbehoud"
 msgid "reserved"
-msgstr "Verkocht onder voorbehoud"
+msgstr "Verkocht of verhuurd onder voorbehoud"
 
 msgid "sold"
 msgstr "Verkocht"
