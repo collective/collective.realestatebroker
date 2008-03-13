@@ -61,7 +61,7 @@ class AlbumView(BrowserView):
             return
         selected_image = batch['selected'].getObject()
         batch['selected_tag'] = self.image_tag(selected_image, scale='large')
-        base_url = self.context.absolute_url() + '/photos?selected='
+        base_url = self.context.absolute_url() + '/album?selected='
         for item in batch['items']:
             obj = item['item'].getObject()
             image_info = self.image_info(obj, scale='tile')
