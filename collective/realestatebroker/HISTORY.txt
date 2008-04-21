@@ -1,7 +1,11 @@
 History of collective.realestatebroker
 ======================================
 
-1.0.2 rc4 (released 2008-03-06)
+2.0.2 (released 2008-04-21)
+
+- no changes, make a final release for references [fredvd]
+
+2.0.1 rc4 (released 2008-03-06)
 -------------------------------
 - Add new rented state and accompanying transition so that rented houses 
   have a proper listing [fred]
