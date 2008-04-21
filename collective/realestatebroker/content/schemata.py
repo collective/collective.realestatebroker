@@ -126,13 +126,22 @@ GeneralSchema =  atapi.Schema((
         ),
     atapi.StringField('rent_buy',
         storage=atapi.AnnotationStorage(),
-        schemata=u'default',
+        schemata=u'financial',
         selfrendered=True, # For REB-specific template rendering.
         default_method='default_rent_buy',
         vocabulary_factory="collective.realestatebroker.rent_buy_list",
         widget = atapi.SelectionWidget(label = _(u'Rent or buy'),
                  )
         ),
+        
+    atapi.StringField('fixedprice_negotiable',
+        storage=atapi.AnnotationStorage(),
+        schemata=u'financial',
+        default_method='default_fixedprice_negotiable',
+        vocabulary_factory="collective.realestatebroker.fixedprice_negotiable_list",
+        widget = atapi.SelectionWidget(label = _(u'Negotiable or fixed price'),
+                 )
+        ),    
     # Location (= google maps)
     # -----------------------
     LocationField('geolocation',

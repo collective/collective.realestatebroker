@@ -166,3 +166,11 @@ def MaxPriceVocabularyFactory(context):
     props = pprops.realestatebroker_properties
     max_price_props = props.getProperty('max_price')
     return SimpleVocabulary.fromValues(max_price_props)
+
+def FixedPriceNegotiableVocabularyFactory(context):
+    """ Negotiable price or fixed price for real estate?
+    """
+    pprops = getToolByName(context, 'portal_properties')
+    props = pprops.realestatebroker_properties
+    fp_neg_props = props.getProperty('fixedprice_negotiable')
+    return SimpleVocabulary.fromValues(fp_neg_props)

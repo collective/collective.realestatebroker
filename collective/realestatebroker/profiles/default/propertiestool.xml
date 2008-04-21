@@ -201,5 +201,9 @@
    <element value="Additional"/>
   </property>
   <property name="country" type="string">Netherlands</property>
+  <property name="fixedprice_negotiable" type="lines" purge="False">
+   <element value="Negotiable"/>
+   <element value="Fixed price"/>
+  </property>
  </object>
 </object>

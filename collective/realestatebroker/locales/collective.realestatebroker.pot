@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-04-01 11:36+0000\n"
+"POT-Creation-Date: 2008-04-21 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Address data"
 msgstr ""
 
-#: ./browser/controlpanel.py:116
+#: ./browser/controlpanel.py:126
 msgid "Airco"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "All photos"
 msgstr ""
 
-#: ./browser/controlpanel.py:86
+#: ./browser/controlpanel.py:96
 msgid "Balcony"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Body text"
 msgstr ""
 
-#: ./content/schemata.py:225
+#: ./content/schemata.py:234
 msgid "Building type"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Characteristics"
 msgstr ""
 
-#: ./browser/controlpanel.py:22
+#: ./browser/controlpanel.py:21
 msgid "Cities"
 msgstr ""
 
@@ -87,11 +87,11 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-#: ./browser/controlpanel.py:438
+#: ./browser/controlpanel.py:453
 msgid "Commercial"
 msgstr ""
 
-#: ./browser/controlpanel.py:143
+#: ./browser/controlpanel.py:147
 msgid "Commercial Type"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Construction year"
 msgstr ""
 
-#: ./browser/controlpanel.py:28
+#: ./browser/controlpanel.py:27
 msgid "Currency"
 msgstr ""
 
@@ -125,11 +125,11 @@ msgstr ""
 msgid "Enter the main description for this object."
 msgstr ""
 
-#: ./browser/controlpanel.py:23
+#: ./browser/controlpanel.py:22
 msgid "Enter the options to choose from."
 msgstr ""
 
-#: ./browser/controlpanel.py:149
+#: ./browser/controlpanel.py:153
 msgid "Facilities"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Fill in the price without dots or commas."
 msgstr ""
 
-#: ./browser/controlpanel.py:52
+#: ./browser/controlpanel.py:51
 msgid "Floor Names"
 msgstr ""
 
@@ -167,15 +167,15 @@ msgstr ""
 msgid "Folderish content type for residential real estate."
 msgstr ""
 
-#: ./browser/controlpanel.py:104
+#: ./browser/controlpanel.py:114
 msgid "Garage"
 msgstr ""
 
-#: ./browser/controlpanel.py:92
+#: ./browser/controlpanel.py:102
 msgid "Garden"
 msgstr ""
 
-#: ./browser/controlpanel.py:430
+#: ./browser/controlpanel.py:445
 msgid "General"
 msgstr ""
 
@@ -183,11 +183,11 @@ msgstr ""
 msgid "Ground area"
 msgstr ""
 
-#: ./browser/controlpanel.py:40
+#: ./browser/controlpanel.py:39
 msgid "Heating"
 msgstr ""
 
-#: ./browser/controlpanel.py:74
+#: ./browser/controlpanel.py:84
 msgid "House type"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: ./browser/controlpanel.py:46
+#: ./browser/controlpanel.py:45
 msgid "Insulation"
 msgstr ""
 
@@ -203,19 +203,19 @@ msgstr ""
 msgid "Kind of building"
 msgstr ""
 
-#: ./browser/controlpanel.py:110
+#: ./browser/controlpanel.py:120
 msgid "Kind of garage"
 msgstr ""
 
-#: ./browser/controlpanel.py:98
+#: ./browser/controlpanel.py:108
 msgid "Kind of garden"
 msgstr ""
 
-#: ./interfaces.py:63
+#: ./interfaces.py:65
 msgid "Kind of storage"
 msgstr ""
 
-#: ./browser/controlpanel.py:34
+#: ./browser/controlpanel.py:33
 msgid "Location"
 msgstr ""
 
@@ -224,15 +224,19 @@ msgstr ""
 msgid "Map"
 msgstr ""
 
-#: ./browser/controlpanel.py:66
+#: ./browser/controlpanel.py:76
 msgid "Maximum search price"
 msgstr ""
 
-#: ./browser/controlpanel.py:60
+#: ./browser/controlpanel.py:70
 msgid "Minimum search price"
 msgstr ""
 
-#: ./browser/controlpanel.py:80
+#: ./browser/controlpanel.py:63
+msgid "Negotiable or fixed price"
+msgstr ""
+
+#: ./browser/controlpanel.py:90
 msgid "Number of rooms"
 msgstr ""
 
@@ -245,7 +249,7 @@ msgstr ""
 msgid "PDF"
 msgstr ""
 
-#: ./browser/controlpanel.py:155
+#: ./browser/controlpanel.py:159
 msgid "Parking"
 msgstr ""
 
@@ -277,11 +281,11 @@ msgstr ""
 msgid "Price:"
 msgstr ""
 
-#: ./content/schemata.py:252
+#: ./content/schemata.py:261
 msgid "Private car park"
 msgstr ""
 
-#: ./browser/controlpanel.py:446
+#: ./browser/controlpanel.py:461
 msgid "RealEstateBroker settings"
 msgstr ""
 
@@ -289,7 +293,7 @@ msgstr ""
 msgid "Rent or buy"
 msgstr ""
 
-#: ./browser/controlpanel.py:137
+#: ./browser/controlpanel.py:57
 msgid "Rent/Buy"
 msgstr ""
 
@@ -298,7 +302,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: ./browser/controlpanel.py:434
+#: ./browser/controlpanel.py:449
 msgid "Residential"
 msgstr ""
 
@@ -312,27 +316,27 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ./browser/controlpanel.py:442
+#: ./browser/controlpanel.py:457
 msgid "Searching"
 msgstr ""
 
-#: ./content/schemata.py:234
+#: ./content/schemata.py:243
 msgid "Select the available facilities by moving them to the right column."
 msgstr ""
 
-#: ./browser/controlpanel.py:29
+#: ./browser/controlpanel.py:28
 msgid "Select the currency that should be prepended before prices."
 msgstr ""
 
-#: ./browser/controlpanel.py:447
+#: ./browser/controlpanel.py:462
 msgid "Specify the different default values and value lists that are used througout Real Estate Broker"
 msgstr ""
 
-#: ./browser/controlpanel.py:122
+#: ./browser/controlpanel.py:132
 msgid "Storage"
 msgstr ""
 
-#: ./browser/controlpanel.py:131
+#: ./browser/controlpanel.py:141
 msgid "Tax"
 msgstr ""
 
@@ -349,7 +353,7 @@ msgstr ""
 msgid "Upload Files"
 msgstr ""
 
-#: ./content/schemata.py:243
+#: ./content/schemata.py:252
 msgid "VAT"
 msgstr ""
 
@@ -452,11 +456,11 @@ msgstr ""
 msgid "insulation"
 msgstr ""
 
-#: ./content/schemata.py:173
+#: ./content/schemata.py:182
 msgid "kindOfGarage"
 msgstr ""
 
-#: ./content/schemata.py:186
+#: ./content/schemata.py:195
 msgid "kindOfStorage"
 msgstr ""
 

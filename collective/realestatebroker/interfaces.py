@@ -44,6 +44,8 @@ class IRealEstateContent(Interface):
         description = _(u'Fill in the price without dots or commas.'))
     acceptance = schema.TextLine(title = _(u'Acceptance'),
         description = _(u'Enter a brief description for the acceptance.'))
+    rent_buy = schema.Bool(title = _(u'Rent or buy'))
+    fixedprice_negotiable = schema.TextLine(title = _(u'Negotiable or fixed price'))
 
     # Location (= google maps)
     #  Stores two int fields, really.
@@ -85,7 +87,6 @@ class ICommercial(IRealEstateContent):
     # Financial data (commercial)
     # ---------------------------
     vat = schema.TextLine(title = _(u'VAT'))
-    rent_buy = schema.Bool(title = _(u'Rent or buy'))
 
     # Outside/garden (commercial)
     # ---------------------------

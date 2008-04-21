@@ -67,5 +67,10 @@ class Commercial(atapi.OrderedBaseFolder):
         rent_buy_props = props.getProperty('commercial_rent_buy')
         return rent_buy_props[0]
 
-
+    def default_fixedprice_negotiable(self):
+        pprops = getToolByName(self, 'portal_properties')
+        props = pprops.realestatebroker_properties
+        fp_neg_props = props.getProperty('fixedprice_negotiable')
+        return fp_neg_props[0]
+        
 atapi.registerType(Commercial, PROJECTNAME)

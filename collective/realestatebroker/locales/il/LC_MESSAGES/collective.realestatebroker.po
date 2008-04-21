@@ -42,7 +42,7 @@ msgstr "כתובת"
 msgid "Address data"
 msgstr "מידע כתובת"
 
-#: ./browser/controlpanel.py:116
+#: ./browser/controlpanel.py:126
 msgid "Airco"
 msgstr "Airconditioning"
 
@@ -55,7 +55,7 @@ msgstr "אלבום"
 msgid "All photos"
 msgstr "כל התמונות"
 
-#: ./browser/controlpanel.py:86
+#: ./browser/controlpanel.py:96
 msgid "Balcony"
 msgstr "Balkon"
 
@@ -63,7 +63,7 @@ msgstr "Balkon"
 msgid "Body text"
 msgstr "טקסט גוף"
 
-#: ./content/schemata.py:225
+#: ./content/schemata.py:234
 msgid "Building type"
 msgstr "סוג בניין"
 
@@ -72,7 +72,7 @@ msgstr "סוג בניין"
 msgid "Characteristics"
 msgstr "Kenmerken"
 
-#: ./browser/controlpanel.py:22
+#: ./browser/controlpanel.py:21
 msgid "Cities"
 msgstr "ערים"
 
@@ -80,11 +80,11 @@ msgstr "ערים"
 msgid "City"
 msgstr "עיר"
 
-#: ./browser/controlpanel.py:438
+#: ./browser/controlpanel.py:453
 msgid "Commercial"
 msgstr " מסחרי"
 
-#: ./browser/controlpanel.py:143
+#: ./browser/controlpanel.py:147
 msgid "Commercial Type"
 msgstr "Type bedrijfspand"
 
@@ -97,7 +97,7 @@ msgstr "Bedrijfspand"
 msgid "Construction year"
 msgstr "Bouwjaar"
 
-#: ./browser/controlpanel.py:28
+#: ./browser/controlpanel.py:27
 msgid "Currency"
 msgstr "מטבע"
 
@@ -118,11 +118,11 @@ msgstr "Geef een korte omschrijving voor de oplevering"
 msgid "Enter the main description for this object."
 msgstr "Geeef een ruime omschrijving voor dit object."
 
-#: ./browser/controlpanel.py:23
+#: ./browser/controlpanel.py:22
 msgid "Enter the options to choose from."
 msgstr "הזן את האפשרויות לבחור מ."
 
-#: ./browser/controlpanel.py:149
+#: ./browser/controlpanel.py:153
 msgid "Facilities"
 msgstr "Faciliteiten"
 
@@ -138,7 +138,7 @@ msgstr "Geef de straatnaam op van dit object."
 msgid "Fill in the price without dots or commas."
 msgstr "Vul de prijs in zonder punten of komma's"
 
-#: ./browser/controlpanel.py:52
+#: ./browser/controlpanel.py:51
 msgid "Floor Names"
 msgstr "שמות קומות"
 
@@ -160,15 +160,15 @@ msgstr "Mapweergave voor bedrijfspanden."
 msgid "Folderish content type for residential real estate."
 msgstr "Mapweergave voor woningen."
 
-#: ./browser/controlpanel.py:104
+#: ./browser/controlpanel.py:114
 msgid "Garage"
 msgstr "Garage"
 
-#: ./browser/controlpanel.py:92
+#: ./browser/controlpanel.py:102
 msgid "Garden"
 msgstr "Tuin"
 
-#: ./browser/controlpanel.py:430
+#: ./browser/controlpanel.py:445
 msgid "General"
 msgstr "כללי"
 
@@ -176,11 +176,11 @@ msgstr "כללי"
 msgid "Ground area"
 msgstr "Grondoppervlak"
 
-#: ./browser/controlpanel.py:40
+#: ./browser/controlpanel.py:39
 msgid "Heating"
 msgstr "Verwarming"
 
-#: ./browser/controlpanel.py:74
+#: ./browser/controlpanel.py:84
 msgid "House type"
 msgstr "Huistype"
 
@@ -188,7 +188,7 @@ msgstr "Huistype"
 msgid "Info"
 msgstr "מידע"
 
-#: ./browser/controlpanel.py:46
+#: ./browser/controlpanel.py:45
 msgid "Insulation"
 msgstr "Isolatie"
 
@@ -196,19 +196,19 @@ msgstr "Isolatie"
 msgid "Kind of building"
 msgstr "סוג בניין"
 
-#: ./browser/controlpanel.py:110
+#: ./browser/controlpanel.py:120
 msgid "Kind of garage"
 msgstr "Soort garage"
 
-#: ./browser/controlpanel.py:98
+#: ./browser/controlpanel.py:108
 msgid "Kind of garden"
 msgstr "סוג גינה"
 
-#: ./interfaces.py:63
+#: ./interfaces.py:65
 msgid "Kind of storage"
 msgstr "סוג איחסון"
 
-#: ./browser/controlpanel.py:34
+#: ./browser/controlpanel.py:33
 msgid "Location"
 msgstr "מיקום"
 
@@ -217,15 +217,19 @@ msgstr "מיקום"
 msgid "Map"
 msgstr "מפה"
 
-#: ./browser/controlpanel.py:66
+#: ./browser/controlpanel.py:76
 msgid "Maximum search price"
 msgstr "מקסימום מחיר חיפוש"
 
-#: ./browser/controlpanel.py:60
+#: ./browser/controlpanel.py:70
 msgid "Minimum search price"
 msgstr "מינימום מחיר חיפוש"
 
-#: ./browser/controlpanel.py:80
+#: ./browser/controlpanel.py:63
+msgid "Negotiable or fixed price"
+msgstr ""
+
+#: ./browser/controlpanel.py:90
 msgid "Number of rooms"
 msgstr "מספר חדרים"
 
@@ -238,7 +242,7 @@ msgstr "Objectgegevens"
 msgid "PDF"
 msgstr "PDF"
 
-#: ./browser/controlpanel.py:155
+#: ./browser/controlpanel.py:159
 msgid "Parking"
 msgstr "חניה"
 
@@ -270,11 +274,11 @@ msgstr "מחיר:"
 msgid "Price:"
 msgstr "Prijs:"
 
-#: ./content/schemata.py:252
+#: ./content/schemata.py:261
 msgid "Private car park"
 msgstr "חניית רכב פרטית"
 
-#: ./browser/controlpanel.py:446
+#: ./browser/controlpanel.py:461
 msgid "RealEstateBroker settings"
 msgstr "Real Estate Broker instellingen"
 
@@ -282,7 +286,7 @@ msgstr "Real Estate Broker instellingen"
 msgid "Rent or buy"
 msgstr "Huren of kopen mogelijk"
 
-#: ./browser/controlpanel.py:137
+#: ./browser/controlpanel.py:57
 msgid "Rent/Buy"
 msgstr "Te huur/Te koop"
 
@@ -291,7 +295,7 @@ msgstr "Te huur/Te koop"
 msgid "Reset"
 msgstr "Wis zoektermen"
 
-#: ./browser/controlpanel.py:434
+#: ./browser/controlpanel.py:449
 msgid "Residential"
 msgstr "Woonhuizen"
 
@@ -305,27 +309,27 @@ msgstr "Woning"
 msgid "Search"
 msgstr "חיפוש"
 
-#: ./browser/controlpanel.py:442
+#: ./browser/controlpanel.py:457
 msgid "Searching"
 msgstr "Zoekformulier"
 
-#: ./content/schemata.py:234
+#: ./content/schemata.py:243
 msgid "Select the available facilities by moving them to the right column."
 msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
 
-#: ./browser/controlpanel.py:29
+#: ./browser/controlpanel.py:28
 msgid "Select the currency that should be prepended before prices."
 msgstr "Selecteer het valutasymbool dat voor bedragen wordt geplaatst."
 
-#: ./browser/controlpanel.py:447
+#: ./browser/controlpanel.py:462
 msgid "Specify the different default values and value lists that are used througout Real Estate Broker"
 msgstr "Beheer de verschillende standaard waardes en waardelijsten die in Real Estate Broker worden gebruikt."
 
-#: ./browser/controlpanel.py:122
+#: ./browser/controlpanel.py:132
 msgid "Storage"
 msgstr "איחסון"
 
-#: ./browser/controlpanel.py:131
+#: ./browser/controlpanel.py:141
 msgid "Tax"
 msgstr "מיסים"
 
@@ -342,7 +346,7 @@ msgstr "Ja"
 msgid "Upload Files"
 msgstr "העלה קבצים"
 
-#: ./content/schemata.py:243
+#: ./content/schemata.py:252
 msgid "VAT"
 msgstr "B.T.W."
 
@@ -448,11 +452,11 @@ msgstr "Prijs"
 msgid "insulation"
 msgstr "Isolatie"
 
-#: ./content/schemata.py:173
+#: ./content/schemata.py:182
 msgid "kindOfGarage"
 msgstr "Soort garage"
 
-#: ./content/schemata.py:186
+#: ./content/schemata.py:195
 msgid "kindOfStorage"
 msgstr "Soort berging"
 

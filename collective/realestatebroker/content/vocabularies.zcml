@@ -86,5 +86,9 @@
    <utility
         component=".vocabularies.MaxPriceVocabularyFactory"
         name="collective.realestatebroker.max_price_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />              
+        provides="zope.schema.interfaces.IVocabularyFactory" /> 
+   <utility
+        component=".vocabularies.FixedPriceNegotiableVocabularyFactory"
+        name="collective.realestatebroker.fixedprice_negotiable_list"
+        provides="zope.schema.interfaces.IVocabularyFactory" />         
 </configure>

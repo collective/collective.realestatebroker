@@ -1,7 +1,6 @@
 from zope.interface import Interface
 from zope.component import adapts
 from zope.interface import implements
-from zope.formlib.form import FormFields
 
 from zope.i18nmessageid import MessageFactory
 from zope import schema
@@ -54,7 +53,18 @@ class IREBGeneralSchema(Interface):
         value_type = schema.TextLine(),
         required = True,
     )
-
+    commercial_rent_buy = schema.List (
+        title = _('Rent/Buy'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
+    fixedprice_negotiable = schema.List (
+        title = _('Negotiable or fixed price'),
+        description = _('Enter the options to choose from.'),
+        value_type = schema.TextLine(),
+        required = True,
+    )
 class IREBSearchFormSchema(Interface):
     min_price = schema.List(
         title = _(u'Minimum search price'),
@@ -129,12 +139,6 @@ class IREBResidentialSchema(Interface):
 class IREBCommercialSchema(Interface):
     commercial_vat = schema.List (
         title = _('Tax'),
-        description = _('Enter the options to choose from.'),
-        value_type = schema.TextLine(),
-        required = True,
-    )
-    commercial_rent_buy = schema.List (
-        title = _('Rent/Buy'),
         description = _('Enter the options to choose from.'),
         value_type = schema.TextLine(),
         required = True,
@@ -240,6 +244,17 @@ class REBControlPanelAdapter(SchemaAdapterBase):
         self.context._updateProperty('floor_names', value)
 
     floor_names = property(get_floor_names, set_floor_names)
+
+    def get_fixedprice_negotiable(self):
+        value = getattr(self.context, 'fixedprice_negotiable', u'')
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        return value
+
+    def set_fixedprice_negotiable(self, value):
+        value = safe_unicode(value, getSiteEncoding(self.context))
+        self.context._updateProperty('fixedprice_negotiable', value)
+
+    fixedprice_negotiable = property(get_fixedprice_negotiable, set_fixedprice_negotiable)
 
     # Residential Fieldset Setters/Getters
 
