@@ -4,6 +4,7 @@ from zope.traversing.api import getName
 from zope.component import getMultiAdapter
 from zope.publisher.browser import BrowserPage
 from zope.cachedescriptors.property import Lazy
+from Products.CMFCore.utils import getToolByName
 
 from collective.realestatebroker.pdf.interfaces import IPDFPresentation
 
@@ -32,7 +33,19 @@ class PDFView(BrowserPage):
           updates.
 
         """
-        zope_startup_time = None
+        from Zope2.App.startup import startup_time
+        zope_startup_time = str(startup_time) # Just to make sure.
+
+        catalog = getToolByName(self.context, 'portal_catalog')
+        path = '/'.join(self.context.getPhysicalPath())
+        last_modified_brain =  catalog(path=path,
+                                       sort_on='modified',
+                                       sort_order='reverse')[0]
+        last_modification_date = str(last_modified_brain.ModificationDate)
+
+        key = zope_startup_time + ';' + last_modification_date
+        logger.info("Cache key: %s.", key)
+        return key
 
     def get_cached_pdf(self):
         """Return cached pdf if the key is still valid, otherwise None."""
@@ -45,6 +58,7 @@ class PDFView(BrowserPage):
     def pdf(self):
         """Try getting a cached copy first, otherwise generate a PDF."""
 
+        self.cache_key # TODO
         pdf_file = self.get_cached_pdf()
         if pdf_file is not None:
             logger.info("Returned cached PDF for %s.",
