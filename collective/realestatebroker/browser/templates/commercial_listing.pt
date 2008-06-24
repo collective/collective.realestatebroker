@@ -182,7 +182,7 @@
             <tal:items repeat="item view/items">
               <tr tal:define="odd repeat/item/odd"
                   tal:attributes="class python:odd and 'odd' or 'even'">
-                <td>
+                <td class="imagecell">
                   <a href=""
                      tal:attributes="href string:${item/url}/album;
                                      title item/image/title"

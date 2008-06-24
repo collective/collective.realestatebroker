@@ -7,6 +7,8 @@ History of collective.realestatebroker
 - Added optional max_height attribute to insert_image() to allow protection
   for overly large portrait image on the pdf's homepage. [reinout]
 
+- Added css class to table cells that contain an image in the res/comm
+  listings so that the image can be aligned vertically if desired. [reinout]
 
 2.0.3 rc1 (released)
 --------------------
