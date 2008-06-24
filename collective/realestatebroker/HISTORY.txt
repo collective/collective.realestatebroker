@@ -1,23 +1,35 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.3 (unreleased)
+2.0.3 rc2 (unreleased)
+----------------------
 
-moved rent_buy to the financial schemata for the edit view so that all 
-financial fields are on the same screen. [fredvd]
+- Added optional max_height attribute to insert_image() to allow protection
+  for overly large portrait image on the pdf's homepage. [reinout]
 
-Added a field for indicating if the price is a fixed price or is still 
-negotiable. Not used (yet) in the collective.realestatebroker package view
-templates, but can be exposed in your own template overrides [fredvd]
+
+2.0.3 rc1 (released)
+--------------------
+
+- Moved rent_buy to the financial schemata for the edit view so that all
+  financial fields are on the same screen. [fredvd]
+
+- Added a field for indicating if the price is a fixed price or is still
+  negotiable. Not used (yet) in the collective.realestatebroker package view
+  templates, but can be exposed in your own template overrides [fredvd]
+
 
 2.0.2 (released 2008-04-21)
+---------------------------
 
 - no changes, make a final release for references [fredvd]
 
+
 2.0.1 rc4 (released 2008-03-06)
 -------------------------------
-- Add new rented state and accompanying transition so that rented houses 
+- Add new rented state and accompanying transition so that rented houses
   have a proper listing [fred]
+
 
 2.0.1 rc3 (released 2008-02-29)
 -------------------------------
