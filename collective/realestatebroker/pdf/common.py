@@ -143,7 +143,7 @@ def writeDocument(stream, structure):
               )
 
 
-def insert_image(image, full_width=False):
+def insert_image(image, full_width=False, max_height=None):
     """Return image flowable, scaled to fit.
 
     For landscape images, 'fit' means page width.
@@ -167,7 +167,8 @@ def insert_image(image, full_width=False):
         img_width = max_width
         img_height = max_width * height / width
         # Compensation for too-high images
-        max_height = (29.7 - 4 - 3 - 2) * units.cm
+        if not max_height:
+            max_height = (29.7 - 4 - 3 - 2) * units.cm
         if img_height > max_height:
             factor = max_height / img_height
             img_width = img_width * factor
