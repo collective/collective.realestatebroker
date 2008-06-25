@@ -1,10 +1,11 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.3 rc3 (unreleased)
+2.0.3 rc3 (2008-06-25)
 ----------------------
 
-- Nothing yet
+- Fixed strange attributeerror on plone 3.1.2. Moving to that plone version
+  fixes a kss bug in the album view. [reinout]
 
 
 2.0.3 rc2 (2008-06-25)
