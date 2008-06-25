@@ -14,7 +14,10 @@ class RealEstateActionsViewlet(ViewletBase):
     def update(self):
         self.portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
-        self.portal_url = self.portal_state.portal_url()
+        #self.portal_url = self.portal_state.portal_url()
+        # ^^^ For some reason, this line gives a horridly strange
+        # attributeerror after an update to plone 3.1.2. As it doesn't seem to
+        # be used, I've commented it out. [reinout]
         self.context_state = getMultiAdapter((self.context, self.request),
                                              name=u'plone_context_state')
         plone_utils = getToolByName(self.context, 'plone_utils')
@@ -29,7 +32,7 @@ class RealEstateActionsViewlet(ViewletBase):
         context = aq_inner(self.context)
         context_url = context.absolute_url()
         context_fti = context.getTypeInfo()
-        atool = getToolByName(context, 'portal_actions')        
+        atool = getToolByName(context, 'portal_actions')
         actions = atool.listActions(categories=['realestate'])
         ec = atool._getExprContext(context)
         action_list = [ActionInfo(action, ec) for action in actions]
@@ -102,4 +105,3 @@ class RealEstateTitle(ViewletBase):
     def image(self):
         album = self.context.restrictedTraverse('@@realestate_album')
         return album.first_image(scale='thumb')
-
