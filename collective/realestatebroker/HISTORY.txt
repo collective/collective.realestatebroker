@@ -10,6 +10,10 @@ History of collective.realestatebroker
 - Added css class to table cells that contain an image in the res/comm
   listings so that the image can be aligned vertically if desired. [reinout]
 
+- Added caching of rendered pdf in an annotation. Saves a lot of cpu
+  time. [reinout]
+
+
 2.0.3 rc1 (released)
 --------------------
 
