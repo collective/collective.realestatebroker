@@ -1,7 +1,7 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.3 rc2 (unreleased)
+2.0.3 rc2 (2008-06-25)
 ----------------------
 
 - Added optional max_height attribute to insert_image() to allow protection
