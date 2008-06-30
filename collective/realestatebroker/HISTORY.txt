@@ -4,7 +4,9 @@ History of collective.realestatebroker
 2.0.3 rc4 (unreleased)
 ----------------------
 
-- Nothing yet
+- Creating our own img tags from catalog brains instead of doing a
+  .getObject() to use archetypes tag() method which wakes up the
+  object. [reinout]
 
 
 2.0.3 rc3 (2008-06-25)

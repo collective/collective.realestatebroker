@@ -1,3 +1,5 @@
+import logging
+
 from zope.component import getMultiAdapter
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
@@ -7,9 +9,13 @@ from plone.app.kss.plonekssview import PloneKSSView
 from plone.app.layout.viewlets import ViewletBase
 from plone.memoize.view import memoize
 from Products.ATContentTypes.interface.image import IATImage
+
 from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker import utils
 from collective.realestatebroker.adapters.interfaces import IFloorInfo
+
+
+logger = logging.getLogger('album')
 
 
 class AlbumView(BrowserView):
@@ -32,6 +38,17 @@ class AlbumView(BrowserView):
         return obj.getField('image').tag(obj, **kwargs)
 
     @memoize
+    def image_brain_tag(self, brain, scale=None):
+        """ Return the image tag for a given object
+        """
+        logger.info('Image brain tag creation')
+        assert scale != None
+        url = u'%s/image_%s' % (brain.getURL(), scale)
+        title = brain.Title
+        tag = u'<img src="%s" alt="%s" />' % (url, title)
+        return tag
+
+    @memoize
     def image_info(self, image, **kwargs):
         """ This method expects an ATImage object as the first argument.
             It returns a dict with the followin information:
@@ -44,12 +61,29 @@ class AlbumView(BrowserView):
                     tag = self.image_tag(image, **kwargs))
 
     @memoize
+    def image_brain_info(self, brain, scale=None):
+        """ This method expects an ATImage brain as the first argument.
+            It returns a dict with the followin information:
+              - title
+              - tag
+            scale can be passed in as a kwarg to use image sizes from
+            ATCT Image.
+        """
+        logger.info('Image brain info creation')
+        assert scale != None
+        base = brain.getURL()
+        return dict(title = brain.Title,
+                    tag = self.image_brain_tag(brain, scale))
+
+    @memoize
     def first_image(self, **kwargs):
         """Generate image tag using the api of the ImageField
         """
+        if not 'scale' in kwargs:
+            raise RuntimeError('No scale for first image specified')
         brains = self.image_brains()
         if brains:
-            return self.image_info(brains[0].getObject(), **kwargs)
+            return self.image_brain_info(brains[0], kwargs['scale'])
 
     @memoize
     def photo_batch(self):
@@ -59,12 +93,12 @@ class AlbumView(BrowserView):
         batch = utils.batch(brains, selected=selected)
         if not batch:
             return
-        selected_image = batch['selected'].getObject()
-        batch['selected_tag'] = self.image_tag(selected_image, scale='large')
+        batch['selected_tag'] = self.image_brain_tag(batch['selected'],
+                                                     scale='large')
         base_url = self.context.absolute_url() + '/album?selected='
         for item in batch['items']:
-            obj = item['item'].getObject()
-            image_info = self.image_info(obj, scale='tile')
+            image_brain = item['item']
+            image_info = self.image_brain_info(image_brain, scale='tile')
             item.update(image_info)
             item['url'] = base_url + str(item['index'])
             item['class'] = 'kssPhotoChange kssattr-item-' + str(item['index'])
@@ -179,7 +213,7 @@ class AlbumManagementView(BrowserView):
         for index, image_brain in enumerate(album.image_brains()):
             obj = image_brain.getObject()
             floor_info = IFloorInfo(obj)
-            image = album.image_info(obj, scale='tile')
+            image = album.image_brain_info(image_brain, scale='tile')
             image['id'] = image_brain['id']
             image['choices'] = self.floor_names()
             image['floor'] = floor_info.floor

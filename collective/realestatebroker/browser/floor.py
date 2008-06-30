@@ -42,7 +42,7 @@ class FloorplansView(RealEstateBaseView):
             floor = IFloorInfo(obj).floor
             used_floors.append(floor)
             if floor == selected:
-                floorplans.append(album.image_tag(obj, scale="large"))
+                floorplans.append(album.image_brain_tag(brain, scale="large"))
         result['floorplans'] = floorplans
         for name in names:
             floor = {}
