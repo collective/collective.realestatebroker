@@ -1,20 +1,22 @@
 from StringIO import StringIO
+
 from Acquisition import aq_inner
 from DateTime import DateTime
-from zope.component import getUtility
-from zope.schema.interfaces import IVocabularyFactory
-from zope.interface import implements
-from zope.app.pagetemplate import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode, getSiteEncoding
 from Products.Five.browser import BrowserView
-from plone.memoize.view import memoize
-from plone.app.content.batching import Batch
 from collective.realestatebroker import REBMessageFactory as _
 from collective.realestatebroker.interfaces import IResidential, ICommercial
+from plone.app.content.batching import Batch
+from plone.memoize.view import memoize
+from zope.app.pagetemplate import ViewPageTemplateFile
+from zope.component import getUtility
+from zope.interface import implements
+from zope.schema.interfaces import IVocabularyFactory
+
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
 from interfaces import IUpdateWorkflowStatesView
-from Products.CMFPlone.utils import safe_unicode, getSiteEncoding
 
 
 SCHEMATA_I18N = {'measurements': _(u'measurements'),
@@ -24,6 +26,7 @@ SCHEMATA_I18N = {'measurements': _(u'measurements'),
                  }
 
 ESTATE_LISTING_BATCHSIZE=10
+
 
 class RealEstateBaseView(BrowserView):
     """Base view with some tools attached"""
@@ -138,7 +141,7 @@ class RealEstateListing(RealEstateBaseView):
     @memoize
     def batch(self):
         """ Batch of Realestate (brains)"""
-        
+
         # get all possible workflow states minus the 'new' state
         wfstates = list(self.catalog.uniqueValuesFor('review_state'))
         if 'new' in wfstates:
@@ -155,10 +158,11 @@ class RealEstateListing(RealEstateBaseView):
         query_others['review_state'] = wfstates
 
         # concatenate new and other objectbrains in one search result
-        results = ( self.catalog.searchResults(query_new) +
-                    self.catalog.searchResults(query_others) )
-                
-        return Batch(items=results, pagesize=ESTATE_LISTING_BATCHSIZE, pagenumber=self.pagenumber,
+        results = (self.catalog.searchResults(query_new) +
+                   self.catalog.searchResults(query_others))
+
+        return Batch(items=results, pagesize=ESTATE_LISTING_BATCHSIZE,
+                     pagenumber=self.pagenumber,
                      navlistsize=5)
 
     @memoize
@@ -188,7 +192,7 @@ class RealEstateListing(RealEstateBaseView):
                 image = album.first_image(scale='tile96'),
                 cooked_price = realestate.cooked_price,
                 review_state = brain.review_state,
-                rent_buy  = rent_buy,
+                rent_buy = rent_buy,
                 ))
         return result
 
