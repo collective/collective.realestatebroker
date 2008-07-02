@@ -13,6 +13,7 @@ from zope.app.pagetemplate import ViewPageTemplateFile
 from zope.component import getUtility
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
+from zope.cachedescriptors.property import Lazy
 
 from interfaces import IRealEstateListing
 from interfaces import IRealEstateView
@@ -53,9 +54,9 @@ class RealEstateListing(RealEstateBaseView):
         RealEstateBaseView.__init__(self, context, request)
 
         self.query = dict(object_provides = [ICommercial.__identifier__,
-                                        IResidential.__identifier__],
-                     sort_on = 'review_state',
-                     path = '/'.join(self.context.getPhysicalPath()))
+                                             IResidential.__identifier__],
+                          sort_on = 'review_state',
+                          path = '/'.join(self.context.getPhysicalPath()))
 
         self.formerror=u""
         form = self.request.form
@@ -103,8 +104,7 @@ class RealEstateListing(RealEstateBaseView):
 
         return currency + " " + '.'.join(elements)
 
-    @property
-    @memoize
+    @Lazy
     def search_filter(self):
         """Construct search filter.
 
@@ -120,8 +120,7 @@ class RealEstateListing(RealEstateBaseView):
         # When viewing a Brand, add its path to the filter.
         return search_filter
 
-    @property
-    @memoize
+    @Lazy
     def url(self):
         """Base url, needed by the batching template."""
         url = self.context.absolute_url()
@@ -130,15 +129,13 @@ class RealEstateListing(RealEstateBaseView):
         extra = '&'.join(terms)
         return url + '?' + extra
 
-    @property
-    @memoize
+    @Lazy
     def pagenumber(self):
         """Page number for batching.
         """
         return int(self.request.get('pagenumber', 1))
 
-    @property
-    @memoize
+    @Lazy
     def batch(self):
         """ Batch of Realestate (brains)"""
 
@@ -183,7 +180,8 @@ class RealEstateListing(RealEstateBaseView):
             realestate = obj.restrictedTraverse('@@realestate')
 
             rent_buy = obj.getRent_buy()
-            result.append(dict(id = brain.id,
+            result.append(dict(
+                id = brain.id,
                 url = obj.absolute_url(),
                 title = obj.address,
                 zipcode = obj.zipcode,

@@ -41,7 +41,6 @@ class AlbumView(BrowserView):
     def image_brain_tag(self, brain, scale=None):
         """ Return the image tag for a given object
         """
-        logger.info('Image brain tag creation')
         assert scale != None
         url = u'%s/image_%s' % (brain.getURL(), scale)
         title = brain.Title
@@ -69,7 +68,6 @@ class AlbumView(BrowserView):
             scale can be passed in as a kwarg to use image sizes from
             ATCT Image.
         """
-        logger.info('Image brain info creation')
         assert scale != None
         base = brain.getURL()
         return dict(title = brain.Title,
