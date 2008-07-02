@@ -1,8 +1,14 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.3 rc 4 (2008-07-02)
------------------------
+2.0.3 rc5 (unreleased)
+----------------------
+
+- Nothing yet
+
+
+2.0.3 rc4 (2008-07-02)
+----------------------
 
 - Creating our own img tags from catalog brains instead of doing a
   .getObject() to use archetypes tag() method which wakes up the
