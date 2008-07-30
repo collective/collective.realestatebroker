@@ -29,6 +29,10 @@ setup(name='collective.realestatebroker',
           'archetypes.schemaextender==1.0b1',
           'Products.contentmigration==1.0b4',
           'Products.PloneFlashUpload',
+          'Products.Maps',
+          # ReportLab needs http://ftp.schooltool.org/schooltool/eggs/
+          # in the find-links parameter of your buildout.cfg
+          'ReportLab', 
           # -*- Extra requirements: -*-
       ],
       entry_points="""

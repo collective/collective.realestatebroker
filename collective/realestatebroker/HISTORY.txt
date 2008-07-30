@@ -4,7 +4,8 @@ History of collective.realestatebroker
 2.0.4 (unreleased)
 ------------------
 
-- Nothing yet
+- Added ReportLab and Products.Maps as dependencies in setup.py.
+  [maurits]
 
 
 2.0.3 (2008-07-03)
