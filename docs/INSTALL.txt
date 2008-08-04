@@ -4,8 +4,6 @@ collective.realestatebroker Installation
 To install collective.realestatebroker into the global Python environment (or a workingenv),
 using a traditional Zope 2 instance, you can do this:
 
-http://ftp.schooltool.org/schooltool/eggs/Reportlab-2.1.tar.gz
-
  * Install the dependency ReportLab, e.g.:
    ``bin/easy_install --find-links=http://ftp.schooltool.org/schooltool/eggs Reportlab``
    Find out how to install setuptools (and EasyInstall) here:
