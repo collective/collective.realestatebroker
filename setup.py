@@ -26,8 +26,6 @@ long_description= """%s
 %s
 """ % (readme, install, history)
 
-dest = open('/tmp/test.rst', 'w')
-dest.write(long_description)
 
 setup(name='collective.realestatebroker',
       version=version,
