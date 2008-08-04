@@ -26,37 +26,37 @@ Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
  * Tell buildout that it can find the ReportLab dependency on
-   ftp.schooltool.org, e.g.:
+   ftp.schooltool.org, e.g.::
 
     [buildout]
-    ...
-    find-links =
-        http://dist.plone.org
-        http://download.zope.org/ppix/
-        http://download.zope.org/distribution/
-        http://effbot.org/downloads
-        http://ftp.schooltool.org/schooltool/eggs/
+     ...
+     find-links =
+         http://dist.plone.org
+         http://download.zope.org/ppix/
+         http://download.zope.org/distribution/
+         http://effbot.org/downloads
+         http://ftp.schooltool.org/schooltool/eggs/
 
  * Add ``collective.realestatebroker`` to the list of eggs to install,
-   e.g.:
+   e.g.::
  
-    [buildout]
-    ...
-    eggs =
-        ...
-        collective.realestatebroker
+     [buildout]
+     ...
+     eggs =
+         ...
+         collective.realestatebroker
         
-  * Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
+ * Tell the plone.recipe.zope2instance recipe to install a ZCML slug::
   
-    [instance]
-    recipe = plone.recipe.zope2instance
-    ...
-    zcml =
-        collective.realestatebroker
+     [instance]
+     recipe = plone.recipe.zope2instance
+     ...
+     zcml =
+         collective.realestatebroker
         
-  * Re-run buildout, e.g. with:
+ * Re-run buildout, e.g. with::
   
-    $ ./bin/buildout
+     $ ./bin/buildout
         
 You can skip the ZCML slug if you are going to explicitly include the package
 from another package's configure.zcml file.

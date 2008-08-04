@@ -1,12 +1,38 @@
 from setuptools import setup, find_packages
+import os.path
 
-version = open('collective/realestatebroker/version.txt').read().strip()
+versionfile = open(os.path.join('collective', 'realestatebroker', 'version.txt'))
+version = versionfile.read().strip()
+versionfile.close()
+
+readmefile = open(os.path.join('collective', 'realestatebroker', 'README.txt'))
+readme = readmefile.read().strip()
+readmefile.close()
+
+installfile = open(os.path.join('docs', 'INSTALL.txt'))
+install = installfile.read().strip()
+installfile.close()
+
+historyfile = open(os.path.join('collective', 'realestatebroker', 'HISTORY.txt'))
+history = historyfile.read().strip()
+historyfile.close()
+
+long_description= """%s
+
+
+%s
+
+
+%s
+""" % (readme, install, history)
+
+dest = open('/tmp/test.rst', 'w')
+dest.write(long_description)
 
 setup(name='collective.realestatebroker',
       version=version,
       description="An easy and professional way to publish real estate objects on your Plone website",
-      long_description="""\
-""",
+      long_description= long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
