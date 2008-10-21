@@ -7,6 +7,7 @@ content types.  Allow visitors to search the database with the provided forms.
 Email updates for registered visitors.  Google map support.  Easy
 mass-addition of images.  PDF export.
 
+
 Verified documentation
 ----------------------
 
