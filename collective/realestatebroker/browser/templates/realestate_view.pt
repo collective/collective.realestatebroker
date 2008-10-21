@@ -16,14 +16,14 @@
       
       <div class="visualClear" />
       
+      <div tal:replace="structure provider:realestatebroker.actionsmanager" />
+
       <div class="rebDescription">
         <metal:field use-macro="python:context.widget('description', mode='view')">
           Description
         </metal:field>
       </div>
-
-      <div tal:replace="structure provider:realestatebroker.actionsmanager" />
-      
+            
       <table class="listing charsTable">
         <th colspan="2" 
           i18n:translate="Characteristics">
