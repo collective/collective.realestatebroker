@@ -1,8 +1,8 @@
-.generalInfo th, 
+.generalInfo th,
 .characteristics th {
   text-align: left;
 }
- 
+
 .listing, .re_latest_desc {
   width: 100%;
 }
@@ -88,22 +88,22 @@ a:hover {
 
 #reb-photo-show { }
 
-.reb-selected-photo { 
+.reb-selected-photo {
   padding: 0.5em;
 }
 
 /* The main photo. Display it centered. */
-.reb-selected-photo img { 
+.reb-selected-photo img {
   display: block; /* display as block is needed for centering. */
 }
 
-ul.reb-photo-controls { 
+ul.reb-photo-controls {
   padding: 0.25em;
   margin: 10px 0;
   text-align: left;
 }
 
-ul.reb-photo-controls li { 
+ul.reb-photo-controls li {
   display: inline;
 }
 
@@ -112,7 +112,7 @@ ul.reb-photo-controls li {
 }
 
 /* The selected photo (out of the list of five). */
-a.reb-selected img { 
+a.reb-selected img {
   border: 5px solid #8cacbb;
 }
 
@@ -125,6 +125,11 @@ a.reb-selected img {
 }
 
 .reb-nav-reverse {
+  margin-right: 5px;
+}
+
+.reb-no-control-margin {
+  padding-left: 22px;
   margin-right: 5px;
 }
 
