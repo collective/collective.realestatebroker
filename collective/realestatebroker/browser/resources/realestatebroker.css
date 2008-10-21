@@ -50,7 +50,7 @@ a:hover {
 
 /* *** Start layout of REB object view *** */
 #rebTabs {
-  margin: 20px 0 !important;
+  margin: 12px 0 10px !important;
   border-bottom: none !important;
 }
 
@@ -94,19 +94,21 @@ a:hover {
 
 /* The main photo. Display it centered. */
 .reb-selected-photo img { 
-  margin-left: auto;
-  margin-right: auto;
   display: block; /* display as block is needed for centering. */
 }
 
 ul.reb-photo-controls { 
   padding: 0.25em;
   margin: 10px 0;
-  text-align: center;
+  text-align: left;
 }
 
 ul.reb-photo-controls li { 
   display: inline;
+}
+
+.realestateActions .formTabs {
+  text-align: left;
 }
 
 /* The selected photo (out of the list of five). */
