@@ -3,6 +3,9 @@ from base import RealEstateBaseView
 from collective.realestatebroker.adapters.interfaces import IFloorInfo
 from plone.memoize.view import memoize
 
+import logging
+logger = logging.getLogger('floorview')
+
 
 class FloorplansView(RealEstateBaseView):
     """docstring for FloorplansView"""
@@ -82,7 +85,15 @@ class FloorplansView(RealEstateBaseView):
             obj = brain.getObject()
             floor = IFloorInfo(obj).floor
             used_floors.append(floor)
-            floors[floor].append(obj)
+            if floor in floors:
+                floors[floor].append(obj)
+            else:
+                # Keyerror when a floorplan isn't attached to a floor...
+                floor = names[0]
+                IFloorInfo(obj).floor = floor
+                logger.warning("Floorplan wasn't assigned to a floor. "
+                               "It has now been set to %s.", floor)
+                floors[floor].append(obj)
         # Filter out unused floors
         unused = [name for name in names
                   if name not in used_floors]

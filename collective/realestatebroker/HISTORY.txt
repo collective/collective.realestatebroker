@@ -4,7 +4,8 @@ History of collective.realestatebroker
 2.0.5 (unreleased)
 ------------------
 
-- nothing yet
+- Fixed keyerror when floorplans aren't attached to floors. The keyerror
+  itself is caught now and the cause has also been removed. [reinout]
 
 
 2.0.4 (2008-07-30)

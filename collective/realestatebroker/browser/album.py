@@ -226,6 +226,10 @@ class HandleAlbumManagement(BrowserView):
     def __call__(self):
         form = self.request.form
         messages = []
+        pprops = getToolByName(self.context, 'portal_properties')
+        properties = pprops.realestatebroker_properties
+        names = list(properties.getProperty('floor_names'))
+        first_available_floor = names[0]
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
                          sort_on='sortable_title',
@@ -236,12 +240,15 @@ class HandleAlbumManagement(BrowserView):
             obj = image_brain.getObject()
             annotation = IFloorInfo(obj)
             existing_floor = annotation.floor
+            is_floorplan = bool(image_id in form.get('floorplan', []))
+            if is_floorplan and not floor:
+                # A floorplan must be attached to a floor.
+                floor = first_available_floor
             if floor != existing_floor:
                 annotation.floor = floor
                 messages.append(_(u"${image} is now attached to ${floor}.",
                                   mapping={'image':
                                            image_id, 'floor': floor}))
-            is_floorplan = bool(image_id in form.get('floorplan', []))
             if is_floorplan != annotation.is_floorplan:
                 annotation.is_floorplan = is_floorplan
                 if is_floorplan:
