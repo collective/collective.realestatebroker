@@ -9,5 +9,6 @@
  <javascript cacheable="True" compression="full" cookable="True"
     enabled="True" id="reb-config.js" inline="False" />
  <javascript cacheable="True" compression="full" cookable="True"
+    expression="python:here.portal_type == 'Residential' and here.template_id == 'base_edit'"
     enabled="True" id="++resource++realestatebroker.js" inline="False" />
 </object>
