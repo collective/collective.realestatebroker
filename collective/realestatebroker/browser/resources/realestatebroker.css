@@ -52,6 +52,7 @@ a:hover {
 #rebTabs {
   margin: 12px 0 10px !important;
   border-bottom: none !important;
+  text-align:left;
 }
 
 #rebTabs .selected a {
