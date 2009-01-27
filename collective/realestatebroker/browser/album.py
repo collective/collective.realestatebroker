@@ -22,14 +22,21 @@ class AlbumView(BrowserView):
     """View class to show the photo album"""
 
     @memoize
-    def image_brains(self):
+    def image_brains(self, all=False):
         """Grab the brains of all images inside the object.
         """
         catalog = getToolByName(self.context, 'portal_catalog')
-        brains = catalog(object_provides=IATImage.__identifier__,
-                         sort_on='getObjPositionInParent',
-                         is_floorplan=False,
-                         path='/'.join(self.context.getPhysicalPath()))
+        if all:
+            # Just show all images
+            brains = catalog(object_provides=IATImage.__identifier__,
+                             sort_on='getObjPositionInParent',
+                             path='/'.join(self.context.getPhysicalPath()))
+        else:
+            # Filter out floorplans
+            brains = catalog(object_provides=IATImage.__identifier__,
+                             sort_on='getObjPositionInParent',
+                             is_floorplan=False,
+                             path='/'.join(self.context.getPhysicalPath()))
         return brains
 
     @memoize
@@ -209,7 +216,7 @@ class AlbumManagementView(BrowserView):
     def photo_configuration(self):
         configuration = []
         album = self.context.restrictedTraverse('realestate_album')
-        for index, image_brain in enumerate(album.image_brains()):
+        for index, image_brain in enumerate(album.image_brains(all=True)):
             obj = image_brain.getObject()
             floor_info = IFloorInfo(obj)
             image = album.image_brain_info(image_brain, scale='tile')

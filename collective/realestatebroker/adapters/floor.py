@@ -27,7 +27,8 @@ mechanism.
     >>> image = MockImage()
     >>> annotation = IAnnotations(image)
 
-We can grab an IFloorInfo adapter that allows us to query and set the floor info.
+We can grab an IFloorInfo adapter that allows us to query and set the floor
+info.
 
     >>> from collective.realestatebroker.adapters.floor import FloorInfo
     >>> from collective.realestatebroker.adapters.interfaces import IFloorInfo
@@ -110,9 +111,9 @@ class FloorInfo(object):
 
 
 def is_floorplan(object, portal, **kw):
-     adapted = IFloorInfo(object, None)
-     if adapted is not None:
-         return adapted.is_floorplan
-     return False
+    adapted = IFloorInfo(object, None)
+    if adapted is not None:
+        return adapted.is_floorplan
+    return False
 
 catalogtool.registerIndexableAttribute('is_floorplan', is_floorplan)
