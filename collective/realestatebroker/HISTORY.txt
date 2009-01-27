@@ -1,7 +1,7 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.7 (unreleased)
+2.0.7 (2009-01-27)
 ------------------
 
 - Filtering out floorplans from all the photo lists. [reinout]
