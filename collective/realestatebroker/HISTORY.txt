@@ -1,6 +1,12 @@
 History of collective.realestatebroker
 ======================================
 
+2.0.9 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
 2.0.8 (2009-01-27)
 ------------------
 
