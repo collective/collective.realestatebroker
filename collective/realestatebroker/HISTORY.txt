@@ -1,7 +1,7 @@
 History of collective.realestatebroker
 ======================================
 
-2.0.8 (unreleased)
+2.0.8 (2009-01-27)
 ------------------
 
 - Fixed bug in floorplan filter: the photo management page also filtered them,
