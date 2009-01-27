@@ -34,9 +34,9 @@ class FloorplansView(RealEstateBaseView):
         base_url = self.context.absolute_url() + '/plans?selected='
         # Grab floorplans.
         brains = self.catalog(object_provides=IATImage.__identifier__,
-                         is_floorplan=True,
-                         sort_on='getObjPositionInParent',
-                         path='/'.join(self.context.getPhysicalPath()))
+                              is_floorplan=True,
+                              sort_on='getObjPositionInParent',
+                              path='/'.join(self.context.getPhysicalPath()))
         used_floors = []
         floorplans = []
         album = self.context.restrictedTraverse('@@realestate_album')

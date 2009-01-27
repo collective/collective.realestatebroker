@@ -4,13 +4,13 @@ History of collective.realestatebroker
 2.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Filtering out floorplans from all the photo lists. [reinout]
 
 
 2.0.6 (2008-12-18)
 ------------------
 
-- Nothing changed yet.
+- Some html fixes by jladage?
 
 
 2.0.5 (2008-12-17)

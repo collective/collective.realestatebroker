@@ -28,6 +28,7 @@ class AlbumView(BrowserView):
         catalog = getToolByName(self.context, 'portal_catalog')
         brains = catalog(object_provides=IATImage.__identifier__,
                          sort_on='getObjPositionInParent',
+                         is_floorplan=False,
                          path='/'.join(self.context.getPhysicalPath()))
         return brains
 
