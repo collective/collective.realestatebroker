@@ -107,6 +107,7 @@
         name="realestate_album"
         class=".album.AlbumView"
         permission="zope2.View"
+        allowed_attributes="first_image"
     />
     <browser:viewletManager
         name="realestatebroker.photomanager"

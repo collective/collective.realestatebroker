@@ -4,7 +4,9 @@ History of collective.realestatebroker
 2.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Allow access to the AlbumView.first_image; an Unauthorized error is
+  triggered when using this in for example a collection portlet.
+  [maurits]
 
 
 2.0.8 (2009-01-27)
