@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-04-21 13:04+0000\n"
+"POT-Creation-Date: 2009-03-26 09:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
-#: ./browser/album.py:219
+#: ./browser/album.py:258
 msgid "${image} is no longer marked as floorplan."
 msgstr ""
 
-#: ./browser/album.py:209
+#: ./browser/album.py:249
 msgid "${image} is now attached to ${floor}."
 msgstr ""
 
-#: ./browser/album.py:216
+#: ./browser/album.py:255
 msgid "${image} is now marked as floor plan."
 msgstr ""
 
-#: ./browser/album.py:228
+#: ./browser/album.py:267
 msgid "${image} is now the default."
 msgstr ""
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Album"
 msgstr ""
 
-#: ./browser/album.py:133
+#: ./browser/album.py:165
 msgid "All photos"
 msgstr ""
 
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
-#: ./browser/base.py:80
+#: ./browser/base.py:84
 msgid "Please select a valid price range."
 msgstr ""
 
@@ -402,11 +402,11 @@ msgstr ""
 msgid "city"
 msgstr ""
 
-#: ./browser/base.py:21
+#: ./browser/base.py:24
 msgid "details"
 msgstr ""
 
-#: ./browser/base.py:22
+#: ./browser/base.py:25
 msgid "environment"
 msgstr ""
 
@@ -415,7 +415,7 @@ msgstr ""
 msgid "explanation_photo_configuration"
 msgstr ""
 
-#: ./browser/base.py:23
+#: ./browser/base.py:26
 msgid "financial"
 msgstr ""
 
@@ -518,7 +518,7 @@ msgstr ""
 msgid "location"
 msgstr ""
 
-#: ./browser/base.py:20
+#: ./browser/base.py:23
 msgid "measurements"
 msgstr ""
 

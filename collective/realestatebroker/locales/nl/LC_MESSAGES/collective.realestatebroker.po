@@ -14,19 +14,19 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
-#: ./browser/album.py:219
+#: ./browser/album.py:258
 msgid "${image} is no longer marked as floorplan."
 msgstr "${image} is niet langer gemarkeerd als plattegrond"
 
-#: ./browser/album.py:209
+#: ./browser/album.py:249
 msgid "${image} is now attached to ${floor}."
 msgstr "${image} is nu gekoppeld aan ${floor}."
 
-#: ./browser/album.py:216
+#: ./browser/album.py:255
 msgid "${image} is now marked as floor plan."
 msgstr "${image} is gemarkeerd als plattegrond."
 
-#: ./browser/album.py:228
+#: ./browser/album.py:267
 msgid "${image} is now the default."
 msgstr "${image} is als standaard foto ingesteld."
 
@@ -51,7 +51,7 @@ msgstr "Airconditioning"
 msgid "Album"
 msgstr "Fotoalbum"
 
-#: ./browser/album.py:133
+#: ./browser/album.py:165
 msgid "All photos"
 msgstr "Alle foto's"
 
@@ -262,7 +262,7 @@ msgstr "Foto album"
 msgid "Plans"
 msgstr "Plattegronden"
 
-#: ./browser/base.py:80
+#: ./browser/base.py:84
 msgid "Please select a valid price range."
 msgstr "Selecteer een geldig prijsbereik."
 
@@ -395,11 +395,11 @@ msgstr "tot"
 msgid "city"
 msgstr "plaats"
 
-#: ./browser/base.py:21
+#: ./browser/base.py:24
 msgid "details"
 msgstr "Details"
 
-#: ./browser/base.py:22
+#: ./browser/base.py:25
 msgid "environment"
 msgstr "Omgeving/tuin"
 
@@ -411,7 +411,7 @@ msgstr ""
 "danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
 "worden. De volgorde kan eventueel veranderd worden via de \"inhoud\" tab."
 
-#: ./browser/base.py:23
+#: ./browser/base.py:26
 msgid "financial"
 msgstr "Financieel"
 
@@ -514,7 +514,7 @@ msgstr "Zoektermen"
 msgid "location"
 msgstr "Locatie"
 
-#: ./browser/base.py:20
+#: ./browser/base.py:23
 msgid "measurements"
 msgstr "Maatvoering"
 

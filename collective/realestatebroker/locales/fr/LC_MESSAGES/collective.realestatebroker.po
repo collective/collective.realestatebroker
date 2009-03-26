@@ -1,164 +1,167 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <benjamin.klups@noveltys.fr>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2008-04-01 02:03+0200\n"
-"Last-Translator: Ofer Weisglass <contact@weisglass.net>\n"
-"Language-Team: Zest software <info@zestsoftware.nl>\n"
+"PO-Revision-Date: 2009-03-25 13:04+0000\n"
+"Last-Translator: Benjamin Klups <benjamin.klups@noveltys.fr>\n"
+"Language-Team: Français <benjamin.klups@noveltys.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: nl\n"
-"Language-Name: Nederlands\n"
+"Language-Code: fr\n"
+"Language-Name: Français\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.realestatebroker\n"
 
 #: ./browser/album.py:258
 msgid "${image} is no longer marked as floorplan."
-msgstr "${image} is niet langer gemarkeerd als plattegrond"
+msgstr "${image} n'est plus marquée comme plan."
 
 #: ./browser/album.py:249
 msgid "${image} is now attached to ${floor}."
-msgstr "${image} is nu gekoppeld aan ${floor}."
+msgstr "${image} est maintenant attachée a ${floor}."
 
 #: ./browser/album.py:255
 msgid "${image} is now marked as floor plan."
-msgstr "${image} is gemarkeerd als plattegrond."
+msgstr "${image} est maintenant marquée comme plan d'étage."
 
 #: ./browser/album.py:267
 msgid "${image} is now the default."
-msgstr "${image} is als standaard foto ingesteld."
+msgstr "${image} est maintenant l'image par défaut."
 
 #: ./content/schemata.py:123
 msgid "Acceptance"
-msgstr "Oplevering"
+msgstr "Conditions de négociation"
 
 #: ./content/commercial.py:18
 msgid "Address"
-msgstr "כתובת"
+msgstr "Adresse"
 
 #: ./pdf/realestate.py:201
 msgid "Address data"
-msgstr "מידע כתובת"
+msgstr "Données de l'adresse"
 
 #: ./browser/controlpanel.py:126
 msgid "Airco"
-msgstr "Airconditioning"
+msgstr "Air conditionné"
 
 #. Default: "Album"
 #: ./profiles/default/actions.xml
 msgid "Album"
-msgstr "אלבום"
+msgstr "Album"
 
 #: ./browser/album.py:165
 msgid "All photos"
-msgstr "כל התמונות"
+msgstr "Toutes les photos"
 
 #: ./browser/controlpanel.py:96
 msgid "Balcony"
-msgstr "Balkon"
+msgstr "Balcon"
 
 #: ./content/schemata.py:40
 msgid "Body text"
-msgstr "טקסט גוף"
+msgstr "Corps du texte"
 
 #: ./content/schemata.py:234
 msgid "Building type"
-msgstr "סוג בניין"
+msgstr "Type de construction"
 
 #. Default: "Characteristics"
 #: ./browser/templates/realestate_view.pt:28
 msgid "Characteristics"
-msgstr "Kenmerken"
+msgstr "Caractéristiques"
 
 #: ./browser/controlpanel.py:21
 msgid "Cities"
-msgstr "ערים"
+msgstr "Villes"
 
 #: ./content/schemata.py:31
 msgid "City"
-msgstr "עיר"
+msgstr "Ville"
 
 #: ./browser/controlpanel.py:453
 msgid "Commercial"
-msgstr " מסחרי"
+msgstr "Commercial"
 
 #: ./browser/controlpanel.py:147
 msgid "Commercial Type"
-msgstr "Type bedrijfspand"
+msgstr "Type de bien commercial"
 
 #. Default: "Commercial real estate"
 #: ./profiles/default/types/Commercial.xml
 msgid "Commercial real estate"
-msgstr "Bedrijfspand"
+msgstr "Immobilier commercial"
 
 #: ./content/schemata.py:56
 msgid "Construction year"
-msgstr "Bouwjaar"
+msgstr "Année de construction"
 
 #: ./browser/controlpanel.py:27
 msgid "Currency"
-msgstr "מטבע"
+msgstr "Devise"
 
 #: ./interfaces.py:12
 msgid "Description"
-msgstr "תיאור"
+msgstr "Description"
 
 #. Default: "Details"
 #: ./profiles/default/actions.xml
 msgid "Details"
-msgstr "פרטים"
+msgstr "Détails"
 
 #: ./content/schemata.py:124
 msgid "Enter a brief description for the acceptance."
-msgstr "Geef een korte omschrijving voor de oplevering"
+msgstr "Entrez une brève description des conditions de négociation. "
 
 #: ./content/schemata.py:41
 msgid "Enter the main description for this object."
-msgstr "Geeef een ruime omschrijving voor dit object."
+msgstr "Entrez la description de ce bien."
 
 #: ./browser/controlpanel.py:22
 msgid "Enter the options to choose from."
-msgstr "הזן את האפשרויות לבחור מ."
+msgstr "Entrez les options choisies."
 
 #: ./browser/controlpanel.py:153
 msgid "Facilities"
-msgstr "Faciliteiten"
+msgstr "Commodités"
 
 #: ./pdf/realestate.py:145
 msgid "False"
-msgstr "שגיאה"
+msgstr "Faux"
 
 #: ./content/commercial.py:19
 msgid "Fill in the address of this object"
-msgstr "Geef de straatnaam op van dit object."
+msgstr "Remplissez l'adresse de ce bien"
 
 #: ./content/schemata.py:116
 msgid "Fill in the price without dots or commas."
-msgstr "Vul de prijs in zonder punten of komma's"
+msgstr "Donnez le prix sans point ni virgule."
 
 #: ./browser/controlpanel.py:51
 msgid "Floor Names"
-msgstr "שמות קומות"
+msgstr "Noms des étages"
 
 #: ./content/schemata.py:76
 msgid "Floor area"
-msgstr "אזור קומה"
+msgstr "Surface de l'étage"
 
 #: ./pdf/realestate.py:120
 msgid "Floor plan for ${floorname}"
-msgstr "Plattegrond voor ${floorname}"
+msgstr "Plan de ${floorname}"
 
 #. Default: "Folderish content type for commercial real estate."
 #: ./profiles/default/types/Commercial.xml
 msgid "Folderish content type for commercial real estate."
-msgstr "Mapweergave voor bedrijfspanden."
+msgstr "Dossier contenant les biens commerciaux."
 
 #. Default: "Folderish content type for residential real estate."
 #: ./profiles/default/types/Residential.xml
 msgid "Folderish content type for residential real estate."
-msgstr "Mapweergave voor woningen."
+msgstr "Dossier contenant les biens résidentiels."
 
 #: ./browser/controlpanel.py:114
 msgid "Garage"
@@ -166,76 +169,76 @@ msgstr "Garage"
 
 #: ./browser/controlpanel.py:102
 msgid "Garden"
-msgstr "Tuin"
+msgstr "Jardin"
 
 #: ./browser/controlpanel.py:445
 msgid "General"
-msgstr "כללי"
+msgstr "Général"
 
 #: ./content/schemata.py:70
 msgid "Ground area"
-msgstr "Grondoppervlak"
+msgstr "Surface au sol"
 
 #: ./browser/controlpanel.py:39
 msgid "Heating"
-msgstr "Verwarming"
+msgstr "Chauffage"
 
 #: ./browser/controlpanel.py:84
 msgid "House type"
-msgstr "Huistype"
+msgstr "Type de maison"
 
 #: ./adapters/map.py:41
 msgid "Info"
-msgstr "מידע"
+msgstr "Information"
 
 #: ./browser/controlpanel.py:45
 msgid "Insulation"
-msgstr "Isolatie"
+msgstr "Isolation"
 
 #: ./content/schemata.py:50
 msgid "Kind of building"
-msgstr "סוג בניין"
+msgstr "Type de bâtiment"
 
 #: ./browser/controlpanel.py:120
 msgid "Kind of garage"
-msgstr "Soort garage"
+msgstr "Type de garage"
 
 #: ./browser/controlpanel.py:108
 msgid "Kind of garden"
-msgstr "סוג גינה"
+msgstr "Type de jardin"
 
 #: ./interfaces.py:65
 msgid "Kind of storage"
-msgstr "סוג איחסון"
+msgstr "Type de stockage"
 
 #: ./browser/controlpanel.py:33
 msgid "Location"
-msgstr "מיקום"
+msgstr "Localisation"
 
 #. Default: "Map"
 #: ./profiles/default/actions.xml
 msgid "Map"
-msgstr "מפה"
+msgstr "Carte"
 
 #: ./browser/controlpanel.py:76
 msgid "Maximum search price"
-msgstr "מקסימום מחיר חיפוש"
+msgstr "Prix maximum recherché"
 
 #: ./browser/controlpanel.py:70
 msgid "Minimum search price"
-msgstr "מינימום מחיר חיפוש"
+msgstr "Prix minimum recherché"
 
 #: ./browser/controlpanel.py:63
 msgid "Negotiable or fixed price"
-msgstr ""
+msgstr "Prix fixe ou négociable"
 
 #: ./browser/controlpanel.py:90
 msgid "Number of rooms"
-msgstr "מספר חדרים"
+msgstr "Nombre de pièces"
 
 #: ./pdf/realestate.py:133
 msgid "Object data"
-msgstr "Objectgegevens"
+msgstr "Informations sur le bien"
 
 #. Default: "PDF"
 #: ./profiles/default/actions.xml
@@ -244,318 +247,313 @@ msgstr "PDF"
 
 #: ./browser/controlpanel.py:159
 msgid "Parking"
-msgstr "חניה"
+msgstr "Parking"
 
 #. Default: "Photo"
 #: ./browser/templates/album_management.pt:89
 msgid "Photo"
-msgstr "תמונה"
+msgstr "Photo"
 
 #. Default: "Photo album"
 #: ./profiles/default/types/Commercial.xml
 #: ./profiles/default/types/Residential.xml
 msgid "Photo album"
-msgstr "אלבום תמונות"
+msgstr "Album photos"
 
 #. Default: "Plans"
 #: ./profiles/default/actions.xml
 msgid "Plans"
-msgstr "תוכניות"
+msgstr "Plans"
 
 #: ./browser/base.py:84
 msgid "Please select a valid price range."
-msgstr "Selecteer een geldig prijsbereik."
+msgstr "Merci de sélectionner une fourchette de prix valide."
 
 #: ./content/schemata.py:115
 msgid "Price"
-msgstr "מחיר:"
+msgstr "Prix"
 
 #: ./pdf/realestate.py:50
 msgid "Price:"
-msgstr "Prijs:"
+msgstr "Prix"
 
 #: ./content/schemata.py:261
 msgid "Private car park"
-msgstr "חניית רכב פרטית"
+msgstr "Parking privé"
 
 #: ./browser/controlpanel.py:461
 msgid "RealEstateBroker settings"
-msgstr "Real Estate Broker instellingen"
+msgstr "Paramètres de RealEstateBroker"
 
 #: ./content/schemata.py:133
 msgid "Rent or buy"
-msgstr "Huren of kopen mogelijk"
+msgstr "Louer ou acheter"
 
 #: ./browser/controlpanel.py:57
 msgid "Rent/Buy"
-msgstr "Te huur/Te koop"
+msgstr "Louer/acheter"
 
 #. Default: "Reset"
 #: ./browser/templates/commercial_listing.pt:144
 msgid "Reset"
-msgstr "Wis zoektermen"
+msgstr "Effacer"
 
 #: ./browser/controlpanel.py:449
 msgid "Residential"
-msgstr "Woonhuizen"
+msgstr "Résidentiel"
 
 #. Default: "Residential real estate"
 #: ./profiles/default/types/Residential.xml
 msgid "Residential real estate"
-msgstr "Woning"
+msgstr "Bien résidentiel"
 
 #. Default: "Search"
 #: ./browser/templates/commercial_listing.pt:47
 msgid "Search"
-msgstr "חיפוש"
+msgstr "Rechercher"
 
 #: ./browser/controlpanel.py:457
 msgid "Searching"
-msgstr "Zoekformulier"
+msgstr "En recherche"
 
 #: ./content/schemata.py:243
 msgid "Select the available facilities by moving them to the right column."
-msgstr "Kies de aanwezige voorzieningen door ze aan de recher kolom toe te voegen"
+msgstr "Sélectionnez les commodités disponibles en les déplaçant vers la droite."
 
 #: ./browser/controlpanel.py:28
 msgid "Select the currency that should be prepended before prices."
-msgstr "Selecteer het valutasymbool dat voor bedragen wordt geplaatst."
+msgstr "Sélectionnez la devise qui devrait être ajoutée avant la saisie des prix."
 
 #: ./browser/controlpanel.py:462
 msgid "Specify the different default values and value lists that are used througout Real Estate Broker"
-msgstr "Beheer de verschillende standaard waardes en waardelijsten die in Real Estate Broker worden gebruikt."
+msgstr "Spécifiez les différentes valeurs par défaut et la valeur des listes qui sont utilisées dans Real Estate Broker"
 
 #: ./browser/controlpanel.py:132
 msgid "Storage"
-msgstr "איחסון"
+msgstr "Stockage"
 
 #: ./browser/controlpanel.py:141
 msgid "Tax"
-msgstr "מיסים"
+msgstr "Taxe"
 
 #: ./interfaces.py:11
 msgid "Title"
-msgstr "כותרת"
+msgstr "Titre"
 
 #: ./pdf/realestate.py:143
 msgid "True"
-msgstr "Ja"
+msgstr "Vrai"
 
 #. Default: "Upload Files"
 #: ./browser/templates/album_management.pt:35
 msgid "Upload Files"
-msgstr "העלה קבצים"
+msgstr "Fichiers téléchargés"
 
 #: ./content/schemata.py:252
 msgid "VAT"
-msgstr "B.T.W."
+msgstr "TVA"
 
 #: ./content/schemata.py:64
 msgid "Volume"
-msgstr "ווליום"
+msgstr "Volume"
 
 #: ./content/schemata.py:86
 msgid "You can choose more than one option."
-msgstr "Je kan meer dan één optie selecteren."
+msgstr "Vous pouvez choisir plus d'une option."
 
 #: ./content/schemata.py:23
 msgid "Zip code"
-msgstr "מיקוד"
+msgstr "Code postal"
 
 #. Default: "Address"
 #: ./browser/templates/commercial_listing.pt:172
 msgid "address"
-msgstr "כתובת"
+msgstr "Adresse"
 
 #. Default: "Any city"
 #: ./browser/templates/commercial_listing.pt:78
 msgid "any_city"
-msgstr "כל עיר"
+msgstr "Toutes les villes"
 
 msgid "available"
-msgstr "זמין"
+msgstr "Disponible"
 
 #. Default: "Back to top"
 #: ./browser/templates/commercial_listing.pt:216
 msgid "back_to_top"
-msgstr "Terug naar boven"
+msgstr "Haut de page"
 
 #. Default: "No Limit"
 #: ./browser/templates/commercial_listing.pt:119
 msgid "broker_price_no_limit"
-msgstr "Geen bovengrens"
+msgstr "Pas de limite"
 
 #. Default: "to"
 #: ./browser/templates/commercial_listing.pt:108
 msgid "broker_price_to"
-msgstr "ל"
+msgstr "à"
 
 #. Default: "City"
 #: ./browser/templates/commercial_listing.pt:68
 msgid "city"
-msgstr "עיר"
+msgstr "Ville"
 
 #: ./browser/base.py:24
 msgid "details"
-msgstr "פרטים"
+msgstr "Détails"
 
 #: ./browser/base.py:25
 msgid "environment"
-msgstr "Omgeving/tuin"
+msgstr "Environnement"
 
 #. Default: "In the form below, you can assign the photos to specific floors or you can assign them to the floorplans. Also you can select the default photo. The order can be set using the \"listing\" tab."
 #: ./browser/templates/album_management.pt:74
 msgid "explanation_photo_configuration"
-msgstr ""
-"In het onderstaande formulier kunt u de foto's over de verdiepingen verdelen\n"
-"danwel er plattegronden van maken. Ook kan hier de standaard foto ingesteld\n"
-"worden. De volgorde kan eventueel veranderd worden via de \"inhoud\" tab."
+msgstr "Dans le formulaire ci-dessous, vous pouvez assigner les photos à des étages ou vous pouvez les assigner aux plans. Vous pouvez aussi sélectionner la photo par défaut. L'ordre peut être modifié en utilisant l'onglet liste."
 
 #: ./browser/base.py:26
 msgid "financial"
-msgstr "Financieel"
+msgstr "Financier"
 
 #. Default: "Bulk-upload of multiple photos"
 #: ./browser/templates/album_management.pt:22
 msgid "heading_bulk_upload"
-msgstr "Uploaden van meerdere foto's in één keer."
+msgstr "Téléchargement groupé de photos"
 
 #. Default: "Photo management"
 #: ./browser/templates/album_management.pt:18
 msgid "heading_manage_photos"
-msgstr "Foto beheer"
+msgstr "Gestion des photos"
 
 #. Default: "Photo configuration"
 #: ./browser/templates/album_management.pt:71
 msgid "heading_photo_configuration"
-msgstr "Foto configuratie"
+msgstr "Configuration des photos"
 
 #: ./content/schemata.py:85
 msgid "heating"
-msgstr "Verwarming"
+msgstr "Chauffage"
 
 #. Default: "You can use a * at the start or end of a word, for instance churchill* if you don't know if it is churchillroad or churchillstreet."
 #: ./browser/templates/commercial_listing.pt:37
 msgid "help_manager_search"
-msgstr ""
+msgstr "Vous pouvez utiliser un * au début ou la fin d'un mot, par exemple, * De Gaulle si vous ne savez pas si c'est général De Gaulle ou Charles De Gaulle."
 
 #. Default: "Which city to list property?"
 #: ./browser/templates/commercial_listing.pt:72
 msgid "help_search_city"
-msgstr "Beperk de weergave op plaats"
+msgstr "Liste des biens par ville"
 
 #: ./browser/templates/commercial_listing.pt:92
 msgid "help_search_price"
-msgstr "Prijs"
+msgstr "Aide pour la recherche des prix"
 
 #: ./content/schemata.py:94
 msgid "insulation"
-msgstr "Isolatie"
+msgstr "Isolation"
 
 #: ./content/schemata.py:182
 msgid "kindOfGarage"
-msgstr "Soort garage"
+msgstr "Type de garage"
 
 #: ./content/schemata.py:195
 msgid "kindOfStorage"
-msgstr "Soort berging"
+msgstr "Type de Stockage"
 
 #. Default: "Default"
 #: ./browser/templates/album_management.pt:87
 msgid "label_default_photo"
-msgstr "Standaard afbeelding"
+msgstr "Photo par défaut"
 
 #. Default: "Description"
 #: ./browser/templates/realestate_map.pt:28
 msgid "label_description"
-msgstr "תיאור"
+msgstr "Description"
 
 #. Default: "Floorplan"
 #: ./browser/templates/album_management.pt:88
 msgid "label_is_floorplan"
-msgstr "Plattegrond"
+msgstr "Plan de l'étage"
 
 #. Default: "Search text"
 #: ./browser/templates/commercial_listing.pt:33
 msgid "label_manager_search"
-msgstr ""
+msgstr "Recherche"
 
 #. Default: "Maximum price"
 #: ./browser/templates/commercial_listing.pt:110
 msgid "label_max_price"
-msgstr "bovengrens prijs"
+msgstr "Prix maximum"
 
 #. Default: "Minimum price"
 #: ./browser/templates/commercial_listing.pt:91
 msgid "label_min_price"
-msgstr "מחיר מקסימום"
+msgstr "Prix minimum"
 
 #. Default: "Related Items"
 #: ./browser/templates/realestate_map.pt:53
 msgid "label_related_items"
-msgstr "Gerelateerde items"
+msgstr "Items en relation"
 
 #. Default: "(Required)"
 #: ./browser/templates/commercial_listing.pt:69
 msgid "label_required"
-msgstr "(נדרש)"
+msgstr "(Obligatoire)"
 
 #. Default: "Manager-only textual search"
 #: ./browser/templates/commercial_listing.pt:31
 msgid "legend_manager_search"
-msgstr ""
+msgstr "Recherche textuel, seulement pour les managers"
 
 #. Default: "Search Terms"
 #: ./browser/templates/commercial_listing.pt:66
 msgid "legend_search_terms"
-msgstr "Zoektermen"
+msgstr "Termes recherchés"
 
 #: ./content/schemata.py:106
 msgid "location"
-msgstr "מיקום"
+msgstr "localisation"
 
 #: ./browser/base.py:23
 msgid "measurements"
-msgstr "ממדים"
+msgstr "configuration"
 
 msgid "negotiating"
-msgstr "משא ומתן"
+msgstr "en négociation"
 
 msgid "new"
-msgstr "חדש"
+msgstr "nouveau"
 
 #. Default: "No realestate found."
 #: ./browser/templates/commercial_listing.pt:160
 msgid "no_realestate_found"
-msgstr "Geen objecten gevonden."
+msgstr "Aucun bien n'a été trouvé"
 
-#. Default: "Niet zichtbaar"
 #: Workflow states translations
 msgid "offline"
-msgstr "Niet zichtbaar"
+msgstr "hors ligne"
 
 #. Default: "Photos"
 #: ./browser/templates/commercial_listing.pt:171
 msgid "photos"
-msgstr "Foto's"
+msgstr "Photos"
 
 #. Default: "Price"
 #: ./browser/templates/commercial_listing.pt:174
 msgid "price"
-msgstr "תמונה"
+msgstr "Prix"
 
 #. Default: "Status"
 #: ./browser/templates/commercial_listing.pt:176
 msgid "property_status"
-msgstr "Beschikbaarheid"
+msgstr "Statuts"
 
 msgid "rented"
-msgstr ""
+msgstr "Loué"
 
-#. Default: "Verkocht onder voorbehoud"
 msgid "reserved"
-msgstr "שמור"
+msgstr "Réservé"
 
 msgid "sold"
-msgstr "נמכר"
+msgstr "Vendu"
 
