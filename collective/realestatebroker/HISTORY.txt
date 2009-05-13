@@ -4,15 +4,13 @@ History of collective.realestatebroker
 2.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Copied code from Products.PloneFlashUpload 1.2rc so the upload on
+  the album management works again.  (At least with Flash 10 on
+  Linux).  [maurits]
 
 
 2.1 (2009-03-26)
 ----------------
-
-- Copied code from Products.PloneFlashUpload 1.2rc so the upload on
-  the album management works again.  (At least with Flash 10 on
-  Linux).  [maurits]
 
 - Added French translations thanks to Benjamin Klups. [jladage]
 
