@@ -24,46 +24,46 @@
       </h2>
 
       <!-- Start of ploneflashupload, copied from uploadform.pt -->
+      <metal:block define-macro="swf">
 
-      <metal:block define-macro="swf"
-                   tal:define="resourceurl string:$portal_url/++resource++;
-                               z3curl string:${resourceurl}z3c.widget.flashupload;">
-        <div class="upload-form-controls">
-          <form action="" name="upload_complete" method="get"
-                tal:attributes="action string:${context/absolute_url}/album-management">
-            <input type="hidden" name="portal_status_message" value="" />
-            <input type="button" id="flash.start.browsing" value="Upload Files"
-                   name="upload_button"
-                   class="context"
-                   i18n:attributes="value"
-                   onClick="JavaScript:z3cFlashUploadStartBrowsing()" />
-          </form>
+
+        <div id="fsUploadProgress">
+          <span class="legend">Upload Queue</span>
         </div>
-        <script type="text/javascript"
-                tal:content="string:
-                             var swf_upload_url='$z3curl/upload.swf';
-                             var swf_upload_target_path='${context/@@absolute_url}/uploadfile';
-                             ">
-        </script>
-        <div id="flashuploadtarget">
-          <!-- inside this div, the flash upload swf will be injected -->
-        </div>
-        <script type="text/javascript"
-                src=""
-                tal:attributes="src string:$z3curl/jquery.js">
-        </script>
+        <p id="divStatus">0 Files Uploaded</p>
+
+        <p>
+          <span id="flashuploadtarget">
+            <!-- inside this div, the flash upload swf will be injected -->
+          </span>
+          <input id="btnUpload" class="context" type="button" value="Select Files"/>
+          <input id="btnCancel" class="standalone" type="button" disabled="disabled" value="Cancel All Uploads"/>
+        </p>
+
         <script type="text/javascript"
                 src=""
-                tal:attributes="src string:$z3curl/swfobject.js">
+                tal:attributes="src string:${portal_url}/++resource++swfupload/swfupload.js">
         </script>
+
         <script type="text/javascript"
                 src=""
-                tal:attributes="src string:$z3curl/upload.js">
+                tal:attributes="src string:${portal_url}/++resource++swfupload/queue.js">
         </script>
+
         <script type="text/javascript"
                 src=""
-                tal:attributes="src string:${resourceurl}ploneflashupload.js">
+                tal:attributes="src string:${portal_url}/++resource++swfupload/fileprogress.js">
         </script>
+
+        <script type="text/javascript"
+                src=""
+                tal:attributes="src string:${portal_url}/++resource++swfupload/handlers.js">
+        </script>
+
+        <script type="text/javascript"
+                tal:content="structure context/@@upload_init">
+        </script>
+
       </metal:block>
       <!-- End of ploneflashupload -->
 
