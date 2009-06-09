@@ -4,6 +4,11 @@ History of collective.realestatebroker
 2.2 (unreleased)
 ----------------
 
+- Use unicode_vocabulary instead of SimpleVocabulary in all
+  vocabularies to catch UnicodeEncodeErrors like in
+  http://plone.org/products/realestatebroker/issues/6
+  [maurits]
+
 - Copied code from Products.PloneFlashUpload 1.2rc so the upload on
   the album management works again.  (At least with Flash 10 on
   Linux).  [maurits]

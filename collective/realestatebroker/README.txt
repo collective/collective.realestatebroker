@@ -179,7 +179,7 @@ propertysheet.
     >>> from collective.realestatebroker.content.vocabularies import HouseTypeVocabularyFactory
     >>> vocab = HouseTypeVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
-    ['Apartment', 'Villa', 'Mansion']
+    [u'Apartment', u'Villa', u'Mansion']
 
 For the rooms field we make use of a vocabulary that reads it's values from a
 propertysheet.
@@ -187,7 +187,7 @@ propertysheet.
     >>> from collective.realestatebroker.content.vocabularies import RoomsVocabularyFactory
     >>> vocab = RoomsVocabularyFactory(self.portal)
     >>> [item.value for item in vocab]
-    ['1', '2', '3', '4', '5', '6', '7', '8']
+    [u'1', u'2', u'3', u'4', u'5', u'6', u'7', u'8']
 
 portal_catalog Indexes
 ----------------------

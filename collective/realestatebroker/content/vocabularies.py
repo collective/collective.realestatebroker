@@ -28,7 +28,7 @@ def HouseTypeVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     house_type_props = props.getProperty('residential_house_type')
-    return SimpleVocabulary.fromValues(house_type_props)
+    return unicode_vocabulary(house_type_props)
 
 
 def CommercialTypeVocabularyFactory(context):
@@ -37,7 +37,7 @@ def CommercialTypeVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     commercial_type_props = props.getProperty('commercial_type')
-    return SimpleVocabulary.fromValues(commercial_type_props)
+    return unicode_vocabulary(commercial_type_props)
 
 
 def RoomsVocabularyFactory(context):
@@ -46,7 +46,7 @@ def RoomsVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     rooms_props = props.getProperty('residential_rooms')
-    return SimpleVocabulary.fromValues(rooms_props)
+    return unicode_vocabulary(rooms_props)
 
 
 def KKVONVocabularyFactory(context):
@@ -56,7 +56,7 @@ def KKVONVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     kk_von_props = props.getProperty('kk_von')
-    return SimpleVocabulary.fromValues(kk_von_props)
+    return unicode_vocabulary(kk_von_props)
 
 
 def LocationVocabularyFactory(context):
@@ -65,7 +65,7 @@ def LocationVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     location_props = props.getProperty('location')
-    return SimpleVocabulary.fromValues(location_props)
+    return unicode_vocabulary(location_props)
 
 
 def KindOfBuildingVocabularyFactory(context):
@@ -74,7 +74,7 @@ def KindOfBuildingVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     kind_of_building_props = props.getProperty('kindOfBuilding')
-    return SimpleVocabulary.fromValues(kind_of_building_props)
+    return unicode_vocabulary(kind_of_building_props)
 
 
 def HeatingVocabularyFactory(context):
@@ -83,7 +83,7 @@ def HeatingVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     heating_props = props.getProperty('heating')
-    return SimpleVocabulary.fromValues(heating_props)
+    return unicode_vocabulary(heating_props)
 
 
 def InsulationVocabularyFactory(context):
@@ -101,7 +101,7 @@ def KindOfGardenVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     kind_of_garden_props = props.getProperty('residential_kindOfGarden')
-    return SimpleVocabulary.fromValues(kind_of_garden_props)
+    return unicode_vocabulary(kind_of_garden_props)
 
 
 def KindOfGarageVocabularyFactory(context):
@@ -110,7 +110,7 @@ def KindOfGarageVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     kind_of_garage_props = props.getProperty('residential_kindOfGarage')
-    return SimpleVocabulary.fromValues(kind_of_garage_props)
+    return unicode_vocabulary(kind_of_garage_props)
 
 
 def VATVocabularyFactory(context):
@@ -119,7 +119,7 @@ def VATVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     vat_props = props.getProperty('commercial_vat')
-    return SimpleVocabulary.fromValues(vat_props)
+    return unicode_vocabulary(vat_props)
 
 
 def RentBuyVocabularyFactory(context):
@@ -129,7 +129,7 @@ def RentBuyVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     rent_buy_props = props.getProperty('commercial_rent_buy')
-    return SimpleVocabulary.fromValues(rent_buy_props)
+    return unicode_vocabulary(rent_buy_props)
 
 
 def ParkingVocabularyFactory(context):
@@ -138,7 +138,7 @@ def ParkingVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     parking_props = props.getProperty('commercial_parking')
-    return SimpleVocabulary.fromValues(parking_props)
+    return unicode_vocabulary(parking_props)
 
 
 def FacilitiesVocabularyFactory(context):
@@ -147,7 +147,7 @@ def FacilitiesVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     facilities_props = props.getProperty('commercial_facilities')
-    return SimpleVocabulary.fromValues(facilities_props)
+    return unicode_vocabulary(facilities_props)
 
 
 def MinPriceVocabularyFactory(context):
@@ -156,7 +156,7 @@ def MinPriceVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     min_price_props = props.getProperty('min_price')
-    return SimpleVocabulary.fromValues(min_price_props)
+    return unicode_vocabulary(min_price_props)
 
 
 def MaxPriceVocabularyFactory(context):
@@ -165,7 +165,7 @@ def MaxPriceVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     max_price_props = props.getProperty('max_price')
-    return SimpleVocabulary.fromValues(max_price_props)
+    return unicode_vocabulary(max_price_props)
 
 
 def FixedPriceNegotiableVocabularyFactory(context):
@@ -174,4 +174,4 @@ def FixedPriceNegotiableVocabularyFactory(context):
     pprops = getToolByName(context, 'portal_properties')
     props = pprops.realestatebroker_properties
     fp_neg_props = props.getProperty('fixedprice_negotiable')
-    return SimpleVocabulary.fromValues(fp_neg_props)
+    return unicode_vocabulary(fp_neg_props)
