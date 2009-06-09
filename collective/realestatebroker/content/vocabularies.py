@@ -2,7 +2,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
-from collective.realestatebroker import REBMessageFactory as _
+#from collective.realestatebroker import REBMessageFactory as _
 
 
 def unicode_vocabulary(proplist):
@@ -166,6 +166,7 @@ def MaxPriceVocabularyFactory(context):
     props = pprops.realestatebroker_properties
     max_price_props = props.getProperty('max_price')
     return SimpleVocabulary.fromValues(max_price_props)
+
 
 def FixedPriceNegotiableVocabularyFactory(context):
     """ Negotiable price or fixed price for real estate?
