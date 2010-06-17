@@ -4,7 +4,10 @@ History of collective.realestatebroker
 2.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- No longer require specific versions of archetypes.schemaextender
+  (1.0b1) and Products.contentmigration (1.0b4), but let those be
+  minimum versions.
+  [maurits]
 
 
 2.2 (2009-06-10)
