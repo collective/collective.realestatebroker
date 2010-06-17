@@ -4,6 +4,10 @@ History of collective.realestatebroker
 2.3 (unreleased)
 ----------------
 
+- Reintroduce version specific pin of Products.contentmigration==1.0b4
+  because with other versions there are test failures.
+  [maurits]
+
 - No longer require specific versions of archetypes.schemaextender
   (1.0b1) and Products.contentmigration (1.0b4), but let those be
   minimum versions.

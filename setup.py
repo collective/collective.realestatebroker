@@ -51,7 +51,7 @@ setup(name='collective.realestatebroker',
       install_requires=[
           'setuptools',
           'archetypes.schemaextender>=1.0b1',
-          'Products.contentmigration>=1.0b4',
+          'Products.contentmigration==1.0b4',
           'Products.PloneFlashUpload',
           'Products.Maps',
           'ReportLab',
