@@ -5,7 +5,11 @@ from zope.interface import implements
 from zope.i18nmessageid import MessageFactory
 from zope import schema
 
-from plone.fieldsets import FormFieldsets
+try:
+    from plone.fieldsets import FormFieldsets
+except ImportError:
+    from plone.fieldsets.fieldsets import FormFieldsets
+
 from plone.app.controlpanel.form import ControlPanelForm
 
 from Products.CMFCore.utils import getToolByName

@@ -62,11 +62,4 @@ def initialize(context):
             extra_constructors = (constructor,),
             ).initialize(context)
     
-    # Add an extra scaling size to the ATImage scaling list
-    image_sizes = ATImage.schema['image'].sizes
-    if not image_sizes.has_key('tile96'):
-        image_sizes['tile96'] = (96,96)
-        ATImage.schema['image'].sizes = image_sizes
-        
-        
-    ATImage.schema['image'].original_size = (768,768)
+

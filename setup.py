@@ -50,8 +50,8 @@ setup(name='collective.realestatebroker',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'archetypes.schemaextender==1.0b1',
-          'Products.contentmigration==1.0b4',
+          'archetypes.schemaextender',
+          'Products.contentmigration',
           'Products.PloneFlashUpload',
           'Products.Maps',
           # ReportLab needs http://ftp.schooltool.org/schooltool/eggs/
@@ -61,5 +61,7 @@ setup(name='collective.realestatebroker',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )

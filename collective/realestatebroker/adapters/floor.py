@@ -76,6 +76,7 @@ Behind the scenes, the floor info is handled with annotations.
 """
 
 from zope.annotation.interfaces import IAnnotations
+from plone.indexer import indexer
 from zope.component import adapts
 from zope.interface import implements
 from Products.CMFPlone import CatalogTool as catalogtool
@@ -109,11 +110,11 @@ class FloorInfo(object):
         return annotation.get(FLOORPLANKEY, False)
     is_floorplan = property(get_is_floorplan, set_is_floorplan)
 
-
+@indexer(IATImage)
 def is_floorplan(object, portal, **kw):
     adapted = IFloorInfo(object, None)
     if adapted is not None:
         return adapted.is_floorplan
     return False
 
-catalogtool.registerIndexableAttribute('is_floorplan', is_floorplan)
+#catalogtool.registerIndexableAttribute('is_floorplan', is_floorplan)
