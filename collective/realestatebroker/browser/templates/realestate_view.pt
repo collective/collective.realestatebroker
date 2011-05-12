@@ -13,9 +13,9 @@
       <div tal:replace="structure provider:realestatebroker.titlemanager" />
       <div tal:replace="structure provider:plone.belowcontenttitle" />
       <div tal:replace="structure provider:plone.abovecontentbody" />
-      
+
       <div class="visualClear" />
-      
+
       <div tal:replace="structure provider:realestatebroker.actionsmanager" />
 
       <div class="rebDescription">
@@ -23,13 +23,13 @@
           Description
         </metal:field>
       </div>
-            
+
       <table class="listing charsTable">
-        <th colspan="2" 
+        <th colspan="2"
           i18n:translate="Characteristics">
           Characteristics
         </th>
-        
+
         <tal:row tal:define="label_macro label_macro|context/widgets/field_table/macros/label;
                              data_macro data_macro|context/widgets/field_table/macros/data;
                              field_macro field_macro | context/widgets/field_table/macros/view;"
@@ -46,7 +46,7 @@
           </tal:if_visible>
         </tal:row>
       </table>
-    
+
       <div>
         <metal:field use-macro="python:context.widget('text', mode='view')">
           Main text

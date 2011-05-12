@@ -72,5 +72,5 @@ class Residential(atapi.OrderedBaseFolder):
         props = pprops.realestatebroker_properties
         fp_neg_props = props.getProperty('fixedprice_negotiable')
         return fp_neg_props[0]
-        
+
 atapi.registerType(Residential, PROJECTNAME)

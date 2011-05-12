@@ -17,7 +17,7 @@
     <utility
          component=".vocabularies.RoomsVocabularyFactory"
          name="collective.realestatebroker.rooms_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
+         provides="zope.schema.interfaces.IVocabularyFactory" />
     <utility
          component=".vocabularies.KKVONVocabularyFactory"
          name="collective.realestatebroker.kk_von_list"
@@ -27,31 +27,31 @@
          component=".vocabularies.CommercialTypeVocabularyFactory"
          name="collective.realestatebroker.commercial_type_list"
          provides="zope.schema.interfaces.IVocabularyFactory" />
-         
+
     <utility
          component=".vocabularies.LocationVocabularyFactory"
          name="collective.realestatebroker.location_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-         
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
     <utility
          component=".vocabularies.KindOfBuildingVocabularyFactory"
          name="collective.realestatebroker.kind_of_building_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-         
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
     <utility
          component=".vocabularies.HeatingVocabularyFactory"
          name="collective.realestatebroker.heating_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />          
-         
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
     <utility
          component=".vocabularies.InsulationVocabularyFactory"
          name="collective.realestatebroker.insulation_list"
-         provides="zope.schema.interfaces.IVocabularyFactory" />  
-         
+         provides="zope.schema.interfaces.IVocabularyFactory" />
+
    <utility
         component=".vocabularies.KindOfGarageVocabularyFactory"
         name="collective.realestatebroker.kind_of_garage_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />          
+        provides="zope.schema.interfaces.IVocabularyFactory" />
 
    <utility
         component=".vocabularies.KindOfGardenVocabularyFactory"
@@ -62,33 +62,33 @@
         component=".vocabularies.VATVocabularyFactory"
         name="collective.realestatebroker.vat_list"
         provides="zope.schema.interfaces.IVocabularyFactory" />
-        
+
    <utility
         component=".vocabularies.RentBuyVocabularyFactory"
         name="collective.realestatebroker.rent_buy_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />        
-        
+        provides="zope.schema.interfaces.IVocabularyFactory" />
+
    <utility
         component=".vocabularies.ParkingVocabularyFactory"
         name="collective.realestatebroker.parking_list"
         provides="zope.schema.interfaces.IVocabularyFactory" />
-        
+
    <utility
         component=".vocabularies.FacilitiesVocabularyFactory"
         name="collective.realestatebroker.facilities_list"
         provides="zope.schema.interfaces.IVocabularyFactory" />
-        
+
    <utility
         component=".vocabularies.MinPriceVocabularyFactory"
         name="collective.realestatebroker.min_price_list"
         provides="zope.schema.interfaces.IVocabularyFactory" />
-        
+
    <utility
         component=".vocabularies.MaxPriceVocabularyFactory"
         name="collective.realestatebroker.max_price_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" /> 
+        provides="zope.schema.interfaces.IVocabularyFactory" />
    <utility
         component=".vocabularies.FixedPriceNegotiableVocabularyFactory"
         name="collective.realestatebroker.fixedprice_negotiable_list"
-        provides="zope.schema.interfaces.IVocabularyFactory" />         
+        provides="zope.schema.interfaces.IVocabularyFactory" />
 </configure>

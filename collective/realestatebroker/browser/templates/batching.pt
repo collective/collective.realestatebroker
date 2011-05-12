@@ -57,7 +57,7 @@
     <!-- Pagelist with links to previous pages for quick navigation -->
     <span tal:repeat="pagenumber batch/previous_pages"
           tal:omit-tag="" >
-      <a href="" tal:content="pagenumber" 
+      <a href="" tal:content="pagenumber"
          tal:attributes="href string:${view/url}&pagenumber=$pagenumber&sort_on=${request/sort_on|string:getObjPositionInParent}"/>
     </span>
 
@@ -70,7 +70,7 @@
     <!-- Pagelist with links to next pages for quick navigation -->
     <span tal:repeat="pagenumber batch/next_pages"
           tal:omit-tag="" >
-      <a href="" tal:content="pagenumber" 
+      <a href="" tal:content="pagenumber"
          tal:attributes="href string:${view/url}&pagenumber=$pagenumber&sort_on=${request/sort_on|string:getObjPositionInParent}"/>
     </span>
 

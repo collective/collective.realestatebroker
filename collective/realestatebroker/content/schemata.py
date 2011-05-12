@@ -133,7 +133,7 @@ GeneralSchema =  atapi.Schema((
         widget = atapi.SelectionWidget(label = _(u'Rent or buy'),
                  )
         ),
-        
+
     atapi.StringField('fixedprice_negotiable',
         storage=atapi.AnnotationStorage(),
         schemata=u'financial',
@@ -141,7 +141,7 @@ GeneralSchema =  atapi.Schema((
         vocabulary_factory="collective.realestatebroker.fixedprice_negotiable_list",
         widget = atapi.SelectionWidget(label = _(u'Negotiable or fixed price'),
                  )
-        ),    
+        ),
     # Location (= google maps)
     # -----------------------
     LocationField('geolocation',
