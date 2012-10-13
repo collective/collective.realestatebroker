@@ -1,1 +1,1 @@
-README.txt
+collective/realestatebroker/README.txt

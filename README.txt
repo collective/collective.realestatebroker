@@ -1,1 +1,0 @@
-See collective/realestatebroker/README.txt
