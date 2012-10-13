@@ -7,8 +7,10 @@ from zope.component import testing
 OPTIONFLAGS = (doctest.ELLIPSIS |
                doctest.NORMALIZE_WHITESPACE)
 
+
 def setUp(test):
     testing.setUp(test)
+
 
 def tearDown(test):
     testing.tearDown(test)

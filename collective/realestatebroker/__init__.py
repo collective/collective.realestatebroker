@@ -41,6 +41,7 @@ def initialize(context):
 
     from content import residential
     from content import commercial
+    residential, commercial  # pyflakes
 
 
     content_types, constructors, ftis = atapi.process_types(

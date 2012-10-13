@@ -60,7 +60,6 @@ class RealEstateListing(RealEstateBaseView):
 
         self.formerror=u""
         form = self.request.form
-        search_action = form.get('form.button.submit', False)
         reset_action = form.get('form.button.reset', False)
 
         if not reset_action:

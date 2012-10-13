@@ -1,6 +1,5 @@
 from zope.interface import implements
-from Acquisition import aq_inner
-from plone.memoize.instance import memoize
+
 from interfaces import ICommercialListing
 from interfaces import ICommercialView
 from base import RealEstateListing

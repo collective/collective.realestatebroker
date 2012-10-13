@@ -1,8 +1,9 @@
 from Products.Maps.browser.map import BaseMapView
 from Products.Maps.interfaces import IMapView
 from zope.interface import implements
-from zope.interface import directlyProvides
+
 from collective.realestatebroker.interfaces import IRealEstateContent
+
 
 class RealEstateMapView(BaseMapView):
     """Configuration adapter for plonemaps."""
@@ -14,5 +15,5 @@ class RealEstateMapView(BaseMapView):
         if not IRealEstateContent.providedBy(self.context):
             return False
         if req_url.endswith('map') or req_url.endswith('edit'):
-            return True # Yes, we want the maps javascript.
+            return True  # Yes, we want the maps javascript.
         return False

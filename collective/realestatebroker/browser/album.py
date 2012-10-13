@@ -77,7 +77,6 @@ class AlbumView(BrowserView):
             ATCT Image.
         """
         assert scale != None
-        base = brain.getURL()
         return dict(title = brain.Title,
                     tag = self.image_brain_tag(brain, scale))
 
