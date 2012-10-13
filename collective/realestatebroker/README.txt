@@ -27,10 +27,9 @@ First a small bit of setup: adding an admin user and a registered visitor.
 Installing real estate broker
 -----------------------------
 
-The handiest way to get up and running with plone 3.0 and realestatebroker is
-to use the buildout. The basic setup can be done with::
-
- https://svn.plone.org/svn/collective/collective.realestatebroker/buildout/reb30/trunk
+Add ``collective.realestatebroker`` to the eggs and zcml of your
+buildout.  If you want a development buildout, use the buildout.cfg in
+https://github.com/collective/collective.realestatebroker
 
 If you have old 1.0 content you can migrate that by uncommenting two lines in
 the buildout, as indicated there with a comment.
