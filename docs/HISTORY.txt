@@ -1,4 +1,0 @@
-Changelog for collective.realestatebroker
-=========================================
-
-See collective/realestatebroker/HISTORY.txt.
