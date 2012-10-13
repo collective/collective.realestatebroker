@@ -31,9 +31,11 @@ setup(name='collective.realestatebroker',
       version=version,
       description="An easy and professional way to publish real estate objects on your Plone website",
       long_description= long_description,
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
           "Framework :: Plone",
+          "Framework :: Plone :: 3.2",
+          "Framework :: Plone :: 3.3",
           "Framework :: Zope2",
           "Framework :: Zope3",
           "Programming Language :: Python",
