@@ -13,7 +13,7 @@ installfile = open(os.path.join('docs', 'INSTALL.txt'))
 install = installfile.read().strip()
 installfile.close()
 
-historyfile = open(os.path.join('collective', 'realestatebroker', 'HISTORY.txt'))
+historyfile = open('CHANGES.rst')
 history = historyfile.read().strip()
 historyfile.close()
 
