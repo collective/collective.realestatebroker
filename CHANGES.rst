@@ -4,6 +4,8 @@ History of collective.realestatebroker
 2.3 (unreleased)
 ----------------
 
+- Moved to https://github.com/collective/collective.realestatebroker
+
 - Reintroduce version specific pin of Products.contentmigration==1.0b4
   because with other versions there are test failures.
   [maurits]
