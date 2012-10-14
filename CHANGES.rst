@@ -1,7 +1,7 @@
 History of collective.realestatebroker
 ======================================
 
-2.3 (unreleased)
+2.3 (2012-10-14)
 ----------------
 
 - Moved to https://github.com/collective/collective.realestatebroker
